@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
         : []),
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/api/media/file/:path*',
+        destination: '/media/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withPayload(nextConfig)
