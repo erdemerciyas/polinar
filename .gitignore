@@ -4,6 +4,9 @@ node_modules/
 .env.local
 *.tsbuildinfo
 next-env.d.ts
-public/media/
+# public/media/ - tracked for static serving on Vercel
 _old_static/
 temporary screenshots/
+
+.vercel
+.env*.local
