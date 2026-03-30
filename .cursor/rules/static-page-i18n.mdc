@@ -1,0 +1,64 @@
+---
+description: Auto-extract hardcoded strings from static page components into the i18n data system
+globs: src/components/**/*.tsx, src/app/(frontend)/**/*.tsx
+alwaysApply: false
+---
+
+# Static Page i18n Extraction
+
+When the user asks to "make this page translatable", "i18n'e çevir", "dil desteği ekle", or similar:
+
+## Step 1: Extract all translatable strings
+
+Identify every hardcoded string in the component: headings, paragraphs, button labels, alt text, aria-labels, breadcrumbs, CTA text, section titles, descriptions, list items, placeholders. Image paths and CSS classes are NOT translatable.
+
+## Step 2: Create the data module
+
+For a page at `src/app/(frontend)/[locale]/my-page/page.tsx` or component `src/components/MyPage.tsx`, create `src/data/my-page/`:
+
+**en.ts** — all extracted strings with their English values:
+
+```typescript
+const en = {
+  heroTitle: 'Page Title',
+  heroSubtitle: 'Subtitle text',
+  sections: [{ title: '...', description: '...' }],
+  ctaButton: 'Contact Us',
+}
+export default en
+```
+
+## Step 3: Run the generator
+
+```bash
+npm run i18n:create-page my-page
+```
+
+This auto-generates `types.ts`, `index.ts`, and locale files (tr.ts, de.ts, ar.ts, etc).
+
+## Step 4: Update the component
+
+Replace all hardcoded strings with data from the loader:
+
+```typescript
+import { getMyPageData } from '@/data/my-page'
+import { getStaticLabels } from '@/data/static-labels'
+
+export default async function MyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const data = getMyPageData(locale)
+  const labels = getStaticLabels(locale) // for shared aria/breadcrumb/product labels
+
+  return <h1>{data.heroTitle}</h1>
+}
+```
+
+## Rules
+
+- The component MUST accept `locale` as a prop or extract it from route params
+- Use `getStaticLabels(locale)` for common strings: aria-labels, breadcrumbs, product UI labels (see `src/data/static-labels/en.ts`)
+- Use page-specific data loader for page content
+- Keep image paths, CSS classes, and SVG icons in the component — only extract text
+- Array items (like product categories) should keep their `id` field for stable keys
+- After creating en.ts, ALWAYS run `npm run i18n:create-page <slug>` to generate all supporting files
+- The `createLocaleLoader` in `src/data/locale-loader.ts` provides automatic EN fallback for missing locales

@@ -1,0 +1,64 @@
+import type { GlobalConfig } from 'payload'
+import { revalidateGlobal } from '@/hooks/revalidateOnChange'
+import { seoFields } from '@/fields/seoFields'
+
+export const ContactPageSettings: GlobalConfig = {
+  slug: 'contact-page-settings',
+  label: 'Contact Page',
+  admin: {
+    group: 'Pages',
+    description: 'Contact page hero, form labels, and success/error messages',
+  },
+  access: {
+    read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateGlobal],
+  },
+  fields: [
+    seoFields,
+    {
+      name: 'hero',
+      label: 'Hero Section',
+      type: 'group',
+      fields: [
+        { name: 'title', type: 'text', localized: true, admin: { description: 'e.g. "Contact Us"' } },
+        { name: 'subtitle', type: 'text', localized: true, admin: { description: 'e.g. "Get in touch with our team"' } },
+      ],
+    },
+    {
+      name: 'form',
+      label: 'Form Labels',
+      type: 'group',
+      fields: [
+        { name: 'nameLabel', type: 'text', localized: true },
+        { name: 'emailLabel', type: 'text', localized: true },
+        { name: 'subjectLabel', type: 'text', localized: true },
+        { name: 'messageLabel', type: 'text', localized: true },
+        { name: 'sendButton', type: 'text', localized: true },
+        { name: 'sendingButton', type: 'text', localized: true },
+      ],
+    },
+    {
+      name: 'messages',
+      label: 'Response Messages',
+      type: 'group',
+      fields: [
+        { name: 'success', type: 'text', localized: true, admin: { description: 'Shown after successful submit' } },
+        { name: 'error', type: 'text', localized: true, admin: { description: 'Shown on submit failure' } },
+      ],
+    },
+    {
+      name: 'info',
+      label: 'Contact Info Labels',
+      type: 'group',
+      admin: { description: 'Labels shown next to actual contact details from Site Settings' },
+      fields: [
+        { name: 'addressLabel', type: 'text', localized: true },
+        { name: 'addressText', type: 'textarea', localized: true },
+        { name: 'phoneLabel', type: 'text', localized: true },
+        { name: 'emailLabel', type: 'text', localized: true },
+      ],
+    },
+  ],
+}

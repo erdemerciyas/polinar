@@ -1,0 +1,338 @@
+{
+  "about-page-settings": {
+    "certificates": {
+      "description": "Die erste Priorität von Polinar besteht darin, alle Kunden zu schützen und qualifizierte Dienstleistungen anzubieten. In allen Inputs und Outputs unseres Produktionsprozesses wird die Analyse aller Halbprodukte und Fertigprodukte sehr sorgfältig durchgeführt.",
+      "items": [
+        {
+          "description": "Qualitätsmanagementsystem",
+          "name": "ISO 9001"
+        },
+        {
+          "description": "Umweltmanagementsystem",
+          "name": "ISO 14001"
+        },
+        {
+          "description": "Berufliche Gesundheit und Sicherheit",
+          "name": "ISO 45001"
+        },
+        {
+          "description": "Umwelt und Qualitätspolitik",
+          "name": "Integrated Policy"
+        },
+        {
+          "description": "Zertifikat für die Registrierung von Industriedesigns",
+          "name": "Design Registration"
+        },
+        {
+          "description": "Polinar Trademark Renewing Certificate",
+          "name": "Trademark Renewal"
+        },
+        {
+          "description": "PTE Trademark Registration Certificate",
+          "name": "Trademark Registration"
+        }
+      ],
+      "title": "Our Certificates"
+    },
+    "cta": {
+      "buttonLink": "https://wa.me/902125498820",
+      "buttonText": "Kontakt über WhatsApp",
+      "description": "Kontaktieren Sie unser Kundenservice-Team für Fragen zu unseren Produkten und Dienstleistungen.",
+      "title": "Brauchen Sie detaillierte Informationen?"
+    },
+    "gallery": {
+      "description": "Ein Blick in unsere modernste Fertigungsanlage mit modernen CNC- und EDM-Maschinen.",
+      "images": [
+        {
+          "caption": "Bearbeitungszentrum CNC",
+          "size": "large"
+        },
+        {
+          "caption": "Injection Mould Workshop",
+          "size": "normal"
+        },
+        {
+          "caption": "EDM Drahtschneiden",
+          "size": "normal"
+        },
+        {
+          "caption": "Qualitätskontrolle",
+          "size": "large"
+        },
+        {
+          "caption": "Hersteller und Hersteller",
+          "size": "normal"
+        },
+        {
+          "caption": "Produktionslinie",
+          "size": "normal"
+        },
+        {
+          "caption": "Formmontage",
+          "size": "normal"
+        },
+        {
+          "caption": "Waren",
+          "size": "normal"
+        }
+      ],
+      "title": "Fotos von Produktionsfläche"
+    },
+    "hero": {
+      "label": "Über uns",
+      "subtitle": "Führender Hersteller von Kunststoffspritzgussformen seit 2000",
+      "title": "ÜBER UNS"
+    },
+    "statistics": {
+      "cards": [
+        {
+          "icon": "📅",
+          "label": "Gegründet Jahr",
+          "number": 2000,
+          "suffix": ""
+        },
+        {
+          "icon": "🌍",
+          "label": "Ausfuhr",
+          "number": 40,
+          "suffix": "+"
+        },
+        {
+          "icon": "🏭",
+          "label": "Vollständige Projekte",
+          "number": 500,
+          "suffix": "+"
+        },
+        {
+          "icon": "⚙️",
+          "label": "Jahre der Erfahrung",
+          "number": 25,
+          "suffix": "+"
+        }
+      ]
+    },
+    "story": {
+      "ctaLink": "/contact",
+      "ctaText": "Kontaktieren Sie uns",
+      "foundedYear": "2000",
+      "paragraph1": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoff-Spritzgussformen zur Herstellung von Kunststoff-Rohrarmaturen auf höchstem technischen Niveau und im Bereich der Projektentwicklung für individuelle Kundenaufträge.",
+      "paragraph2": "POLINAR fördert Innovation, hohe Technologien und Konsistenz. Das Unternehmen entwickelt seit 2000 seine Erfahrung in diesem Bereich und tritt weiterhin als führende Organisation in der Konstruktion und Herstellung von Spritzgussformen auf.",
+      "paragraph3": "Die intensive Erfahrung von POLINAR in Design und Herstellung von Formen verbessert sich in jedem Projekt. Wir bemühen uns, die Prozesse und die Entwicklung innovativer Lösungen zu verbessern. So werden wir mittelfristig und langfristig den Wettbewerbsvorteil unserer Kunden stärken können.",
+      "title": "Über Polinar"
+    },
+    "video": {
+      "description": "Erfahren Sie mehr über Polinar und unsere Fertigungsmöglichkeiten.",
+      "title": "Video zum Thema",
+      "videoUrl": "https://www.youtube.com/watch?v=wFziyAssgqk"
+    }
+  },
+  "contact-page-settings": {
+    "form": {
+      "emailLabel": "Ihre E-Mail",
+      "messageLabel": "Ihre Nachricht",
+      "nameLabel": "Ihr Name",
+      "sendButton": "SEND MESSAGE",
+      "sendingButton": "SENDING...",
+      "subjectLabel": "Gegenstand"
+    },
+    "hero": {
+      "subtitle": "In den Warenkorb",
+      "title": "KONTAKT"
+    },
+    "info": {
+      "addressLabel": "Anschrift",
+      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok Nr. 34\nBaşakşehir / İSTANBUL, TURKEY",
+      "emailLabel": "E-Mail senden",
+      "phoneLabel": "Telefon / Fax"
+    },
+    "messages": {
+      "error": "Versäumt, Nachricht zu senden. Bitte versuchen Sie es noch mal.",
+      "success": "Nachricht erfolgreich gesendet!"
+    }
+  },
+  "footer": {
+    "copyrightText": "Copyright © 2024 Alle Rechte vorbehalten von Polinar",
+    "labels": {
+      "addressLabel": "Anschrift",
+      "emailLabel": "E-Mail senden",
+      "emailPlaceholder": "E-Mail",
+      "namePlaceholder": "Name",
+      "newsletterLabel": "Newsletter",
+      "phoneFaxLabel": "Telefon / Fax",
+      "subscribeButton": "SUBSCRIBE"
+    },
+    "showNewsletter": true
+  },
+  "homepage-settings": {
+    "aboutPreviewLabels": {
+      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohr und Armaturen.",
+      "label": "Über uns",
+      "title": "USA"
+    },
+    "businessSection": {
+      "sectionLabel": "Unser Unternehmen",
+      "sectionTitle": "Was wir tun"
+    },
+    "coreValues": {
+      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohr und Armaturen.",
+      "title": "Qualität / Robust / langlebig / zuverlässig"
+    },
+    "heroSlides": [
+      {
+        "animateText": true,
+        "ctaLabel": "\"en\":null,\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Seit 2000 fertigt Polinar hochwertige Kunststoffspritzgussformen für die globale Rohr- und Armaturenindustrie.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "Hochwertige Kunststoffspritzgussformen",
+        "titleSize": "large"
+      },
+      {
+        "animateText": true,
+        "ctaLabel": "\"en\":null,\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Polinar entwickelt und fertigt kundenspezifische Maschinen für die Kunststoffrohr- und Armaturenindustrie.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "Präzisionsmaschinen und kundenspezifische Lösungen",
+        "titleSize": "large"
+      },
+      {
+        "animateText": true,
+        "ctaLabel": "{\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Polynar Test Equipment (PTE) Mischprogramm von Prüfmaschinen für die Kunststoffrohr- und Armaturenindustrie.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "Zuverlässige Prüfung der Qualitätssicherung",
+        "titleSize": "large"
+      }
+    ],
+    "newsSection": {
+      "empty": "Nachrichten kommen bald",
+      "label": "Letzte Nachrichten",
+      "title": "Faire Agenda"
+    },
+    "sliderSettings": {
+      "autoPlay": true,
+      "interval": 5000,
+      "pauseOnHover": true,
+      "showArrows": true,
+      "showDots": true,
+      "transitionDuration": 800,
+      "transitionType": "fade"
+    }
+  },
+  "navigation": {
+    "mainMenu": [
+      {
+        "label": "HOME",
+        "type": "link",
+        "url": "/"
+      },
+      {
+        "label": "HOME NEWS",
+        "type": "link",
+        "url": "/about"
+      },
+      {
+        "label": "UNSERE TÄTIGKEITEN",
+        "megaMenuColumns": [
+          {
+            "columnTitle": "{}",
+            "columnType": "links",
+            "imageCaption": "{}",
+            "links": [
+              {
+                "description": "{\"en\":\"High-quality injection moulds for PPR-C, HDPE, PVC and other pipe systems.\",\"tr\":\"PPR-C, HDPE, PVC ve diğer boru sistemleri için yüksek kaliteli enjeksiyon kalıpları.\"}",
+                "icon": "moulds",
+                "label": "{\"en\":\"Injection Moulds\",\"tr\":\"Enjeksiyon Kalıpları\"}",
+                "url": "/our-business/injection-moulds"
+              },
+              {
+                "description": "{\"en\":\"Precision manufacturing capacity with modern CNC and EDM machines.\",\"tr\":\"Modern CNC ve EDM makineleri ile hassas üretim kapasitesi.\"}",
+                "icon": "machinery",
+                "label": "{\"en\":\"Machinery\",\"tr\":\"Makine Parkuru\"}",
+                "url": "/our-business/machinery"
+              },
+              {
+                "description": "{\"en\":\"Quality control and material testing services.\",\"tr\":\"Kalite kontrol ve malzeme test hizmetleri.\"}",
+                "icon": "testing",
+                "label": "{\"en\":\"Plastic Testing Equipment\",\"tr\":\"Plastik Test Ekipmanları\"}",
+                "url": "/our-business/plastic-testing-equipment"
+              }
+            ]
+          }
+        ],
+        "type": "mega"
+      },
+      {
+        "label": "NACHRICHTEN",
+        "type": "link",
+        "url": "/news"
+      },
+      {
+        "label": "NACHRICHTEN",
+        "type": "link",
+        "url": "/contact"
+      }
+    ],
+    "megaMenuCTA": {
+      "button": "Kontakt",
+      "description": "Wir bieten spezielle Lösungen für Ihre Projekte. Kontaktieren Sie uns.",
+      "title": "Kontaktieren Sie uns"
+    }
+  },
+  "news-page-settings": {
+    "hero": {
+      "label": "Letzte Aktualisierungen",
+      "title": "NACHRICHTEN & EXHIBITIONEN"
+    },
+    "labels": {
+      "allNews": "Alle News",
+      "breadcrumb": "Nachrichten",
+      "cmsPlaceholder": "Artikelinhalte werden über CMS verwaltet.",
+      "empty": "Nachrichten kommen bald"
+    }
+  },
+  "site-settings": {
+    "chatbot": {
+      "enabled": true,
+      "labels": {
+        "closeLabel": "Schließen",
+        "connectionError": "Verbindungsfehler. Bitte versuchen Sie es noch mal.",
+        "errorMessage": "Tut mir leid, es gab einen Fehler.",
+        "placeholder": "Geben Sie Ihre Nachricht ein...",
+        "title": "Poliner Support",
+        "welcome": "Hallo! Wie kann ich Ihnen heute helfen?",
+        "whatsappLabel": "Weiter auf WhatsApp"
+      }
+    },
+    "contact": {
+      "email": "info@polinar.com.tr",
+      "fax": "+90 212 549 88 19",
+      "phone": "+90 212 549 88 20-21",
+      "whatsapp": "+90 533 648 61 34"
+    },
+    "siteName": "Polinar",
+    "socialMedia": {
+      "facebook": "https://facebook.com/polinar",
+      "instagram": "https://instagram.com/polinar",
+      "linkedin": "https://linkedin.com/company/polinar",
+      "youtube": "https://youtube.com/polinar"
+    },
+    "whatsappCTA": {
+      "enabled": true,
+      "text": "Benötigen Sie detaillierte Informationen, kontaktieren Sie unseren Kundenservice über whatsapp"
+    }
+  },
+  "ui-labels": {
+    "contentComingSoon": "Inhalt kommt bald.",
+    "learnMore": "Mehr erfahren",
+    "readMore": "Mehr lesen"
+  }
+}

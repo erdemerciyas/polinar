@@ -1,0 +1,21 @@
+{
+  "locales": [
+    {
+      "label": "English",
+      "code": "en"
+    },
+    {
+      "label": "Türkçe",
+      "code": "tr"
+    },
+    {
+      "label": "Deutsch",
+      "code": "de"
+    },
+    {
+      "label": "Arabic",
+      "code": "ar"
+    }
+  ],
+  "defaultLocale": "en"
+}

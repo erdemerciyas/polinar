@@ -1,0 +1,336 @@
+{
+  "about-page-settings": {
+    "certificates": {
+      "description": "First priority of Polinar is to protect all customers profit and to provide qualified services. In all of inputs and outputs of our production process, the analysis of all semi-products and finished products are done very carefully.",
+      "items": [
+        {
+          "description": "Quality Management System",
+          "name": "ISO 9001"
+        },
+        {
+          "description": "Environmental Management System",
+          "name": "ISO 14001"
+        },
+        {
+          "description": "Occupational Health & Safety",
+          "name": "ISO 45001"
+        },
+        {
+          "description": "Environment & Quality Policy",
+          "name": "Integrated Policy"
+        },
+        {
+          "description": "Industrial Design Registration Certificate",
+          "name": "Design Registration"
+        },
+        {
+          "description": "Polinar Trademark Renewal Certificate",
+          "name": "Trademark Renewal"
+        },
+        {
+          "description": "PTE Trademark Registration Certificate",
+          "name": "Trademark Registration"
+        }
+      ],
+      "title": "Our Certificates"
+    },
+    "cta": {
+      "buttonLink": "https://wa.me/902125498820",
+      "buttonText": "Contact via WhatsApp",
+      "description": "Contact our customer support team for any questions about our products and services.",
+      "title": "Need Detailed Information?"
+    },
+    "gallery": {
+      "description": "A glimpse into our state-of-the-art manufacturing facility equipped with modern CNC and EDM machines.",
+      "images": [
+        {
+          "caption": "CNC Machining Center",
+          "size": "large"
+        },
+        {
+          "caption": "Injection Mould Workshop",
+          "size": "normal"
+        },
+        {
+          "caption": "EDM Wire Cutting",
+          "size": "normal"
+        },
+        {
+          "caption": "Quality Control",
+          "size": "large"
+        },
+        {
+          "caption": "Factory Interior",
+          "size": "normal"
+        },
+        {
+          "caption": "Production Line",
+          "size": "normal"
+        },
+        {
+          "caption": "Mould Assembly",
+          "size": "normal"
+        },
+        {
+          "caption": "Warehouse",
+          "size": "normal"
+        }
+      ],
+      "title": "Photos from Production Area"
+    },
+    "hero": {
+      "label": "About",
+      "subtitle": "Leading manufacturer of plastic injection moulds since 2000",
+      "title": "ABOUT US"
+    },
+    "statistics": {
+      "cards": [
+        {
+          "icon": "📅",
+          "label": "Founded Year",
+          "number": 2000,
+          "suffix": ""
+        },
+        {
+          "icon": "🌍",
+          "label": "Export Countries",
+          "number": 40,
+          "suffix": "+"
+        },
+        {
+          "icon": "🏭",
+          "label": "Completed Projects",
+          "number": 500,
+          "suffix": "+"
+        },
+        {
+          "icon": "⚙️",
+          "label": "Years of Experience",
+          "number": 25,
+          "suffix": "+"
+        }
+      ]
+    },
+    "story": {
+      "ctaLink": "/contact",
+      "ctaText": "Contact Us",
+      "foundedYear": "2000",
+      "paragraph1": "POLINAR is one of the dynamic and leading companies in the field of manufacture of plastic injection moulds for production of plastic pipe fittings at the highest technical level, and in the field of project development for individual customer orders.",
+      "paragraph2": "POLINAR promotes innovation, high technologies, and consistency. The company has been developing its experience in this field since 2000, and continues to emerge as a leading organization in design and manufacture of injection moulds.",
+      "paragraph3": "Intensive experience of POLINAR in design and manufacturing of moulds is improving in every project. We are spending further efforts to improve the processes and development of innovative solutions. Thus, we will be able to strengthen competitive advantage of our customers in the medium and long term.",
+      "title": "About Polinar"
+    },
+    "video": {
+      "description": "Watch our corporate video to learn more about Polinar and our manufacturing capabilities.",
+      "title": "Promotion Video",
+      "videoUrl": "https://www.youtube.com/watch?v=wFziyAssgqk"
+    }
+  },
+  "contact-page-settings": {
+    "form": {
+      "emailLabel": "Your Email",
+      "messageLabel": "Your Message",
+      "nameLabel": "Your Name",
+      "sendButton": "SEND MESSAGE",
+      "sendingButton": "SENDING...",
+      "subjectLabel": "Subject"
+    },
+    "hero": {
+      "subtitle": "Get in Touch",
+      "title": "CONTACT US"
+    },
+    "info": {
+      "addressLabel": "Address",
+      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, TURKEY",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone / Fax"
+    },
+    "messages": {
+      "error": "Failed to send message. Please try again.",
+      "success": "Message sent successfully!"
+    }
+  },
+  "footer": {
+    "copyrightText": "Copyright © 2024 All Rights Reserved by Polinar",
+    "labels": {
+      "addressLabel": "Address",
+      "emailLabel": "Email",
+      "emailPlaceholder": "E-mail",
+      "namePlaceholder": "Name",
+      "newsletterLabel": "Newsletter",
+      "phoneFaxLabel": "Phone / Fax",
+      "subscribeButton": "SUBSCRIBE"
+    },
+    "showNewsletter": true
+  },
+  "homepage-settings": {
+    "aboutPreviewLabels": {
+      "description": "POLINAR is one of the dynamic and leading companies in the field of manufacture of plastic injection moulds for plastic pipe and fittings.",
+      "label": "About",
+      "title": "US"
+    },
+    "businessSection": {
+      "sectionLabel": "Our Business",
+      "sectionTitle": "What We Do"
+    },
+    "coreValues": {
+      "description": "POLINAR is one of the dynamic and leading companies in the field of manufacture of plastic injection moulds for plastic pipe and fittings.",
+      "title": "Quality / Robust / Durable / Reliable"
+    },
+    "heroSlides": [
+      {
+        "animateText": true,
+        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Since 2000, Polinar has been manufacturing high-quality plastic injection moulds for the global pipe and fittings industry.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "High Quality Plastic Injection Moulds",
+        "titleSize": "large"
+      },
+      {
+        "animateText": true,
+        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Polinar designs and manufactures customized machinery for the plastic pipe and fittings industry.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "Precision Machinery & Custom Solutionss",
+        "titleSize": "large"
+      },
+      {
+        "animateText": true,
+        "ctaLabel": "{\"tr\":null}",
+        "overlayOpacity": 60,
+        "subtitle": "Polynar Test Equipment (PTE) mixed range of testing machines for the plastic pipe and fittings industry.",
+        "textAlignment": "left",
+        "textAnimation": "fadeUp",
+        "textPosition": "center",
+        "title": "Reliable Testing for Quality Assurance",
+        "titleSize": "large"
+      }
+    ],
+    "newsSection": {
+      "empty": "News coming soon",
+      "label": "Latest News",
+      "title": "Fair Agenda"
+    },
+    "sliderSettings": {
+      "autoPlay": true,
+      "interval": 5000,
+      "pauseOnHover": true,
+      "showArrows": true,
+      "showDots": true,
+      "transitionDuration": 800,
+      "transitionType": "fade"
+    }
+  },
+  "navigation": {
+    "mainMenu": [
+      {
+        "label": "HOME",
+        "type": "link",
+        "url": "/"
+      },
+      {
+        "label": "ABOUT US",
+        "type": "link",
+        "url": "/about"
+      },
+      {
+        "label": "OUR BUSINESS",
+        "megaMenuColumns": [
+          {
+            "columnType": "links",
+            "links": [
+              {
+                "description": "High-quality injection moulds for PPR-C, HDPE, PVC and other pipe systems.",
+                "icon": "moulds",
+                "label": "Injection Moulds",
+                "url": "/our-business/injection-moulds"
+              },
+              {
+                "description": "Precision manufacturing capacity with modern CNC and EDM machines.",
+                "icon": "machinery",
+                "label": "Machinery",
+                "url": "/our-business/machinery"
+              },
+              {
+                "description": "Quality control and material testing services.",
+                "icon": "testing",
+                "label": "Plastic Testing Equipment",
+                "url": "/our-business/plastic-testing-equipment"
+              }
+            ]
+          }
+        ],
+        "type": "mega"
+      },
+      {
+        "label": "NEWS",
+        "type": "link",
+        "url": "/news"
+      },
+      {
+        "label": "CONTACT",
+        "type": "link",
+        "url": "/contact"
+      }
+    ],
+    "megaMenuCTA": {
+      "button": "Contact Us",
+      "description": "We offer custom solutions for your projects. Contact us today.",
+      "title": "Get in Touch"
+    }
+  },
+  "news-page-settings": {
+    "hero": {
+      "label": "Latest Updates",
+      "title": "NEWS & EXHIBITIONS"
+    },
+    "labels": {
+      "allNews": "All News",
+      "breadcrumb": "News",
+      "cmsPlaceholder": "Article content will be managed via CMS.",
+      "empty": "News coming soon"
+    }
+  },
+  "site-settings": {
+    "chatbot": {
+      "enabled": true,
+      "labels": {
+        "closeLabel": "Close",
+        "connectionError": "Connection error. Please try again.",
+        "errorMessage": "Sorry, an error occurred.",
+        "placeholder": "Type your message...",
+        "title": "Polinar Support",
+        "welcome": "Hello! How can I help you today?",
+        "whatsappLabel": "Continue on WhatsApp"
+      }
+    },
+    "contact": {
+      "email": "info@polinar.com.tr",
+      "fax": "+90 212 549 88 19",
+      "phone": "+90 212 549 88 20-21",
+      "whatsapp": "+90 533 648 61 34"
+    },
+    "siteName": "Polinar",
+    "socialMedia": {
+      "facebook": "https://facebook.com/polinar",
+      "instagram": "https://instagram.com/polinar",
+      "linkedin": "https://linkedin.com/company/polinar",
+      "youtube": "https://youtube.com/polinar"
+    },
+    "whatsappCTA": {
+      "enabled": true,
+      "text": "Need detailed information, contact our customer support via whatsapp"
+    }
+  },
+  "ui-labels": {
+    "contentComingSoon": "Content coming soon.",
+    "learnMore": "Learn More",
+    "readMore": "Read More"
+  }
+}

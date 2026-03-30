@@ -1,0 +1,780 @@
+/* ============================================
+   Polinar Admin Theme — Modern & Clean
+   ============================================ */
+
+/* ── Brand Tokens ── */
+$polinar-red: #E30613;
+$polinar-red-hover: #C80511;
+$polinar-red-light: #FEE4E6;
+$polinar-red-50: #FFF1F2;
+
+$navy: #0A1128;
+$navy-deep: #060D1E;
+
+$cyan: #00B4D8;
+$cyan-light: #E0F7FA;
+
+$success: #10B981;
+$warning: #F59E0B;
+$error: #EF4444;
+
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 20px;
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  --theme-elevation-0: #FFFFFF;
+  --theme-elevation-50: #F8FAFC;
+  --theme-elevation-100: #F1F5F9;
+  --theme-elevation-150: #E2E8F0;
+  --theme-elevation-200: #CBD5E1;
+  --theme-elevation-250: #94A3B8;
+  --theme-elevation-300: #64748B;
+  --theme-elevation-350: #475569;
+  --theme-elevation-400: #334155;
+  --theme-elevation-450: #1E293B;
+  --theme-elevation-500: #0F172A;
+  --theme-elevation-550: #{$navy};
+  --theme-elevation-600: #{$navy-deep};
+  --theme-elevation-650: #040A17;
+  --theme-elevation-700: #030812;
+  --theme-elevation-750: #02060E;
+  --theme-elevation-800: #01040A;
+  --theme-elevation-850: #000306;
+  --theme-elevation-900: #000204;
+  --theme-elevation-950: #000102;
+  --theme-elevation-1000: #000000;
+
+  --theme-success-500: #{$success};
+  --theme-error-500: #{$polinar-red};
+  --theme-warning-500: #{$warning};
+
+  /* Custom tokens */
+  --polinar-accent: #{$polinar-red};
+  --polinar-accent-hover: #{$polinar-red-hover};
+  --polinar-accent-light: #{$polinar-red-light};
+  --polinar-accent-50: #{$polinar-red-50};
+  --polinar-surface: #FFFFFF;
+  --polinar-surface-hover: #F8FAFC;
+  --polinar-border: #E2E8F0;
+  --polinar-border-strong: #CBD5E1;
+  --polinar-text-primary: #0F172A;
+  --polinar-text-secondary: #64748B;
+  --polinar-text-muted: #94A3B8;
+  --polinar-sidebar-bg: #FAFBFD;
+  --polinar-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --polinar-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --polinar-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --polinar-shadow-focus: 0 0 0 3px rgba(227, 6, 19, 0.12);
+}
+
+/* ── Dark Theme ── */
+[data-theme="dark"] {
+  --theme-elevation-0: #0C1222;
+  --theme-elevation-50: #111827;
+  --theme-elevation-100: #1A2235;
+  --theme-elevation-150: #1F2937;
+  --theme-elevation-200: #2A3548;
+  --theme-elevation-250: #4B5563;
+  --theme-elevation-300: #6B7280;
+  --theme-elevation-350: #9CA3AF;
+  --theme-elevation-400: #D1D5DB;
+  --theme-elevation-450: #E5E7EB;
+  --theme-elevation-500: #F3F4F6;
+  --theme-elevation-550: #F9FAFB;
+  --theme-elevation-600: #FFFFFF;
+  --theme-elevation-650: #FFFFFF;
+  --theme-elevation-700: #FFFFFF;
+  --theme-elevation-750: #FFFFFF;
+  --theme-elevation-800: #FFFFFF;
+  --theme-elevation-850: #FFFFFF;
+  --theme-elevation-900: #FFFFFF;
+  --theme-elevation-950: #FFFFFF;
+  --theme-elevation-1000: #FFFFFF;
+
+  --theme-success-500: #{$success};
+  --theme-error-500: #F87171;
+  --theme-warning-500: #{$warning};
+
+  --polinar-accent: #F87171;
+  --polinar-accent-hover: #{$polinar-red};
+  --polinar-accent-light: rgba(248, 113, 113, 0.12);
+  --polinar-accent-50: rgba(248, 113, 113, 0.06);
+  --polinar-surface: #111827;
+  --polinar-surface-hover: #1A2235;
+  --polinar-border: #1F2937;
+  --polinar-border-strong: #374151;
+  --polinar-text-primary: #F9FAFB;
+  --polinar-text-secondary: #9CA3AF;
+  --polinar-text-muted: #6B7280;
+  --polinar-sidebar-bg: #0E1525;
+  --polinar-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --polinar-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --polinar-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --polinar-shadow-focus: 0 0 0 3px rgba(248, 113, 113, 0.2);
+}
+
+/* ── Global ── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--polinar-border-strong);
+  border-radius: 100px;
+
+  &:hover {
+    background: var(--polinar-text-muted);
+  }
+}
+
+/* ── Login Page ── */
+.login {
+  .template-default & {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__brand {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .form-submit {
+    margin-top: 24px;
+
+    .btn {
+      width: 100%;
+      padding: 12px 24px;
+      border-radius: $radius-md;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--polinar-shadow-sm);
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--polinar-shadow-md);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .form-field {
+    margin-bottom: 16px;
+
+    input {
+      border-radius: $radius-sm;
+      transition: all 0.15s ease;
+
+      &:focus {
+        box-shadow: var(--polinar-shadow-focus);
+      }
+    }
+  }
+}
+
+/* ── Top Header / App Bar ── */
+header.app-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--polinar-border);
+}
+
+/* ── Sidebar Navigation ── */
+.nav {
+  padding: 8px 0;
+
+  .nav-group {
+    margin-bottom: 4px;
+
+    &__toggle {
+      padding: 6px 16px;
+      border-radius: $radius-sm;
+      transition: background 0.15s ease;
+
+      &:hover {
+        background: var(--polinar-surface-hover);
+      }
+    }
+
+    &__label {
+      text-transform: uppercase;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--polinar-text-muted);
+      padding: 12px 16px 6px;
+    }
+
+    &__content {
+      .nav__link {
+        padding: 7px 16px 7px 20px;
+        border-radius: $radius-sm;
+        margin: 1px 8px;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: var(--polinar-text-secondary);
+        transition: all 0.15s ease;
+        position: relative;
+
+        &:hover {
+          background: var(--polinar-surface-hover);
+          color: var(--polinar-text-primary);
+        }
+
+        &.active,
+        &--active {
+          background: var(--polinar-accent-light);
+          color: var(--polinar-accent);
+          font-weight: 600;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 18px;
+            background: var(--polinar-accent);
+            border-radius: 0 3px 3px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ── Collection List / Table ── */
+.collection-list {
+  animation: fadeSlideIn 0.2s ease-out;
+
+  .table {
+    border-radius: $radius-md;
+    overflow: hidden;
+    border: 1px solid var(--polinar-border);
+
+    th {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      color: var(--polinar-text-muted);
+      background: var(--polinar-surface-hover);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--polinar-border);
+    }
+
+    td {
+      padding: 12px 16px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--polinar-border);
+    }
+
+    tr {
+      transition: background 0.1s ease;
+
+      &:hover td {
+        background: var(--polinar-accent-50);
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .collection-list__header {
+    margin-bottom: 20px;
+  }
+}
+
+/* ── Document Edit View ── */
+.document-fields,
+.global-edit {
+  animation: fadeSlideIn 0.2s ease-out;
+}
+
+.field-type {
+  margin-bottom: 20px;
+
+  .field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--polinar-text-secondary);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+
+  .field-description {
+    font-size: 12.5px;
+    color: var(--polinar-text-muted);
+    line-height: 1.5;
+  }
+}
+
+/* ── Input Fields ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+textarea,
+select {
+  border-radius: $radius-sm !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+
+  &:focus {
+    box-shadow: var(--polinar-shadow-focus) !important;
+    border-color: var(--polinar-accent) !important;
+  }
+}
+
+textarea {
+  border-radius: $radius-md !important;
+}
+
+/* ── Buttons ── */
+.btn {
+  border-radius: $radius-sm;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.01em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: var(--polinar-shadow-sm);
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+}
+
+/* ── Pill / Badge ── */
+.pill,
+.status-indicator,
+.tag {
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── Card ── */
+.card {
+  border-radius: $radius-md;
+  border: 1px solid var(--polinar-border);
+  box-shadow: var(--polinar-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: var(--polinar-shadow-md);
+  }
+}
+
+/* ── Tabs ── */
+.tabs-field {
+  .tabs-field__tabs {
+    border-bottom: 2px solid var(--polinar-border);
+    gap: 0;
+  }
+
+  .tabs-field__tab-button {
+    padding: 10px 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--polinar-text-muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.15s ease;
+
+    &:hover {
+      color: var(--polinar-text-primary);
+    }
+
+    &--active {
+      color: var(--polinar-accent);
+      border-bottom-color: var(--polinar-accent);
+    }
+  }
+}
+
+/* ── Array Fields ── */
+.array-field {
+  border-radius: $radius-md;
+  border: 1px solid var(--polinar-border);
+  overflow: hidden;
+
+  .array-field__row {
+    border-bottom: 1px solid var(--polinar-border);
+    transition: background 0.1s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: var(--polinar-surface-hover);
+    }
+  }
+
+  .array-field__row-header {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .array-field__add-row {
+    border-top: 1px dashed var(--polinar-border);
+    padding: 12px;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: var(--polinar-accent-50);
+    }
+  }
+}
+
+/* ── Blocks Field ── */
+.blocks-field {
+  .blocks-field__block {
+    border-radius: $radius-md;
+    border: 1px solid var(--polinar-border);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: var(--polinar-shadow-sm);
+    }
+  }
+
+  .blocks-field__block-header {
+    font-weight: 600;
+    background: var(--polinar-surface-hover);
+    border-bottom: 1px solid var(--polinar-border);
+  }
+
+  .blocks-field__add-row {
+    border: 2px dashed var(--polinar-border);
+    border-radius: $radius-md;
+    padding: 16px;
+    transition: all 0.15s ease;
+    text-align: center;
+
+    &:hover {
+      border-color: var(--polinar-accent);
+      background: var(--polinar-accent-50);
+    }
+  }
+}
+
+/* ── Upload / Media Field ── */
+.upload {
+  .upload__thumbnail {
+    border-radius: $radius-md;
+    overflow: hidden;
+    border: 1px solid var(--polinar-border);
+  }
+}
+
+.file-field {
+  .file-field__upload {
+    border: 2px dashed var(--polinar-border);
+    border-radius: $radius-lg;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--polinar-accent);
+      background: var(--polinar-accent-50);
+    }
+  }
+}
+
+/* ── Drawer / Modal ── */
+.drawer {
+  border-radius: $radius-lg 0 0 $radius-lg;
+  box-shadow: var(--polinar-shadow-lg);
+}
+
+.modal__content {
+  border-radius: $radius-lg;
+  box-shadow: var(--polinar-shadow-lg);
+}
+
+/* ── Popup ── */
+.popup {
+  .popup__content {
+    border-radius: $radius-md;
+    box-shadow: var(--polinar-shadow-lg);
+    border: 1px solid var(--polinar-border);
+  }
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  border-radius: $radius-sm;
+  font-size: 12px;
+  box-shadow: var(--polinar-shadow-md);
+}
+
+/* ── Toast / Notification ── */
+.toast-container {
+  .toast {
+    border-radius: $radius-md;
+    box-shadow: var(--polinar-shadow-lg);
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+/* ── Step Nav (Breadcrumbs) ── */
+.step-nav {
+  font-size: 13px;
+
+  a {
+    color: var(--polinar-text-muted);
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--polinar-accent);
+    }
+  }
+}
+
+/* ── Dashboard / Welcome ── */
+.dashboard {
+  animation: fadeSlideIn 0.25s ease-out;
+
+  &__card-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .dashboard__card {
+    border-radius: $radius-md;
+    border: 1px solid var(--polinar-border);
+    padding: 20px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--polinar-surface);
+
+    &:hover {
+      border-color: var(--polinar-accent);
+      box-shadow: var(--polinar-shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .dashboard__label {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--polinar-text-primary);
+    }
+
+    .dashboard__sub-label {
+      font-size: 12.5px;
+      color: var(--polinar-text-muted);
+    }
+
+    .dashboard__count {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--polinar-accent);
+      letter-spacing: -0.02em;
+    }
+  }
+}
+
+/* ── Relationship Field ── */
+.relationship {
+  .relationship__value-container {
+    border-radius: $radius-sm;
+  }
+}
+
+/* ── Rich Text Editor ── */
+.rich-text {
+  border-radius: $radius-md;
+  border: 1px solid var(--polinar-border);
+  overflow: hidden;
+
+  .rich-text__toolbar {
+    border-bottom: 1px solid var(--polinar-border);
+    background: var(--polinar-surface-hover);
+  }
+
+  .rich-text__editor {
+    min-height: 200px;
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* ── Group Field ── */
+.group-field {
+  border-radius: $radius-md;
+  border: 1px solid var(--polinar-border);
+  padding: 24px;
+  background: var(--polinar-surface-hover);
+}
+
+/* ── Collapsible ── */
+.collapsible {
+  border-radius: $radius-md;
+  border: 1px solid var(--polinar-border);
+  overflow: hidden;
+
+  .collapsible__toggle {
+    padding: 14px 16px;
+    font-weight: 600;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: var(--polinar-surface-hover);
+    }
+  }
+
+  .collapsible__content {
+    padding: 16px;
+    border-top: 1px solid var(--polinar-border);
+  }
+}
+
+/* ── Pagination ── */
+.paginator {
+  .paginator__page {
+    border-radius: $radius-sm;
+    font-weight: 600;
+    transition: all 0.15s ease;
+
+    &--is-current {
+      background: var(--polinar-accent);
+      color: white;
+    }
+
+    &:not(.paginator__page--is-current):hover {
+      background: var(--polinar-accent-50);
+      color: var(--polinar-accent);
+    }
+  }
+}
+
+/* ── Search ── */
+.search-filter {
+  input {
+    border-radius: $radius-md !important;
+    padding: 10px 16px !important;
+  }
+}
+
+/* ── Checkbox & Radio ── */
+.checkbox-input,
+.radio-input {
+  .checkbox-input__input,
+  .radio-input__input {
+    border-radius: 4px;
+    transition: all 0.15s ease;
+
+    &:checked {
+      background: var(--polinar-accent);
+      border-color: var(--polinar-accent);
+    }
+  }
+}
+
+/* ── Select ── */
+.rs__control {
+  border-radius: $radius-sm !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+
+  &--is-focused {
+    box-shadow: var(--polinar-shadow-focus) !important;
+    border-color: var(--polinar-accent) !important;
+  }
+}
+
+.rs__menu {
+  border-radius: $radius-md !important;
+  box-shadow: var(--polinar-shadow-lg) !important;
+  border: 1px solid var(--polinar-border) !important;
+  overflow: hidden;
+}
+
+.rs__option {
+  border-radius: 0 !important;
+  font-size: 14px;
+  transition: background 0.1s ease !important;
+
+  &--is-focused {
+    background: var(--polinar-accent-50) !important;
+  }
+
+  &--is-selected {
+    background: var(--polinar-accent) !important;
+    color: white !important;
+  }
+}
+
+/* ── Gutter ── */
+.gutter {
+  &__sidebar {
+    border-right: 1px solid var(--polinar-border);
+  }
+}
+
+/* ── Animations ── */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Utility: Selection color ── */
+::selection {
+  background: var(--polinar-accent-light);
+  color: var(--polinar-accent-hover);
+}
+
+/* ── Focus visible ring ── */
+*:focus-visible {
+  outline: 2px solid var(--polinar-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

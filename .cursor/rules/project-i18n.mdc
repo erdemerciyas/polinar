@@ -1,0 +1,40 @@
+---
+description: Project i18n architecture and conventions
+alwaysApply: true
+---
+
+# Polinar i18n System
+
+This project uses a dual i18n system:
+
+## 1. CMS Content (Payload globals)
+Managed via admin panel. Translations stored in DB, served via `payload.findGlobal({ slug, locale })`.
+
+## 2. Static Content (src/data/ modules)
+Hardcoded page content uses locale-aware data files:
+
+```
+src/data/{page-slug}/
+  types.ts   — TypeScript type definition
+  en.ts      — English content (source of truth)
+  tr.ts      — Turkish translation
+  index.ts   — Loader using createLocaleLoader with EN fallback
+```
+
+### Creating a new static page
+
+1. Write `src/data/{slug}/en.ts` with all translatable strings
+2. Run `npm run i18n:create-page {slug}` — auto-generates types.ts, index.ts, and all locale files
+3. Import in component: `import { getSlugData } from '@/data/{slug}'`
+4. Call `const data = getSlugData(locale)` — returns EN fallback if locale file is missing
+
+### Shared labels
+
+`getStaticLabels(locale)` from `@/data/static-labels` provides: company info, SEO defaults, breadcrumbs, aria-labels, product UI strings.
+
+### Key files
+
+- `src/data/locale-loader.ts` — createLocaleLoader utility
+- `src/data/static-labels/` — shared translatable strings
+- `src/lib/i18n-helpers.ts` — CMS import/export helpers
+- `scripts/create-static-page.ts` — auto-generator for new pages
