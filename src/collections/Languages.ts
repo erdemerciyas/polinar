@@ -30,11 +30,28 @@ async function syncLocalesToFile(payload: any) {
       defaultLocale: defaultLang.code,
     }
 
-    fs.writeFileSync(LOCALES_PATH, JSON.stringify(localesConfig, null, 2) + '\n', 'utf-8')
+    try {
+      fs.writeFileSync(LOCALES_PATH, JSON.stringify(localesConfig, null, 2) + '\n', 'utf-8')
+      payload.logger.info(`✓ locales.json synced: ${localesConfig.locales.map((l: any) => l.code).join(', ')}`)
+    } catch {
+      payload.logger.info('locales.json write skipped (read-only filesystem)')
+    }
 
-    payload.logger.info(`✓ locales.json synced: ${localesConfig.locales.map((l: any) => l.code).join(', ')}`)
+    await triggerRedeploy(payload)
   } catch (err) {
-    payload.logger.error('Failed to sync locales.json:', err)
+    payload.logger.error('Failed to sync locales:', err)
+  }
+}
+
+async function triggerRedeploy(payload: any) {
+  const hookUrl = process.env.VERCEL_DEPLOY_HOOK
+  if (!hookUrl) return
+
+  try {
+    await fetch(hookUrl, { method: 'POST' })
+    payload.logger.info('✓ Vercel redeploy triggered (language change)')
+  } catch (err: any) {
+    payload.logger.warn(`Vercel redeploy trigger failed: ${err?.message}`)
   }
 }
 

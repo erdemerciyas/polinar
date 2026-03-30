@@ -27,27 +27,21 @@ import { ContactPageSettings } from '@/globals/ContactPageSettings'
 import { NewsPageSettings } from '@/globals/NewsPageSettings'
 import { OurBusinessPageSettings } from '@/globals/OurBusinessPageSettings'
 
+import localesJson from '@/lib/locales.json'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-// Read locales dynamically from synced JSON file
-const localesPath = path.resolve(dirname, 'src/lib/locales.json')
-let localesConfig: { locales: { label: string; code: string }[]; defaultLocale: string } = {
-  locales: [
-    { label: 'English', code: 'en' },
-    { label: 'Türkçe', code: 'tr' },
-  ],
-  defaultLocale: 'en',
-}
-try {
-  const raw = fs.readFileSync(localesPath, 'utf-8')
-  const parsed = JSON.parse(raw)
-  if (parsed.locales?.length > 0) {
-    localesConfig = parsed
-  }
-} catch {
-  // Use fallback defaults
-}
+const localesConfig: { locales: { label: string; code: string }[]; defaultLocale: string } =
+  localesJson.locales?.length > 0
+    ? localesJson
+    : {
+        locales: [
+          { label: 'English', code: 'en' },
+          { label: 'Türkçe', code: 'tr' },
+        ],
+        defaultLocale: 'en',
+      }
 
 export default buildConfig({
   admin: {
@@ -141,7 +135,7 @@ export default buildConfig({
       }
     }
 
-    // Sync locales.json after seeding to keep everything in sync
+    // Sync locales.json after seeding (skipped silently on read-only filesystems like Vercel)
     if (created) {
       const allLangs = await payload.find({
         collection: 'languages',
@@ -153,9 +147,13 @@ export default buildConfig({
         locales: allLangs.docs.map((doc: any) => ({ label: doc.label, code: doc.code })),
         defaultLocale: defaultLang?.code || 'en',
       }
-      const locPath = path.resolve(dirname, 'src/lib/locales.json')
-      fs.writeFileSync(locPath, JSON.stringify(localesData, null, 2) + '\n', 'utf-8')
-      payload.logger.info(`✓ locales.json synced: ${allLangs.docs.map((d: any) => d.code).join(', ')}`)
+      try {
+        const locPath = path.resolve(dirname, 'src/lib/locales.json')
+        fs.writeFileSync(locPath, JSON.stringify(localesData, null, 2) + '\n', 'utf-8')
+        payload.logger.info(`✓ locales.json synced: ${localesConfig.locales.map((l: any) => l.code).join(', ')}`)
+      } catch {
+        payload.logger.info('locales.json write skipped (read-only filesystem)')
+      }
     }
 
     // Seed Navigation global if mainMenu is empty or first item has no label
