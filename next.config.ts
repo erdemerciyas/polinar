@@ -8,21 +8,13 @@ const SITE_HOSTNAME = process.env.NEXT_PUBLIC_SITE_URL
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: 'placehold.co' },
       { protocol: 'https', hostname: 'www.polinar.com.tr' },
       ...(SITE_HOSTNAME && SITE_HOSTNAME !== 'www.polinar.com.tr'
         ? [{ protocol: 'https' as const, hostname: SITE_HOSTNAME }]
         : []),
     ],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/api/media/file/:path*',
-        destination: '/media/:path*',
-        permanent: true,
-      },
-    ]
   },
 }
 

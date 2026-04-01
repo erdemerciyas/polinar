@@ -68,8 +68,8 @@ function stripNonTranslatable(obj: any): any {
   if (typeof obj === 'object') {
     const result: Record<string, any> = {}
     for (const [key, value] of Object.entries(obj)) {
-      if (typeof value === 'string' && (value.startsWith('/images/') || value.startsWith('/videos/'))) continue
-      if (typeof value === 'string' && value.endsWith('.pdf') && value.startsWith('/')) continue
+      if (typeof value === 'string' && (value.startsWith('/images/') || value.startsWith('/videos/') || value.startsWith('https://res.cloudinary.com/'))) continue
+      if (typeof value === 'string' && value.endsWith('.pdf') && (value.startsWith('/') || value.startsWith('https://'))) continue
       result[key] = stripNonTranslatable(value)
     }
     return result

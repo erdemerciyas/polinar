@@ -5,6 +5,8 @@ import { generateSEO, getSiteDefaultDescription, websiteJsonLd, JsonLd } from '@
 import { HeroSlider } from '@/components/HeroSlider'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal'
+import { NewsSlider } from '@/components/NewsSlider'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -53,33 +55,36 @@ function BusinessIcon({ name }: { name: string }) {
   }
 }
 
-const categoryColors: Record<string, { bg: string; text: string; hoverBg: string; hoverBorder: string }> = {
+const categoryColors: Record<string, { bg: string; text: string; hoverBg: string; hoverBorder: string; shadow: string }> = {
   moulds: {
     bg: 'bg-moulds-gold/10',
     text: 'text-moulds-gold',
     hoverBg: 'group-hover:bg-moulds-gold',
     hoverBorder: 'hover:border-moulds-gold/20',
+    shadow: 'group-hover:shadow-card-hover-gold',
   },
   machinery: {
     bg: 'bg-polinar-red/10',
     text: 'text-polinar-red',
     hoverBg: 'group-hover:bg-polinar-red',
     hoverBorder: 'hover:border-polinar-red/20',
+    shadow: 'group-hover:shadow-card-hover-red',
   },
   testing: {
     bg: 'bg-pte-cyan/10',
     text: 'text-pte-cyan',
     hoverBg: 'group-hover:bg-pte-cyan',
     hoverBorder: 'hover:border-pte-cyan/20',
+    shadow: 'group-hover:shadow-card-hover-cyan',
   },
 }
 
 const defaultCategoryColor = categoryColors.machinery
 
 const categoryHeroImages: Record<string, string> = {
-  moulds: '/images/moulds-hero.jpg',
-  machinery: '/images/machinery-hero.jpg',
-  testing: '/images/testing-hero.jpg',
+  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
+  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
+  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
 }
 
 type Props = {
@@ -108,7 +113,7 @@ export default async function HomePage({ params }: Props) {
         locale: locale as any,
         where: { status: { equals: 'published' } },
         sort: '-date',
-        limit: 3,
+        limit: 6,
       }),
     ])
   } catch {}
@@ -173,165 +178,165 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* Core Values */}
-      <section className="py-16 bg-white">
-        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display font-bold italic text-polinar-red text-2xl sm:text-3xl tracking-tight-heading">
+      <section className="py-24 lg:py-32 bg-white">
+        <ScrollReveal className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display font-bold italic text-polinar-red text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
             {homepageData?.coreValues?.title || ''}
           </h2>
           <div className="divider-asymmetric justify-center mt-4 mb-6">
             <span className="div-red"></span>
             <span className="div-gray"></span>
           </div>
-          <p className="max-w-3xl mx-auto text-[#555] font-body text-base leading-body">
+          <p className="max-w-prose mx-auto text-body-muted font-body text-base lg:text-lg leading-relaxed-body">
             {homepageData?.coreValues?.description || ''}
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Our Business */}
-      <section className="py-20 bg-gray-light">
+      <section className="py-24 lg:py-32 bg-gray-light">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-1">
+          <ScrollReveal className="text-center mb-16">
+            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
               {businessSection.sectionLabel || ''}
             </p>
-            <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl tracking-tight-heading">
+            <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
               {businessSection.sectionTitle || ''}
             </h2>
             <div className="divider-asymmetric justify-center">
               <span className="div-red"></span>
               <span className="div-gray"></span>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {businessCards.map((card) => {
               const colors = categoryColors[card.icon] || defaultCategoryColor
               return (
-                <Link
-                  key={card.href}
-                  href={card.href}
-                  className={`group bg-white rounded-lg overflow-hidden border border-gray-100 ${colors.hoverBorder} hover:shadow-xl transition-all duration-300`}
-                >
-                  <div className="relative h-[220px] bg-[#f0f1f3] overflow-hidden">
-                    {(card.image?.url || categoryHeroImages[card.icon]) ? (
-                      <Image
-                        src={card.image?.url || categoryHeroImages[card.icon]}
-                        alt={card.image?.alt || card.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-                      />
-                    ) : null}
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <div className={`w-16 h-16 rounded-2xl ${colors.bg} ${colors.text} flex items-center justify-center ${colors.hoverBg} group-hover:text-white transition-colors duration-300`}>
-                        <BusinessIcon name={card.icon} />
+                <StaggerItem key={card.href}>
+                  <Link
+                    href={card.href}
+                    className={`group rounded-card-lg p-1.5 bg-gray-light/80 ring-1 ring-black/5 block ${colors.shadow} transition-all duration-500 ease-smooth-out hover:-translate-y-1`}
+                  >
+                    <div className="bg-white rounded-card overflow-hidden">
+                      <div className="relative h-[220px] bg-gray-light overflow-hidden">
+                        {(card.image?.url || categoryHeroImages[card.icon]) ? (
+                          <Image
+                            src={card.image?.url || categoryHeroImages[card.icon]}
+                            alt={card.image?.alt || card.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-smooth-out"
+                          />
+                        ) : null}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center z-10">
+                          <div className={`w-16 h-16 rounded-2xl ${colors.bg} ${colors.text} flex items-center justify-center ${colors.hoverBg} group-hover:text-white transition-colors duration-300 shadow-diffused`}>
+                            <BusinessIcon name={card.icon} />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-6 lg:p-8">
+                        <h3 className="font-display font-bold text-heading text-lg mb-2">
+                          {card.title}
+                        </h3>
+                        <p className="text-sm text-body-secondary font-body leading-relaxed mb-5">
+                          {card.description}
+                        </p>
+                        <span className={`${colors.text} font-display font-semibold text-sm inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300`}>
+                          {uiLabels?.learnMore || ''}
+                          <span className="w-6 h-6 rounded-full bg-current/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-300">
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                          </span>
+                        </span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="font-display font-bold text-heading text-lg mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="text-sm text-[#666] font-body leading-relaxed mb-4">
-                      {card.description}
-                    </p>
-                    <span className={`${colors.text} font-display font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all`}>
-                      {uiLabels?.learnMore || ''}
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
+                  </Link>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* About Preview */}
-      <section className="py-16 bg-white">
-        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-1">
-                {aboutPreview.label || ''}
-              </p>
-              <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl tracking-tight-heading">
-                {aboutPreview.title || ''}
-              </h2>
-              <div className="divider-asymmetric">
-                <span className="div-red"></span>
-                <span className="div-gray"></span>
-              </div>
-              <p className="text-[#555] font-body text-base leading-relaxed-body mb-4">
-                {aboutPreview.description || ''}
-              </p>
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="hidden lg:block absolute inset-y-0 left-0 w-[45%] pointer-events-none select-none" aria-hidden="true">
+          <Image
+            src="https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050253/polinar/static/polinar-robot.jpg"
+            alt=""
+            fill
+            sizes="45vw"
+            className="object-contain object-center opacity-[0.18]"
+          />
+        </div>
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <ScrollReveal direction="left">
+              <div>
+                  <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
+                    {aboutPreview.label || ''}
+                  </p>
+                  <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
+                    {aboutPreview.title || ''}
+                  </h2>
+                  <div className="divider-asymmetric">
+                    <span className="div-red"></span>
+                    <span className="div-gray"></span>
+                  </div>
+                  <p className="text-body-muted font-body text-base leading-relaxed-body mb-6 max-w-prose">
+                    {aboutPreview.description || ''}
+                  </p>
               <Link href={`/${locale}/about`} className="btn-outline">
                 {uiLabels?.readMore || ''}
               </Link>
-            </div>
-            <div className="relative aspect-[640/420]">
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent mix-blend-multiply rounded-[3px] z-10"></div>
-              <Image
-                src="https://placehold.co/640x420/E8E8E8/999?text=Factory"
-                alt="Polinar Factory"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover rounded-[3px]"
-              />
-            </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right">
+              <div className="relative aspect-[4/3] rounded-card-lg overflow-hidden shadow-card-hover">
+                <Image
+                  src={aboutPreview.image?.url || 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050251/polinar/static/polinar-factory.jpg'}
+                  alt={aboutPreview.image?.alt || 'Polinar'}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* News Section */}
-      <section className="py-16 bg-gray-light">
-        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider">
-              {newsSection.label || ''}
-            </p>
-            <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl tracking-tight-heading">
-              {newsSection.title || ''}
-            </h2>
-            <div className="divider-asymmetric">
-              <span className="div-red"></span>
-              <span className="div-gray"></span>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {news?.docs?.map((item: any) => (
-              <Link
-                key={item.id}
-                href={`/${locale}/news/${item.slug}`}
-                className="bg-white rounded-[3px] overflow-hidden product-card block"
-              >
-                <div className="relative h-[200px]">
-                  <Image
-                    src={item.featuredImage?.url || `https://placehold.co/400x220/E8E8E8/999?text=News`}
-                    alt={item.featuredImage?.alt || item.title || ''}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <span className="inline-block bg-polinar-red text-white text-xs font-display font-bold px-3 py-1 rounded-[2px] mb-3">
-                    {item.year || new Date(item.date).getFullYear()}
-                  </span>
-                  <h3 className="font-display font-bold text-heading text-base mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#666] font-body leading-body">{item.excerpt}</p>
-                </div>
-              </Link>
-            )) || (
-              <p className="col-span-full text-center text-[#999]">
-                {newsSection.empty || ''}
-              </p>
-            )}
-          </div>
+      <section className="relative py-24 lg:py-32 bg-gray-light overflow-hidden">
+        <div className="hidden lg:block absolute -top-12 bottom-0 right-0 w-[36%] pointer-events-none select-none" aria-hidden="true">
+          <Image
+            src="https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050252/polinar/static/polinar-robot-globe.png"
+            alt=""
+            fill
+            sizes="36vw"
+            className="object-contain object-right-bottom"
+          />
+        </div>
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <NewsSlider
+            items={(news?.docs || []).map((item: any) => ({
+              id: item.id,
+              slug: item.slug,
+              title: item.title,
+              excerpt: item.excerpt || '',
+              year: item.year || '',
+              date: item.date,
+              featuredImage: item.featuredImage,
+            }))}
+            locale={locale}
+            sectionLabel={newsSection.label || ''}
+            sectionTitle={newsSection.title || ''}
+            emptyText={newsSection.empty || ''}
+          />
         </div>
       </section>
     </>

@@ -219,7 +219,7 @@ export function HeroSlider({ slides, settings, locale }: HeroSliderProps) {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[85vh] min-h-[500px] overflow-hidden grain-overlay focus:outline-none"
+      className="relative w-full min-h-[85dvh] overflow-hidden grain-overlay focus:outline-none"
       tabIndex={0}
       role="region"
       aria-roledescription="carousel"
@@ -238,14 +238,22 @@ export function HeroSlider({ slides, settings, locale }: HeroSliderProps) {
           exit={slideVariants.exit}
         >
           {slide?.backgroundImage?.url ? (
-            <Image
-              src={slide.backgroundImage.url}
-              alt={slide.backgroundImage.alt || slide.title || ''}
-              fill
-              sizes="100vw"
-              priority={active === 0}
-              className="object-cover"
-            />
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.0 }}
+              animate={{ scale: 1.08 }}
+              transition={{ duration: cfg.interval / 1000 + 2, ease: 'linear' }}
+              key={`ken-burns-${active}`}
+            >
+              <Image
+                src={slide.backgroundImage.url}
+                alt={slide.backgroundImage.alt || slide.title || ''}
+                fill
+                sizes="100vw"
+                priority={active === 0}
+                className="object-cover"
+              />
+            </motion.div>
           ) : (
             <div className="absolute inset-0 bg-navy" />
           )}

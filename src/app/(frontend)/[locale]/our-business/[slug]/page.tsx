@@ -9,6 +9,7 @@ import { InjectionMouldsPage } from '@/components/InjectionMouldsPage'
 import { MachineryPage } from '@/components/MachineryPage'
 import { PlasticTestEquipmentPage } from '@/components/PlasticTestEquipmentPage'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -115,9 +116,9 @@ export default async function OurBusinessPage({ params }: Props) {
   if (!page) {
     return (
       <>
-        <section className="relative bg-navy grain-overlay py-20">
+        <section className="relative bg-navy grain-overlay py-24 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
-          <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
               <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
                 {breadcrumbLabel}
@@ -128,9 +129,9 @@ export default async function OurBusinessPage({ params }: Props) {
             </h1>
           </div>
         </section>
-        <section className="py-16 bg-white">
+        <section className="py-24 lg:py-32 bg-white">
           <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-[#555] font-body">{contentComingSoon}</p>
+            <p className="text-body-muted font-body">{contentComingSoon}</p>
           </div>
         </section>
       </>
@@ -140,12 +141,12 @@ export default async function OurBusinessPage({ params }: Props) {
   return (
     <>
       {page.heroType !== 'none' && (
-        <section className="relative bg-navy grain-overlay py-20">
+        <section className="relative bg-navy grain-overlay py-24 lg:py-32">
           <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
           {page.heroImage?.url && (
-            <img src={page.heroImage.url} alt={page.heroTitle || page.title || ''} className="absolute inset-0 w-full h-full object-cover opacity-30" />
+            <Image src={page.heroImage.url} alt={page.heroTitle || page.title || ''} fill sizes="100vw" className="object-cover opacity-30" />
           )}
-          <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
               <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
                 {breadcrumbLabel}
@@ -161,7 +162,7 @@ export default async function OurBusinessPage({ params }: Props) {
       {page.layout && page.layout.length > 0 ? (
         <RenderBlocks blocks={page.layout} locale={locale} />
       ) : (
-        <section className="py-16 bg-white">
+        <section className="py-24 lg:py-32 bg-white">
           <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="font-display font-extrabold text-heading text-3xl mb-6">{page.title}</h1>
           </div>

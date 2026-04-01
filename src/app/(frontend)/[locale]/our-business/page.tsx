@@ -101,9 +101,9 @@ const categoryThemes: Record<
 const defaultTheme = categoryThemes.machinery
 
 const categoryHeroImages: Record<string, string> = {
-  moulds: '/images/moulds-hero.jpg',
-  machinery: '/images/machinery-hero.jpg',
-  testing: '/images/testing-hero.jpg',
+  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
+  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
+  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
 }
 
 
@@ -230,7 +230,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
       </section>
 
       {/* Business Cards */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {businessCards.map((card, index) => {
@@ -281,7 +281,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
                       <span className="div-gray"></span>
                     </div>
 
-                    <p className="text-[#555] font-body text-sm leading-relaxed-body mb-5 flex-1">
+                    <p className="text-body-muted font-body text-sm leading-relaxed-body mb-5 flex-1">
                       {card.description}
                     </p>
 
@@ -318,7 +318,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative bg-navy grain-overlay py-20">
+      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/80"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display font-extrabold text-white text-2xl sm:text-3xl tracking-tight-heading mb-4">

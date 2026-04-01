@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { LanguageSelector } from './LanguageSelector'
 import { MegaMenu } from './MegaMenu'
 import { MobileMenu } from './MobileMenu'
@@ -77,11 +78,18 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-[0_2px_8px_rgba(10,17,40,0.06)]">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-nav">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[72px]">
-            <Link href={`/${locale}`} className="flex-shrink-0">
-              <img src="/brand_assets/logo.png" alt="Polinar" className="h-[36px] w-auto min-w-[120px]" />
+            <Link href={`/${locale}`} className="flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
+              <Image
+                src="/brand_assets/logo.png"
+                alt="Polinar"
+                width={120}
+                height={36}
+                className="h-[36px] w-auto"
+                priority
+              />
             </Link>
 
             <MegaMenu locale={locale} items={items} ctaLabels={navData?.megaMenuCTA} commonLabels={commonLabels} />
@@ -90,13 +98,25 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
               <LanguageSelector locale={locale} languages={languages} />
 
               <button
-                className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-[5px]"
-                onClick={() => setMobileOpen(true)}
-                aria-label={labels.aria.openMenu}
+                className="lg:hidden relative flex items-center justify-center w-10 h-10"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label={mobileOpen ? labels.aria.closeMenu : labels.aria.openMenu}
               >
-                <span className="block w-6 h-[2px] bg-heading"></span>
-                <span className="block w-6 h-[2px] bg-heading"></span>
-                <span className="block w-6 h-[2px] bg-heading"></span>
+                <span
+                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                    mobileOpen ? 'rotate-45 translate-y-0' : '-translate-y-[7px]'
+                  }`}
+                />
+                <span
+                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                    mobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                    mobileOpen ? '-rotate-45 translate-y-0' : 'translate-y-[7px]'
+                  }`}
+                />
               </button>
             </div>
           </div>

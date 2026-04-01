@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export type MegaMenuItem = {
   title: string
@@ -65,7 +67,7 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-moulds-gold',
     hoverBorder: 'hover:border-moulds-gold/20',
     linkText: 'text-moulds-gold',
-    fallbackImage: '/images/moulds-hero.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
   },
   machinery: {
     iconBg: 'bg-polinar-red/10',
@@ -73,7 +75,7 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-polinar-red',
     hoverBorder: 'hover:border-polinar-red/20',
     linkText: 'text-polinar-red',
-    fallbackImage: '/images/machinery-hero.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
   },
   testing: {
     iconBg: 'bg-pte-cyan/10',
@@ -81,7 +83,7 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-pte-cyan',
     hoverBorder: 'hover:border-pte-cyan/20',
     linkText: 'text-pte-cyan',
-    fallbackImage: '/images/testing-hero.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
   },
 }
 
@@ -133,7 +135,7 @@ export function MegaMenu({
             {item.label}
             {item.megaMenu && (
               <svg
-                className={`w-3 h-3 ml-1 inline-block transition-transform ${openMenu === item.key ? 'rotate-180' : ''}`}
+                className={`w-3 h-3 ml-1 inline-block transition-transform duration-300 ${openMenu === item.key ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -143,73 +145,104 @@ export function MegaMenu({
             )}
           </Link>
 
-          {item.megaMenu && openMenu === item.key && (
-            <div
-              className="fixed left-0 right-0 top-[72px] bg-white border-t-2 border-polinar-red shadow-[0_8px_32px_rgba(10,17,40,0.12),0_2px_8px_rgba(10,17,40,0.06)] z-50"
-              onMouseEnter={() => handleEnter(item.key)}
-              onMouseLeave={handleLeave}
-            >
-              <div className="max-w-[1280px] mx-auto px-8 py-10 grid grid-cols-4 gap-6">
-                {item.megaMenu.map((menuItem, idx) => {
-                  const theme = categoryTheme[menuItem.icon] || defaultCategoryTheme
-                  const imageUrl = menuItem.image?.url || theme.fallbackImage
-                  return (
+          <AnimatePresence>
+            {item.megaMenu && openMenu === item.key && (
+              <motion.div
+                className="fixed left-0 right-0 top-[72px] bg-white border-t-2 border-polinar-red shadow-mega z-50"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
+                onMouseEnter={() => handleEnter(item.key)}
+                onMouseLeave={handleLeave}
+              >
+                <motion.div
+                  className="max-w-container mx-auto px-8 py-10 grid grid-cols-4 gap-6"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.06 } },
+                  }}
+                >
+                  {item.megaMenu.map((menuItem, idx) => {
+                    const theme = categoryTheme[menuItem.icon] || defaultCategoryTheme
+                    const imageUrl = menuItem.image?.url || theme.fallbackImage
+                    return (
+                      <motion.div
+                        key={idx}
+                        variants={{
+                          hidden: { opacity: 0, y: 12 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } },
+                        }}
+                      >
+                        <Link
+                          href={menuItem.href}
+                          className={`group rounded-card border border-border-soft ${theme.hoverBorder} hover:shadow-card-hover transition-all duration-300 overflow-hidden block`}
+                          onClick={() => setOpenMenu(null)}
+                        >
+                          {imageUrl && (
+                            <div className="relative aspect-[2/1] bg-gray-light overflow-hidden">
+                              <Image
+                                src={imageUrl}
+                                alt={menuItem.image?.alt || menuItem.title}
+                                fill
+                                sizes="25vw"
+                                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-smooth-out"
+                              />
+                            </div>
+                          )}
+                          <div className="p-5">
+                            <div className={`w-10 h-10 rounded-card-sm ${theme.iconBg} ${theme.iconText} flex items-center justify-center mb-3 ${theme.hoverIconBg} group-hover:text-white transition-colors duration-300`}>
+                              <MegaMenuIcon name={menuItem.icon} />
+                            </div>
+                            <h4 className="font-display font-bold text-heading text-base mb-1.5">
+                              {menuItem.title}
+                            </h4>
+                            <p className="text-sm text-body-secondary font-body leading-relaxed mb-3">
+                              {menuItem.description}
+                            </p>
+                            <span className={`${theme.linkText} font-display font-semibold text-sm inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300`}>
+                              {commonLabels?.learnMore || 'Learn More'}
+                              <span className="w-5 h-5 rounded-full bg-current/10 flex items-center justify-center">
+                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                              </span>
+                            </span>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    )
+                  })}
+
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } },
+                    }}
+                    className="bg-navy rounded-card p-6 flex flex-col justify-between text-white"
+                  >
+                    <div>
+                      <h4 className="font-display font-bold text-lg mb-3">
+                        {ctaLabels?.title || 'Get in Touch'}
+                      </h4>
+                      <p className="text-white/70 text-sm font-body leading-relaxed mb-6">
+                        {ctaLabels?.description || ''}
+                      </p>
+                    </div>
                     <Link
-                      key={idx}
-                      href={menuItem.href}
-                      className={`group rounded-lg border border-gray-100 ${theme.hoverBorder} hover:shadow-lg transition-all duration-300 overflow-hidden`}
+                      href={`/${locale}/contact`}
+                      className="btn-primary text-center text-sm"
                       onClick={() => setOpenMenu(null)}
                     >
-                      {imageUrl && (
-                        <div className="relative aspect-[2/1] bg-gray-100 overflow-hidden">
-                          <img
-                            src={imageUrl}
-                            alt={menuItem.image?.alt || menuItem.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      )}
-                      <div className="p-5">
-                        <div className={`w-10 h-10 rounded-lg ${theme.iconBg} ${theme.iconText} flex items-center justify-center mb-3 ${theme.hoverIconBg} group-hover:text-white transition-colors duration-300`}>
-                          <MegaMenuIcon name={menuItem.icon} />
-                        </div>
-                        <h4 className="font-display font-bold text-heading text-base mb-1.5">
-                          {menuItem.title}
-                        </h4>
-                        <p className="text-sm text-[#666] font-body leading-relaxed mb-3">
-                          {menuItem.description}
-                        </p>
-                        <span className={`${theme.linkText} font-display font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all`}>
-                          {commonLabels?.learnMore || 'Learn More'}
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                          </svg>
-                        </span>
-                      </div>
+                      {ctaLabels?.button || 'Contact Us'}
                     </Link>
-                  )
-                })}
-
-                <div className="bg-navy rounded-lg p-6 flex flex-col justify-between text-white">
-                  <div>
-                    <h4 className="font-display font-bold text-lg mb-3">
-                      {ctaLabels?.title || 'Get in Touch'}
-                    </h4>
-                    <p className="text-white/70 text-sm font-body leading-relaxed mb-6">
-                      {ctaLabels?.description || ''}
-                    </p>
-                  </div>
-                  <Link
-                    href={`/${locale}/contact`}
-                    className="btn-primary text-center text-sm"
-                    onClick={() => setOpenMenu(null)}
-                  >
-                    {ctaLabels?.button || 'Contact Us'}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
     </nav>

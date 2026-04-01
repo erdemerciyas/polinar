@@ -1419,6 +1419,10 @@ export interface HomepageSetting {
      * Short about preview paragraph
      */
     description?: string | null;
+    /**
+     * Image displayed next to the about text on the homepage
+     */
+    image?: (number | null) | Media;
   };
   businessSection?: {
     /**
@@ -1987,6 +1991,7 @@ export interface HomepageSettingsSelect<T extends boolean = true> {
         label?: T;
         title?: T;
         description?: T;
+        image?: T;
       };
   businessSection?:
     | T

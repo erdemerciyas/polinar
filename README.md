@@ -1,6 +1,6 @@
 # Polinar
 
-Corporate website for **Polinar** — a plastic injection mould and pipe fittings manufacturer. Built with **Next.js 15**, **Payload CMS 3**, and **PostgreSQL**.
+Corporate website for **Polinar** — a plastic injection mould and pipe fittings manufacturer. Built with **Next.js 15**, **Payload CMS 3**, **PostgreSQL**, and **Cloudinary** media storage.
 
 **Live:** [www.polinar.com.tr](https://www.polinar.com.tr)
 
@@ -11,19 +11,22 @@ Corporate website for **Polinar** — a plastic injection mould and pipe fitting
 | Framework | Next.js 15 (App Router) |
 | UI | React 19, Tailwind CSS 3, Framer Motion |
 | CMS | Payload CMS 3 (admin at `/admin`) |
-| Database | PostgreSQL via `@payloadcms/db-postgres` |
+| Database | PostgreSQL (Neon) via `@payloadcms/db-postgres` |
+| Media Storage | Cloudinary via `payloadcms-storage-cloudinary` |
 | Rich Text | Lexical Editor (`@payloadcms/richtext-lexical`) |
 | SEO | `@payloadcms/plugin-seo`, JSON-LD, dynamic sitemap |
 | AI Chatbot | Anthropic Claude SDK |
-| Language | TypeScript 5 |
 | Image Processing | Sharp |
+| Language | TypeScript 5 |
+| Deployment | Vercel |
 
 ## Getting Started
 
 ### Prerequisites
 
 - **Node.js** 18+
-- **PostgreSQL** database
+- **PostgreSQL** database (e.g. [Neon](https://neon.tech))
+- **Cloudinary** account for media storage
 - **npm** (or compatible package manager)
 
 ### Installation
@@ -48,6 +51,9 @@ cp .env.example .env
 | `PAYLOAD_SECRET` | Secret key for Payload auth/encryption |
 | `ANTHROPIC_API_KEY` | Anthropic API key (for chatbot) |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL (e.g. `https://www.polinar.com.tr`) |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 
 ### Development
 
@@ -81,24 +87,36 @@ src/
 ├── app/
 │   ├── (frontend)/[locale]/   # Public pages with locale prefix
 │   ├── (payload)/admin/       # Payload CMS admin panel
-│   └── api/                   # API routes (contact, chatbot, i18n, etc.)
+│   └── api/                   # API routes (contact, chatbot, newsletter, i18n)
+├── blocks/                    # CMS block components (Hero, RichText, Gallery, …)
 ├── collections/               # Payload collections (Users, Media, News, Pages, …)
 ├── globals/                   # Payload globals (navigation, footer, site settings, …)
 ├── components/                # Shared UI components
+│   ├── layout/                # Header, Footer, MegaMenu, MobileMenu
+│   ├── ui/                    # ScrollReveal and other primitives
+│   └── chatbot/               # AI ChatWidget
 ├── data/                      # Static locale-aware content modules
 │   ├── static-labels/         # Shared translatable strings
+│   ├── injection-moulds/      # Product page data
+│   ├── machinery/             # Product page data
+│   ├── plastic-test-equipment/# Product page data
 │   └── locale-loader.ts       # createLocaleLoader utility
+├── fields/                    # Reusable Payload field definitions
+├── hooks/                     # Payload hooks (revalidation, etc.)
 ├── lib/                       # Utilities (payload client, SEO, chatbot, locales)
+├── migrations/                # Database migrations
 └── middleware.ts              # Locale detection & route prefixing
 
-scripts/                       # i18n tooling & page scaffolding
+scripts/                       # i18n tooling, media migration, page scaffolding
 seed/                          # Database seeding
 payload.config.ts              # Payload CMS configuration
+next.config.ts                 # Next.js configuration
+tailwind.config.ts             # Tailwind CSS configuration
 ```
 
 ## Internationalization (i18n)
 
-Polinar supports multiple languages — currently **English (en)**, **Turkish (tr)**, **German (de)**, and **Arabic (ar)** — configured in `src/lib/locales.json`.
+Polinar supports **English (en)**, **Turkish (tr)**, **German (de)**, and **Arabic (ar)** — configured in `src/lib/locales.json`.
 
 Content is managed through two systems:
 
@@ -137,15 +155,17 @@ npm run i18n:create-page {slug}
 
 ## Key Features
 
-- **Dynamic CMS Pages** — block-based page builder (hero, rich text, gallery, product grid, video, contact form)
-- **Product Pages** — injection moulds, machinery, plastic test equipment
-- **News & Articles** — CMS-managed with SEO metadata
-- **Contact Form** — with backend submission handling
+- **Dynamic CMS Pages** — block-based page builder (hero slider, rich text, gallery, product grid, video, contact form)
+- **Product Pages** — injection moulds, machinery, plastic test equipment with locale-aware static data
+- **News & Articles** — CMS-managed with SEO metadata and news slider
+- **Contact Form** — backend submission handling with admin notifications
 - **Newsletter** — subscription management
 - **AI Chatbot** — Anthropic Claude-powered support widget
+- **Cloudinary Media** — all media assets stored and served via Cloudinary CDN
 - **SEO** — per-page meta, Open Graph, JSON-LD structured data, auto-generated sitemap & robots.txt
 - **RTL Support** — automatic `dir="rtl"` for Arabic locale
 - **Mega Menu** — CMS-driven navigation with responsive mobile menu
+- **Scroll Animations** — Framer Motion powered reveal effects
 
 ## Available Scripts
 
@@ -157,6 +177,15 @@ npm run i18n:create-page {slug}
 | `npm run lint` | Run ESLint |
 | `npm run generate:types` | Generate Payload TypeScript types |
 | `npm run seed` | Seed database with initial data |
+
+## Deployment
+
+This project is deployed on **Vercel**. Environment variables must be configured in the Vercel dashboard:
+
+1. Go to your Vercel project settings > Environment Variables
+2. Add all variables from `.env.example`
+3. Set `NEXT_PUBLIC_SITE_URL` to your production domain
+4. Pushes to `main` trigger automatic deployments
 
 ## License
 

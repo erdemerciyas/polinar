@@ -3,6 +3,7 @@ import { getPayloadClient } from '@/lib/payload'
 import { getStaticLabels } from '@/data/static-labels'
 import { generateSEO, localBusinessJsonLd, JsonLd } from '@/lib/seo'
 import { ContactForm } from '@/components/ContactForm'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -48,9 +49,9 @@ export default async function ContactPage({ params }: Props) {
       <JsonLd data={localBusinessJsonLd(locale)} />
 
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-20">
+      <section className="relative bg-navy grain-overlay py-24 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
             {hero.subtitle || ''}
           </p>
@@ -61,42 +62,49 @@ export default async function ContactPage({ params }: Props) {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="contact-box">
-                <h3 className="font-display font-bold text-heading text-base mb-3">{info.addressLabel || ''}</h3>
-                <p className="text-[#555] font-body text-sm leading-body whitespace-pre-line">{info.addressText || ''}</p>
-              </div>
-              <div className="contact-box">
-                <h3 className="font-display font-bold text-heading text-base mb-3">{info.phoneLabel || ''}</h3>
-                <div className="text-[#555] font-body text-sm space-y-1">
-                  {staticLabels.company.phones.map((phone) => (
-                    <p key={phone}>{phone}</p>
-                  ))}
-                  <p>{staticLabels.company.fax}</p>
+            <StaggerContainer className="space-y-6">
+              <StaggerItem>
+                <div className="contact-box">
+                  <h3 className="font-display font-bold text-base mb-3">{info.addressLabel || ''}</h3>
+                  <p className="font-body text-sm leading-body whitespace-pre-line">{info.addressText || ''}</p>
                 </div>
-              </div>
-              <div className="contact-box">
-                <h3 className="font-display font-bold text-heading text-base mb-3">{info.emailLabel || ''}</h3>
-                <a href={`mailto:${staticLabels.company.email}`} className="text-polinar-red font-body text-sm hover:underline">
-                  {staticLabels.company.email}
-                </a>
-              </div>
-            </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="contact-box">
+                  <h3 className="font-display font-bold text-base mb-3">{info.phoneLabel || ''}</h3>
+                  <div className="font-body text-sm space-y-1">
+                    {staticLabels.company.phones.map((phone) => (
+                      <p key={phone}>{phone}</p>
+                    ))}
+                    <p>{staticLabels.company.fax}</p>
+                  </div>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="contact-box">
+                  <h3 className="font-display font-bold text-base mb-3">{info.emailLabel || ''}</h3>
+                  <a href={`mailto:${staticLabels.company.email}`} className="text-polinar-red font-body text-sm hover:underline">
+                    {staticLabels.company.email}
+                  </a>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <ScrollReveal className="lg:col-span-2" direction="right">
               <ContactForm formLabels={form} messages={messages} />
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Google Maps */}
-      <section className="h-[400px]">
+      <section className="relative h-[450px]">
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
         <iframe
           src={staticLabels.company.mapUrl}
           className="w-full h-full border-0"

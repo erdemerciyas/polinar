@@ -5,7 +5,7 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { cloudinaryStorage } from 'payloadcms-storage-cloudinary'
 import sharp from 'sharp'
 
 import { Users } from '@/collections/Users'
@@ -654,13 +654,27 @@ export default buildConfig({
       generateTitle: ({ doc }: any) => `${doc?.title || doc?.name} — Polinar`,
       generateDescription: ({ doc }: any) => doc?.excerpt || doc?.description || '',
     }),
-    ...(process.env.BLOB_READ_WRITE_TOKEN
+    ...(process.env.CLOUDINARY_CLOUD_NAME
       ? [
-          vercelBlobStorage({
+          cloudinaryStorage({
             collections: {
-              media: true,
+              media: {
+                disablePayloadAccessControl: true,
+                generateFileURL: ({ filename }: { filename: string }) => {
+                  const ext = filename.split('.').pop() || 'jpg'
+                  const name = filename.replace(/\.[^.]+$/, '')
+                  const isPdf = ext === 'pdf'
+                  const type = isPdf ? 'raw' : 'image'
+                  return `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/${type}/upload/polinar/media/${name}.${ext}`
+                },
+              },
             },
-            token: process.env.BLOB_READ_WRITE_TOKEN,
+            cloudinaryConfig: {
+              cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+              api_key: process.env.CLOUDINARY_API_KEY!,
+              api_secret: process.env.CLOUDINARY_API_SECRET!,
+            },
+            folder: 'polinar/media',
           }),
         ]
       : []),

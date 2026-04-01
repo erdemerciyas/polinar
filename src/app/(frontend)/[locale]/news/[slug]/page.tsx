@@ -90,9 +90,9 @@ export default async function NewsDetailPage({ params }: Props) {
         { name: article.title, url: `${SITE_URL}/${locale}/news/${slug}` },
       ])} />
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-20">
+      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
             <Link href={`/${locale}/news`} className="hover:text-white transition-colors">
               {labels.breadcrumb || ''}
@@ -112,10 +112,10 @@ export default async function NewsDetailPage({ params }: Props) {
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-white">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
           {article.featuredImage?.url && (
-            <div className="relative mb-8 rounded-[3px] overflow-hidden h-[400px]">
+            <div className="relative mb-8 rounded-card overflow-hidden h-[400px]">
               <Image
                 src={article.featuredImage.url}
                 alt={article.featuredImage.alt || article.title}
@@ -128,12 +128,12 @@ export default async function NewsDetailPage({ params }: Props) {
           )}
 
           {article.excerpt && (
-            <p className="text-lg text-[#555] font-body leading-relaxed-body mb-8 border-l-4 border-polinar-red pl-4">
+            <p className="text-lg text-body-muted font-body leading-relaxed-body mb-8 border-l-4 border-polinar-red pl-4">
               {article.excerpt}
             </p>
           )}
 
-          <div className="prose max-w-none font-body text-[#555] leading-relaxed-body">
+          <div className="prose max-w-none font-body text-body-muted leading-relaxed-body">
             <p>{labels.cmsPlaceholder || ''}</p>
           </div>
 

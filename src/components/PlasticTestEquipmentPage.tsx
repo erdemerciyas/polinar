@@ -76,14 +76,14 @@ function EquipmentDetailModal({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="bg-gray-light p-6 lg:p-8">
             <div className="space-y-4">
-              <div className="rounded-[3px] overflow-hidden border border-pte-cyan/10">
+              <div className="rounded-card overflow-hidden border border-pte-cyan/10">
                 <img
                   src={category.image01}
                   alt={`${category.name} - ${labels.overviewAlt}`}
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="rounded-[3px] overflow-hidden border border-pte-cyan/10">
+              <div className="rounded-card overflow-hidden border border-pte-cyan/10">
                 <img
                   src={category.image02}
                   alt={`${category.name} - ${labels.detailAlt}`}
@@ -102,7 +102,7 @@ function EquipmentDetailModal({
               <span className="div-gray"></span>
             </div>
 
-            <p className="font-body text-[#555] text-sm leading-relaxed mb-6">
+            <p className="font-body text-body-muted text-sm leading-relaxed mb-6">
               {category.description}
             </p>
 
@@ -115,7 +115,7 @@ function EquipmentDetailModal({
                   {category.standards.map((std) => (
                     <span
                       key={std}
-                      className="inline-block bg-gray-light text-[#555] text-[11px] font-display font-semibold px-2.5 py-1 rounded-[2px] border border-gray-200"
+                      className="inline-block bg-gray-light text-body-muted text-[11px] font-display font-semibold px-2.5 py-1 rounded-full border border-gray-200"
                     >
                       {std}
                     </span>
@@ -130,7 +130,7 @@ function EquipmentDetailModal({
               </h4>
               <ul className="space-y-2">
                 {category.features.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm font-body text-[#555]">
+                  <li key={idx} className="flex items-start gap-2 text-sm font-body text-body-muted">
                     <svg className="w-4 h-4 text-pte-cyan mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
@@ -145,7 +145,7 @@ function EquipmentDetailModal({
                 <h4 className="font-display font-bold text-heading text-sm uppercase tracking-wider mb-3">
                   {labels.technicalSpecs}
                 </h4>
-                <div className="border border-gray-200 rounded-[3px] overflow-hidden">
+                <div className="border border-gray-200 rounded-card overflow-hidden">
                   <table className="w-full text-sm">
                     <tbody>
                       {category.specs.map((spec, idx) => (
@@ -153,7 +153,7 @@ function EquipmentDetailModal({
                           <td className="px-3 py-2 font-display font-semibold text-heading text-xs w-2/5">
                             {spec.label}
                           </td>
-                          <td className="px-3 py-2 font-body text-[#555] text-xs">
+                          <td className="px-3 py-2 font-body text-body-muted text-xs">
                             {spec.value}
                           </td>
                         </tr>
@@ -209,13 +209,13 @@ export function PlasticTestEquipmentPage({
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-20 lg:py-28">
+      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/testing-hero-bg.jpg')" }}
+          style={{ backgroundImage: "url('https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050293/polinar/static/testing-hero-bg.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-display font-semibold text-pte-cyan uppercase tracking-wider mb-2">
             <Link href={`/${locale}`} className="hover:text-white transition-colors">
               {staticLabels.breadcrumbs.home}
@@ -237,8 +237,8 @@ export function PlasticTestEquipmentPage({
       </section>
 
       {/* Intro + Highlights */}
-      <section className="py-16 bg-white">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="font-display font-bold italic text-pte-cyan text-2xl sm:text-3xl tracking-tight-heading">
               {data.ui.introTitle}
@@ -247,7 +247,7 @@ export function PlasticTestEquipmentPage({
               <span className="div-cyan"></span>
               <span className="div-gray"></span>
             </div>
-            <p className="text-[#555] font-body text-base leading-relaxed-body">
+            <p className="text-body-muted font-body text-base leading-relaxed-body">
               {data.ui.introDescription}
             </p>
           </div>
@@ -262,7 +262,7 @@ export function PlasticTestEquipmentPage({
                   {highlightIcons[idx]}
                 </div>
                 <p className="font-display font-extrabold text-heading text-2xl sm:text-3xl">{h.value}</p>
-                <p className="font-body text-sm text-[#666] mt-1">{h.label}</p>
+                <p className="font-body text-sm text-body-secondary mt-1">{h.label}</p>
               </div>
             ))}
           </div>
@@ -270,8 +270,8 @@ export function PlasticTestEquipmentPage({
       </section>
 
       {/* Equipment Categories Grid */}
-      <section className="py-20 bg-gray-light">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 lg:py-32 bg-gray-light">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-sm font-display font-semibold text-pte-cyan uppercase tracking-wider mb-1">
               {data.ui.productRangeEyebrow}
@@ -300,7 +300,7 @@ export function PlasticTestEquipmentPage({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="inline-flex items-center gap-1 bg-white/90 text-heading text-xs font-display font-semibold px-3 py-1.5 rounded-[3px]">
+                    <span className="inline-flex items-center gap-1 bg-white/90 text-heading text-xs font-display font-semibold px-3 py-1.5 rounded-full">
                       {staticLabels.product.viewDetails}
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -312,12 +312,12 @@ export function PlasticTestEquipmentPage({
                   <h3 className="font-display font-bold text-heading text-base mb-2 group-hover:text-pte-cyan transition-colors">
                     {cat.name}
                   </h3>
-                  <p className="text-sm font-body text-[#666] leading-relaxed mb-3">
+                  <p className="text-sm font-body text-body-secondary leading-relaxed mb-3">
                     {cat.shortDescription}
                   </p>
                   <ul className="space-y-1">
                     {cat.features.slice(0, 3).map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-1.5 text-xs font-body text-[#666]">
+                      <li key={idx} className="flex items-center gap-1.5 text-xs font-body text-body-secondary">
                         <svg className="w-3 h-3 text-pte-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
@@ -338,9 +338,9 @@ export function PlasticTestEquipmentPage({
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-20 bg-navy grain-overlay relative">
+      <section className="py-24 lg:py-32 bg-navy grain-overlay relative">
         <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy"></div>
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-sm font-display font-semibold text-pte-cyan uppercase tracking-wider mb-1">
               {data.ui.whyPolinarEyebrow}
@@ -376,7 +376,7 @@ export function PlasticTestEquipmentPage({
 
       {/* CTA Bar */}
       <section className="bg-pte-cyan py-6">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-white font-display font-bold text-lg">{data.ui.ctaTitle}</p>
             <p className="text-white/80 font-body text-sm">{data.ui.ctaSubtitle}</p>

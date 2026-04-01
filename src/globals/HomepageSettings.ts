@@ -243,6 +243,13 @@ export const HomepageSettings: GlobalConfig = {
         { name: 'label', type: 'text', localized: true, admin: { description: '"About" / "Hakkımızda"' } },
         { name: 'title', type: 'text', localized: true, admin: { description: '"US" / ""' } },
         { name: 'description', type: 'textarea', localized: true, admin: { description: 'Short about preview paragraph' } },
+        {
+          name: 'image',
+          label: 'About Image',
+          type: 'upload',
+          relationTo: 'media',
+          admin: { description: 'Image displayed next to the about text on the homepage' },
+        },
       ],
     },
     {
