@@ -54,13 +54,22 @@ export function I18nPanel() {
   const [result, setResult] = useState<ImportResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [forceMode, setForceMode] = useState(false)
-  const [uploadedFile, setUploadedFile] = useState<{ name: string; data: any; globalCount: number; fieldCount: number } | null>(null)
+  const [uploadedFile, setUploadedFile] = useState<{
+    name: string
+    data: any
+    globalCount: number
+    fieldCount: number
+  } | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [dragOver, setDragOver] = useState(false)
 
   const [staticModules, setStaticModules] = useState<StaticModuleInfo[]>([])
   const [staticResult, setStaticResult] = useState<StaticImportResponse | null>(null)
-  const [staticUploadedFile, setStaticUploadedFile] = useState<{ name: string; data: any; moduleCount: number } | null>(null)
+  const [staticUploadedFile, setStaticUploadedFile] = useState<{
+    name: string
+    data: any
+    moduleCount: number
+  } | null>(null)
   const staticFileInputRef = useRef<HTMLInputElement>(null)
   const [staticDragOver, setStaticDragOver] = useState(false)
 
@@ -139,7 +148,8 @@ export function I18nPanel() {
         const countFields = (obj: any): number => {
           if (obj === null || obj === undefined) return 0
           if (Array.isArray(obj)) return obj.reduce((s, i) => s + countFields(i), 0)
-          if (typeof obj === 'object') return Object.values(obj).reduce((s: number, v) => s + countFields(v), 0)
+          if (typeof obj === 'object')
+            return Object.values(obj).reduce((s: number, v) => s + countFields(v), 0)
           return 1
         }
         const fieldCount = countFields(data)
@@ -152,17 +162,23 @@ export function I18nPanel() {
     reader.readAsText(file)
   }, [])
 
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) processFile(file)
-  }, [processFile])
+  const handleFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0]
+      if (file) processFile(file)
+    },
+    [processFile],
+  )
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file) processFile(file)
-  }, [processFile])
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault()
+      setDragOver(false)
+      const file = e.dataTransfer.files[0]
+      if (file) processFile(file)
+    },
+    [processFile],
+  )
 
   const handleImport = useCallback(async () => {
     if (!selectedLocale || !uploadedFile) return
@@ -309,17 +325,23 @@ export function I18nPanel() {
     reader.readAsText(file)
   }, [])
 
-  const handleStaticFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) processStaticFile(file)
-  }, [processStaticFile])
+  const handleStaticFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0]
+      if (file) processStaticFile(file)
+    },
+    [processStaticFile],
+  )
 
-  const handleStaticDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setStaticDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file) processStaticFile(file)
-  }, [processStaticFile])
+  const handleStaticDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault()
+      setStaticDragOver(false)
+      const file = e.dataTransfer.files[0]
+      if (file) processStaticFile(file)
+    },
+    [processStaticFile],
+  )
 
   const handleStaticImport = useCallback(async () => {
     if (!selectedLocale || !staticUploadedFile) return
@@ -350,7 +372,9 @@ export function I18nPanel() {
 
       fetch(`/api/i18n/static-modules?locale=${selectedLocale}`, { credentials: 'include' })
         .then((r) => r.json())
-        .then((d) => { if (d.modules) setStaticModules(d.modules) })
+        .then((d) => {
+          if (d.modules) setStaticModules(d.modules)
+        })
         .catch(() => {})
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Static import failed')
@@ -369,33 +393,37 @@ export function I18nPanel() {
     return map
   }
 
+  const resetSelections = () => {
+    setResult(null)
+    setError(null)
+    setUploadedFile(null)
+    setStaticResult(null)
+    setStaticUploadedFile(null)
+  }
+
   return (
-    <div>
-      <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 4 }}>i18n Management</h1>
-      <p style={{ opacity: 0.6, marginBottom: 32, fontSize: 13 }}>
+    <div className="i18n-panel">
+      <h1 className="i18n-panel__title">i18n Management</h1>
+      <p className="i18n-panel__subtitle">
         Export, edit, and import translation files per language.
       </p>
 
       {/* Language selector */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
+      <div className="i18n-lang-selector">
         {languages.map((lang) => (
           <button
             key={lang.code}
-            onClick={() => { setSelectedLocale(lang.code); setResult(null); setError(null); setUploadedFile(null); setStaticResult(null); setStaticUploadedFile(null) }}
-            disabled={!!loading}
-            style={{
-              padding: '8px 18px',
-              fontSize: 14,
-              fontWeight: selectedLocale === lang.code ? 700 : 400,
-              border: selectedLocale === lang.code ? '2px solid var(--theme-elevation-800, #333)' : '1px solid rgba(128,128,128,0.25)',
-              borderRadius: 6,
-              cursor: loading ? 'not-allowed' : 'pointer',
-              background: selectedLocale === lang.code ? 'var(--theme-elevation-100, #f5f5f5)' : 'transparent',
-              transition: 'all 0.15s',
+            onClick={() => {
+              setSelectedLocale(lang.code)
+              resetSelections()
             }}
+            disabled={!!loading}
+            className={`i18n-lang-selector__btn${selectedLocale === lang.code ? ' i18n-lang-selector__btn--active' : ''}`}
           >
-            {lang.flagEmoji ? `${lang.flagEmoji} ` : ''}{lang.label}
-            {lang.isDefault && <span style={{ fontSize: 10, opacity: 0.5, marginLeft: 4 }}>(default)</span>}
+            {lang.label}
+            {lang.isDefault && (
+              <span className="i18n-lang-selector__btn__default">(default)</span>
+            )}
           </button>
         ))}
       </div>
@@ -403,35 +431,30 @@ export function I18nPanel() {
       {selectedLocale && (
         <>
           {/* Export + Generate section */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 16,
-            marginBottom: 24,
-          }}>
-            <div style={{ padding: 20, borderRadius: 8, border: '1px solid rgba(128,128,128,0.15)', background: 'var(--theme-elevation-50, #fafafa)' }}>
-              <h3 style={{ fontSize: 15, fontWeight: 600, marginTop: 0, marginBottom: 4 }}>Export</h3>
-              <p style={{ fontSize: 12, opacity: 0.6, marginBottom: 16 }}>
+          <div className="i18n-section-grid">
+            <div className="i18n-card">
+              <h3 className="i18n-card__title">Export</h3>
+              <p className="i18n-card__desc">
                 Download current {selectedLang?.label || selectedLocale} translations as JSON.
               </p>
               <button
                 onClick={handleExport}
                 disabled={!!loading}
-                style={btnStyle(loading === 'export', '#0070f3')}
+                className={`i18n-btn i18n-btn--blue${loading === 'export' ? ' i18n-btn--loading' : ''}`}
               >
                 {loading === 'export' ? 'Exporting...' : `Download ${selectedLocale}.json`}
               </button>
             </div>
 
-            <div style={{ padding: 20, borderRadius: 8, border: '1px solid rgba(128,128,128,0.15)', background: 'var(--theme-elevation-50, #fafafa)' }}>
-              <h3 style={{ fontSize: 15, fontWeight: 600, marginTop: 0, marginBottom: 4 }}>Generate from file</h3>
-              <p style={{ fontSize: 12, opacity: 0.6, marginBottom: 16 }}>
+            <div className="i18n-card">
+              <h3 className="i18n-card__title">Generate from file</h3>
+              <p className="i18n-card__desc">
                 Sync <code>public/locales/{selectedLocale}.json</code> into the database.
               </p>
               <button
                 onClick={handleGenerateFromFile}
                 disabled={!!loading}
-                style={btnStyle(loading === 'generate', '#7c3aed')}
+                className={`i18n-btn i18n-btn--violet${loading === 'generate' ? ' i18n-btn--loading' : ''}`}
               >
                 {loading === 'generate' ? 'Syncing...' : `Generate ${selectedLocale.toUpperCase()}`}
               </button>
@@ -439,33 +462,22 @@ export function I18nPanel() {
           </div>
 
           {/* Import section */}
-          <div style={{
-            padding: 20,
-            borderRadius: 8,
-            border: '1px solid rgba(128,128,128,0.15)',
-            background: 'var(--theme-elevation-50, #fafafa)',
-            marginBottom: 24,
-          }}>
-            <h3 style={{ fontSize: 15, fontWeight: 600, marginTop: 0, marginBottom: 4 }}>Import</h3>
-            <p style={{ fontSize: 12, opacity: 0.6, marginBottom: 16 }}>
-              Upload an edited JSON file to update {selectedLang?.label || selectedLocale} translations.
+          <div className="i18n-card" style={{ marginBottom: 20 }}>
+            <h3 className="i18n-card__title">Import</h3>
+            <p className="i18n-card__desc">
+              Upload an edited JSON file to update {selectedLang?.label || selectedLocale}{' '}
+              translations.
             </p>
 
             <div
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+              onDragOver={(e) => {
+                e.preventDefault()
+                setDragOver(true)
+              }}
               onDragLeave={() => setDragOver(false)}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              style={{
-                border: `2px dashed ${dragOver ? '#0070f3' : 'rgba(128,128,128,0.3)'}`,
-                borderRadius: 8,
-                padding: '24px 20px',
-                textAlign: 'center',
-                cursor: loading ? 'not-allowed' : 'pointer',
-                background: dragOver ? 'rgba(0,112,243,0.04)' : 'transparent',
-                transition: 'all 0.15s',
-                marginBottom: 16,
-              }}
+              className={`i18n-dropzone${dragOver ? ' i18n-dropzone--active' : ''}${loading ? ' i18n-dropzone--disabled' : ''}`}
             >
               <input
                 ref={fileInputRef}
@@ -476,28 +488,28 @@ export function I18nPanel() {
               />
               {uploadedFile ? (
                 <div>
-                  <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>{uploadedFile.name}</p>
-                  <p style={{ margin: '4px 0 0', fontSize: 12, opacity: 0.6 }}>
+                  <p className="i18n-dropzone__filename">{uploadedFile.name}</p>
+                  <p className="i18n-dropzone__meta">
                     {uploadedFile.globalCount} globals, ~{uploadedFile.fieldCount} fields
                   </p>
                 </div>
               ) : (
-                <p style={{ margin: 0, fontSize: 13, opacity: 0.6 }}>
+                <p className="i18n-dropzone__placeholder">
                   Drop a .json file here or click to browse
                 </p>
               )}
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <button
                 onClick={handleImport}
                 disabled={!!loading || !uploadedFile}
-                style={btnStyle(loading === 'import', '#16a34a', !uploadedFile)}
+                className={`i18n-btn i18n-btn--green${loading === 'import' ? ' i18n-btn--loading' : ''}`}
               >
                 {loading === 'import' ? 'Importing...' : `Import to ${selectedLocale.toUpperCase()}`}
               </button>
 
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, opacity: 0.7 }}>
+              <label className="i18n-checkbox-label">
                 <input
                   type="checkbox"
                   checked={forceMode}
@@ -509,8 +521,11 @@ export function I18nPanel() {
 
               {uploadedFile && (
                 <button
-                  onClick={() => { setUploadedFile(null); if (fileInputRef.current) fileInputRef.current.value = '' }}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, opacity: 0.5, textDecoration: 'underline' }}
+                  onClick={() => {
+                    setUploadedFile(null)
+                    if (fileInputRef.current) fileInputRef.current.value = ''
+                  }}
+                  className="i18n-btn i18n-btn--link"
                 >
                   Clear
                 </button>
@@ -519,25 +534,12 @@ export function I18nPanel() {
           </div>
 
           {/* Bulk actions */}
-          <div style={{
-            padding: 16,
-            borderRadius: 8,
-            border: '1px solid rgba(128,128,128,0.1)',
-            marginBottom: 24,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-          }}>
-            <span style={{ fontSize: 13, opacity: 0.6 }}>Bulk:</span>
+          <div className="i18n-bulk-bar">
+            <span className="i18n-bulk-bar__label">Bulk</span>
             <button
               onClick={handleGenerateAll}
               disabled={!!loading}
-              style={{
-                ...btnSmallStyle(loading === 'generate-all'),
-                background: loading === 'generate-all' ? '#666' : 'transparent',
-                color: loading === 'generate-all' ? '#fff' : 'inherit',
-                border: '1px solid rgba(128,128,128,0.3)',
-              }}
+              className={`i18n-btn i18n-btn--ghost${loading === 'generate-all' ? ' i18n-btn--loading' : ''}`}
             >
               {loading === 'generate-all' ? 'Syncing all...' : 'Generate All Languages'}
             </button>
@@ -546,232 +548,234 @@ export function I18nPanel() {
       )}
 
       {/* ── Static Content Section ── */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ borderTop: '2px solid rgba(128,128,128,0.12)', paddingTop: 24, marginTop: 8 }}>
-          <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4, marginTop: 0 }}>Static Content</h2>
-          <p style={{ opacity: 0.6, fontSize: 12, marginBottom: 20 }}>
-            Product pages, labels, and hardcoded content managed in <code>src/data/</code> files.
-          </p>
+      <div className="i18n-section-divider">
+        <h2 className="i18n-section-divider__title">Static Content</h2>
+        <p className="i18n-section-divider__desc">
+          Product pages, labels, and hardcoded content managed in <code>src/data/</code> files.
+        </p>
 
-          {/* Module status */}
-          {staticModules.length > 0 && (
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
-              {staticModules.map((mod) => {
-                const has = mod.locales.includes(selectedLocale)
-                return (
-                  <span
-                    key={mod.name}
-                    style={{
-                      padding: '4px 12px',
-                      fontSize: 12,
-                      borderRadius: 4,
-                      background: has ? 'rgba(34,197,94,0.08)' : 'rgba(234,179,8,0.08)',
-                      border: `1px solid ${has ? 'rgba(34,197,94,0.25)' : 'rgba(234,179,8,0.25)'}`,
-                      color: has ? '#16a34a' : '#ca8a04',
-                    }}
-                  >
-                    {has ? '●' : '○'} {mod.name}
-                  </span>
-                )
-              })}
-            </div>
-          )}
-
-          {/* Export + Import grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
-            <div style={{ padding: 20, borderRadius: 8, border: '1px solid rgba(128,128,128,0.15)', background: 'var(--theme-elevation-50, #fafafa)' }}>
-              <h3 style={{ fontSize: 15, fontWeight: 600, marginTop: 0, marginBottom: 4 }}>Export Static</h3>
-              <p style={{ fontSize: 12, opacity: 0.6, marginBottom: 16 }}>
-                Download {selectedLang?.label || selectedLocale} static content as JSON.
-                {selectedLocale === 'en' && (
-                  <span style={{ display: 'block', marginTop: 4, color: '#0070f3' }}>
-                    EN is the source of truth — use this to see what needs translating.
-                  </span>
-                )}
-              </p>
-              <button
-                onClick={handleStaticExport}
-                disabled={!!loading}
-                style={btnStyle(loading === 'static-export', '#0070f3')}
-              >
-                {loading === 'static-export' ? 'Exporting...' : `Download static-${selectedLocale}.json`}
-              </button>
-            </div>
-
-            <div style={{ padding: 20, borderRadius: 8, border: '1px solid rgba(128,128,128,0.15)', background: 'var(--theme-elevation-50, #fafafa)' }}>
-              <h3 style={{ fontSize: 15, fontWeight: 600, marginTop: 0, marginBottom: 4 }}>Import Static</h3>
-              <p style={{ fontSize: 12, opacity: 0.6, marginBottom: 16 }}>
-                Upload translated static JSON to create/update <code>src/data/*/</code> files.
-                {selectedLocale === 'en' && (
-                  <span style={{ display: 'block', marginTop: 4, color: '#dc2626' }}>
-                    EN cannot be imported — edit en.ts files directly.
-                  </span>
-                )}
-              </p>
-
-              <div
-                onDragOver={(e) => { e.preventDefault(); setStaticDragOver(true) }}
-                onDragLeave={() => setStaticDragOver(false)}
-                onDrop={handleStaticDrop}
-                onClick={() => staticFileInputRef.current?.click()}
-                style={{
-                  border: `2px dashed ${staticDragOver ? '#0070f3' : 'rgba(128,128,128,0.3)'}`,
-                  borderRadius: 8,
-                  padding: '16px 12px',
-                  textAlign: 'center',
-                  cursor: loading || selectedLocale === 'en' ? 'not-allowed' : 'pointer',
-                  background: staticDragOver ? 'rgba(0,112,243,0.04)' : 'transparent',
-                  transition: 'all 0.15s',
-                  marginBottom: 12,
-                  opacity: selectedLocale === 'en' ? 0.4 : 1,
-                  pointerEvents: selectedLocale === 'en' ? 'none' : 'auto',
-                }}
-              >
-                <input
-                  ref={staticFileInputRef}
-                  type="file"
-                  accept=".json"
-                  onChange={handleStaticFileChange}
-                  style={{ display: 'none' }}
-                />
-                {staticUploadedFile ? (
-                  <div>
-                    <p style={{ margin: 0, fontWeight: 600, fontSize: 13 }}>{staticUploadedFile.name}</p>
-                    <p style={{ margin: '4px 0 0', fontSize: 11, opacity: 0.6 }}>
-                      {staticUploadedFile.moduleCount} module(s)
-                    </p>
-                  </div>
-                ) : (
-                  <p style={{ margin: 0, fontSize: 12, opacity: 0.6 }}>
-                    Drop static-{selectedLocale}.json or click to browse
-                  </p>
-                )}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <button
-                  onClick={handleStaticImport}
-                  disabled={!!loading || !staticUploadedFile || selectedLocale === 'en'}
-                  style={btnStyle(loading === 'static-import', '#16a34a', !staticUploadedFile || selectedLocale === 'en')}
+        {/* Module status */}
+        {staticModules.length > 0 && (
+          <div className="i18n-module-tags">
+            {staticModules.map((mod) => {
+              const has = mod.locales.includes(selectedLocale)
+              return (
+                <span
+                  key={mod.name}
+                  className={`i18n-module-tags__tag ${has ? 'i18n-module-tags__tag--has' : 'i18n-module-tags__tag--missing'}`}
                 >
-                  {loading === 'static-import' ? 'Importing...' : `Import to ${selectedLocale.toUpperCase()}`}
+                  {has ? '\u2713' : '\u25CB'} {mod.name}
+                </span>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Export + Import grid */}
+        <div className="i18n-section-grid">
+          <div className="i18n-card">
+            <h3 className="i18n-card__title">Export Static</h3>
+            <p className="i18n-card__desc">
+              Download {selectedLang?.label || selectedLocale} static content as JSON.
+              {selectedLocale === 'en' && (
+                <span className="i18n-card__note i18n-card__note--info">
+                  EN is the source of truth — use this to see what needs translating.
+                </span>
+              )}
+            </p>
+            <button
+              onClick={handleStaticExport}
+              disabled={!!loading}
+              className={`i18n-btn i18n-btn--blue${loading === 'static-export' ? ' i18n-btn--loading' : ''}`}
+            >
+              {loading === 'static-export'
+                ? 'Exporting...'
+                : `Download static-${selectedLocale}.json`}
+            </button>
+          </div>
+
+          <div className="i18n-card">
+            <h3 className="i18n-card__title">Import Static</h3>
+            <p className="i18n-card__desc">
+              Upload translated static JSON to create/update <code>src/data/*/</code> files.
+              {selectedLocale === 'en' && (
+                <span className="i18n-card__note i18n-card__note--warning">
+                  EN cannot be imported — edit en.ts files directly.
+                </span>
+              )}
+            </p>
+
+            <div
+              onDragOver={(e) => {
+                e.preventDefault()
+                setStaticDragOver(true)
+              }}
+              onDragLeave={() => setStaticDragOver(false)}
+              onDrop={handleStaticDrop}
+              onClick={() => staticFileInputRef.current?.click()}
+              className={`i18n-dropzone${staticDragOver ? ' i18n-dropzone--active' : ''}${loading || selectedLocale === 'en' ? ' i18n-dropzone--disabled' : ''}`}
+            >
+              <input
+                ref={staticFileInputRef}
+                type="file"
+                accept=".json"
+                onChange={handleStaticFileChange}
+                style={{ display: 'none' }}
+              />
+              {staticUploadedFile ? (
+                <div>
+                  <p className="i18n-dropzone__filename">{staticUploadedFile.name}</p>
+                  <p className="i18n-dropzone__meta">
+                    {staticUploadedFile.moduleCount} module(s)
+                  </p>
+                </div>
+              ) : (
+                <p className="i18n-dropzone__placeholder">
+                  Drop static-{selectedLocale}.json or click to browse
+                </p>
+              )}
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <button
+                onClick={handleStaticImport}
+                disabled={!!loading || !staticUploadedFile || selectedLocale === 'en'}
+                className={`i18n-btn i18n-btn--green${loading === 'static-import' ? ' i18n-btn--loading' : ''}`}
+              >
+                {loading === 'static-import'
+                  ? 'Importing...'
+                  : `Import to ${selectedLocale.toUpperCase()}`}
+              </button>
+              {staticUploadedFile && (
+                <button
+                  onClick={() => {
+                    setStaticUploadedFile(null)
+                    if (staticFileInputRef.current) staticFileInputRef.current.value = ''
+                  }}
+                  className="i18n-btn i18n-btn--link"
+                >
+                  Clear
                 </button>
-                {staticUploadedFile && (
-                  <button
-                    onClick={() => { setStaticUploadedFile(null); if (staticFileInputRef.current) staticFileInputRef.current.value = '' }}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, opacity: 0.5, textDecoration: 'underline' }}
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
+              )}
             </div>
           </div>
         </div>
-
-        {/* Static import results */}
-        {staticResult && (
-          <div style={{
-            padding: 16,
-            borderRadius: 8,
-            background: staticResult.success ? 'rgba(34,197,94,0.06)' : 'rgba(234,179,8,0.06)',
-            border: `1px solid ${staticResult.success ? 'rgba(34,197,94,0.25)' : 'rgba(234,179,8,0.25)'}`,
-            marginBottom: 16,
-          }}>
-            <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>
-              Static Import: {staticResult.success ? 'Complete' : 'Completed with errors'}
-            </p>
-            <p style={{ margin: '4px 0 0', fontSize: 13, opacity: 0.7 }}>
-              {staticResult.created} created &middot; {staticResult.updated} updated &middot; {staticResult.totalErrors} errors
-            </p>
-            {staticResult.results.length > 0 && (
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, marginTop: 12 }}>
-                <thead>
-                  <tr style={{ borderBottom: '2px solid rgba(128,128,128,0.15)' }}>
-                    <th style={thStyle}>Module</th>
-                    <th style={thStyle}>Status</th>
-                    <th style={thStyle}>Details</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {staticResult.results.map((r) => (
-                    <tr key={r.module} style={{ borderBottom: '1px solid rgba(128,128,128,0.08)' }}>
-                      <td style={{ ...tdStyle, fontWeight: 500 }}>{r.module}</td>
-                      <td style={tdStyle}>
-                        <span style={{
-                          color: r.status === 'error' ? '#dc2626' : r.status === 'created' ? '#0070f3' : '#16a34a',
-                        }}>
-                          {r.status}
-                        </span>
-                      </td>
-                      <td style={tdStyle}>
-                        {r.error ? <span style={{ color: '#dc2626' }}>{r.error}</span> : '—'}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-        )}
       </div>
+
+      {/* Static import results */}
+      {staticResult && (
+        <div
+          className={`i18n-result ${staticResult.success ? 'i18n-result--success' : 'i18n-result--warning'}`}
+        >
+          <p className="i18n-result__title">
+            Static Import: {staticResult.success ? 'Complete' : 'Completed with errors'}
+          </p>
+          <p className="i18n-result__meta">
+            {staticResult.created} created &middot; {staticResult.updated} updated &middot;{' '}
+            {staticResult.totalErrors} errors
+          </p>
+          {staticResult.results.length > 0 && (
+            <table className="i18n-table">
+              <thead>
+                <tr>
+                  <th>Module</th>
+                  <th>Status</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {staticResult.results.map((r) => (
+                  <tr key={r.module}>
+                    <td style={{ fontWeight: 500 }}>{r.module}</td>
+                    <td>
+                      <span
+                        className={`i18n-table__status ${
+                          r.status === 'error'
+                            ? 'i18n-table__status--error'
+                            : r.status === 'created'
+                              ? 'i18n-table__status--created'
+                              : 'i18n-table__status--updated'
+                        }`}
+                      >
+                        {r.status}
+                      </span>
+                    </td>
+                    <td>
+                      {r.error ? (
+                        <span className="i18n-table__status--error">{r.error}</span>
+                      ) : (
+                        '\u2014'
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
 
       {/* Error display */}
       {error && (
-        <div style={{ padding: 16, borderRadius: 8, background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.25)', marginBottom: 20 }}>
-          <p style={{ margin: 0, fontWeight: 600, color: '#dc2626', fontSize: 14 }}>Error</p>
-          <p style={{ margin: '4px 0 0', fontSize: 13 }}>{error}</p>
+        <div className="i18n-result i18n-result--error">
+          <p className="i18n-result__title">Error</p>
+          <p className="i18n-result__meta">{error}</p>
         </div>
       )}
 
       {/* Results table */}
       {result && (
         <div>
-          <div style={{
-            padding: 16,
-            borderRadius: 8,
-            background: result.success ? 'rgba(34,197,94,0.06)' : 'rgba(234,179,8,0.06)',
-            border: `1px solid ${result.success ? 'rgba(34,197,94,0.25)' : 'rgba(234,179,8,0.25)'}`,
-            marginBottom: 16,
-          }}>
-            <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>
+          <div
+            className={`i18n-result ${result.success ? 'i18n-result--success' : 'i18n-result--warning'}`}
+          >
+            <p className="i18n-result__title">
               {result.success ? 'Operation complete' : 'Completed with errors'}
             </p>
-            <p style={{ margin: '4px 0 0', fontSize: 13, opacity: 0.7 }}>
-              {result.totalUpdated} updated &middot; {result.totalSkipped} skipped &middot; {result.totalErrors} errors
+            <p className="i18n-result__meta">
+              {result.totalUpdated} updated &middot; {result.totalSkipped} skipped &middot;{' '}
+              {result.totalErrors} errors
             </p>
           </div>
 
           {result.results.length > 0 && (
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+            <table className="i18n-table">
               <thead>
-                <tr style={{ borderBottom: '2px solid rgba(128,128,128,0.15)' }}>
-                  <th style={thStyle}>Locale</th>
-                  <th style={thStyle}>Global</th>
-                  <th style={{ ...thStyle, textAlign: 'right' }}>Updated</th>
-                  <th style={{ ...thStyle, textAlign: 'right' }}>Skipped</th>
-                  <th style={thStyle}>Status</th>
+                <tr>
+                  <th>Locale</th>
+                  <th>Global</th>
+                  <th style={{ textAlign: 'right' }}>Updated</th>
+                  <th style={{ textAlign: 'right' }}>Skipped</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {Array.from(groupByLocale(result.results)).map(([locale, items]) =>
                   items.map((r, idx) => (
-                    <tr key={`${locale}-${r.global}`} style={{ borderBottom: '1px solid rgba(128,128,128,0.08)' }}>
+                    <tr key={`${locale}-${r.global}`}>
                       {idx === 0 && (
-                        <td rowSpan={items.length} style={{ ...tdStyle, fontWeight: 600, verticalAlign: 'top' }}>
+                        <td rowSpan={items.length} style={{ fontWeight: 600, verticalAlign: 'top' }}>
                           {locale.toUpperCase()}
                         </td>
                       )}
-                      <td style={tdStyle}>{r.global}</td>
-                      <td style={{ ...tdStyle, textAlign: 'right', color: r.updated > 0 ? '#16a34a' : undefined }}>{r.updated}</td>
-                      <td style={{ ...tdStyle, textAlign: 'right', color: r.skipped > 0 ? '#ca8a04' : undefined }}>{r.skipped}</td>
-                      <td style={tdStyle}>
+                      <td>{r.global}</td>
+                      <td style={{ textAlign: 'right' }}>
+                        <span className={r.updated > 0 ? 'i18n-table__status--synced' : ''}>
+                          {r.updated}
+                        </span>
+                      </td>
+                      <td style={{ textAlign: 'right' }}>
+                        <span className={r.skipped > 0 ? 'i18n-table__status--no-change' : ''}>
+                          {r.skipped}
+                        </span>
+                      </td>
+                      <td>
                         {r.errors.length > 0 ? (
-                          <span style={{ color: '#dc2626' }}>{r.errors.join('; ')}</span>
+                          <span className="i18n-table__status--error">{r.errors.join('; ')}</span>
                         ) : r.updated > 0 ? (
-                          <span style={{ color: '#16a34a' }}>synced</span>
+                          <span className="i18n-table__status--synced">synced</span>
                         ) : (
-                          <span style={{ opacity: 0.4 }}>no changes</span>
+                          <span className="i18n-table__status--no-change">no changes</span>
                         )}
                       </td>
                     </tr>
@@ -784,32 +788,4 @@ export function I18nPanel() {
       )}
     </div>
   )
-}
-
-const thStyle: React.CSSProperties = { textAlign: 'left', padding: '8px 12px', fontWeight: 600 }
-const tdStyle: React.CSSProperties = { padding: '8px 12px' }
-
-function btnStyle(isLoading: boolean, color: string, disabled?: boolean): React.CSSProperties {
-  return {
-    padding: '10px 22px',
-    fontSize: 14,
-    fontWeight: 600,
-    border: 'none',
-    borderRadius: 6,
-    cursor: isLoading || disabled ? 'not-allowed' : 'pointer',
-    background: isLoading ? '#666' : disabled ? 'rgba(128,128,128,0.2)' : color,
-    color: disabled ? 'rgba(128,128,128,0.5)' : '#fff',
-    transition: 'background 0.15s',
-  }
-}
-
-function btnSmallStyle(isLoading: boolean): React.CSSProperties {
-  return {
-    padding: '6px 14px',
-    fontSize: 13,
-    fontWeight: 500,
-    borderRadius: 5,
-    cursor: isLoading ? 'not-allowed' : 'pointer',
-    transition: 'all 0.15s',
-  }
 }
