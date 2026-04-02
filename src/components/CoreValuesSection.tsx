@@ -52,6 +52,8 @@ function parseValues(title: string): { word: string; iconKey: string }[] {
   }))
 }
 
+const EASE = [0.32, 0.72, 0, 1] as const
+
 const containerVariants = {
   hidden: {},
   visible: {
@@ -64,7 +66,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] },
+    transition: { duration: 0.6, ease: EASE },
   },
 }
 
@@ -72,7 +74,7 @@ const lineVariants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 1, delay: 0.05, ease: [0.32, 0.72, 0, 1] },
+    transition: { duration: 1, delay: 0.05, ease: EASE },
   },
 }
 
@@ -81,7 +83,7 @@ const descVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: 0.65, ease: [0.32, 0.72, 0, 1] },
+    transition: { duration: 0.6, delay: 0.65, ease: EASE },
   },
 }
 

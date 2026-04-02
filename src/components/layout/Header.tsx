@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { LanguageSelector } from './LanguageSelector'
@@ -75,8 +76,11 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [megaOpen, setMegaOpen] = useState(false)
+  const pathname = usePathname()
   const items = buildNavItems(navData, locale)
   const labels = getStaticLabels(locale)
+
+  const isHomepage = pathname === `/${locale}` || pathname === `/${locale}/`
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -87,27 +91,27 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
 
   const handleMegaOpenChange = useCallback((open: boolean) => setMegaOpen(open), [])
 
-  const solid = scrolled || mobileOpen || megaOpen
+  const solid = !isHomepage || scrolled || mobileOpen || megaOpen
   const barColor = solid ? 'bg-heading' : 'bg-white'
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-[background-color,box-shadow] duration-300 ease-out ${
+        className={`fixed top-0 left-0 w-full z-50 transition-[background-color,box-shadow,height] duration-300 ease-out ${
           solid ? 'bg-white shadow-nav' : 'bg-transparent'
-        }`}
+        } ${scrolled ? 'h-[56px]' : 'h-[72px]'}`}
       >
-        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[72px]">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between h-full">
             <Link href={`/${locale}`} className="flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
               <Image
                 src="/brand_assets/logo.png"
                 alt="Polinar"
                 width={120}
                 height={36}
-                className={`h-[36px] w-auto transition-[filter] duration-300 ${
+                className={`w-auto transition-[filter,height] duration-300 ${
                   solid ? '' : 'brightness-0 invert'
-                }`}
+                } ${scrolled ? 'h-[28px]' : 'h-[36px]'}`}
                 priority
               />
             </Link>
