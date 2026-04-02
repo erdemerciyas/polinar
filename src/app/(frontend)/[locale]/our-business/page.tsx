@@ -189,7 +189,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
         { name: pageTitle, url: `${SITE_URL}/${locale}/our-business` },
       ])} />
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
+      <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[200px] lg:pb-32">
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-navy/80"></div>
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)',

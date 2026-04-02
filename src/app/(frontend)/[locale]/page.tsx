@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal'
 import { NewsSlider } from '@/components/NewsSlider'
+import { CoreValuesSection } from '@/components/CoreValuesSection'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -178,20 +179,11 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* Core Values */}
-      <section className="py-24 lg:py-32 bg-white">
-        <ScrollReveal className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display font-bold italic text-polinar-red text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
-            {homepageData?.coreValues?.title || ''}
-          </h2>
-          <div className="divider-asymmetric justify-center mt-4 mb-6">
-            <span className="div-red"></span>
-            <span className="div-gray"></span>
-          </div>
-          <p className="max-w-prose mx-auto text-body-muted font-body text-base lg:text-lg leading-relaxed-body">
-            {homepageData?.coreValues?.description || ''}
-          </p>
-        </ScrollReveal>
-      </section>
+      <CoreValuesSection
+        title={homepageData?.coreValues?.title || ''}
+        description={homepageData?.coreValues?.description || ''}
+        locale={locale}
+      />
 
       {/* Our Business */}
       <section className="py-24 lg:py-32 bg-gray-light">

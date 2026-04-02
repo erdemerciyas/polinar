@@ -7,9 +7,10 @@ import type { Language } from '@/lib/i18n'
 type Props = {
   locale: string
   languages: Language[]
+  solid?: boolean
 }
 
-export function LanguageSelector({ locale, languages }: Props) {
+export function LanguageSelector({ locale, languages, solid = true }: Props) {
   const pathname = usePathname()
 
   function getLocalizedPath(targetLocale: string) {
@@ -24,13 +25,13 @@ export function LanguageSelector({ locale, languages }: Props) {
         <span key={lang.code} className="flex items-center gap-1">
           <Link
             href={getLocalizedPath(lang.code)}
-            className={`lang-btn ${lang.code === locale ? 'active' : ''}`}
+            className={`lang-btn ${lang.code === locale ? 'active' : ''} ${!solid ? 'lang-btn-transparent' : ''}`}
             title={lang.nativeLabel}
           >
             {lang.flagEmoji ? `${lang.flagEmoji} ` : ''}{lang.shortLabel}
           </Link>
           {i < languages.length - 1 && (
-            <span className="text-[#ccc] text-xs">|</span>
+            <span className={`text-xs transition-colors duration-300 ${solid ? 'text-[#ccc]' : 'text-white/50'}`}>|</span>
           )}
         </span>
       ))}

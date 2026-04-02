@@ -107,9 +107,9 @@ const textAlignClasses: Record<string, string> = {
 }
 
 const textPositionClasses: Record<string, string> = {
-  top: 'items-start pt-24 sm:pt-32',
-  center: 'items-center',
-  bottom: 'items-end pb-24 sm:pb-32',
+  top: 'items-start pt-[168px] sm:pt-[200px]',
+  center: 'items-center pt-[72px]',
+  bottom: 'items-end pb-24 sm:pb-32 pt-[72px]',
 }
 
 export function HeroSlider({ slides, settings, locale }: HeroSliderProps) {

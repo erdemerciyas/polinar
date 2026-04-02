@@ -164,7 +164,7 @@ export function InjectionMouldsPage({
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
+      <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[200px] lg:pb-32">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050191/polinar/static/injection-moulds-hero-bg.jpg')" }}

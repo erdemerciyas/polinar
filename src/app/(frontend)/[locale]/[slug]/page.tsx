@@ -73,7 +73,7 @@ export default async function DynamicPage({ params }: Props) {
     <>
       {/* Hero Banner */}
       {page.heroType !== 'none' && (
-        <section className="relative bg-navy grain-overlay py-24 lg:py-28">
+        <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[184px] lg:pb-28">
           <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
           {page.heroImage?.url && (
             <Image src={page.heroImage.url} alt={page.heroTitle || page.title || ''} fill sizes="100vw" className="object-cover opacity-30" />
@@ -88,9 +88,11 @@ export default async function DynamicPage({ params }: Props) {
 
       {/* Block Layout */}
       {page.layout && page.layout.length > 0 ? (
-        <RenderBlocks blocks={page.layout} locale={locale} />
+        <div className={page.heroType === 'none' ? 'pt-[72px]' : ''}>
+          <RenderBlocks blocks={page.layout} locale={locale} />
+        </div>
       ) : (
-        <section className="py-24 lg:py-32 bg-white">
+        <section className={`py-24 lg:py-32 bg-white ${page.heroType === 'none' ? 'pt-[168px]' : ''}`}>
           <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="font-display font-extrabold text-heading text-3xl mb-6">{page.title}</h1>
           </div>

@@ -94,11 +94,15 @@ export function MegaMenu({
   items,
   ctaLabels,
   commonLabels,
+  solid = true,
+  onOpenChange,
 }: {
   locale: string
   items: NavItem[]
   ctaLabels?: CTALabels | null
   commonLabels?: CommonLabels | null
+  solid?: boolean
+  onOpenChange?: (open: boolean) => void
 }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -107,10 +111,14 @@ export function MegaMenu({
   function handleEnter(key: string) {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setOpenMenu(key)
+    onOpenChange?.(true)
   }
 
   function handleLeave() {
-    timeoutRef.current = setTimeout(() => setOpenMenu(null), 150)
+    timeoutRef.current = setTimeout(() => {
+      setOpenMenu(null)
+      onOpenChange?.(false)
+    }, 150)
   }
 
   useEffect(() => {
@@ -130,7 +138,9 @@ export function MegaMenu({
         >
           <Link
             href={`/${locale}${item.path}`}
-            className="nav-link font-display font-semibold text-[14px] text-heading tracking-wide px-3 py-5 inline-block"
+            className={`nav-link font-display font-semibold text-[14px] tracking-wide px-3 py-5 inline-block transition-colors duration-300 ${
+              solid ? 'text-heading' : 'text-white'
+            }`}
           >
             {item.label}
             {item.megaMenu && (

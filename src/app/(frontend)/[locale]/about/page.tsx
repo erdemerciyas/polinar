@@ -74,7 +74,7 @@ export default async function AboutPage({ params }: Props) {
         { name: hero.label || 'About', url: `${SITE_URL}/${locale}/about` },
       ])} />
       {/* ===== 1. HERO ===== */}
-      <section className="relative min-h-[420px] lg:min-h-[520px] flex items-center overflow-hidden">
+      <section className="relative min-h-[420px] lg:min-h-[520px] flex items-center overflow-hidden pt-[72px]">
         {hero.backgroundImage?.url ? (
           <Image
             src={hero.backgroundImage.url}

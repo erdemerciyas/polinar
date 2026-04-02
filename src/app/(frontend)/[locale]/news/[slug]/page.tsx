@@ -90,7 +90,7 @@ export default async function NewsDetailPage({ params }: Props) {
         { name: article.title, url: `${SITE_URL}/${locale}/news/${slug}` },
       ])} />
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-24 lg:py-32">
+      <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[200px] lg:pb-32">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">

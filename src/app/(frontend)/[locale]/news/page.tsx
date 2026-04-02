@@ -56,7 +56,7 @@ export default async function NewsPage({ params }: Props) {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative bg-navy grain-overlay py-24 lg:py-28">
+      <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[184px] lg:pb-28">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">

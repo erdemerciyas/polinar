@@ -52,7 +52,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           navData={navData}
           commonLabels={uiLabels}
         />
-        <main className="pt-[72px]">
+        <main>
           {children}
         </main>
         <WhatsAppCTABar message={siteSettings?.whatsappCTA?.text} locale={locale} />

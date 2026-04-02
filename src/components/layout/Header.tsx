@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { LanguageSelector } from './LanguageSelector'
@@ -73,12 +73,30 @@ type HeaderProps = {
 
 export function Header({ locale, languages, navData, commonLabels }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [megaOpen, setMegaOpen] = useState(false)
   const items = buildNavItems(navData, locale)
   const labels = getStaticLabels(locale)
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const handleMegaOpenChange = useCallback((open: boolean) => setMegaOpen(open), [])
+
+  const solid = scrolled || mobileOpen || megaOpen
+  const barColor = solid ? 'bg-heading' : 'bg-white'
+
   return (
     <>
-      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-nav">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-[background-color,box-shadow] duration-300 ease-out ${
+          solid ? 'bg-white shadow-nav' : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[72px]">
             <Link href={`/${locale}`} className="flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
@@ -87,15 +105,24 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
                 alt="Polinar"
                 width={120}
                 height={36}
-                className="h-[36px] w-auto"
+                className={`h-[36px] w-auto transition-[filter] duration-300 ${
+                  solid ? '' : 'brightness-0 invert'
+                }`}
                 priority
               />
             </Link>
 
-            <MegaMenu locale={locale} items={items} ctaLabels={navData?.megaMenuCTA} commonLabels={commonLabels} />
+            <MegaMenu
+              locale={locale}
+              items={items}
+              ctaLabels={navData?.megaMenuCTA}
+              commonLabels={commonLabels}
+              solid={solid}
+              onOpenChange={handleMegaOpenChange}
+            />
 
             <div className="flex items-center gap-3">
-              <LanguageSelector locale={locale} languages={languages} />
+              <LanguageSelector locale={locale} languages={languages} solid={solid} />
 
               <button
                 className="lg:hidden relative flex items-center justify-center w-10 h-10"
@@ -103,17 +130,17 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
                 aria-label={mobileOpen ? labels.aria.closeMenu : labels.aria.openMenu}
               >
                 <span
-                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                  className={`absolute block w-6 h-[2px] ${barColor} transition-all duration-300 ease-spring ${
                     mobileOpen ? 'rotate-45 translate-y-0' : '-translate-y-[7px]'
                   }`}
                 />
                 <span
-                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                  className={`absolute block w-6 h-[2px] ${barColor} transition-all duration-300 ease-spring ${
                     mobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
                   }`}
                 />
                 <span
-                  className={`absolute block w-6 h-[2px] bg-heading transition-all duration-300 ease-spring ${
+                  className={`absolute block w-6 h-[2px] ${barColor} transition-all duration-300 ease-spring ${
                     mobileOpen ? '-rotate-45 translate-y-0' : 'translate-y-[7px]'
                   }`}
                 />
