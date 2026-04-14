@@ -4,7 +4,6 @@ import { getPayloadClient } from '@/lib/payload'
 import { organizationJsonLd, JsonLd } from '@/lib/seo'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { WhatsAppCTABar } from '@/components/layout/WhatsAppCTABar'
 import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import { fontClasses } from '@/lib/fonts'
 
@@ -55,7 +54,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main>
           {children}
         </main>
-        <WhatsAppCTABar message={siteSettings?.whatsappCTA?.text} locale={locale} />
         <Footer data={footerData} locale={locale} />
         <ChatWidget labels={siteSettings?.chatbot?.labels} />
       </body>

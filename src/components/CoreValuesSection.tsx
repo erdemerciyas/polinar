@@ -1,43 +1,12 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform, type Variants } from 'framer-motion'
 import { useRef } from 'react'
 
 type CoreValuesSectionProps = {
   title: string
   description: string
   locale: string
-}
-
-const valueIcons: Record<string, React.ReactNode> = {
-  quality: (
-    <svg className="w-9 h-9" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth={1.3}>
-      <path d="M18 3l4.326 8.557L32 13.236l-7 6.691L26.652 30 18 25.557 9.348 30 11 19.927l-7-6.691 9.674-1.679z" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 10v8m-3.5 2L18 18l3.5 2" strokeLinecap="round" strokeLinejoin="round" opacity={0.4} />
-    </svg>
-  ),
-  robust: (
-    <svg className="w-9 h-9" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth={1.3}>
-      <circle cx="18" cy="18" r="7" />
-      <circle cx="18" cy="18" r="2.5" />
-      <path d="M18 4v4m0 20v4M4 18h4m20 0h4" strokeLinecap="round" />
-      <path d="M8.2 8.2l2.8 2.8m14 14l2.8 2.8M27.8 8.2l-2.8 2.8M11 25l-2.8 2.8" strokeLinecap="round" opacity={0.35} />
-    </svg>
-  ),
-  durable: (
-    <svg className="w-9 h-9" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth={1.3}>
-      <path d="M18 4L6 10v8c0 7.7 5.4 14 12 16.2 6.6-2.2 12-8.5 12-16.2v-8z" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 4v30.2" strokeLinecap="round" opacity={0.2} />
-      <path d="M6 10l12 6 12-6" strokeLinecap="round" strokeLinejoin="round" opacity={0.25} />
-    </svg>
-  ),
-  reliable: (
-    <svg className="w-9 h-9" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth={1.3}>
-      <rect x="5" y="8" width="26" height="20" rx="3" />
-      <path d="M13 18l3.5 3.5L23 15" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} />
-      <path d="M5 13h26" strokeLinecap="round" opacity={0.25} />
-    </svg>
-  ),
 }
 
 const defaultKeys = ['quality', 'robust', 'durable', 'reliable']
@@ -52,106 +21,240 @@ function parseValues(title: string): { word: string; iconKey: string }[] {
   }))
 }
 
-const EASE = [0.32, 0.72, 0, 1] as const
+const EASE: [number, number, number, number] = [0.32, 0.72, 0, 1]
+const SPRING = { type: 'spring' as const, stiffness: 80, damping: 16 }
 
-const containerVariants = {
+function ValueIcon({ iconKey, isInView }: { iconKey: string; isInView: boolean }) {
+  const draw = {
+    initial: { pathLength: 0, opacity: 0 },
+    animate: isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 },
+    transition: { duration: 1.6, ease: EASE },
+  }
+  const d2 = { ...draw, transition: { ...draw.transition, delay: 0.6, duration: 1 } }
+
+  const map: Record<string, React.ReactNode> = {
+    quality: (
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
+        <motion.path d="M24 4l6 11.5L42 18l-9 9 2 13-11-5.5L13 40l2-13-9-9 12-2.5z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
+        <motion.path d="M24 14v11m-5 3l5-3 5 3" strokeLinecap="round" strokeLinejoin="round" {...d2} />
+      </svg>
+    ),
+    robust: (
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
+        <motion.circle cx="24" cy="24" r="10" {...draw} />
+        <motion.circle cx="24" cy="24" r="4" {...d2} />
+        <motion.path d="M24 4v7m0 26v7M4 24h7m26 0h7" strokeLinecap="round" {...d2} />
+        <motion.path d="M10 10l5 5m18 18l5 5M38 10l-5 5M10 38l5-5" strokeLinecap="round" opacity={0.4} {...d2} />
+      </svg>
+    ),
+    durable: (
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
+        <motion.path d="M24 4L8 13v11c0 10 7 19 16 21.5 9-2.5 16-11.5 16-21.5V13z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
+        <motion.path d="M24 4v40.5" strokeLinecap="round" opacity={0.25} {...d2} />
+        <motion.path d="M8 13l16 8.5 16-8.5" strokeLinecap="round" strokeLinejoin="round" opacity={0.3} {...d2} />
+      </svg>
+    ),
+    reliable: (
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
+        <motion.rect x="6" y="10" width="36" height="28" rx="4" {...draw} />
+        <motion.path d="M16 24l5 5L32 19" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} {...d2} />
+        <motion.path d="M6 17h36" strokeLinecap="round" opacity={0.25} {...d2} />
+      </svg>
+    ),
+  }
+  return map[iconKey] || map.quality
+}
+
+function FloatingGeo() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100])
+  const y2 = useTransform(scrollYProgress, [0, 1], [-60, 120])
+  const r1 = useTransform(scrollYProgress, [0, 1], [-10, 45])
+  const r2 = useTransform(scrollYProgress, [0, 1], [10, -35])
+
+  return (
+    <div ref={ref} className="cv-float-wrap" aria-hidden="true">
+      <motion.svg className="cv-float cv-float--1" style={{ y: y1, rotate: r1 }} viewBox="0 0 120 120" fill="none" stroke="currentColor">
+        <polygon points="60,8 112,38 112,92 60,122 8,92 8,38" strokeWidth={1} />
+        <polygon points="60,28 88,46 88,82 60,100 32,82 32,46" strokeWidth={0.6} opacity={0.5} />
+      </motion.svg>
+      <motion.svg className="cv-float cv-float--2" style={{ y: y2, rotate: r2 }} viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="50" cy="50" r="42" strokeWidth={1} />
+        <circle cx="50" cy="50" r="26" strokeWidth={0.6} opacity={0.5} />
+        <line x1="50" y1="4" x2="50" y2="96" strokeWidth={0.5} opacity={0.4} />
+        <line x1="4" y1="50" x2="96" y2="50" strokeWidth={0.5} opacity={0.4} />
+      </motion.svg>
+      <motion.svg className="cv-float cv-float--3" style={{ y: y1, rotate: r2 }} viewBox="0 0 80 80" fill="none" stroke="currentColor">
+        <rect x="10" y="10" width="60" height="60" strokeWidth={0.8} transform="rotate(45 40 40)" />
+        <rect x="20" y="20" width="40" height="40" strokeWidth={0.5} opacity={0.5} transform="rotate(45 40 40)" />
+      </motion.svg>
+      <motion.svg className="cv-float cv-float--4" style={{ y: y2, rotate: r1 }} viewBox="0 0 80 80" fill="none" stroke="currentColor">
+        <polygon points="40,6 74,66 6,66" strokeWidth={0.8} />
+        <polygon points="40,22 58,56 22,56" strokeWidth={0.5} opacity={0.45} />
+      </motion.svg>
+    </div>
+  )
+}
+
+function octagonPoints(cx: number, cy: number, r: number): string {
+  const pts: string[] = []
+  for (let i = 0; i < 8; i++) {
+    const angle = (Math.PI / 8) + (Math.PI * 2 * i) / 8
+    pts.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`)
+  }
+  return pts.join(' ')
+}
+
+const OCTAGON_LAYERS = 5
+const OCTAGON_VIEWBOX = 200
+const OCTAGON_CENTER = OCTAGON_VIEWBOX / 2
+
+const RINGS: { outerR: number; innerR: number }[] = [
+  { outerR: 95, innerR: 78 },
+  { outerR: 68, innerR: 60 },
+  { outerR: 50, innerR: 42 },
+  { outerR: 32, innerR: 24 },
+  { outerR: 16, innerR: 0 },
+]
+
+function buildRingPath(outerR: number, innerR: number): string {
+  const C = OCTAGON_CENTER
+  const outer = octagonPoints(C, C, outerR)
+  if (innerR <= 0) return `M ${outer.split(' ').map(p => p.replace(',', ' ')).join(' L ')} Z`
+
+  const inner = octagonPoints(C, C, innerR)
+  const outerParts = outer.split(' ').map(p => p.replace(',', ' '))
+  const innerParts = inner.split(' ').map(p => p.replace(',', ' ')).reverse()
+
+  return `M ${outerParts.join(' L ')} Z M ${innerParts.join(' L ')} Z`
+}
+
+const ringPaths = RINGS.map(r => buildRingPath(r.outerR, r.innerR))
+
+function OctagonRing({ d, scrollYProgress, index }: {
+  d: string
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress']
+  index: number
+}) {
+  const reversed = RINGS.length - 1 - index
+
+  const waveOffset = reversed * 0.1
+  const start = 0.0 + waveOffset
+  const mid = 0.15 + waveOffset
+  const end = 0.35 + waveOffset
+
+  const scale = useTransform(scrollYProgress, [start, mid, end], [0.92, 1.02, 1])
+  const opacity = useTransform(scrollYProgress, [start, mid, end], [0, 0.7, 1])
+
+  return (
+    <motion.path
+      d={d}
+      fill="#E30613"
+      fillRule="evenodd"
+      style={{ scale, opacity, transformOrigin: 'center' }}
+    />
+  )
+}
+
+function NestedOctagons() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 0.9', 'start 0.15'],
+  })
+
+  return (
+    <div ref={ref} className="cv-octagons" aria-hidden="true">
+      <svg
+        viewBox={`0 0 ${OCTAGON_VIEWBOX} ${OCTAGON_VIEWBOX}`}
+        className="cv-octagons-svg"
+      >
+        {ringPaths.map((d, i) => (
+          <OctagonRing
+            key={i}
+            d={d}
+            scrollYProgress={scrollYProgress}
+            index={i}
+          />
+        ))}
+      </svg>
+    </div>
+  )
+}
+
+const stagger = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.13, delayChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.05 } },
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: EASE },
-  },
+const panelReveal = {
+  hidden: { opacity: 0, y: 48, scale: 0.94 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: SPRING },
 }
 
-const lineVariants = {
+const numReveal = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { ...SPRING, delay: 0.1 } },
+}
+
+const barScale = {
   hidden: { scaleX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 1, delay: 0.05, ease: EASE },
-  },
+  visible: { scaleX: 1, transition: { duration: 0.7, ease: EASE } },
 }
 
-const descVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: 0.65, ease: EASE },
-  },
+const descReveal = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { ...SPRING, delay: 0.7 } },
 }
 
 export function CoreValuesSection({ title, description }: CoreValuesSectionProps) {
   const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.25 })
+  const inView = useInView(ref, { once: true, amount: 0.15 })
   const values = parseValues(title)
 
   return (
-    <section
-      ref={ref}
-      className="relative py-20 lg:py-28 overflow-hidden core-values-bg"
-    >
-      {/* Precision grid pattern */}
-      <div className="precision-grid" aria-hidden="true" />
-
-      {/* Grain overlay */}
-      <div className="grain-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
-
-      {/* Thin red rule at top */}
-      <motion.div
-        className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-polinar-red to-transparent origin-center"
-        variants={lineVariants}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-      />
+    <section ref={ref} className="relative py-20 lg:py-28 overflow-hidden cv-section">
+      <FloatingGeo />
+      <NestedOctagons />
 
       <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Value pillars */}
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-px core-values-grid-wrap"
-          variants={containerVariants}
+          className="cv-strip"
+          variants={stagger}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={inView ? 'visible' : 'hidden'}
         >
           {values.map((v, i) => (
             <motion.div
               key={v.iconKey + i}
-              className="core-value-pillar group"
-              variants={cardVariants}
+              className="cv-panel group"
+              variants={panelReveal}
             >
-              {/* Subtle index */}
-              <span className="core-value-index">
-                0{i + 1}
-              </span>
+              <div className="cv-panel-bg" aria-hidden="true" />
 
-              {/* Icon */}
-              <div className="core-value-icon">
-                {valueIcons[v.iconKey] || valueIcons.quality}
+              <motion.span className="cv-panel-num" variants={numReveal}>
+                {String(i + 1).padStart(2, '0')}
+              </motion.span>
+
+              <div className="cv-panel-icon">
+                <ValueIcon iconKey={v.iconKey} isInView={inView} />
               </div>
 
-              {/* Value word */}
-              <h3 className="font-display font-extrabold text-white uppercase text-base lg:text-lg tracking-[0.08em] mt-4 mb-0">
-                {v.word}
-              </h3>
+              <motion.div className="cv-panel-bar" variants={barScale} />
 
-              {/* Bottom accent on hover */}
-              <div className="core-value-bar" />
+              <h3 className="cv-panel-title">{v.word}</h3>
+
+              <div className="cv-panel-glow" aria-hidden="true" />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Description */}
         <motion.p
-          className="max-w-2xl mx-auto text-center text-white/55 font-body text-base lg:text-lg leading-relaxed mt-10 lg:mt-14"
-          variants={descVariants}
+          className="cv-desc"
+          variants={descReveal}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={inView ? 'visible' : 'hidden'}
         >
           {description}
         </motion.p>

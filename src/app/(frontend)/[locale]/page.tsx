@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal'
 import { NewsSlider } from '@/components/NewsSlider'
 import { CoreValuesSection } from '@/components/CoreValuesSection'
+import { WhatsAppCTABar } from '@/components/layout/WhatsAppCTABar'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -101,11 +102,12 @@ export default async function HomePage({ params }: Props) {
   let navData: any = null
   let uiLabels: any = null
   let news = null
+  let siteSettings: any = null
 
   try {
     const payload = await getPayloadClient()
 
-    ;[homepageData, navData, uiLabels, news] = await Promise.all([
+    ;[homepageData, navData, uiLabels, news, siteSettings] = await Promise.all([
       payload.findGlobal({ slug: 'homepage-settings', locale: locale as any }),
       payload.findGlobal({ slug: 'navigation', locale: locale as any }),
       payload.findGlobal({ slug: 'ui-labels', locale: locale as any }),
@@ -116,6 +118,7 @@ export default async function HomePage({ params }: Props) {
         sort: '-date',
         limit: 6,
       }),
+      payload.findGlobal({ slug: 'site-settings', locale: locale as any }),
     ])
   } catch {}
 
@@ -331,6 +334,8 @@ export default async function HomePage({ params }: Props) {
           />
         </div>
       </section>
+
+      <WhatsAppCTABar message={siteSettings?.whatsappCTA?.text} locale={locale} />
     </>
   )
 }

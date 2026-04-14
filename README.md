@@ -157,15 +157,18 @@ npm run i18n:create-page {slug}
 
 - **Dynamic CMS Pages** — block-based page builder (hero slider, rich text, gallery, product grid, video, contact form)
 - **Product Pages** — injection moulds, machinery, plastic test equipment with locale-aware static data
-- **News & Articles** — CMS-managed with SEO metadata and news slider
-- **Contact Form** — backend submission handling with admin notifications
+- **News & Articles** — CMS-managed with SEO metadata and drag-enabled news slider
+- **Contact Page** — redesigned with floating-label form, asymmetric layout, premium card styling, and animated info cards
+- **Contact Form** — floating labels with animated underlines, framer-motion submit button, animated success/error feedback
 - **Newsletter** — subscription management
 - **AI Chatbot** — Anthropic Claude-powered support widget
 - **Cloudinary Media** — all media assets stored and served via Cloudinary CDN
 - **SEO** — per-page meta, Open Graph, JSON-LD structured data, auto-generated sitemap & robots.txt
 - **RTL Support** — automatic `dir="rtl"` for Arabic locale
 - **Mega Menu** — CMS-driven navigation with responsive mobile menu
-- **Scroll Animations** — Framer Motion powered reveal effects
+- **Scroll Animations** — Framer Motion powered reveal effects with staggered entry, blur-to-sharp transitions
+- **Core Values Section** — interactive panels with floating geometric shapes, hover-triggered animations, and nested octagon SVG backgrounds
+- **Counter Animation** — scroll-triggered number counters with corner accents, divider animations, and glow effects on the about page
 
 ## Available Scripts
 
