@@ -54,5 +54,17 @@ export type StaticLabels = {
     overviewAlt: string
     specificationsAlt: string
     detailAlt: string
+    digitalCatalog: string
+    viewCatalog: string
+    viewOnline: string
+    catalogPage: string
+    catalogZoomIn: string
+    catalogZoomOut: string
+    catalogResetZoom: string
+    catalogPrint: string
+    catalogLoading: string
+    catalogPageOf: string
+    downloadAll: string
+    downloadAllProgress: string
   }
 }

@@ -59,7 +59,7 @@ export default async function NewsPage({ params }: Props) {
       <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[184px] lg:pb-28">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
+          <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-wider mb-2">
             {hero.label || ''}
           </p>
           <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading">
@@ -91,7 +91,7 @@ export default async function NewsPage({ params }: Props) {
                     </div>
                     <div className="p-6 lg:p-8">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="inline-block bg-polinar-red text-white text-xs font-display font-bold px-3 py-1 rounded-full">
+                        <span className="inline-block bg-polinar-mustard text-navy-deep text-xs font-display font-bold px-3 py-1 rounded-full">
                           {item.year || (item.date ? new Date(item.date).getFullYear() : '')}
                         </span>
                         {item.date && (

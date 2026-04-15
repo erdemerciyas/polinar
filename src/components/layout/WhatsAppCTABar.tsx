@@ -4,9 +4,9 @@ export function WhatsAppCTABar({ message, locale }: { message?: string | null; l
   const labels = getStaticLabels(locale)
 
   return (
-    <div className="bg-polinar-red py-5">
+    <div className="bg-polinar-mustard py-5">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-white font-body text-base text-center sm:text-left">{message || ''}</p>
+        <p className="text-navy font-body text-base text-center sm:text-left">{message || ''}</p>
         <a
           href={labels.company.whatsappUrl}
           target="_blank"

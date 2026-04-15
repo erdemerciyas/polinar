@@ -201,7 +201,7 @@ export function ContactForm({ formLabels, messages }: Props) {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
-              className="text-polinar-red font-body text-sm font-medium"
+              className="text-polinar-mustard font-body text-sm font-medium"
             >
               {messages.error || ''}
             </motion.p>

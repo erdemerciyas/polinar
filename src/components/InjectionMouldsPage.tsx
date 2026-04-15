@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { getInjectionMouldsData, type MouldCategoryData } from '@/data/injection-moulds'
 import { getStaticLabels } from '@/data/static-labels'
+import { CatalogBadge, CatalogViewer } from '@/components/catalog'
 
 function MouldDetailModal({
   category,
@@ -14,7 +15,10 @@ function MouldDetailModal({
   onClose: () => void
   labels: ReturnType<typeof getStaticLabels>
 }) {
+  const [catalogOpen, setCatalogOpen] = useState(false)
+
   useEffect(() => {
+    if (catalogOpen) return
     document.body.style.overflow = 'hidden'
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -24,7 +28,24 @@ function MouldDetailModal({
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleEsc)
     }
-  }, [onClose])
+  }, [onClose, catalogOpen])
+
+  const catalogLabels = {
+    digitalCatalog: labels.product.digitalCatalog,
+    page: labels.product.catalogPage,
+    zoomIn: labels.product.catalogZoomIn,
+    zoomOut: labels.product.catalogZoomOut,
+    resetZoom: labels.product.catalogResetZoom,
+    print: labels.product.catalogPrint,
+    download: labels.product.downloadBrochure,
+    close: labels.aria.close,
+    previousPage: labels.aria.previous,
+    nextPage: labels.aria.next,
+    loading: labels.product.catalogLoading,
+    pageOf: labels.product.catalogPageOf,
+    downloadAll: labels.product.downloadAll,
+    downloadAllProgress: labels.product.downloadAllProgress,
+  }
 
   return (
     <div className="mould-modal-overlay" onClick={onClose}>
@@ -98,19 +119,37 @@ function MouldDetailModal({
               </ul>
             </div>
 
-            <a
-              href={category.pdfUrl}
-              download
-              className="btn-primary-gold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25m-18 0V6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v9.75m-18 0h18M12 3v12m0 0-3.75-3.75M12 15l3.75-3.75" />
-              </svg>
-              {labels.product.downloadBrochure}
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => setCatalogOpen(true)}
+                className="btn-primary-gold inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+                {labels.product.viewOnline}
+              </button>
+              <a
+                href={category.pdfUrl}
+                download
+                className="btn-outline-gold inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-current rounded-[3px] px-6 py-2.5 text-sm font-display font-semibold transition-colors hover:bg-moulds-gold/10"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                {labels.product.downloadBrochure}
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+      <CatalogViewer
+        catalogs={[{ id: category.id, name: category.name, pdfUrl: category.pdfUrl }]}
+        isOpen={catalogOpen}
+        onClose={() => setCatalogOpen(false)}
+        labels={catalogLabels}
+      />
     </div>
   )
 }
@@ -171,23 +210,34 @@ export function InjectionMouldsPage({
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-display font-semibold text-moulds-gold uppercase tracking-wider mb-2">
-            <Link href={`/${locale}`} className="hover:text-white transition-colors">
-              {ui.breadcrumbHome}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
-              {breadcrumbLabel || ui.breadcrumbParentFallback}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <span className="text-white/70">{ui.breadcrumbCurrent}</span>
-          </p>
-          <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
-            {ui.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
-            {ui.heroSubtitle}
-          </p>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="text-sm font-display font-semibold text-moulds-gold uppercase tracking-wider mb-2">
+                <Link href={`/${locale}`} className="hover:text-white transition-colors">
+                  {ui.breadcrumbHome}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
+                  {breadcrumbLabel || ui.breadcrumbParentFallback}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <span className="text-white/70">{ui.breadcrumbCurrent}</span>
+              </p>
+              <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
+                {ui.heroTitle}
+              </h1>
+              <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
+                {ui.heroSubtitle}
+              </p>
+            </div>
+            <div className="hidden md:block flex-shrink-0 mt-8">
+              <CatalogBadge
+                catalogs={categories.map((c) => ({ id: c.id, name: c.name, pdfUrl: c.pdfUrl }))}
+                locale={locale}
+                accentColor="#C8A951"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

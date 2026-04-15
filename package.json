@@ -16,7 +16,8 @@
     "i18n:validate": "tsx scripts/validate-i18n.ts",
     "i18n:scaffold": "tsx scripts/scaffold-i18n.ts",
     "i18n:scaffold-static": "tsx scripts/scaffold-static-i18n.ts",
-    "i18n:create-page": "tsx scripts/create-static-page.ts"
+    "i18n:create-page": "tsx scripts/create-static-page.ts",
+    "seed:about-images": "tsx scripts/seed-about-images.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.0",
@@ -31,6 +32,7 @@
     "next": "15.3.9",
     "payload": "^3.0.0",
     "payloadcms-storage-cloudinary": "^1.0.1",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.33.0"

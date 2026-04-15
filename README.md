@@ -16,6 +16,7 @@ Corporate website for **Polinar** — a plastic injection mould and pipe fitting
 | Rich Text | Lexical Editor (`@payloadcms/richtext-lexical`) |
 | SEO | `@payloadcms/plugin-seo`, JSON-LD, dynamic sitemap |
 | AI Chatbot | Anthropic Claude SDK |
+| PDF Catalogs | pdf-lib |
 | Image Processing | Sharp |
 | Language | TypeScript 5 |
 | Deployment | Vercel |
@@ -87,12 +88,13 @@ src/
 ├── app/
 │   ├── (frontend)/[locale]/   # Public pages with locale prefix
 │   ├── (payload)/admin/       # Payload CMS admin panel
-│   └── api/                   # API routes (contact, chatbot, newsletter, i18n)
+│   └── api/                   # API routes (contact, chatbot, newsletter, search, merge-catalogs)
 ├── blocks/                    # CMS block components (Hero, RichText, Gallery, …)
 ├── collections/               # Payload collections (Users, Media, News, Pages, …)
 ├── globals/                   # Payload globals (navigation, footer, site settings, …)
 ├── components/                # Shared UI components
-│   ├── layout/                # Header, Footer, MegaMenu, MobileMenu
+│   ├── layout/                # Header, Footer, MegaMenu, MobileMenu, SearchOverlay
+│   ├── catalog/               # Digital catalog viewer (PDF rendering, merge, download)
 │   ├── ui/                    # ScrollReveal and other primitives
 │   └── chatbot/               # AI ChatWidget
 ├── data/                      # Static locale-aware content modules
@@ -156,19 +158,21 @@ npm run i18n:create-page {slug}
 ## Key Features
 
 - **Dynamic CMS Pages** — block-based page builder (hero slider, rich text, gallery, product grid, video, contact form)
-- **Product Pages** — injection moulds, machinery, plastic test equipment with locale-aware static data
+- **Product Pages** — injection moulds, machinery, plastic test equipment with locale-aware static data and per-category color themes (gold, steel, cyan)
+- **Digital Catalog Viewer** — in-browser PDF catalog reader with zoom, print, download, and multi-catalog merge via `pdf-lib`
+- **Site Search** — full-text search overlay across CMS pages, news, and static product data (`/api/search`)
 - **News & Articles** — CMS-managed with SEO metadata and drag-enabled news slider
-- **Contact Page** — redesigned with floating-label form, asymmetric layout, premium card styling, and animated info cards
-- **Contact Form** — floating labels with animated underlines, framer-motion submit button, animated success/error feedback
+- **About Page** — Cloudinary-hosted gallery, video player, scroll-triggered counter animations with corner accents and glow effects
+- **Contact Page** — floating-label form, asymmetric layout, premium card styling, animated info cards
 - **Newsletter** — subscription management
 - **AI Chatbot** — Anthropic Claude-powered support widget
 - **Cloudinary Media** — all media assets stored and served via Cloudinary CDN
 - **SEO** — per-page meta, Open Graph, JSON-LD structured data, auto-generated sitemap & robots.txt
 - **RTL Support** — automatic `dir="rtl"` for Arabic locale
-- **Mega Menu** — CMS-driven navigation with responsive mobile menu
+- **Mega Menu** — CMS-driven navigation with category-themed cards, responsive robot CTA panel, and mobile menu
 - **Scroll Animations** — Framer Motion powered reveal effects with staggered entry, blur-to-sharp transitions
 - **Core Values Section** — interactive panels with floating geometric shapes, hover-triggered animations, and nested octagon SVG backgrounds
-- **Counter Animation** — scroll-triggered number counters with corner accents, divider animations, and glow effects on the about page
+- **Design System** — extended Tailwind config with custom color tokens (moulds-gold, machinery-steel, pte-cyan), asymmetric dividers, and reusable CSS utility classes
 
 ## Available Scripts
 
@@ -180,6 +184,7 @@ npm run i18n:create-page {slug}
 | `npm run lint` | Run ESLint |
 | `npm run generate:types` | Generate Payload TypeScript types |
 | `npm run seed` | Seed database with initial data |
+| `npm run seed:about-images` | Upload about page images to Cloudinary |
 
 ## Deployment
 

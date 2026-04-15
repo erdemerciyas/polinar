@@ -150,7 +150,7 @@ function OctagonRing({ d, scrollYProgress, index }: {
   return (
     <motion.path
       d={d}
-      fill="#E30613"
+      fill="#EDBA13"
       fillRule="evenodd"
       style={{ scale, opacity, transformOrigin: 'center' }}
     />

@@ -71,7 +71,7 @@ export function MobileMenu({
                 {item.megaMenu ? (
                   <>
                     <button
-                      className="w-full flex items-center justify-between text-white font-display font-bold text-lg py-4 hover:text-polinar-red transition-colors"
+                      className="w-full flex items-center justify-between text-white font-display font-bold text-lg py-4 hover:text-polinar-mustard transition-colors"
                       onClick={() => toggleSubmenu(item.key)}
                     >
                       {item.label}
@@ -111,7 +111,7 @@ export function MobileMenu({
                 ) : (
                   <Link
                     href={`/${locale}${item.path}`}
-                    className="block text-white font-display font-bold text-lg py-4 hover:text-polinar-red transition-colors"
+                    className="block text-white font-display font-bold text-lg py-4 hover:text-polinar-mustard transition-colors"
                     onClick={onClose}
                   >
                     {item.label}

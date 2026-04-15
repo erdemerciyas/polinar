@@ -97,7 +97,7 @@ export function NewsSlider({
       {/* Heading */}
       <div className="mb-10">
         {sectionLabel && (
-          <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider">
+          <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-wider">
             {sectionLabel}
           </p>
         )}
@@ -107,7 +107,7 @@ export function NewsSlider({
           </h2>
         )}
         <div className="divider-asymmetric">
-          <span className="div-red"></span>
+          <span className="div-mustard"></span>
           <span className="div-gray"></span>
         </div>
       </div>
@@ -148,7 +148,7 @@ export function NewsSlider({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                 </div>
                 <div className="p-5 lg:p-6 flex flex-col flex-1">
-                  <span className="inline-block bg-polinar-red text-white text-xs font-display font-bold px-3 py-1 rounded-full mb-3 w-fit">
+                  <span className="inline-block bg-polinar-mustard text-navy-deep text-xs font-display font-bold px-3 py-1 rounded-full mb-3 w-fit">
                     {item.year || (item.date ? new Date(item.date).getFullYear() : '')}
                   </span>
                   <h3 className="font-display font-bold text-heading text-base mb-2 line-clamp-2">
@@ -171,7 +171,7 @@ export function NewsSlider({
             onClick={prev}
             disabled={page === 0}
             aria-label="Previous"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-card text-heading border border-border-soft hover:shadow-card-hover hover:border-polinar-red/20 active:scale-95 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-card text-heading border border-border-soft hover:shadow-card-hover hover:border-polinar-mustard/20 active:scale-95 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -186,7 +186,7 @@ export function NewsSlider({
                 aria-label={`Page ${idx + 1}`}
                 className={`rounded-full transition-all duration-300 ${
                   idx === page
-                    ? 'w-8 h-2 bg-polinar-red'
+                    ? 'w-8 h-2 bg-polinar-mustard'
                     : 'w-2 h-2 bg-border-soft hover:bg-body-tertiary'
                 }`}
               />
@@ -197,7 +197,7 @@ export function NewsSlider({
             onClick={next}
             disabled={page === totalPages - 1}
             aria-label="Next"
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-card text-heading border border-border-soft hover:shadow-card-hover hover:border-polinar-red/20 active:scale-95 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-card text-heading border border-border-soft hover:shadow-card-hover hover:border-polinar-mustard/20 active:scale-95 disabled:opacity-30 disabled:pointer-events-none transition-all duration-300"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

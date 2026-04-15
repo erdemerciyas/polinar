@@ -61,6 +61,18 @@ const en: StaticLabels = {
     overviewAlt: 'Overview',
     specificationsAlt: 'Specifications',
     detailAlt: 'Detail',
+    digitalCatalog: 'Digital Catalog',
+    viewCatalog: 'Browse Online',
+    viewOnline: 'View Online',
+    catalogPage: 'Page',
+    catalogZoomIn: 'Zoom In',
+    catalogZoomOut: 'Zoom Out',
+    catalogResetZoom: 'Reset Zoom',
+    catalogPrint: 'Print',
+    catalogLoading: 'Loading catalog...',
+    catalogPageOf: 'of',
+    downloadAll: 'Download All as PDF',
+    downloadAllProgress: 'Preparing...',
   },
 }
 

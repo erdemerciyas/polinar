@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { getPlasticTestEquipmentData } from '@/data/plastic-test-equipment'
 import { getStaticLabels } from '@/data/static-labels'
 import type { TestEquipmentCategory } from '@/data/plastic-test-equipment'
+import { CatalogBadge, CatalogViewer } from '@/components/catalog'
 
 const capabilityIcons = [
   <svg key="precision" className="w-7 h-7" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -43,9 +44,33 @@ function EquipmentDetailModal({
 }: {
   category: TestEquipmentCategory
   onClose: () => void
-  labels: { standards: string; keyFeatures: string; technicalSpecs: string; downloadBrochure: string; close: string; overviewAlt: string; detailAlt: string }
+  labels: {
+    standards: string
+    keyFeatures: string
+    technicalSpecs: string
+    downloadBrochure: string
+    viewOnline: string
+    close: string
+    overviewAlt: string
+    detailAlt: string
+    digitalCatalog: string
+    catalogPage: string
+    catalogZoomIn: string
+    catalogZoomOut: string
+    catalogResetZoom: string
+    catalogPrint: string
+    catalogLoading: string
+    catalogPageOf: string
+    downloadAll: string
+    downloadAllProgress: string
+    previous: string
+    next: string
+  }
 }) {
+  const [catalogOpen, setCatalogOpen] = useState(false)
+
   useEffect(() => {
+    if (catalogOpen) return
     document.body.style.overflow = 'hidden'
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -55,7 +80,24 @@ function EquipmentDetailModal({
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleEsc)
     }
-  }, [onClose])
+  }, [onClose, catalogOpen])
+
+  const catalogLabels = {
+    digitalCatalog: labels.digitalCatalog,
+    page: labels.catalogPage,
+    zoomIn: labels.catalogZoomIn,
+    zoomOut: labels.catalogZoomOut,
+    resetZoom: labels.catalogResetZoom,
+    print: labels.catalogPrint,
+    download: labels.downloadBrochure,
+    close: labels.close,
+    previousPage: labels.previous,
+    nextPage: labels.next,
+    loading: labels.catalogLoading,
+    pageOf: labels.catalogPageOf,
+    downloadAll: labels.downloadAll,
+    downloadAllProgress: labels.downloadAllProgress,
+  }
 
   return (
     <div className="mould-modal-overlay" onClick={onClose}>
@@ -164,14 +206,23 @@ function EquipmentDetailModal({
               </div>
             )}
 
-            <div className="mt-auto pt-4">
-              <a
-                href={category.pdfUrl}
-                download
+            <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => setCatalogOpen(true)}
                 className="btn-primary-cyan inline-flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25m-18 0V6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v9.75m-18 0h18M12 3v12m0 0-3.75-3.75M12 15l3.75-3.75" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+                {labels.viewOnline}
+              </button>
+              <a
+                href={category.pdfUrl}
+                download
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-pte-cyan/30 text-pte-cyan rounded-[3px] px-6 py-2.5 text-sm font-display font-semibold transition-colors hover:bg-pte-cyan/5"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                 </svg>
                 {labels.downloadBrochure}
               </a>
@@ -179,6 +230,13 @@ function EquipmentDetailModal({
           </div>
         </div>
       </div>
+
+      <CatalogViewer
+        catalogs={[{ id: category.id, name: category.name, pdfUrl: category.pdfUrl }]}
+        isOpen={catalogOpen}
+        onClose={() => setCatalogOpen(false)}
+        labels={catalogLabels}
+      />
     </div>
   )
 }
@@ -201,9 +259,22 @@ export function PlasticTestEquipmentPage({
     keyFeatures: staticLabels.product.keyFeatures,
     technicalSpecs: staticLabels.product.technicalSpecs,
     downloadBrochure: staticLabels.product.downloadBrochure,
+    viewOnline: staticLabels.product.viewOnline,
     close: staticLabels.aria.close,
     overviewAlt: staticLabels.product.overviewAlt,
     detailAlt: staticLabels.product.detailAlt,
+    digitalCatalog: staticLabels.product.digitalCatalog,
+    catalogPage: staticLabels.product.catalogPage,
+    catalogZoomIn: staticLabels.product.catalogZoomIn,
+    catalogZoomOut: staticLabels.product.catalogZoomOut,
+    catalogResetZoom: staticLabels.product.catalogResetZoom,
+    catalogPrint: staticLabels.product.catalogPrint,
+    catalogLoading: staticLabels.product.catalogLoading,
+    catalogPageOf: staticLabels.product.catalogPageOf,
+    downloadAll: staticLabels.product.downloadAll,
+    downloadAllProgress: staticLabels.product.downloadAllProgress,
+    previous: staticLabels.aria.previous,
+    next: staticLabels.aria.next,
   }
 
   return (
@@ -216,23 +287,34 @@ export function PlasticTestEquipmentPage({
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-display font-semibold text-pte-cyan uppercase tracking-wider mb-2">
-            <Link href={`/${locale}`} className="hover:text-white transition-colors">
-              {staticLabels.breadcrumbs.home}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
-              {breadcrumbLabel || staticLabels.breadcrumbs.ourBusiness}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <span className="text-white/70">{data.ui.breadcrumbCurrent}</span>
-          </p>
-          <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
-            {data.ui.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
-            {data.ui.heroSubtitle}
-          </p>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="text-sm font-display font-semibold text-pte-cyan uppercase tracking-wider mb-2">
+                <Link href={`/${locale}`} className="hover:text-white transition-colors">
+                  {staticLabels.breadcrumbs.home}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
+                  {breadcrumbLabel || staticLabels.breadcrumbs.ourBusiness}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <span className="text-white/70">{data.ui.breadcrumbCurrent}</span>
+              </p>
+              <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
+                {data.ui.heroTitle}
+              </h1>
+              <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
+                {data.ui.heroSubtitle}
+              </p>
+            </div>
+            <div className="hidden md:block flex-shrink-0 mt-8">
+              <CatalogBadge
+                catalogs={data.categories.map((c) => ({ id: c.id, name: c.name, pdfUrl: c.pdfUrl }))}
+                locale={locale}
+                accentColor="#22B8CF"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

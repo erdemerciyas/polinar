@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { getMachineryData } from '@/data/machinery'
 import type { MachineCategory } from '@/data/machinery'
 import { getStaticLabels } from '@/data/static-labels'
+import { CatalogBadge, CatalogViewer } from '@/components/catalog'
 
 const capabilityIcons = [
   <svg key="eng" className="w-7 h-7" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -47,8 +48,10 @@ function MachineDetailModal({
 }) {
   const labels = getStaticLabels(locale)
   const { ui } = getMachineryData(locale)
+  const [catalogOpen, setCatalogOpen] = useState(false)
 
   useEffect(() => {
+    if (catalogOpen) return
     document.body.style.overflow = 'hidden'
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -58,7 +61,24 @@ function MachineDetailModal({
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleEsc)
     }
-  }, [onClose])
+  }, [onClose, catalogOpen])
+
+  const catalogLabels = {
+    digitalCatalog: labels.product.digitalCatalog,
+    page: labels.product.catalogPage,
+    zoomIn: labels.product.catalogZoomIn,
+    zoomOut: labels.product.catalogZoomOut,
+    resetZoom: labels.product.catalogResetZoom,
+    print: labels.product.catalogPrint,
+    download: labels.product.downloadBrochure,
+    close: labels.aria.close,
+    previousPage: labels.aria.previous,
+    nextPage: labels.aria.next,
+    loading: labels.product.catalogLoading,
+    pageOf: labels.product.catalogPageOf,
+    downloadAll: labels.product.downloadAll,
+    downloadAllProgress: labels.product.downloadAllProgress,
+  }
 
   return (
     <div className="mould-modal-overlay" onClick={onClose}>
@@ -79,14 +99,14 @@ function MachineDetailModal({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="bg-gray-light p-6 lg:p-8">
             <div className="space-y-4">
-              <div className="rounded-card overflow-hidden border border-polinar-red/10">
+              <div className="rounded-card overflow-hidden border border-machinery-steel/10">
                 <img
                   src={category.image01}
                   alt={`${category.name} - ${labels.product.overviewAlt}`}
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="rounded-card overflow-hidden border border-polinar-red/10">
+              <div className="rounded-card overflow-hidden border border-machinery-steel/10">
                 <img
                   src={category.image02}
                   alt={`${category.name} - ${labels.product.specificationsAlt}`}
@@ -101,7 +121,7 @@ function MachineDetailModal({
               {category.name}
             </h3>
             <div className="divider-asymmetric">
-              <span className="div-red"></span>
+              <span className="div-steel"></span>
               <span className="div-gray"></span>
             </div>
 
@@ -134,7 +154,7 @@ function MachineDetailModal({
               <ul className="space-y-2">
                 {category.features.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm font-body text-body-muted">
-                    <svg className="w-4 h-4 text-polinar-red mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <svg className="w-4 h-4 text-machinery-steel mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
                     {feat}
@@ -211,7 +231,7 @@ function MachineDetailModal({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5">
                   {category.positions.map((pos, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs font-body text-body-muted">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-polinar-red/10 text-polinar-red font-display font-bold text-[10px] flex items-center justify-center mt-0.5">
+                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-machinery-steel/10 text-machinery-steel font-display font-bold text-[10px] flex items-center justify-center mt-0.5">
                         {idx + 1}
                       </span>
                       {pos}
@@ -221,14 +241,23 @@ function MachineDetailModal({
               </div>
             )}
 
-            <div className="mt-auto pt-4">
-              <a
-                href={category.pdfUrl}
-                download
+            <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => setCatalogOpen(true)}
                 className="btn-primary inline-flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25m-18 0V6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v9.75m-18 0h18M12 3v12m0 0-3.75-3.75M12 15l3.75-3.75" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+                {labels.product.viewOnline}
+              </button>
+              <a
+                href={category.pdfUrl}
+                download
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-navy/30 text-heading rounded-[3px] px-6 py-2.5 text-sm font-display font-semibold transition-colors hover:bg-navy/5"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 16.5v-2.25M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                 </svg>
                 {labels.product.downloadBrochure}
               </a>
@@ -236,6 +265,13 @@ function MachineDetailModal({
           </div>
         </div>
       </div>
+
+      <CatalogViewer
+        catalogs={[{ id: category.id, name: category.name, pdfUrl: category.pdfUrl }]}
+        isOpen={catalogOpen}
+        onClose={() => setCatalogOpen(false)}
+        labels={catalogLabels}
+      />
     </div>
   )
 }
@@ -263,23 +299,34 @@ export function MachineryPage({
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
-            <Link href={`/${locale}`} className="hover:text-white transition-colors">
-              {data.ui.breadcrumbHome}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
-              {breadcrumbLabel || data.ui.breadcrumbParentFallback}
-            </Link>
-            <span className="text-white/40 mx-2">/</span>
-            <span className="text-white/70">{data.ui.breadcrumbCurrent}</span>
-          </p>
-          <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
-            {data.ui.heroTitle}
-          </h1>
-          <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
-            {data.ui.heroSubtitle}
-          </p>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="text-sm font-display font-semibold text-machinery-steel uppercase tracking-wider mb-2">
+                <Link href={`/${locale}`} className="hover:text-white transition-colors">
+                  {data.ui.breadcrumbHome}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <Link href={`/${locale}/our-business`} className="hover:text-white transition-colors">
+                  {breadcrumbLabel || data.ui.breadcrumbParentFallback}
+                </Link>
+                <span className="text-white/40 mx-2">/</span>
+                <span className="text-white/70">{data.ui.breadcrumbCurrent}</span>
+              </p>
+              <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase mt-4">
+                {data.ui.heroTitle}
+              </h1>
+              <p className="font-body text-white/70 text-lg mt-4 max-w-2xl">
+                {data.ui.heroSubtitle}
+              </p>
+            </div>
+            <div className="hidden md:block flex-shrink-0 mt-8">
+              <CatalogBadge
+                catalogs={data.categories.map((c) => ({ id: c.id, name: c.name, pdfUrl: c.pdfUrl }))}
+                locale={locale}
+                accentColor="#7B8FA1"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -287,11 +334,11 @@ export function MachineryPage({
       <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <h2 className="font-display font-bold italic text-polinar-red text-2xl sm:text-3xl tracking-tight-heading">
+            <h2 className="font-display font-bold italic text-machinery-steel text-2xl sm:text-3xl tracking-tight-heading">
               {data.ui.introTitle}
             </h2>
             <div className="divider-asymmetric justify-center">
-              <span className="div-red"></span>
+              <span className="div-steel"></span>
               <span className="div-gray"></span>
             </div>
             <p className="text-body-muted font-body text-base leading-relaxed-body">
@@ -303,9 +350,9 @@ export function MachineryPage({
             {data.highlights.map((h, idx) => (
               <div
                 key={h.label}
-                className="text-center p-6 rounded-lg border border-gray-100 hover:border-polinar-red/20 hover:shadow-lg transition-all duration-300"
+                className="text-center p-6 rounded-lg border border-gray-100 hover:border-machinery-steel/20 hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-polinar-red/10 text-polinar-red flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 rounded-xl bg-machinery-steel/10 text-machinery-steel flex items-center justify-center mx-auto mb-3">
                   {highlightIcons[idx]}
                 </div>
                 <p className="font-display font-extrabold text-heading text-2xl sm:text-3xl">{h.value}</p>
@@ -320,14 +367,14 @@ export function MachineryPage({
       <section className="py-24 lg:py-32 bg-gray-light">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-1">
+            <p className="text-sm font-display font-semibold text-machinery-steel uppercase tracking-wider mb-1">
               {data.ui.categoriesLabel}
             </p>
             <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl tracking-tight-heading">
               {data.ui.categoriesSectionTitle}
             </h2>
             <div className="divider-asymmetric justify-center">
-              <span className="div-red"></span>
+              <span className="div-steel"></span>
               <span className="div-gray"></span>
             </div>
           </div>
@@ -356,7 +403,7 @@ export function MachineryPage({
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display font-bold text-heading text-base mb-2 group-hover:text-polinar-red transition-colors">
+                  <h3 className="font-display font-bold text-heading text-base mb-2 group-hover:text-machinery-steel transition-colors">
                     {cat.name}
                   </h3>
                   <p className="text-sm font-body text-body-secondary leading-relaxed mb-3">
@@ -365,14 +412,14 @@ export function MachineryPage({
                   <ul className="space-y-1">
                     {cat.features.slice(0, 3).map((feat, idx) => (
                       <li key={idx} className="flex items-center gap-1.5 text-xs font-body text-body-secondary">
-                        <svg className="w-3 h-3 text-polinar-red flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <svg className="w-3 h-3 text-machinery-steel flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
                         {feat}
                       </li>
                     ))}
                     {cat.features.length > 3 && (
-                      <li className="text-xs font-body text-polinar-red font-semibold pl-4.5">
+                      <li className="text-xs font-body text-machinery-steel font-semibold pl-4.5">
                         +{cat.features.length - 3} {labels.product.more}
                       </li>
                     )}
@@ -389,14 +436,14 @@ export function MachineryPage({
         <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-1">
+            <p className="text-sm font-display font-semibold text-machinery-steel uppercase tracking-wider mb-1">
               {data.ui.whyLabel}
             </p>
             <h2 className="font-display font-extrabold text-white text-2xl sm:text-3xl tracking-tight-heading">
               {data.ui.whySectionTitle}
             </h2>
             <div className="divider-asymmetric justify-center">
-              <span className="div-red"></span>
+              <span className="div-steel"></span>
               <span className="div-gray" style={{ background: 'rgba(255,255,255,0.2)' }}></span>
             </div>
             <p className="text-white/60 font-body text-base max-w-2xl mx-auto">
@@ -410,7 +457,7 @@ export function MachineryPage({
                 key={cap.title}
                 className="p-6 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 text-center"
               >
-                <div className="w-14 h-14 rounded-xl bg-polinar-red/20 text-polinar-red flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 rounded-xl bg-machinery-steel/20 text-machinery-steel flex items-center justify-center mx-auto mb-4">
                   {capabilityIcons[idx]}
                 </div>
                 <h3 className="font-display font-bold text-white text-sm mb-2">{cap.title}</h3>
@@ -422,7 +469,7 @@ export function MachineryPage({
       </section>
 
       {/* CTA Bar */}
-      <section className="bg-polinar-red py-6">
+      <section className="bg-machinery-steel py-6">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="text-white font-display font-bold text-lg">{data.ui.ctaTitle}</p>
@@ -430,7 +477,7 @@ export function MachineryPage({
           </div>
           <Link
             href={`/${locale}/contact`}
-            className="bg-white text-polinar-red font-display font-semibold text-sm px-8 py-3 rounded-[3px] hover:bg-gray-100 transition-colors inline-flex items-center gap-2 flex-shrink-0"
+            className="bg-white text-machinery-steel font-display font-semibold text-sm px-8 py-3 rounded-[3px] hover:bg-gray-100 transition-colors inline-flex items-center gap-2 flex-shrink-0"
           >
             {data.ui.ctaButton}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

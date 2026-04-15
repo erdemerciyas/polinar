@@ -66,11 +66,11 @@ const categoryColors: Record<string, { bg: string; text: string; hoverBg: string
     shadow: 'group-hover:shadow-card-hover-gold',
   },
   machinery: {
-    bg: 'bg-polinar-red/10',
-    text: 'text-polinar-red',
-    hoverBg: 'group-hover:bg-polinar-red',
-    hoverBorder: 'hover:border-polinar-red/20',
-    shadow: 'group-hover:shadow-card-hover-red',
+    bg: 'bg-machinery-steel/10',
+    text: 'text-machinery-steel',
+    hoverBg: 'group-hover:bg-machinery-steel',
+    hoverBorder: 'hover:border-machinery-steel/20',
+    shadow: 'group-hover:shadow-card-hover-steel',
   },
   testing: {
     bg: 'bg-pte-cyan/10',
@@ -84,9 +84,9 @@ const categoryColors: Record<string, { bg: string; text: string; hoverBg: string
 const defaultCategoryColor = categoryColors.machinery
 
 const categoryHeroImages: Record<string, string> = {
-  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
-  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
-  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
+  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265680/polinar/static/moulds-hero-v4.jpg',
+  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265681/polinar/static/machinery-hero-v4.jpg',
+  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265682/polinar/static/testing-hero-v6.jpg',
 }
 
 type Props = {
@@ -192,14 +192,14 @@ export default async function HomePage({ params }: Props) {
       <section className="py-24 lg:py-32 bg-gray-light">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
+            <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-wider mb-2">
               {businessSection.sectionLabel || ''}
             </p>
             <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
               {businessSection.sectionTitle || ''}
             </h2>
             <div className="divider-asymmetric justify-center">
-              <span className="div-red"></span>
+              <span className="div-mustard"></span>
               <span className="div-gray"></span>
             </div>
           </ScrollReveal>
@@ -215,9 +215,9 @@ export default async function HomePage({ params }: Props) {
                   >
                     <div className="bg-white rounded-card overflow-hidden">
                       <div className="relative h-[220px] bg-gray-light overflow-hidden">
-                        {(card.image?.url || categoryHeroImages[card.icon]) ? (
+                        {(categoryHeroImages[card.icon] || card.image?.url) ? (
                           <Image
-                            src={card.image?.url || categoryHeroImages[card.icon]}
+                            src={(categoryHeroImages[card.icon] || card.image?.url) as string}
                             alt={card.image?.alt || card.title}
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
@@ -272,14 +272,14 @@ export default async function HomePage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal direction="left">
               <div>
-                  <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
+                  <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-wider mb-2">
                     {aboutPreview.label || ''}
                   </p>
                   <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl lg:text-4xl tracking-tight-heading">
                     {aboutPreview.title || ''}
                   </h2>
                   <div className="divider-asymmetric">
-                    <span className="div-red"></span>
+                    <span className="div-mustard"></span>
                     <span className="div-gray"></span>
                   </div>
                   <p className="text-body-muted font-body text-base leading-relaxed-body mb-6 max-w-prose">

@@ -67,15 +67,15 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-moulds-gold',
     hoverBorder: 'hover:border-moulds-gold/20',
     linkText: 'text-moulds-gold',
-    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265680/polinar/static/moulds-hero-v4.jpg',
   },
   machinery: {
-    iconBg: 'bg-polinar-red/10',
-    iconText: 'text-polinar-red',
-    hoverIconBg: 'group-hover:bg-polinar-red',
-    hoverBorder: 'hover:border-polinar-red/20',
-    linkText: 'text-polinar-red',
-    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
+    iconBg: 'bg-machinery-steel/10',
+    iconText: 'text-machinery-steel',
+    hoverIconBg: 'group-hover:bg-machinery-steel',
+    hoverBorder: 'hover:border-machinery-steel/20',
+    linkText: 'text-machinery-steel',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265681/polinar/static/machinery-hero-v4.jpg',
   },
   testing: {
     iconBg: 'bg-pte-cyan/10',
@@ -83,7 +83,7 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-pte-cyan',
     hoverBorder: 'hover:border-pte-cyan/20',
     linkText: 'text-pte-cyan',
-    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265682/polinar/static/testing-hero-v6.jpg',
   },
 }
 
@@ -95,6 +95,8 @@ export function MegaMenu({
   ctaLabels,
   commonLabels,
   solid = true,
+  goldBar = false,
+  isTransparent = false,
   onOpenChange,
 }: {
   locale: string
@@ -102,6 +104,8 @@ export function MegaMenu({
   ctaLabels?: CTALabels | null
   commonLabels?: CommonLabels | null
   solid?: boolean
+  goldBar?: boolean
+  isTransparent?: boolean
   onOpenChange?: (open: boolean) => void
 }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
@@ -138,8 +142,8 @@ export function MegaMenu({
         >
           <Link
             href={`/${locale}${item.path}`}
-            className={`nav-link font-display font-semibold text-[14px] tracking-wide px-3 py-5 inline-block transition-colors duration-300 ${
-              solid ? 'text-heading' : 'text-white'
+            className={`nav-link ${goldBar ? 'nav-link-on-gold' : ''} font-display font-semibold text-[14px] tracking-wide px-3 py-5 inline-block transition-colors duration-300 ${
+              isTransparent ? 'text-white' : goldBar ? 'text-navy' : 'text-heading'
             }`}
           >
             {item.label}
@@ -158,7 +162,7 @@ export function MegaMenu({
           <AnimatePresence>
             {item.megaMenu && openMenu === item.key && (
               <motion.div
-                className="fixed left-0 right-0 top-[72px] bg-white border-t-2 border-polinar-red shadow-mega z-50"
+                className="fixed left-0 right-0 top-[72px] bg-white border-t-2 border-polinar-mustard shadow-mega z-50"
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
@@ -177,7 +181,7 @@ export function MegaMenu({
                 >
                   {item.megaMenu.map((menuItem, idx) => {
                     const theme = categoryTheme[menuItem.icon] || defaultCategoryTheme
-                    const imageUrl = menuItem.image?.url || theme.fallbackImage
+                    const imageUrl = theme.fallbackImage || menuItem.image?.url
                     return (
                       <motion.div
                         key={idx}
@@ -188,11 +192,11 @@ export function MegaMenu({
                       >
                         <Link
                           href={menuItem.href}
-                          className={`group rounded-card border border-border-soft ${theme.hoverBorder} hover:shadow-card-hover transition-all duration-300 overflow-hidden block`}
+                          className={`group rounded-card border border-border-soft ${theme.hoverBorder} hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col h-full`}
                           onClick={() => setOpenMenu(null)}
                         >
                           {imageUrl && (
-                            <div className="relative aspect-[2/1] bg-gray-light overflow-hidden">
+                            <div className="relative aspect-[4/3] bg-gray-light overflow-hidden shrink-0">
                               <Image
                                 src={imageUrl}
                                 alt={menuItem.image?.alt || menuItem.title}
@@ -202,14 +206,14 @@ export function MegaMenu({
                               />
                             </div>
                           )}
-                          <div className="p-5">
-                            <div className={`w-10 h-10 rounded-card-sm ${theme.iconBg} ${theme.iconText} flex items-center justify-center mb-3 ${theme.hoverIconBg} group-hover:text-white transition-colors duration-300`}>
+                          <div className="p-5 flex flex-col flex-1">
+                            <div className={`w-10 h-10 rounded-card-sm ${theme.iconBg} ${theme.iconText} flex items-center justify-center mb-3 ${theme.hoverIconBg} group-hover:text-navy transition-colors duration-300`}>
                               <MegaMenuIcon name={menuItem.icon} />
                             </div>
                             <h4 className="font-display font-bold text-heading text-base mb-1.5">
                               {menuItem.title}
                             </h4>
-                            <p className="text-sm text-body-secondary font-body leading-relaxed mb-3">
+                            <p className="text-sm text-body-secondary font-body leading-relaxed mb-3 flex-1">
                               {menuItem.description}
                             </p>
                             <span className={`${theme.linkText} font-display font-semibold text-sm inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300`}>
@@ -231,19 +235,20 @@ export function MegaMenu({
                       hidden: { opacity: 0, y: 12 },
                       visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } },
                     }}
-                    className="bg-navy rounded-card p-6 flex flex-col justify-between text-white"
+                    className="rounded-card p-6 flex flex-col justify-between relative overflow-hidden bg-white"
                   >
-                    <div>
-                      <h4 className="font-display font-bold text-lg mb-3">
-                        {ctaLabels?.title || 'Get in Touch'}
-                      </h4>
-                      <p className="text-white/70 text-sm font-body leading-relaxed mb-6">
-                        {ctaLabels?.description || ''}
-                      </p>
+                    <div className="relative flex-1 min-h-0">
+                      <Image
+                        src="https://res.cloudinary.com/dtdogh9wg/image/upload/v1776173223/polinar/static/polinar-man-product.png"
+                        alt="Polinar"
+                        fill
+                        sizes="25vw"
+                        className="object-contain drop-shadow-lg"
+                      />
                     </div>
                     <Link
                       href={`/${locale}/contact`}
-                      className="btn-primary text-center text-sm"
+                      className="bg-polinar-mustard hover:bg-polinar-mustard-dark text-navy text-center text-sm w-full block mt-4 py-3 px-6 rounded-lg font-display font-bold tracking-wide shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] shrink-0"
                       onClick={() => setOpenMenu(null)}
                     >
                       {ctaLabels?.button || 'Contact Us'}

@@ -93,7 +93,7 @@ export default async function NewsDetailPage({ params }: Props) {
       <section className="relative bg-navy grain-overlay pt-[168px] pb-24 lg:pt-[200px] lg:pb-32">
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
         <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-wider mb-2">
+          <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-wider mb-2">
             <Link href={`/${locale}/news`} className="hover:text-white transition-colors">
               {labels.breadcrumb || ''}
             </Link>
@@ -128,7 +128,7 @@ export default async function NewsDetailPage({ params }: Props) {
           )}
 
           {article.excerpt && (
-            <p className="text-lg text-body-muted font-body leading-relaxed-body mb-8 border-l-4 border-polinar-red pl-4">
+            <p className="text-lg text-body-muted font-body leading-relaxed-body mb-8 border-l-4 border-polinar-mustard pl-4">
               {article.excerpt}
             </p>
           )}
@@ -140,9 +140,9 @@ export default async function NewsDetailPage({ params }: Props) {
           <div className="mt-12 pt-8 border-t border-border-soft">
             <Link
               href={`/${locale}/news`}
-              className="group inline-flex items-center gap-2.5 font-display font-semibold text-sm text-body-muted hover:text-polinar-red transition-colors duration-300"
+              className="group inline-flex items-center gap-2.5 font-display font-semibold text-sm text-body-muted hover:text-polinar-mustard transition-colors duration-300"
             >
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-light group-hover:bg-polinar-red/5 transition-colors duration-300">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-light group-hover:bg-polinar-mustard/5 transition-colors duration-300">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 19l-7-7 7-7" />
                 </svg>

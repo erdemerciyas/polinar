@@ -56,7 +56,7 @@ export default async function ContactPage({ params }: Props) {
           <ScrollReveal direction="up" delay={0}>
             <div className="contact-hero-eyebrow">
               <span className="contact-hero-eyebrow-line" />
-              <span className="font-display font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] text-polinar-red">
+              <span className="font-display font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] text-polinar-mustard">
                 {hero.subtitle || ''}
               </span>
             </div>
@@ -147,9 +147,9 @@ export default async function ContactPage({ params }: Props) {
               <ScrollReveal delay={0.4}>
                 <div className="hidden lg:block mt-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-[2px] bg-polinar-red rounded-full" />
-                    <div className="w-6 h-[2px] bg-polinar-red/30 rounded-full" />
-                    <div className="w-3 h-[2px] bg-polinar-red/15 rounded-full" />
+                    <div className="w-12 h-[2px] bg-polinar-mustard rounded-full" />
+                    <div className="w-6 h-[2px] bg-polinar-mustard/30 rounded-full" />
+                    <div className="w-3 h-[2px] bg-polinar-mustard/15 rounded-full" />
                   </div>
                 </div>
               </ScrollReveal>

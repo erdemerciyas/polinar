@@ -60,7 +60,7 @@ function ProductGridBlock({ block, locale }: { block: Block; locale: string }) {
         {block.title && (
           <div className="text-center mb-12">
             <h2 className="font-display font-extrabold text-heading text-2xl sm:text-3xl tracking-tight-heading">{block.title}</h2>
-            <div className="divider-asymmetric justify-center"><span className="div-red"></span><span className="div-gray"></span></div>
+            <div className="divider-asymmetric justify-center"><span className="div-mustard"></span><span className="div-gray"></span></div>
           </div>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -112,9 +112,9 @@ function CoreValuesBlock({ block }: { block: Block }) {
     <section className="py-24 lg:py-32 bg-white">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {block.title && (
-          <h2 className="font-display font-bold italic text-polinar-red text-2xl sm:text-3xl tracking-tight-heading">{block.title}</h2>
+          <h2 className="font-display font-bold italic text-polinar-mustard text-2xl sm:text-3xl tracking-tight-heading">{block.title}</h2>
         )}
-        <div className="divider-asymmetric justify-center mt-4 mb-6"><span className="div-red"></span><span className="div-gray"></span></div>
+        <div className="divider-asymmetric justify-center mt-4 mb-6"><span className="div-mustard"></span><span className="div-gray"></span></div>
         {block.description && <p className="max-w-3xl mx-auto text-body-muted font-body text-base leading-body mb-8">{block.description}</p>}
         {block.values && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
@@ -154,11 +154,13 @@ function CertificatesGridBlock({ block }: { block: Block }) {
 }
 
 function CTABarBlock({ block }: { block: Block }) {
-  const bgClass = block.style === 'navy' ? 'bg-navy' : block.style === 'cyan' ? 'bg-cyan' : 'bg-polinar-red'
+  const isMustard = block.style !== 'navy' && block.style !== 'cyan'
+  const bgClass = block.style === 'navy' ? 'bg-navy' : block.style === 'cyan' ? 'bg-cyan' : 'bg-polinar-mustard'
+  const textClass = isMustard ? 'text-navy' : 'text-white'
   return (
     <section className={`${bgClass} py-5`}>
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-white font-body text-base text-center sm:text-left">{block.text}</p>
+        <p className={`${textClass} font-body text-base text-center sm:text-left`}>{block.text}</p>
         <Link href={block.buttonLink || '#'} className="btn-primary">{block.buttonLabel}</Link>
       </div>
     </section>

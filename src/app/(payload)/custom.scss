@@ -21,10 +21,10 @@
 }
 
 /* ── Brand Tokens ── */
-$polinar-red: #E30613;
-$polinar-red-hover: #C80511;
-$polinar-red-light: #FEE4E6;
-$polinar-red-50: #FFF1F2;
+$polinar-mustard: #EDBA13;
+$polinar-mustard-hover: #D4A80E;
+$polinar-mustard-light: #FEF9E7;
+$polinar-mustard-50: #FFFDF5;
 
 $radius-sm: 6px;
 $radius-md: 10px;
@@ -60,13 +60,13 @@ $transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
   --theme-elevation-1000: #09090B;
 
   --theme-success-500: #10B981;
-  --theme-error-500: #{$polinar-red};
+  --theme-error-500: #EF4444;
   --theme-warning-500: #F59E0B;
 
-  --polinar-accent: #{$polinar-red};
-  --polinar-accent-hover: #{$polinar-red-hover};
-  --polinar-accent-light: #{$polinar-red-light};
-  --polinar-accent-50: #{$polinar-red-50};
+  --polinar-accent: #{$polinar-mustard};
+  --polinar-accent-hover: #{$polinar-mustard-hover};
+  --polinar-accent-light: #{$polinar-mustard-light};
+  --polinar-accent-50: #{$polinar-mustard-50};
   --polinar-surface: #FFFFFF;
   --polinar-surface-hover: #FAFAFA;
   --polinar-surface-raised: #FFFFFF;
@@ -80,7 +80,7 @@ $transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
   --polinar-shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.03);
   --polinar-shadow-md: 0 4px 12px rgba(9, 9, 11, 0.05), 0 1px 3px rgba(9, 9, 11, 0.03);
   --polinar-shadow-lg: 0 12px 40px rgba(9, 9, 11, 0.08), 0 4px 12px rgba(9, 9, 11, 0.04);
-  --polinar-shadow-focus: 0 0 0 2px rgba(227, 6, 19, 0.1);
+  --polinar-shadow-focus: 0 0 0 2px rgba(237, 186, 19, 0.15);
   --polinar-font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --polinar-font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
 }
@@ -113,10 +113,10 @@ $transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
   --theme-error-500: #F87171;
   --theme-warning-500: #FBBF24;
 
-  --polinar-accent: #F87171;
-  --polinar-accent-hover: #{$polinar-red};
-  --polinar-accent-light: rgba(248, 113, 113, 0.1);
-  --polinar-accent-50: rgba(248, 113, 113, 0.05);
+  --polinar-accent: #F5CA30;
+  --polinar-accent-hover: #{$polinar-mustard};
+  --polinar-accent-light: rgba(245, 202, 48, 0.1);
+  --polinar-accent-50: rgba(245, 202, 48, 0.05);
   --polinar-surface: #18181B;
   --polinar-surface-hover: #1C1C1F;
   --polinar-surface-raised: #27272A;
@@ -130,7 +130,7 @@ $transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
   --polinar-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --polinar-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
   --polinar-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
-  --polinar-shadow-focus: 0 0 0 2px rgba(248, 113, 113, 0.15);
+  --polinar-shadow-focus: 0 0 0 2px rgba(245, 202, 48, 0.15);
   --polinar-font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --polinar-font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
 }

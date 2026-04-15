@@ -8,8 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'polinar-red': '#E30613',
-        'polinar-red-dark': '#B8050F',
+        'polinar-mustard': '#EDBA13',
+        'polinar-mustard-dark': '#D4A80E',
+        'polinar-gold-deep': '#B8920A',
         'moulds-gold': '#B8860B',
         'moulds-gold-dark': '#8B6914',
         'navy': '#0A1128',
@@ -18,6 +19,8 @@ const config: Config = {
         'cyan-dark': '#0096B7',
         'pte-cyan': '#00B4D8',
         'pte-cyan-dark': '#0096B7',
+        'machinery-steel': '#6B7B8D',
+        'machinery-steel-dark': '#4A5568',
         'gray-light': '#F5F6F8',
         'heading': '#222222',
         'body-muted': '#555555',
@@ -49,9 +52,10 @@ const config: Config = {
       boxShadow: {
         'card': '0 1px 3px rgba(10, 17, 40, 0.04)',
         'card-hover': '0 8px 24px rgba(10, 17, 40, 0.08), 0 16px 48px rgba(10, 17, 40, 0.06)',
-        'card-hover-red': '0 8px 24px rgba(227, 6, 19, 0.1), 0 16px 48px rgba(10, 17, 40, 0.10)',
+        'card-hover-mustard': '0 8px 24px rgba(237, 186, 19, 0.12), 0 16px 48px rgba(10, 17, 40, 0.10)',
         'card-hover-gold': '0 8px 24px rgba(184, 134, 11, 0.1), 0 16px 48px rgba(10, 17, 40, 0.10)',
         'card-hover-cyan': '0 8px 24px rgba(0, 180, 216, 0.1), 0 16px 48px rgba(10, 17, 40, 0.10)',
+        'card-hover-steel': '0 8px 24px rgba(107, 123, 141, 0.12), 0 16px 48px rgba(10, 17, 40, 0.10)',
         'nav': '0 2px 8px rgba(10, 17, 40, 0.06)',
         'mega': '0 8px 32px rgba(10, 17, 40, 0.12), 0 2px 8px rgba(10, 17, 40, 0.06)',
         'modal': '0 24px 64px rgba(10, 17, 40, 0.3)',
@@ -67,7 +71,7 @@ const config: Config = {
           css: {
             maxWidth: '65ch',
             color: '#555555',
-            a: { color: '#E30613', textDecoration: 'underline' },
+            a: { color: '#EDBA13', textDecoration: 'underline' },
             h1: { fontFamily: 'Montserrat, sans-serif', color: '#222222' },
             h2: { fontFamily: 'Montserrat, sans-serif', color: '#222222' },
             h3: { fontFamily: 'Montserrat, sans-serif', color: '#222222' },

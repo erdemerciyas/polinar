@@ -73,6 +73,18 @@ const tr: StaticLabels = {
     overviewAlt: 'Overview',
     specificationsAlt: 'Specifications',
     detailAlt: 'Detail',
+    digitalCatalog: 'Dijital Katalog',
+    viewCatalog: 'Online İncele',
+    viewOnline: 'Online Görüntüle',
+    catalogPage: 'Sayfa',
+    catalogZoomIn: 'Yakınlaştır',
+    catalogZoomOut: 'Uzaklaştır',
+    catalogResetZoom: 'Sıfırla',
+    catalogPrint: 'Yazdır',
+    catalogLoading: 'Katalog yükleniyor...',
+    catalogPageOf: '/',
+    downloadAll: 'Tümünü PDF Olarak İndir',
+    downloadAllProgress: 'Hazırlanıyor...',
   },
 }
 

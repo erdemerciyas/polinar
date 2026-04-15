@@ -69,18 +69,18 @@ const categoryThemes: Record<
     numberColor: 'text-moulds-gold/15',
   },
   machinery: {
-    accent: '#E30613',
-    accentBg: 'bg-polinar-red/10',
-    accentBorder: 'border-polinar-red/30',
-    accentText: 'text-polinar-red',
-    iconBg: 'bg-polinar-red/10',
-    iconHoverBg: 'group-hover:bg-polinar-red',
-    dividerClass: 'div-red',
-    btnClass: 'btn-primary',
-    tagBg: 'bg-polinar-red/10',
-    tagText: 'text-polinar-red',
-    hoverShadow: 'hover:shadow-[0_12px_40px_rgba(227,6,19,0.12),0_4px_12px_rgba(10,17,40,0.08)]',
-    numberColor: 'text-polinar-red/15',
+    accent: '#6B7B8D',
+    accentBg: 'bg-machinery-steel/10',
+    accentBorder: 'border-machinery-steel/30',
+    accentText: 'text-machinery-steel',
+    iconBg: 'bg-machinery-steel/10',
+    iconHoverBg: 'group-hover:bg-machinery-steel',
+    dividerClass: 'div-steel',
+    btnClass: 'btn-primary-steel',
+    tagBg: 'bg-machinery-steel/10',
+    tagText: 'text-machinery-steel',
+    hoverShadow: 'hover:shadow-[0_12px_40px_rgba(107,123,141,0.15),0_4px_12px_rgba(10,17,40,0.08)]',
+    numberColor: 'text-machinery-steel/15',
   },
   testing: {
     accent: '#00B4D8',
@@ -101,9 +101,9 @@ const categoryThemes: Record<
 const defaultTheme = categoryThemes.machinery
 
 const categoryHeroImages: Record<string, string> = {
-  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050250/polinar/static/moulds-hero.jpg',
-  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050215/polinar/static/machinery-hero.jpg',
-  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050294/polinar/static/testing-hero.jpg',
+  moulds: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265680/polinar/static/moulds-hero-v4.jpg',
+  machinery: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265681/polinar/static/machinery-hero-v4.jpg',
+  testing: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265682/polinar/static/testing-hero-v6.jpg',
 }
 
 
@@ -211,14 +211,14 @@ export default async function OurBusinessLandingPage({ params }: Props) {
               <li className="text-white font-semibold">{pageTitle}</li>
             </ol>
           </nav>
-          <p className="text-sm font-display font-semibold text-polinar-red uppercase tracking-[0.2em] mb-3">
+          <p className="text-sm font-display font-semibold text-polinar-mustard uppercase tracking-[0.2em] mb-3">
             {businessSection.sectionLabel || pageTitle}
           </p>
           <h1 className="font-display font-extrabold text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight-heading uppercase">
             {pageTitle}
           </h1>
           <div className="divider-asymmetric justify-center mt-5 mb-0">
-            <span className="div-red"></span>
+            <span className="div-mustard"></span>
             <span className="div-gray"></span>
           </div>
           {businessSection.sectionTitle && (
@@ -248,9 +248,9 @@ export default async function OurBusinessLandingPage({ params }: Props) {
 
                   {/* Image Area */}
                   <div className="relative h-[220px] sm:h-[240px] bg-gray-light overflow-hidden">
-                    {card.image?.url || categoryHeroImages[card.icon] ? (
+                    {categoryHeroImages[card.icon] || card.image?.url ? (
                       <img
-                        src={card.image?.url || categoryHeroImages[card.icon]}
+                        src={categoryHeroImages[card.icon] || card.image?.url}
                         alt={card.image?.alt || card.title}
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
@@ -265,7 +265,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
                       {number}
                     </div>
 
-                    <div className={`absolute bottom-5 right-5 w-12 h-12 rounded-xl ${theme.iconBg} ${theme.accentText} flex items-center justify-center ${theme.iconHoverBg} group-hover:text-white transition-colors duration-300 backdrop-blur-sm`}>
+                    <div className={`absolute bottom-5 right-5 w-12 h-12 rounded-xl ${theme.iconBg} ${theme.accentText} flex items-center justify-center ${theme.iconHoverBg} group-hover:text-navy transition-colors duration-300 backdrop-blur-sm`}>
                       <CategoryIcon name={card.icon} />
                     </div>
                   </div>

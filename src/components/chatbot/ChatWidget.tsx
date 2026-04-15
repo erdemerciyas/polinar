@@ -129,7 +129,7 @@ export function ChatWidget({ labels }: { labels?: ChatLabels | null }) {
                 <div
                   className={`rounded-[6px] p-3 max-w-[80%] ${
                     msg.role === 'user'
-                      ? 'bg-polinar-red text-white'
+                      ? 'bg-polinar-mustard text-navy-deep'
                       : 'bg-gray-light text-[#333]'
                   }`}
                 >
@@ -176,7 +176,7 @@ export function ChatWidget({ labels }: { labels?: ChatLabels | null }) {
               <button
                 type="submit"
                 disabled={isStreaming || !input.trim()}
-                className="bg-polinar-red text-white rounded-[3px] px-4 py-2 font-display font-bold text-sm disabled:opacity-50 spring-hover"
+                className="bg-polinar-mustard text-navy-deep rounded-[3px] px-4 py-2 font-display font-bold text-sm disabled:opacity-50 spring-hover"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

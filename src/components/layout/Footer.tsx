@@ -67,9 +67,9 @@ export function Footer({ data, locale }: { data?: FooterData | null; locale: str
           <Image
             src="/brand_assets/logo.png"
             alt="Polinar"
-            width={140}
-            height={42}
-            className="h-[42px] w-auto brightness-0 invert"
+            width={200}
+            height={60}
+            className="h-[60px] w-auto brightness-0 invert"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function Footer({ data, locale }: { data?: FooterData | null; locale: str
 
           <div>
             <h4 className="font-display font-bold text-sm uppercase tracking-wider mb-5 text-white/90">{cmsLabels.emailLabel || ''}</h4>
-            <a href={`mailto:${staticLabels.company.email}`} className="text-white/60 font-body text-sm hover:text-polinar-red transition-colors">
+            <a href={`mailto:${staticLabels.company.email}`} className="text-white/60 font-body text-sm hover:text-polinar-mustard transition-colors">
               {staticLabels.company.email}
             </a>
           </div>
@@ -106,12 +106,12 @@ export function Footer({ data, locale }: { data?: FooterData | null; locale: str
               <input
                 type="text"
                 placeholder={cmsLabels.namePlaceholder || ''}
-                className="bg-white/10 border border-white/20 rounded-card-sm px-4 py-2.5 text-white text-sm font-body placeholder-white/40 focus:outline-none focus:border-polinar-red focus:ring-1 focus:ring-polinar-red/30 transition-all"
+                className="bg-white/10 border border-white/20 rounded-card-sm px-4 py-2.5 text-white text-sm font-body placeholder-white/40 focus:outline-none focus:border-polinar-mustard focus:ring-1 focus:ring-polinar-mustard/30 transition-all"
               />
               <input
                 type="email"
                 placeholder={cmsLabels.emailPlaceholder || ''}
-                className="bg-white/10 border border-white/20 rounded-card-sm px-4 py-2.5 text-white text-sm font-body placeholder-white/40 focus:outline-none focus:border-polinar-red focus:ring-1 focus:ring-polinar-red/30 transition-all"
+                className="bg-white/10 border border-white/20 rounded-card-sm px-4 py-2.5 text-white text-sm font-body placeholder-white/40 focus:outline-none focus:border-polinar-mustard focus:ring-1 focus:ring-polinar-mustard/30 transition-all"
               />
               <button type="submit" className="btn-primary text-center">{cmsLabels.subscribeButton || ''}</button>
             </form>
