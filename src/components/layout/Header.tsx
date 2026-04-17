@@ -122,18 +122,35 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
       >
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between h-full">
-            <Link href={`/${locale}`} className="flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <Link href={`/${locale}`} className="flex-shrink-0 hover:opacity-80 transition-opacity duration-300">
+                <Image
+                  src="/brand_assets/logo.png"
+                  alt="Polinar"
+                  width={200}
+                  height={60}
+                  className={`w-auto transition-[filter,height] duration-300 ${
+                    isTransparent ? 'brightness-0 invert' : ''
+                  } ${scrolled ? 'h-[48px]' : 'h-[60px]'}`}
+                  priority
+                />
+              </Link>
+
               <Image
-                src="/brand_assets/logo.png"
-                alt="Polinar"
-                width={200}
-                height={60}
-                className={`w-auto transition-[filter,height] duration-300 ${
-                  isTransparent ? 'brightness-0 invert' : ''
-                } ${scrolled ? 'h-[48px]' : 'h-[60px]'}`}
+                src="/brand_assets/25-years.png"
+                alt="25 Years"
+                width={1024}
+                height={410}
                 priority
+                className={`hidden sm:block w-auto transition-[filter,opacity,height] duration-300 ${
+                  goldBar
+                    ? 'opacity-70'
+                    : isTransparent
+                      ? 'brightness-0 invert'
+                      : ''
+                } ${scrolled ? 'h-[28px]' : 'h-[36px]'}`}
               />
-            </Link>
+            </div>
 
             <MegaMenu
               locale={locale}

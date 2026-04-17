@@ -173,6 +173,8 @@ npm run i18n:create-page {slug}
 - **Scroll Animations** — Framer Motion powered reveal effects with staggered entry, blur-to-sharp transitions
 - **Core Values Section** — interactive panels with floating geometric shapes, hover-triggered animations, and nested octagon SVG backgrounds
 - **Design System** — extended Tailwind config with custom color tokens (moulds-gold, machinery-steel, pte-cyan), asymmetric dividers, and reusable CSS utility classes
+- **25th Anniversary Branding** — adaptive "25 YEARS" badge in the header that dynamically changes color based on scroll state (transparent → white, scrolled gold bar → semi-transparent black, white surface → black)
+- **Patterned Mustard Background** — the Polinar mustard accent color (`polinar-mustard`) is enhanced with a subtle triangular brand pattern applied through `/images/mustard-bg.png`, automatically inherited by every `bg-polinar-mustard` surface (primary buttons, active tabs, search icons, contact CTA)
 
 ## Available Scripts
 

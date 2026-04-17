@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ====== POLINAR MUSTARD BACKGROUND (image + color fallback) ====== */
+:root {
+  --polinar-mustard-bg-image: url('/images/mustard-bg.png');
+}
+
 /* ====== BASE RESETS ====== */
 html {
   scroll-behavior: smooth;
@@ -150,11 +155,19 @@ body {
 
 .btn-primary {
   composes: btn-base;
-  background: var(--btn-bg);
+  background-color: var(--btn-bg);
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: theme('colors.navy');
 }
 .btn-primary:hover {
-  background: var(--btn-bg-hover);
+  background-color: var(--btn-bg-hover);
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: 0 4px 12px rgba(var(--btn-shadow-rgb), 0.25), 0 2px 4px rgba(var(--btn-shadow-rgb), 0.15);
   transform: translateY(-1px);
 }
@@ -186,7 +199,11 @@ body {
   text-align: center;
 }
 .btn-outline:hover {
-  background: var(--btn-bg);
+  background-color: var(--btn-bg);
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: theme('colors.navy');
   transform: translateY(-1px);
 }
@@ -363,7 +380,11 @@ body {
   background: theme('colors.gray-light');
 }
 .sidebar-tab.active {
-  background: theme('colors.polinar-mustard');
+  background-color: theme('colors.polinar-mustard');
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: theme('colors.navy');
 }
 .sidebar-tab:focus-visible {
@@ -613,7 +634,11 @@ body {
   font-size: 14px;
   letter-spacing: 0.04em;
   color: theme('colors.navy');
-  background: theme('colors.polinar-mustard');
+  background-color: theme('colors.polinar-mustard');
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
   border-radius: theme('borderRadius.card-sm');
   cursor: pointer;
@@ -1094,7 +1119,11 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: theme('colors.polinar-mustard');
+  background-color: theme('colors.polinar-mustard');
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: theme('colors.navy');
   flex-shrink: 0;
 }
@@ -1852,4 +1881,14 @@ body {
 @keyframes badgePulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(1.5); }
+}
+
+/* ====== POLINAR MUSTARD BACKGROUND — TAILWIND UTILITY OVERRIDE ====== */
+/* Placed at the end so it wins over Tailwind's generated .bg-polinar-mustard */
+.bg-polinar-mustard {
+  background-color: #EDBA13;
+  background-image: var(--polinar-mustard-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
