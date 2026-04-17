@@ -160,6 +160,7 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
               solid={solid}
               goldBar={goldBar}
               isTransparent={isTransparent}
+              scrolled={scrolled}
               onOpenChange={handleMegaOpenChange}
             />
 

@@ -97,6 +97,7 @@ export function MegaMenu({
   solid = true,
   goldBar = false,
   isTransparent = false,
+  scrolled = false,
   onOpenChange,
 }: {
   locale: string
@@ -106,6 +107,7 @@ export function MegaMenu({
   solid?: boolean
   goldBar?: boolean
   isTransparent?: boolean
+  scrolled?: boolean
   onOpenChange?: (open: boolean) => void
 }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
@@ -162,7 +164,9 @@ export function MegaMenu({
           <AnimatePresence>
             {item.megaMenu && openMenu === item.key && (
               <motion.div
-                className="fixed left-0 right-0 top-[72px] bg-white border-t-2 border-polinar-mustard shadow-mega z-50"
+                className={`fixed left-0 right-0 bg-white border-t-2 border-polinar-mustard shadow-mega z-50 transition-[top] duration-300 ease-out ${
+                  scrolled ? 'top-[56px]' : 'top-[72px]'
+                }`}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
