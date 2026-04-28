@@ -193,6 +193,9 @@ export default async function HomePage({ params }: Props) {
         title={homepageData?.coreValues?.title || ''}
         description={homepageData?.coreValues?.description || ''}
         locale={locale}
+        subtitleSlides={businessCards
+          .filter(c => c.description)
+          .map(c => ({ title: c.title, description: c.description }))}
       />
 
       {/* Our Business */}

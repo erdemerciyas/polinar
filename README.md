@@ -177,7 +177,7 @@ npm run i18n:create-page {slug}
 - **RTL Support** — automatic `dir="rtl"` for Arabic locale
 - **Mega Menu** — CMS-driven navigation with category-themed cards, responsive robot CTA panel, and mobile menu
 - **Scroll Animations** — Framer Motion powered reveal effects with staggered entry, blur-to-sharp transitions
-- **Core Values Section** — interactive panels with floating geometric shapes, hover-triggered animations, and nested octagon SVG backgrounds
+- **Core Values Section** — clean card grid with auto-rotating subtitle carousel that cycles through business areas (moulds, machinery, testing) using existing localized CMS data, animated nested octagon SVG background, and hover-triggered icon/title transitions
 - **Design System** — extended Tailwind config with custom color tokens (moulds-gold, machinery-steel, pte-cyan), asymmetric dividers, and reusable CSS utility classes
 - **25th Anniversary Branding** — adaptive "25 YEARS" badge in the header that dynamically changes color based on scroll state (transparent → white, scrolled gold bar → semi-transparent black, white surface → black)
 - **Patterned Mustard Background** — the Polinar mustard accent color (`polinar-mustard`) is enhanced with a subtle triangular brand pattern applied through `/images/mustard-bg.png`, automatically inherited by every `bg-polinar-mustard` surface (primary buttons, active tabs, search icons, contact CTA)

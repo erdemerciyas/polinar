@@ -1,12 +1,18 @@
 'use client'
 
-import { motion, useInView, useScroll, useTransform, type Variants } from 'framer-motion'
-import { useRef } from 'react'
+import { AnimatePresence, motion, useInView, useScroll, useTransform, type Variants } from 'framer-motion'
+import { useEffect, useMemo, useRef, useState } from 'react'
+
+type SubtitleSlide = {
+  title?: string
+  description: string
+}
 
 type CoreValuesSectionProps = {
   title: string
   description: string
   locale: string
+  subtitleSlides?: SubtitleSlide[]
 }
 
 const defaultKeys = ['quality', 'robust', 'durable', 'reliable']
@@ -28,72 +34,46 @@ function ValueIcon({ iconKey, isInView }: { iconKey: string; isInView: boolean }
   const draw = {
     initial: { pathLength: 0, opacity: 0 },
     animate: isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 },
-    transition: { duration: 1.6, ease: EASE },
+    transition: { duration: 1.4, ease: EASE },
   }
-  const d2 = { ...draw, transition: { ...draw.transition, delay: 0.6, duration: 1 } }
+  const d2 = { ...draw, transition: { ...draw.transition, delay: 0.5, duration: 0.9 } }
 
   const map: Record<string, React.ReactNode> = {
     quality: (
-      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
-        <motion.path d="M24 4l6 11.5L42 18l-9 9 2 13-11-5.5L13 40l2-13-9-9 12-2.5z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
-        <motion.path d="M24 14v11m-5 3l5-3 5 3" strokeLinecap="round" strokeLinejoin="round" {...d2} />
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.4}>
+        <motion.path d="M24 6l5.4 11 12.1 1.8-8.8 8.5 2.1 12L24 33.6 13.2 39.3l2.1-12-8.8-8.5L18.6 17z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
       </svg>
     ),
     robust: (
-      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
-        <motion.circle cx="24" cy="24" r="10" {...draw} />
-        <motion.circle cx="24" cy="24" r="4" {...d2} />
-        <motion.path d="M24 4v7m0 26v7M4 24h7m26 0h7" strokeLinecap="round" {...d2} />
-        <motion.path d="M10 10l5 5m18 18l5 5M38 10l-5 5M10 38l5-5" strokeLinecap="round" opacity={0.4} {...d2} />
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.4}>
+        <motion.path d="M24 5l15 6v11c0 9-6.5 17-15 20-8.5-3-15-11-15-20V11z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
       </svg>
     ),
     durable: (
-      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
-        <motion.path d="M24 4L8 13v11c0 10 7 19 16 21.5 9-2.5 16-11.5 16-21.5V13z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
-        <motion.path d="M24 4v40.5" strokeLinecap="round" opacity={0.25} {...d2} />
-        <motion.path d="M8 13l16 8.5 16-8.5" strokeLinecap="round" strokeLinejoin="round" opacity={0.3} {...d2} />
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.4}>
+        <motion.path d="M24 6l16 8v10c0 9.5-7 18-16 22-9-4-16-12.5-16-22V14z" strokeLinecap="round" strokeLinejoin="round" {...draw} />
+        <motion.rect x="18" y="20" width="12" height="14" rx="1.5" {...d2} />
       </svg>
     ),
     reliable: (
-      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.2}>
-        <motion.rect x="6" y="10" width="36" height="28" rx="4" {...draw} />
-        <motion.path d="M16 24l5 5L32 19" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} {...d2} />
-        <motion.path d="M6 17h36" strokeLinecap="round" opacity={0.25} {...d2} />
+      <svg className="cv-ico" fill="none" viewBox="0 0 48 48" stroke="currentColor" strokeWidth={1.4}>
+        <motion.circle cx="24" cy="24" r="17" {...draw} />
+        <motion.path d="M16 24.5l5.5 5.5L33 18.5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} {...d2} />
       </svg>
     ),
   }
   return map[iconKey] || map.quality
 }
 
-function FloatingGeo() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100])
-  const y2 = useTransform(scrollYProgress, [0, 1], [-60, 120])
-  const r1 = useTransform(scrollYProgress, [0, 1], [-10, 45])
-  const r2 = useTransform(scrollYProgress, [0, 1], [10, -35])
-
+function DotsCluster() {
   return (
-    <div ref={ref} className="cv-float-wrap" aria-hidden="true">
-      <motion.svg className="cv-float cv-float--1" style={{ y: y1, rotate: r1 }} viewBox="0 0 120 120" fill="none" stroke="currentColor">
-        <polygon points="60,8 112,38 112,92 60,122 8,92 8,38" strokeWidth={1} />
-        <polygon points="60,28 88,46 88,82 60,100 32,82 32,46" strokeWidth={0.6} opacity={0.5} />
-      </motion.svg>
-      <motion.svg className="cv-float cv-float--2" style={{ y: y2, rotate: r2 }} viewBox="0 0 100 100" fill="none" stroke="currentColor">
-        <circle cx="50" cy="50" r="42" strokeWidth={1} />
-        <circle cx="50" cy="50" r="26" strokeWidth={0.6} opacity={0.5} />
-        <line x1="50" y1="4" x2="50" y2="96" strokeWidth={0.5} opacity={0.4} />
-        <line x1="4" y1="50" x2="96" y2="50" strokeWidth={0.5} opacity={0.4} />
-      </motion.svg>
-      <motion.svg className="cv-float cv-float--3" style={{ y: y1, rotate: r2 }} viewBox="0 0 80 80" fill="none" stroke="currentColor">
-        <rect x="10" y="10" width="60" height="60" strokeWidth={0.8} transform="rotate(45 40 40)" />
-        <rect x="20" y="20" width="40" height="40" strokeWidth={0.5} opacity={0.5} transform="rotate(45 40 40)" />
-      </motion.svg>
-      <motion.svg className="cv-float cv-float--4" style={{ y: y2, rotate: r1 }} viewBox="0 0 80 80" fill="none" stroke="currentColor">
-        <polygon points="40,6 74,66 6,66" strokeWidth={0.8} />
-        <polygon points="40,22 58,56 22,56" strokeWidth={0.5} opacity={0.45} />
-      </motion.svg>
-    </div>
+    <svg className="cv-dots" viewBox="0 0 80 80" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, r) =>
+        Array.from({ length: 5 }).map((_, c) => (
+          <circle key={`${r}-${c}`} cx={6 + c * 16} cy={6 + r * 16} r={2.2} fill="currentColor" />
+        )),
+      )}
+    </svg>
   )
 }
 
@@ -106,10 +86,8 @@ function octagonPoints(cx: number, cy: number, r: number): string {
   return pts.join(' ')
 }
 
-const OCTAGON_LAYERS = 5
 const OCTAGON_VIEWBOX = 200
 const OCTAGON_CENTER = OCTAGON_VIEWBOX / 2
-
 const RINGS: { outerR: number; innerR: number }[] = [
   { outerR: 95, innerR: 78 },
   { outerR: 68, innerR: 60 },
@@ -122,11 +100,9 @@ function buildRingPath(outerR: number, innerR: number): string {
   const C = OCTAGON_CENTER
   const outer = octagonPoints(C, C, outerR)
   if (innerR <= 0) return `M ${outer.split(' ').map(p => p.replace(',', ' ')).join(' L ')} Z`
-
   const inner = octagonPoints(C, C, innerR)
   const outerParts = outer.split(' ').map(p => p.replace(',', ' '))
   const innerParts = inner.split(' ').map(p => p.replace(',', ' ')).reverse()
-
   return `M ${outerParts.join(' L ')} Z M ${innerParts.join(' L ')} Z`
 }
 
@@ -138,12 +114,10 @@ function OctagonRing({ d, scrollYProgress, index }: {
   index: number
 }) {
   const reversed = RINGS.length - 1 - index
-
   const waveOffset = reversed * 0.1
   const start = 0.0 + waveOffset
   const mid = 0.15 + waveOffset
   const end = 0.35 + waveOffset
-
   const scale = useTransform(scrollYProgress, [start, mid, end], [0.92, 1.02, 1])
   const opacity = useTransform(scrollYProgress, [start, mid, end], [0, 0.7, 1])
 
@@ -166,98 +140,146 @@ function NestedOctagons() {
 
   return (
     <div ref={ref} className="cv-octagons" aria-hidden="true">
-      <svg
-        viewBox={`0 0 ${OCTAGON_VIEWBOX} ${OCTAGON_VIEWBOX}`}
-        className="cv-octagons-svg"
-      >
+      <svg viewBox={`0 0 ${OCTAGON_VIEWBOX} ${OCTAGON_VIEWBOX}`} className="cv-octagons-svg">
         {ringPaths.map((d, i) => (
-          <OctagonRing
-            key={i}
-            d={d}
-            scrollYProgress={scrollYProgress}
-            index={i}
-          />
+          <OctagonRing key={i} d={d} scrollYProgress={scrollYProgress} index={i} />
         ))}
       </svg>
     </div>
   )
 }
 
-const stagger = {
+const stagger: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.05 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
 }
 
-const panelReveal = {
-  hidden: { opacity: 0, y: 48, scale: 0.94 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: SPRING },
+const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: SPRING },
 }
 
-const numReveal = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { ...SPRING, delay: 0.1 } },
+const fade: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
 }
 
-const barScale = {
-  hidden: { scaleX: 0 },
-  visible: { scaleX: 1, transition: { duration: 0.7, ease: EASE } },
-}
-
-const descReveal = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { ...SPRING, delay: 0.7 } },
-}
-
-export function CoreValuesSection({ title, description }: CoreValuesSectionProps) {
+export function CoreValuesSection({ title, description, subtitleSlides }: CoreValuesSectionProps) {
   const ref = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.15 })
   const values = parseValues(title)
 
+  const slides = useMemo<SubtitleSlide[]>(() => {
+    const list: SubtitleSlide[] = []
+    if (description) list.push({ description })
+    if (subtitleSlides?.length) {
+      for (const s of subtitleSlides) {
+        if (s?.description) list.push({ title: s.title, description: s.description })
+      }
+    }
+    return list
+  }, [description, subtitleSlides])
+
+  const [[active, direction], setActiveDir] = useState<[number, 1 | -1]>([0, 1])
+  const [paused, setPaused] = useState(false)
+
+  const goTo = (next: number, dir: 1 | -1) => {
+    if (slides.length === 0) return
+    const wrapped = ((next % slides.length) + slides.length) % slides.length
+    setActiveDir([wrapped, dir])
+  }
+
+  useEffect(() => {
+    if (slides.length < 2 || paused) return
+    const id = setInterval(() => {
+      setActiveDir(([i]) => [(i + 1) % slides.length, 1])
+    }, 5500)
+    return () => clearInterval(id)
+  }, [slides.length, paused])
+
+  const current = slides[active] || { description: '' }
+
   return (
     <section ref={ref} className="relative py-20 lg:py-28 overflow-hidden cv-section">
-      <FloatingGeo />
+      <div className="cv-deco cv-deco--dots" aria-hidden="true">
+        <DotsCluster />
+      </div>
       <NestedOctagons />
 
       <div className="relative z-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="cv-strip"
+          className="cv-header"
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+        >
+          {slides.length > 0 && (
+            <motion.div
+              className="cv-subtitle-wrap"
+              variants={fade}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <div className="cv-subtitle-stage">
+                <AnimatePresence mode="wait" initial={false} custom={direction}>
+                  <motion.div
+                    key={active}
+                    className="cv-subtitle-slide"
+                    custom={direction}
+                    variants={{
+                      enter: (d: number) => ({ opacity: 0, x: d * 60 }),
+                      center: { opacity: 1, x: 0 },
+                      exit: (d: number) => ({ opacity: 0, x: d * -60 }),
+                    }}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.55, ease: EASE }}
+                  >
+                    {current.title && <span className="cv-subtitle-tag">{current.title}</span>}
+                    <p className="cv-subtitle">{current.description}</p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {slides.length > 1 && (
+                <div className="cv-subtitle-dots" role="tablist" aria-label="Slides">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="tab"
+                      aria-selected={i === active}
+                      aria-label={`Slide ${i + 1}`}
+                      className={`cv-subtitle-dot${i === active ? ' is-active' : ''}`}
+                      onClick={() => goTo(i, i > active ? 1 : -1)}
+                    />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </motion.div>
+
+        <motion.div
+          className="cv-grid"
           variants={stagger}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
           {values.map((v, i) => (
-            <motion.div
-              key={v.iconKey + i}
-              className="cv-panel group"
-              variants={panelReveal}
-            >
-              <div className="cv-panel-bg" aria-hidden="true" />
-
-              <motion.span className="cv-panel-num" variants={numReveal}>
-                {String(i + 1).padStart(2, '0')}
-              </motion.span>
-
-              <div className="cv-panel-icon">
-                <ValueIcon iconKey={v.iconKey} isInView={inView} />
+            <motion.div key={v.iconKey + i} className="cv-card" variants={cardReveal}>
+              <div className="cv-card-body">
+                <div className="cv-card-icon">
+                  <ValueIcon iconKey={v.iconKey} isInView={inView} />
+                </div>
+                <span className="cv-card-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="cv-card-title">{v.word}</h3>
+                <span className="cv-card-rule" aria-hidden="true" />
               </div>
-
-              <motion.div className="cv-panel-bar" variants={barScale} />
-
-              <h3 className="cv-panel-title">{v.word}</h3>
-
-              <div className="cv-panel-glow" aria-hidden="true" />
             </motion.div>
           ))}
         </motion.div>
-
-        <motion.p
-          className="cv-desc"
-          variants={descReveal}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {description}
-        </motion.p>
       </div>
     </section>
   )
