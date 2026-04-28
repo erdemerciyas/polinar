@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload'
-import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -10,6 +9,9 @@ const LOCALES_PATH = path.resolve(__dirname, '../lib/locales.json')
 
 async function syncLocalesToFile(payload: any) {
   try {
+    if (typeof window !== 'undefined') return // Guard against client-side execution
+    const fs = await import('fs')
+
     const allLangs = await payload.find({
       collection: 'languages',
       sort: 'sortOrder',
@@ -255,7 +257,7 @@ export const Languages: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [
-      async ({ data, req, operation }) => {
+      async ({ data, req, operation, originalDoc }) => {
         // If this language is being set as default, unset all others
         if (data?.isDefault) {
           const payload = req.payload
@@ -263,8 +265,8 @@ export const Languages: CollectionConfig = {
             collection: 'languages',
             where: {
               isDefault: { equals: true },
-              ...(operation === 'update' && req.routeParams?.id
-                ? { id: { not_equals: req.routeParams.id } }
+              ...(operation === 'update' && originalDoc?.id
+                ? { id: { not_equals: originalDoc.id } }
                 : {}),
             },
             limit: 100,

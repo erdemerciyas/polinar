@@ -1,12 +1,12 @@
 {
   "locales": [
     {
-      "label": "English",
-      "code": "en"
+      "label": "Russian",
+      "code": "ru"
     },
     {
-      "label": "Türkçe",
-      "code": "tr"
+      "label": "English",
+      "code": "en"
     },
     {
       "label": "Deutsch",
@@ -15,6 +15,10 @@
     {
       "label": "Arabic",
       "code": "ar"
+    },
+    {
+      "label": "Türkçe",
+      "code": "tr"
     }
   ],
   "defaultLocale": "en"

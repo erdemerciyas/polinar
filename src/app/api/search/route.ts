@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPayloadClient } from '@/lib/payload'
+import { getDictionary } from '@/lib/getDictionary'
 import { getInjectionMouldsData } from '@/data/injection-moulds'
 import { getMachineryData } from '@/data/machinery'
 import { getPlasticTestEquipmentData } from '@/data/plastic-test-equipment'
@@ -177,39 +178,31 @@ export async function GET(req: NextRequest) {
     },
   ]
 
-  const globalPromises = globalsToSearch.map(async (g) => {
-    try {
-      const data = await payload.findGlobal({
-        slug: g.slug as any,
-        locale: locale as any,
-      })
-      if (!data) return
+  const dictionary = await getDictionary(locale)
 
-      const textsToCheck: string[] = []
+  const globalSearchPromise = Promise.resolve().then(() => {
+    for (const g of globalsToSearch) {
+      try {
+        const data = dictionary[g.slug]
+        if (!data) continue
 
-      for (const field of g.fields) {
-        const val = (data as any)[field]
-        if (typeof val === 'string') textsToCheck.push(val)
-      }
-
-      for (const n of g.nested || []) {
-        const group = (data as any)[n.group]
-        if (!group) continue
-        for (const f of n.fields) {
-          const val = group[f]
+        const textsToCheck: string[] = []
+        for (const field of g.fields) {
+          const val = data[field]
           if (typeof val === 'string') textsToCheck.push(val)
         }
-      }
-
-      if (textsToCheck.some((t) => t.toLowerCase().includes(q))) {
-        results.push({
-          type: g.type,
-          title: g.title,
-          href: g.href,
-        })
-      }
-    } catch {
-      // Global might not exist
+        for (const n of g.nested || []) {
+          const group = data[n.group]
+          if (!group) continue
+          for (const f of n.fields) {
+            const val = group[f]
+            if (typeof val === 'string') textsToCheck.push(val)
+          }
+        }
+        if (textsToCheck.some((t) => t.toLowerCase().includes(q))) {
+          results.push({ type: g.type, title: g.title, href: g.href })
+        }
+      } catch { /* ignore */ }
     }
   })
 
@@ -327,14 +320,10 @@ export async function GET(req: NextRequest) {
     }
   })
 
-  // --- 4. Navigation items ---
-  const navSearchPromise = (async () => {
+  const navSearchPromise = Promise.resolve().then(() => {
     try {
-      const nav = await payload.findGlobal({
-        slug: 'navigation' as any,
-        locale: locale as any,
-      })
-      const mainMenu = (nav as any)?.mainMenu
+      const nav = dictionary['navigation']
+      const mainMenu = nav?.mainMenu
       if (!Array.isArray(mainMenu)) return
 
       for (const item of mainMenu) {
@@ -360,12 +349,10 @@ export async function GET(req: NextRequest) {
           }
         }
       }
-    } catch {
-      // Navigation global might not exist
-    }
-  })()
+    } catch { /* ignore */ }
+  })
 
-  await Promise.all([...globalPromises, staticSearchPromise, navSearchPromise])
+  await Promise.all([globalSearchPromise, staticSearchPromise, navSearchPromise])
 
   // Deduplicate by href
   const seen = new Set<string>()

@@ -20,7 +20,7 @@
     "seed:about-images": "tsx scripts/seed-about-images.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.30.0",
+    "@google/genai": "^1.50.1",
     "@payloadcms/db-postgres": "^3.0.0",
     "@payloadcms/next": "^3.0.0",
     "@payloadcms/plugin-seo": "^3.0.0",

@@ -1,13 +1,12 @@
-import { getPayloadClient } from '@/lib/payload'
 import { NextRequest, NextResponse } from 'next/server'
+import { getDictionary } from '@/lib/getDictionary'
 
 export async function GET(req: NextRequest) {
   const locale = req.nextUrl.searchParams.get('locale') || 'en'
 
   try {
-    const payload = await getPayloadClient()
-    const data = await payload.findGlobal({ slug: 'contact-page-settings', locale: locale as any })
-    return NextResponse.json(data)
+    const dictionary = await getDictionary(locale)
+    return NextResponse.json(dictionary['contact-page-settings'] || {})
   } catch {
     return NextResponse.json({}, { status: 500 })
   }

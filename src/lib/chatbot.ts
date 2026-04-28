@@ -1,8 +1,9 @@
-import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenAI } from '@google/genai'
 import { getPayloadClient } from './payload'
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '',
+const model = process.env.GOOGLE_VERTEX_MODEL || 'gemini-2.5-flash'
+const ai = new GoogleGenAI({
+  apiKey: process.env.GOOGLE_VERTEX_API_KEY || '',
 })
 
 export async function getChatbotContext(locale: string) {
@@ -97,16 +98,22 @@ export async function* streamChatResponse(
   const context = await getChatbotContext(locale)
   const systemPrompt = buildSystemPrompt(context, locale)
 
-  const stream = anthropic.messages.stream({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 1024,
-    system: systemPrompt,
-    messages,
+  const stream = await ai.models.generateContentStream({
+    model,
+    contents: messages.map((message) => ({
+      role: message.role,
+      parts: [{ text: message.content }],
+    })),
+    config: {
+      systemInstruction: systemPrompt,
+      maxOutputTokens: 1024,
+      temperature: 0.7,
+    },
   })
 
-  for await (const event of stream) {
-    if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-      yield event.delta.text
+  for await (const chunk of stream) {
+    if (chunk.text) {
+      yield chunk.text
     }
   }
 }

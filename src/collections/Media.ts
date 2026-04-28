@@ -15,7 +15,7 @@ export const Media: CollectionConfig = {
       { name: 'card', width: 600, height: 400, position: 'centre' },
       { name: 'hero', width: 1920, height: 800, position: 'centre' },
     ],
-    adminThumbnail: 'thumbnail',
+    adminThumbnail: ({ doc }: any) => doc?.sizes?.thumbnail?.url || doc?.thumbnailURL || doc?.url,
   },
   access: {
     read: () => true,

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { getStaticLabels } from '@/data/static-labels'
-import { getPayloadClient } from '@/lib/payload'
 import localesConfig from '@/lib/locales.json'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.polinar.com.tr'
@@ -11,9 +10,10 @@ const defaultLocale = localesConfig.defaultLocale || 'en'
 export async function getSiteDefaultDescription(locale: string): Promise<string> {
   const labels = getStaticLabels(locale)
   try {
-    const payload = await getPayloadClient()
-    const siteSettings = await payload.findGlobal({ slug: 'site-settings', locale: locale as any })
-    return (siteSettings as any)?.defaultSeoDescription || labels.seo.defaultDescription
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    const siteSettings = dictionary['site-settings']
+    return siteSettings?.defaultSeoDescription || labels.seo.defaultDescription
   } catch {
     return labels.seo.defaultDescription
   }

@@ -17,19 +17,19 @@
         },
         {
           "description": "Çevre ve Kalite Politikası",
-          "name": "Integrated Policy"
+          "name": "Entegre Politika"
         },
         {
           "description": "Endüstriyel Tasarım Tescil Belgesi",
-          "name": "Design Registration"
+          "name": "Tasarım Tescil Belgesi"
         },
         {
           "description": "Polinar Marka Yenileme Belgesi",
-          "name": "Trademark Renewal"
+          "name": "Marka Yenileme Belgesi"
         },
         {
           "description": "PTE Marka Tescil Belgesi",
-          "name": "Trademark Registration"
+          "name": "Marka Tescil Belgesi"
         }
       ],
       "title": "Sertifikalarımız"
@@ -128,25 +128,25 @@
   },
   "contact-page-settings": {
     "form": {
-      "emailLabel": "E-postanız",
+      "emailLabel": "E-posta Adresiniz",
       "messageLabel": "Mesajınız",
-      "nameLabel": "Senin Adın",
-      "sendButton": "SEND MESSAGE",
-      "sendingButton": "SENDING...",
+      "nameLabel": "Adınız",
+      "sendButton": "MESAJ GÖNDER",
+      "sendingButton": "GÖNDERİLİYOR...",
       "subjectLabel": "Konu"
     },
     "hero": {
-      "subtitle": "Get in Touch",
-      "title": "İLETİŞİM ABD"
+      "subtitle": "Bize Ulaşın",
+      "title": "İLETİŞİM"
     },
     "info": {
       "addressLabel": "Adres",
-      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / ISTANBUL, Türkiye",
+      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, Türkiye",
       "emailLabel": "E-posta",
       "phoneLabel": "Telefon / Faks"
     },
     "messages": {
-      "error": "Mesaj göndermeye başarısız oldu. Lütfen tekrar deneyin.",
+      "error": "Mesaj gönderilemedi. Lütfen tekrar deneyin.",
       "success": "Mesaj başarıyla gönderildi!"
     }
   },
@@ -167,48 +167,48 @@
     "aboutPreviewLabels": {
       "description": "POLINAR, plastik boru ve ekleme parçaları için plastik enjeksiyon kalıpları üretimi alanında dinamik ve öncü firmalardan biridir.",
       "label": "Hakkımızda",
-      "title": "ABD"
+      "title": "HAKKIMIZDA"
     },
     "businessSection": {
       "sectionLabel": "Faaliyetlerimiz",
       "sectionTitle": "Ne Yapıyoruz?"
     },
     "coreValues": {
-      "description": "PONAR, plastik borular ve fitler için plastik enjeksiyon kalıplarının üretimi alanında dinamik ve lider şirketlerden biridir.",
-      "title": "Kalite / Robust / Dayanıklı / Güvenilir /"
+      "description": "POLINAR, plastik boru ve ek parçaları için plastik enjeksiyon kalıplarının üretimi alanında dinamik ve lider şirketlerden biridir.",
+      "title": "Kalite / Sağlam / Dayanıklı / Güvenilir"
     },
     "heroSlides": [
       {
         "animateText": true,
-        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "Since 2000, Polinar has been manufacturing high-quality plastic injection moulds for the global pipe and fittings industry. ",
+        "subtitle": "2000 yılından bu yana Polinar, global boru ve ek parça endüstrisi için yüksek kaliteli plastik enjeksiyon kalıpları üretmektedir.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "High Quality Plastic Injection Moulds",
+        "title": "Yüksek Kaliteli Plastik Enjeksiyon Kalıpları",
         "titleSize": "large"
       },
       {
         "animateText": true,
-        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "Polinar designs and manufactures customized machinery for the plastic pipe and fittings industry.",
+        "subtitle": "Polinar, plastik boru ve ek parça endüstrisi için özelleştirilmiş makineler tasarlar ve üretir.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Precision Machinery & Custom Solutionss",
+        "title": "Hassas Makineler & Özel Çözümler",
         "titleSize": "large"
       },
       {
         "animateText": true,
-        "ctaLabel": "{\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "Polinar Test Equipment (PTE) manufactures a comprehensive range of testing machines for the plastic pipe and fittings industry. ",
+        "subtitle": "Polinar Test Ekipmanları (PTE), plastik boru ve ek parça endüstrisi için kapsamlı test makineleri üretmektedir.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Reliable Testing for Quality Assurance",
+        "title": "Kalite Güvencesi İçin Güvenilir Test",
         "titleSize": "large"
       }
     ],
@@ -243,9 +243,9 @@
         "label": "FAALİYETLERİMİZ",
         "megaMenuColumns": [
           {
-            "columnTitle": "{}",
+            "columnTitle": "",
             "columnType": "links",
-            "imageCaption": "{}",
+            "imageCaption": "",
             "links": [
               {
                 "description": "PPR-C, HDPE, PVC ve diğer boru sistemleri için yüksek kaliteli enjeksiyon kalıpları.",

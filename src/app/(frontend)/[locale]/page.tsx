@@ -12,12 +12,15 @@ import { WhatsAppCTABar } from '@/components/layout/WhatsAppCTABar'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const labels = getStaticLabels(locale)
   let homepageData: any = null
+  let dictionary: any = {}
   try {
-    const payload = await getPayloadClient()
-    homepageData = await payload.findGlobal({ slug: 'homepage-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    homepageData = dictionary['homepage-settings'] || null
   } catch {}
+
+  const labels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
 
   const seo = homepageData?.seo || {}
   const defaultDesc = await getSiteDefaultDescription(locale)
@@ -103,24 +106,28 @@ export default async function HomePage({ params }: Props) {
   let uiLabels: any = null
   let news = null
   let siteSettings: any = null
+  let dictionary: any = {}
 
   try {
     const payload = await getPayloadClient()
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
 
-    ;[homepageData, navData, uiLabels, news, siteSettings] = await Promise.all([
-      payload.findGlobal({ slug: 'homepage-settings', locale: locale as any }),
-      payload.findGlobal({ slug: 'navigation', locale: locale as any }),
-      payload.findGlobal({ slug: 'ui-labels', locale: locale as any }),
-      payload.find({
-        collection: 'news',
-        locale: locale as any,
-        where: { status: { equals: 'published' } },
-        sort: '-date',
-        limit: 6,
-      }),
-      payload.findGlobal({ slug: 'site-settings', locale: locale as any }),
-    ])
+    homepageData = dictionary['homepage-settings'] || null
+    navData = dictionary['navigation'] || null
+    uiLabels = dictionary['ui-labels'] || null
+    siteSettings = dictionary['site-settings'] || null
+
+    news = await payload.find({
+      collection: 'news',
+      locale: locale as any,
+      where: { status: { equals: 'published' } },
+      sort: '-date',
+      limit: 6,
+    })
   } catch {}
+
+  const labels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
 
   const megaMenuItem = navData?.mainMenu?.find((item: any) => item.type === 'mega')
   const businessCards: Array<{

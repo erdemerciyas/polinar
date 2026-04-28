@@ -1,7 +1,7 @@
 {
   "about-page-settings": {
     "certificates": {
-      "description": "Die erste Priorität von Polinar besteht darin, alle Kunden zu schützen und qualifizierte Dienstleistungen anzubieten. In allen Inputs und Outputs unseres Produktionsprozesses wird die Analyse aller Halbprodukte und Fertigprodukte sehr sorgfältig durchgeführt.",
+      "description": "Die erste Priorität von Polinar ist es, den Gewinn aller Kunden zu schützen und qualifizierte Dienstleistungen anzubieten. In allen Phasen unseres Produktionsprozesses werden die Analysen aller Halbzeuge und Fertigprodukte sehr sorgfältig durchgeführt.",
       "items": [
         {
           "description": "Qualitätsmanagementsystem",
@@ -12,100 +12,93 @@
           "name": "ISO 14001"
         },
         {
-          "description": "Berufliche Gesundheit und Sicherheit",
+          "description": "Arbeitsschutzmanagement",
           "name": "ISO 45001"
         },
         {
-          "description": "Umwelt und Qualitätspolitik",
-          "name": "Integrated Policy"
+          "description": "Umwelt- und Qualitätspolitik",
+          "name": "Integrierte Politik"
         },
         {
-          "description": "Zertifikat für die Registrierung von Industriedesigns",
-          "name": "Design Registration"
+          "description": "Registrierungsbescheinigung für Industriedesign",
+          "name": "Designregistrierung"
         },
         {
-          "description": "Polinar Trademark Renewing Certificate",
-          "name": "Trademark Renewal"
+          "description": "Bescheinigung über die Erneuerung der Marke Polinar",
+          "name": "Markenerneuerung"
         },
         {
-          "description": "PTE Trademark Registration Certificate",
-          "name": "Trademark Registration"
+          "description": "PTE-Markenregistrierungsbescheinigung",
+          "name": "Markenregistrierung"
         }
       ],
-      "title": "Our Certificates"
+      "title": "Unsere Zertifikate"
     },
     "cta": {
       "buttonLink": "https://wa.me/902125498820",
-      "buttonText": "Kontakt über WhatsApp",
-      "description": "Kontaktieren Sie unser Kundenservice-Team für Fragen zu unseren Produkten und Dienstleistungen.",
-      "title": "Brauchen Sie detaillierte Informationen?"
+      "buttonText": "Kontakt per WhatsApp",
+      "description": "Kontaktieren Sie unser Kundensupport-Team bei Fragen zu unseren Produkten und Dienstleistungen.",
+      "title": "Benötigen Sie detaillierte Informationen?"
     },
     "gallery": {
-      "description": "Ein Blick in unsere modernste Fertigungsanlage mit modernen CNC- und EDM-Maschinen.",
+      "description": "Ein Einblick in unsere hochmoderne Fertigungsanlage, die mit modernen CNC- und EDM-Maschinen ausgestattet ist.",
       "images": [
         {
-          "caption": "Bearbeitungszentrum CNC",
           "size": "large"
         },
         {
-          "caption": "Injection Mould Workshop",
           "size": "normal"
         },
         {
-          "caption": "EDM Drahtschneiden",
           "size": "normal"
         },
         {
-          "caption": "Qualitätskontrolle",
-          "size": "large"
-        },
-        {
-          "caption": "Hersteller und Hersteller",
           "size": "normal"
         },
         {
-          "caption": "Produktionslinie",
           "size": "normal"
         },
         {
-          "caption": "Formmontage",
           "size": "normal"
         },
         {
-          "caption": "Waren",
           "size": "normal"
         }
       ],
-      "title": "Fotos von Produktionsfläche"
+      "title": "Fotos aus dem Produktionsbereich"
     },
     "hero": {
       "label": "Über uns",
       "subtitle": "Führender Hersteller von Kunststoffspritzgussformen seit 2000",
       "title": "ÜBER UNS"
     },
+    "seo": {
+      "description": "Entdecken Sie die über 25-jährige Expertise von Polinar in der Herstellung von Kunststoffspritzgussformen. ISO-zertifizierte Qualität, moderne CNC-Anlage und globaler Export in über 40 Länder.",
+      "title": "Über Polinar"
+    },
     "statistics": {
       "cards": [
         {
           "icon": "📅",
-          "label": "Gegründet Jahr",
+          "label": "Gründungsjahr",
           "number": 2000,
           "suffix": ""
         },
         {
           "icon": "🌍",
-          "label": "Ausfuhr",
+          "label": "Exportländer",
           "number": 40,
           "suffix": "+"
         },
         {
           "icon": "🏭",
-          "label": "Vollständige Projekte",
+          "label": "Abgeschlossene Projekte",
           "number": 500,
           "suffix": "+"
         },
         {
           "icon": "⚙️",
-          "label": "Jahre der Erfahrung",
+          "label": "Jahre Erfahrung",
           "number": 25,
           "suffix": "+"
         }
@@ -115,14 +108,14 @@
       "ctaLink": "/contact",
       "ctaText": "Kontaktieren Sie uns",
       "foundedYear": "2000",
-      "paragraph1": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoff-Spritzgussformen zur Herstellung von Kunststoff-Rohrarmaturen auf höchstem technischen Niveau und im Bereich der Projektentwicklung für individuelle Kundenaufträge.",
-      "paragraph2": "POLINAR fördert Innovation, hohe Technologien und Konsistenz. Das Unternehmen entwickelt seit 2000 seine Erfahrung in diesem Bereich und tritt weiterhin als führende Organisation in der Konstruktion und Herstellung von Spritzgussformen auf.",
-      "paragraph3": "Die intensive Erfahrung von POLINAR in Design und Herstellung von Formen verbessert sich in jedem Projekt. Wir bemühen uns, die Prozesse und die Entwicklung innovativer Lösungen zu verbessern. So werden wir mittelfristig und langfristig den Wettbewerbsvorteil unserer Kunden stärken können.",
+      "paragraph1": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für die Produktion von Kunststoffrohrformstücken auf höchstem technischem Niveau sowie im Bereich der Projektentwicklung für individuelle Kundenaufträge.",
+      "paragraph2": "POLINAR fördert Innovation, Hochtechnologie und Beständigkeit. Das Unternehmen baut seine Erfahrung in diesem Bereich seit dem Jahr 2000 kontinuierlich aus und ist ein führendes Unternehmen in der Konstruktion und Herstellung von Spritzgussformen.",
+      "paragraph3": "Die intensive Erfahrung von POLINAR in der Konstruktion und Herstellung von Formen verbessert sich mit jedem Projekt. Wir investieren weitere Anstrengungen in die Prozessoptimierung und die Entwicklung innovativer Lösungen, um den Wettbewerbsvorteil unserer Kunden mittel- und langfristig zu stärken.",
       "title": "Über Polinar"
     },
     "video": {
-      "description": "Erfahren Sie mehr über Polinar und unsere Fertigungsmöglichkeiten.",
-      "title": "Video zum Thema",
+      "description": "Sehen Sie sich unser Unternehmensvideo an, um mehr über Polinar und unsere Fertigungskapazitäten zu erfahren.",
+      "title": "Imagefilm",
       "videoUrl": "https://www.youtube.com/watch?v=wFziyAssgqk"
     }
   },
@@ -131,58 +124,62 @@
       "emailLabel": "Ihre E-Mail",
       "messageLabel": "Ihre Nachricht",
       "nameLabel": "Ihr Name",
-      "sendButton": "SEND MESSAGE",
-      "sendingButton": "SENDING...",
-      "subjectLabel": "Gegenstand"
+      "sendButton": "NACHRICHT SENDEN",
+      "sendingButton": "WIRD GESENDET...",
+      "subjectLabel": "Betreff"
     },
     "hero": {
-      "subtitle": "In den Warenkorb",
-      "title": "KONTAKT"
+      "subtitle": "Kontakt aufnehmen",
+      "title": "KONTAKTIEREN SIE UNS"
     },
     "info": {
-      "addressLabel": "Anschrift",
-      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok Nr. 34\nBaşakşehir / İSTANBUL, TURKEY",
-      "emailLabel": "E-Mail senden",
+      "addressLabel": "Adresse",
+      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, TÜRKEI",
+      "emailLabel": "E-Mail",
       "phoneLabel": "Telefon / Fax"
     },
     "messages": {
-      "error": "Versäumt, Nachricht zu senden. Bitte versuchen Sie es noch mal.",
+      "error": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
       "success": "Nachricht erfolgreich gesendet!"
+    },
+    "seo": {
+      "description": "Kontaktieren Sie Polinar für maßgeschneiderte Lösungen im Bereich Kunststoffspritzgussformen. Fordern Sie ein Angebot an, besuchen Sie unser Werk in Istanbul oder erreichen Sie uns per WhatsApp.",
+      "title": "Kontakt"
     }
   },
   "footer": {
-    "copyrightText": "Copyright © 2024 Alle Rechte vorbehalten von Polinar",
+    "copyrightText": "Copyright © 2024 Alle Rechte vorbehalten bei Polinar",
     "labels": {
-      "addressLabel": "Anschrift",
-      "emailLabel": "E-Mail senden",
+      "addressLabel": "Adresse",
+      "emailLabel": "E-Mail",
       "emailPlaceholder": "E-Mail",
       "namePlaceholder": "Name",
       "newsletterLabel": "Newsletter",
       "phoneFaxLabel": "Telefon / Fax",
-      "subscribeButton": "SUBSCRIBE"
+      "subscribeButton": "ABONNIEREN"
     },
     "showNewsletter": true
   },
   "homepage-settings": {
     "aboutPreviewLabels": {
-      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohr und Armaturen.",
+      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohre und -formstücke.",
       "label": "Über uns",
-      "title": "USA"
+      "title": "WIR"
     },
     "businessSection": {
-      "sectionLabel": "Unser Unternehmen",
+      "sectionLabel": "Unser Geschäftsbereich",
       "sectionTitle": "Was wir tun"
     },
     "coreValues": {
-      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohr und Armaturen.",
-      "title": "Qualität / Robust / langlebig / zuverlässig"
+      "description": "POLINAR ist eines der dynamischen und führenden Unternehmen im Bereich der Herstellung von Kunststoffspritzgussformen für Kunststoffrohre und -formstücke.",
+      "title": "Qualität / Robust / Langlebig / Zuverlässig"
     },
     "heroSlides": [
       {
         "animateText": true,
-        "ctaLabel": "\"en\":null,\"tr\":null}",
+        "ctaLabel": "{\"en\":null,\"tr\":null}",
         "overlayOpacity": 60,
-        "subtitle": "Seit 2000 fertigt Polinar hochwertige Kunststoffspritzgussformen für die globale Rohr- und Armaturenindustrie.",
+        "subtitle": "Seit dem Jahr 2000 fertigt Polinar hochwertige Kunststoffspritzgussformen für die weltweite Rohr- und Formstückindustrie.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
@@ -191,31 +188,35 @@
       },
       {
         "animateText": true,
-        "ctaLabel": "\"en\":null,\"tr\":null}",
+        "ctaLabel": "{\"en\":null,\"tr\":null}",
         "overlayOpacity": 60,
-        "subtitle": "Polinar entwickelt und fertigt kundenspezifische Maschinen für die Kunststoffrohr- und Armaturenindustrie.",
+        "subtitle": "Polinar konstruiert und fertigt maßgeschneiderte Maschinen für die Kunststoffrohr- und Formstückindustrie.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Präzisionsmaschinen und kundenspezifische Lösungen",
+        "title": "Präzisionsmaschinen & Individuelle Lösungen",
         "titleSize": "large"
       },
       {
         "animateText": true,
         "ctaLabel": "{\"tr\":null}",
         "overlayOpacity": 60,
-        "subtitle": "Polynar Test Equipment (PTE) Mischprogramm von Prüfmaschinen für die Kunststoffrohr- und Armaturenindustrie.",
+        "subtitle": "Polinar Test Equipment (PTE) bietet ein breites Spektrum an Prüfmaschinen für die Kunststoffrohr- und Formstückindustrie.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Zuverlässige Prüfung der Qualitätssicherung",
+        "title": "Zuverlässige Prüfungen zur Qualitätssicherung",
         "titleSize": "large"
       }
     ],
     "newsSection": {
-      "empty": "Nachrichten kommen bald",
-      "label": "Letzte Nachrichten",
-      "title": "Faire Agenda"
+      "empty": "Neuigkeiten folgen in Kürze",
+      "label": "Aktuelle Nachrichten",
+      "title": "Messe-Agenda"
+    },
+    "seo": {
+      "description": "Führender Hersteller von Kunststoffspritzgussformen für Rohre und Formstücke seit 2000. Export hochwertiger PPR-C-, HDPE- und PVC-Formen in über 40 Länder.",
+      "title": "Polinar — Kunststoffspritzgussformen"
     },
     "sliderSettings": {
       "autoPlay": true,
@@ -230,39 +231,37 @@
   "navigation": {
     "mainMenu": [
       {
-        "label": "HOME",
+        "label": "STARTSEITE",
         "type": "link",
         "url": "/"
       },
       {
-        "label": "HOME NEWS",
+        "label": "ÜBER UNS",
         "type": "link",
         "url": "/about"
       },
       {
-        "label": "UNSERE TÄTIGKEITEN",
+        "label": "GESCHÄFTSBEREICHE",
         "megaMenuColumns": [
           {
-            "columnTitle": "{}",
             "columnType": "links",
-            "imageCaption": "{}",
             "links": [
               {
-                "description": "{\"en\":\"High-quality injection moulds for PPR-C, HDPE, PVC and other pipe systems.\",\"tr\":\"PPR-C, HDPE, PVC ve diğer boru sistemleri için yüksek kaliteli enjeksiyon kalıpları.\"}",
+                "description": "Hochwertige Spritzgussformen für PPR-C, HDPE, PVC und andere Rohrsysteme.",
                 "icon": "moulds",
-                "label": "{\"en\":\"Injection Moulds\",\"tr\":\"Enjeksiyon Kalıpları\"}",
+                "label": "Spritzgussformen",
                 "url": "/our-business/injection-moulds"
               },
               {
-                "description": "{\"en\":\"Precision manufacturing capacity with modern CNC and EDM machines.\",\"tr\":\"Modern CNC ve EDM makineleri ile hassas üretim kapasitesi.\"}",
+                "description": "Präzisionsfertigungskapazität mit modernen CNC- und EDM-Maschinen.",
                 "icon": "machinery",
-                "label": "{\"en\":\"Machinery\",\"tr\":\"Makine Parkuru\"}",
+                "label": "Maschinenbau",
                 "url": "/our-business/machinery"
               },
               {
-                "description": "{\"en\":\"Quality control and material testing services.\",\"tr\":\"Kalite kontrol ve malzeme test hizmetleri.\"}",
+                "description": "Qualitätskontrolle und Materialprüfdienste.",
                 "icon": "testing",
-                "label": "{\"en\":\"Plastic Testing Equipment\",\"tr\":\"Plastik Test Ekipmanları\"}",
+                "label": "Kunststoff-Prüfgeräte",
                 "url": "/our-business/plastic-testing-equipment"
               }
             ]
@@ -271,32 +270,36 @@
         "type": "mega"
       },
       {
-        "label": "NACHRICHTEN",
+        "label": "NEWS",
         "type": "link",
         "url": "/news"
       },
       {
-        "label": "NACHRICHTEN",
+        "label": "KONTAKT",
         "type": "link",
         "url": "/contact"
       }
     ],
     "megaMenuCTA": {
-      "button": "Kontakt",
-      "description": "Wir bieten spezielle Lösungen für Ihre Projekte. Kontaktieren Sie uns.",
-      "title": "Kontaktieren Sie uns"
+      "button": "Kontakt aufnehmen",
+      "description": "Wir bieten maßgeschneiderte Lösungen für Ihre Projekte. Kontaktieren Sie uns noch heute.",
+      "title": "Kontakt"
     }
   },
   "news-page-settings": {
     "hero": {
-      "label": "Letzte Aktualisierungen",
-      "title": "NACHRICHTEN & EXHIBITIONEN"
+      "label": "Aktuelle Updates",
+      "title": "NEWS & MESSEN"
     },
     "labels": {
-      "allNews": "Alle News",
-      "breadcrumb": "Nachrichten",
-      "cmsPlaceholder": "Artikelinhalte werden über CMS verwaltet.",
-      "empty": "Nachrichten kommen bald"
+      "allNews": "Alle Nachrichten",
+      "breadcrumb": "News",
+      "cmsPlaceholder": "Artikelinhalte werden über das CMS verwaltet.",
+      "empty": "Neuigkeiten folgen in Kürze"
+    },
+    "seo": {
+      "description": "Bleiben Sie auf dem Laufenden mit den neuesten Nachrichten von Polinar, Messebeteiligungen, Produkteinführungen und Brancheneinblicken in den Kunststoffspritzguss.",
+      "title": "News & Messen"
     }
   },
   "site-settings": {
@@ -304,12 +307,12 @@
       "enabled": true,
       "labels": {
         "closeLabel": "Schließen",
-        "connectionError": "Verbindungsfehler. Bitte versuchen Sie es noch mal.",
-        "errorMessage": "Tut mir leid, es gab einen Fehler.",
-        "placeholder": "Geben Sie Ihre Nachricht ein...",
-        "title": "Poliner Support",
+        "connectionError": "Verbindungsfehler. Bitte versuchen Sie es erneut.",
+        "errorMessage": "Entschuldigung, ein Fehler ist aufgetreten.",
+        "placeholder": "Nachricht schreiben...",
+        "title": "Polinar Support",
         "welcome": "Hallo! Wie kann ich Ihnen heute helfen?",
-        "whatsappLabel": "Weiter auf WhatsApp"
+        "whatsappLabel": "Weiter über WhatsApp"
       }
     },
     "contact": {
@@ -318,6 +321,7 @@
       "phone": "+90 212 549 88 20-21",
       "whatsapp": "+90 533 648 61 34"
     },
+    "defaultSeoDescription": "Polinar — Führender Hersteller von Kunststoffspritzgussformen für Rohre und Formstücke seit 2000. Export in über 40 Länder weltweit.",
     "siteName": "Polinar",
     "socialMedia": {
       "facebook": "https://facebook.com/polinar",
@@ -327,12 +331,1188 @@
     },
     "whatsappCTA": {
       "enabled": true,
-      "text": "Benötigen Sie detaillierte Informationen, kontaktieren Sie unseren Kundenservice über whatsapp"
+      "text": "Benötigen Sie detaillierte Informationen? Kontaktieren Sie unseren Kundensupport per WhatsApp"
     }
   },
   "ui-labels": {
-    "contentComingSoon": "Inhalt kommt bald.",
+    "contentComingSoon": "Inhalte folgen in Kürze.",
     "learnMore": "Mehr erfahren",
-    "readMore": "Mehr lesen"
+    "readMore": "Weiterlesen"
+  },
+  "static-content": {
+    "injection-moulds": {
+      "categories": [
+        {
+          "id": "pprc-sanitary",
+          "name": "Formen für PPR-C Sanitärformstücke",
+          "materials": "PPR-C / PERT / PE (mit Messingeinsätzen)",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Zertifizierte Stähle",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "hdpe-butt-welding",
+          "name": "Formen für HDPE Stumpfschweiß-Formstücke",
+          "materials": "HDPE100 / LDPE / MDPE",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Zertifizierte Stähle",
+            "Kurze Zykluszeiten",
+            "Modulares Formkonzept mit Einsätzen",
+            "Effektives Kühlsystem",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "pp-irrigation",
+          "name": "Formen für PP Bewässerungssysteme",
+          "materials": "PP / PE / POM / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "pvc-sewage",
+          "name": "Formen für PVC Abwasserformstücke",
+          "materials": "PVC / PVC-U / C-PVC / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "pp-sewage",
+          "name": "Formen für PP Abwasserformstücke",
+          "materials": "PP-H / PP-B / PE / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Zertifizierte Stähle",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "pvcu-glue",
+          "name": "Formen für PVC-U Klebesystem-Formstücke",
+          "materials": "PVC / PVC-U / C-PVC / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "pe-corrugated",
+          "name": "Formen für PE Wellrohrsysteme",
+          "materials": "PP / PE / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "electric-conduit",
+          "name": "Formen für Elektroinstallationssysteme",
+          "materials": "PVC / ABS / PP / PE / PA / POM / PPSU / TPE / PET",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        },
+        {
+          "id": "engineering-plastics",
+          "name": "Technische Kunststoffe",
+          "materials": "ABS / PP / PE / PA / POM / PPSU / TPE / PET / Gefüllte Polymere",
+          "technologies": [
+            "Langlebiger Mechanismus",
+            "Kerne und Stifte aus Edelstahl",
+            "Kurze Zykluszeiten",
+            "Effektives Kühlsystem",
+            "Robustes POLINAR Kernsystem",
+            "POLINAR CAM-System - Kernzug",
+            "POLINAR Heißkanal-Verteilersystem"
+          ]
+        }
+      ],
+      "commonTechnologies": [
+        {
+          "title": "Langlebiger Mechanismus",
+          "description": "Gefertigt aus hochwertigen Stahlsorten für langlebige Leistung und Millionen von Produktionszyklen."
+        },
+        {
+          "title": "Kurze Zykluszeiten",
+          "description": "Optimierte Formgeometrie und Kühlkanäle für maximale Produktionseffizienz."
+        },
+        {
+          "title": "Effektives Kühlsystem",
+          "description": "Fortschrittliches Kühlkanaldesign gewährleistet gleichmäßige Temperaturverteilung und Teilequalität."
+        },
+        {
+          "title": "POLINAR Heißkanalsystem",
+          "description": "Proprietäres Heißkanal-Verteilersystem für abfallfreie Produktion und konstante Teilequalität."
+        }
+      ],
+      "highlights": [
+        {
+          "value": "25+",
+          "label": "Jahre Erfahrung"
+        },
+        {
+          "value": "50+",
+          "label": "Exportländer"
+        },
+        {
+          "value": "100%",
+          "label": "Individuelles Design"
+        },
+        {
+          "value": "9",
+          "label": "Produktkategorien"
+        }
+      ],
+      "ui": {
+        "heroTitle": "Spritzgussformen",
+        "heroSubtitle": "Langlebige Formen und maßgeschneiderte Produkte",
+        "introTitle": "Hochwertige Kunststoffspritzgussformen",
+        "introText": "Seit dem Jahr 2000 fertigt Polinar hochwertige Kunststoffspritzgussformen für die globale Rohr- und Formstückindustrie. Unsere Formen sind für PPR-C, HDPE, PVC, PP und andere Rohrsysteme konzipiert und bieten Präzision, Langlebigkeit und Effizienz für Hersteller weltweit.",
+        "categoriesLabel": "Unsere Expertise",
+        "categoriesSectionTitle": "Formenkategorien",
+        "whyLabel": "Warum Polinar",
+        "whySectionTitle": "Kerntechnologien",
+        "whyText": "Jede Polinar-Form integriert unsere proprietären Technologien, die in über 25 Jahren Erfahrung in der Präzisionsformenherstellung entwickelt wurden.",
+        "ctaTitle": "Benötigen Sie eine individuelle Formlösung?",
+        "ctaText": "Kontaktieren Sie unser Engineering-Team für maßgeschneiderte Designs.",
+        "ctaButton": "Kontakt aufnehmen",
+        "breadcrumbHome": "Startseite",
+        "breadcrumbParentFallback": "Unser Geschäftsbereich",
+        "breadcrumbCurrent": "Spritzgussformen"
+      }
+    },
+    "machinery": {
+      "categories": [
+        {
+          "id": "bending-machines",
+          "name": "Biegemaschinen für Kunststoffrohre",
+          "shortDescription": "Pneumatische Biegemaschine für spezielle Crossover-Formstücke durch Thermoformen von PP-R Rohrelementen.",
+          "description": "Pneumatische Biegemaschine zur Herstellung spezieller Crossover-Formstücke durch Thermoformen von Elementen aus Polypropylen-Random-Rohren (PP-R). Ausgestattet mit einem pneumatischen Schneider, einer Heizeinheit für bis zu 8 Rohrelemente (Ø20–32 mm) und einem Pressentisch mit integrierter Kühleinheit. Pressbiegen ist die einfachste und kostengünstigste Methode zum Biegen von Kaltgeräten.",
+          "features": [
+            "Pneumatischer Schneider mit Sammelbox",
+            "Heizeinheit für bis zu 8 Rohrelemente",
+            "Pressentisch mit integriertem Kühler",
+            "Formen für jeden Durchmesser (Ø20–Ø32 mm)",
+            "CE-Konformität zertifiziert"
+          ],
+          "standards": [
+            "DIN EN ISO 15874",
+            "DIN 8077",
+            "DIN 8078"
+          ],
+          "versions": {
+            "name": "Versionen",
+            "columns": [
+              "T1201V1P Biegemaschine",
+              "T1101V2P Omega-Maschine"
+            ],
+            "rows": [
+              {
+                "label": "Arbeitsbereich",
+                "unit": "mm",
+                "values": [
+                  "20-40",
+                  "20-30"
+                ]
+              },
+              {
+                "label": "Arbeitsdruck",
+                "unit": "Bar",
+                "values": [
+                  "6.0",
+                  "6.0"
+                ]
+              },
+              {
+                "label": "CE-Konformität",
+                "values": [
+                  "●",
+                  "●"
+                ]
+              },
+              {
+                "label": "Zulässige Umgebungstemperatur",
+                "unit": "°C",
+                "values": [
+                  "+5 bis +40",
+                  "+5 bis +40"
+                ]
+              },
+              {
+                "label": "Zulässige rel. Luftfeuchtigkeit",
+                "values": [
+                  "Max. 70",
+                  "Max. 70"
+                ]
+              },
+              {
+                "label": "Breite (innen/außen)",
+                "unit": "mm",
+                "values": [
+                  "800",
+                  "1100"
+                ]
+              },
+              {
+                "label": "Tiefe (innen/außen)",
+                "unit": "mm",
+                "values": [
+                  "700",
+                  "800"
+                ]
+              },
+              {
+                "label": "Höhe (innen/außen)",
+                "unit": "mm",
+                "values": [
+                  "1500",
+                  "800"
+                ]
+              },
+              {
+                "label": "Spannungsdaten",
+                "values": [
+                  "220/380V 50/60 Hz",
+                  "220/380V 50/60 Hz"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "mini-extruder",
+          "name": "25D Doppel-Schnecken-Horizontalelextruder",
+          "shortDescription": "Mini-Extruder im Labormaßstab mit 4 autonomen Heizzonen und skalierbarer Geometrie von der F&E bis zur Produktion.",
+          "description": "Der einzigartige Aufbau unseres horizontalen 12 mm 25D Extruders verbessert den Materialfluss und ermöglicht das Temperaturmanagement über 4 autonome Heizzonen. Skalierbare geometrische Proportionen ermöglichen einen nahtlosen Übergang von Labortests zur industriellen Produktion.",
+          "features": [
+            "Verschleißfeste Materialkontaktteile mit minimalem Abrieb",
+            "Vielseitiges Schneckendesign und Düsenoptionen",
+            "Präzise Überwachung der Prozesstemperatur (bis 300°C / 450°C optional)",
+            "Integrierte Steuerungen für Dosierer und erweitertes Bedienfeld",
+            "Plug-and-Play-Fütterung und nachgeschaltete Anlagen"
+          ],
+          "specs": [
+            {
+              "label": "Schneckendurchmesser",
+              "value": "12 mm"
+            },
+            {
+              "label": "Länge / Durchmesser",
+              "value": "25:1"
+            },
+            {
+              "label": "Schneckendrehzahl",
+              "value": "0-50 U/min"
+            },
+            {
+              "label": "Schneckenkonfiguration",
+              "value": "Segmentiert, voll austauschbar"
+            },
+            {
+              "label": "Abmessungen",
+              "value": "300 × 800 × 430 mm"
+            },
+            {
+              "label": "Motorleistung",
+              "value": "0.18 KW"
+            },
+            {
+              "label": "Elektrik",
+              "value": "0.75 kWh / 13 A"
+            },
+            {
+              "label": "Drehmoment",
+              "value": "max. 5 Nm pro Welle"
+            },
+            {
+              "label": "Zylinderzonen",
+              "value": "4 temperaturgesteuerte Zonen"
+            },
+            {
+              "label": "Temperaturbereich",
+              "value": "15–300°C (15–450°C optional)"
+            },
+            {
+              "label": "Düsen",
+              "value": "Strang, Gießfolie, Streifen, Rohr, Co-Extrusion"
+            },
+            {
+              "label": "Anforderungen",
+              "value": "24A, 230V 1ph, 50/60Hz"
+            }
+          ]
+        },
+        {
+          "id": "ball-valve-assembly",
+          "name": "Maschine zur Montage von Kunststoff-Kugelhähnen",
+          "shortDescription": "Servogesteuerte automatisierte Montage mit 16-Positionen-Rundtisch, Industrie 4.0 ready.",
+          "description": "Automatisierte Montagemaschine mit rechteckigem Sockel, servogesteuertem Rundtisch, der elektronisch über ein Touchscreen-Bedienfeld programmierbar ist, und einer Rundtischscheibe mit 16 Positionen. Die zentralisierte Steuerung ist zur Datenübertragung mit Management-Datenbanken verbunden und erfüllt die Anforderungen von Smart Factory und Industrie 4.0. Komponenten werden manuell geladen; die Entladung erfolgt automatisch mit Gutteil-Selektion und Abfalltrennung.",
+          "features": [
+            "Servogesteuerter Rundtisch mit 16 Teilungen",
+            "Touchscreen-Bedienfeld für einfaches Setup",
+            "Automatische Entladung mit Qualitätsdifferenzierung",
+            "Produktionsüberwachung per Mobilgerät",
+            "Industrie 4.0 & Smart Factory kompatibel"
+          ],
+          "positions": [
+            "Laden der Hülsen-Außenteile",
+            "Positionskontrolle der Hülsen-Außenteile",
+            "Laden der Hülsen-Innenteile",
+            "Positionskontrolle der Hülsen-Innenteile",
+            "Einsetzen der Teflonringe in das Außenteil",
+            "Positionskontrolle der Teflonringe",
+            "Laden der Stiftteile",
+            "Positionskontrolle der Stiftteile",
+            "Laden der Kugelbauteile",
+            "Positionskontrolle der Kugelbauteile",
+            "Fügen von Hülsen-Außen- und Innenteil",
+            "Drehen der Kugelbauteile um 90°",
+            "Entladen der Produkte",
+            "Entladen der defekten Produkte",
+            "Stationskontrolle",
+            "Leer"
+          ]
+        }
+      ],
+      "coreCapabilities": [
+        {
+          "title": "Maßgeschneidertes Engineering",
+          "description": "Jede Maschine wird auf Ihre spezifischen Produktionsanforderungen zugeschnitten, vom Design bis zur Inbetriebnahme."
+        },
+        {
+          "title": "Industrie 4.0 Ready",
+          "description": "Smart-Factory-Integration mit zentralisierten Steuerungen, mobiler Überwachung und Datenbankanbindung."
+        },
+        {
+          "title": "CE-Zertifiziert",
+          "description": "Alle Maschinen erfüllen die europäischen Konformitätsstandards für Sicherheit, Gesundheit und Umweltschutz."
+        },
+        {
+          "title": "Smart Factory Integration",
+          "description": "Zentralisierte Steuerungssysteme mit Datenübertragungsfunktionen und FernDiagnosetools."
+        }
+      ],
+      "highlights": [
+        {
+          "value": "25+",
+          "label": "Jahre Erfahrung"
+        },
+        {
+          "value": "50+",
+          "label": "Exportländer"
+        },
+        {
+          "value": "4.0",
+          "label": "Industrie Ready"
+        },
+        {
+          "value": "3",
+          "label": "Produktlinien"
+        }
+      ],
+      "ui": {
+        "heroTitle": "Maßgeschneiderte Produkte & Maschinen",
+        "heroSubtitle": "Spezialisierte Maschinen für die Rohr- & Formstückproduktion",
+        "introTitle": "Präzisionsmaschinen & Individuelle Lösungen",
+        "introText": "Polinar entwickelt und fertigt maßgeschneiderte Maschinen für die Kunststoffrohr- und Formstückindustrie. Von Biegemaschinen ve Mini-Extrudern bis hin zu vollautomatischen Montagelinien sind unsere Lösungen für Präzision, Effizienz und nahtlose Integration in Industrie 4.0 Smart-Factory-Umgebungen ausgelegt.",
+        "categoriesLabel": "Unsere Produktlinien",
+        "categoriesSectionTitle": "Maschinenkategorien",
+        "whyLabel": "Warum Polinar",
+        "whySectionTitle": "Kernkompetenzen",
+        "whyText": "Jede Polinar-Maschine wird mit Präzisionstechnik und intelligenter Technologie entwickelt, um maximale Effizienz und Qualität in Ihrer Produktionslinie zu gewährleisten.",
+        "ctaTitle": "Benötigen Sie eine individuelle Maschinenlösung?",
+        "ctaText": "Kontaktieren Sie unser Engineering-Team für maßgeschneiderte Designs.",
+        "ctaButton": "Kontakt aufnehmen",
+        "breadcrumbHome": "Startseite",
+        "breadcrumbParentFallback": "Unser Geschäftsbereich",
+        "breadcrumbCurrent": "Maschinenbau",
+        "workCycleTitle": "Arbeitszyklus — 16 Positionen"
+      }
+    },
+    "our-business": {
+      "moulds": [
+        "PPR-C, HDPE, PVC, PP",
+        "Heißkanalsysteme",
+        "Zertifizierte Stähle"
+      ],
+      "machinery": [
+        "CNC- & EDM-Maschinen",
+        "Sondermaschinenbau",
+        "Präzisionstechnik"
+      ],
+      "testing": [
+        "ISO / ASTM Standards",
+        "Hydrostatische Prüfung",
+        "Qualitätssicherung"
+      ]
+    },
+    "plastic-test-equipment": {
+      "categories": [
+        {
+          "id": "hydrostatic-internal",
+          "name": "Hydrostatisches Innendruckprüfgerät",
+          "shortDescription": "Mikroprozessorgesteuertes Zeitstandprüfsystem mit automatischer Fehler- und Leckageerkennung für bis zu 28 Stationen.",
+          "description": "Die Innendruck-Zeitstandprüfung ist ein Prüfverfahren zur Bestimmung der Festigkeit von thermoplastischen Rohren. Die Proben werden einem konstanten hydrostatischen Innendruck bei konstanter Umgebungstemperatur entweder für einen festgelegten Zeitraum oder bis zum Versagen ausgesetzt. Es kombiniert außergewöhnliche Zuverlässigkeit mit einfacher Bedienung, ohne Kompromisse bei Präzision und Flexibilität einzugehen.",
+          "features": [
+            "Komfortable Bedienung über integriertes Touch-Display",
+            "Mikroprozessorgesteuert mit automatischer Fehler- und Leckageerkennung",
+            "Präzisions-Druckaufnehmer bis 60 bar, Systemdruck bis 130 bar",
+            "System zur Erkennung von Wasserunterbrechungen",
+            "Erweiterbar auf bis zu 28 Stationen",
+            "Schnittstelle zur Windows-basierten Datalogger-Software BTLogger®"
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
+          ],
+          "specs": [
+            {
+              "label": "Druckbereich",
+              "value": "Bis zu 100 bar"
+            },
+            {
+              "label": "Max. Stationen",
+              "value": "4 / 8 / 12 / 16 / 20 / 28"
+            },
+            {
+              "label": "Pumpenleistung",
+              "value": "10–14 l/min"
+            },
+            {
+              "label": "Steuerung",
+              "value": "5.7″ oder 12.1″ Touch-Screen"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "900 × 900 × 1700 mm"
+            },
+            {
+              "label": "Gewicht (12 Stationen)",
+              "value": "ca. 250 kg"
+            },
+            {
+              "label": "Spannung",
+              "value": "230/400 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "universal-tensile",
+          "name": "Universal-Zugprüfmaschine",
+          "shortDescription": "Führt Zug-, Druck- und Biegeversuche mit bürstenlosem Servomotor und 800% Überlastschutz durch.",
+          "description": "Die Universal-Zugprüfmaschine wird zur Durchführung von Zug-, Druck- und Biegeversuchen eingesetzt. Die klassische Anwendung ist der Zugversuch, bei dem eine Probe einer zunehmenden Zugbelastung bis zum Bruch ausgesetzt wird. Das erzeugte Kraft-Weg-Diagramm gibt Aufschluss über die Tragfähigkeit, Elastizität und plastische Verformung der Materialprobe.",
+          "features": [
+            "Klare Visualisierung über integriertes Touch-Display",
+            "Genauigkeit: ±0.5% des Messwerts bis zu 1/1000 des max. Bereichs",
+            "Präziser, selbstreinigender Kugelgewindetrieb mit abgedichteten Lagern",
+            "Bürstenloser Servomotor für wartungsfreien Betrieb",
+            "Automatische Erkennung und Kalibrierung von Kraftmessdosen und Extensometern",
+            "800% Überlastschutz"
+          ],
+          "standards": [
+            "ISO 527",
+            "ISO 6259",
+            "ASTM D 638"
+          ],
+          "specs": [
+            {
+              "label": "Prüfkraft",
+              "value": "5 / 20 / 50 / 300 kN"
+            },
+            {
+              "label": "Max. Traversenweg",
+              "value": "600–1100 mm"
+            },
+            {
+              "label": "Traversengeschwindigkeit",
+              "value": "0.001–500 mm/min"
+            },
+            {
+              "label": "Geschwindigkeitsgenauigkeit",
+              "value": "±0.1%"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "590–1250 × 450–900 × 1575–2600 mm"
+            },
+            {
+              "label": "Gewicht",
+              "value": "156–2800 kg"
+            },
+            {
+              "label": "Spannung",
+              "value": "3 ph 380/400 VAC, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "falling-weight-impact",
+          "name": "Fallbolzen-Schlagprüfgerät",
+          "shortDescription": "Bestimmt den äußeren Schlagwiderstand von thermoplastischen Rohren nach der Treppenstufen- oder Rund-um-die-Uhr-Methode.",
+          "description": "Das Fallbolzen-Prüfgerät dient zur Bestimmung des äußeren Schlagwiderstands von thermoplastischen Rohren nach der Treppenstufen- oder Rund-um-die-Uhr-Methode. Ausgestattet mit modernster SPS und automatischem Doppelschlag-Präventionssystem für zuverlässige und wiederholbare Ergebnisse.",
+          "features": [
+            "Komfortable Bedienung über integriertes Touch-Display",
+            "Zweihandbedienung für die Sicherheit des Personals",
+            "Prüfung nur bei geschlossener Kammer möglich",
+            "Präzise Gewichtspositionierung über Schrittmotor",
+            "Modernste SPS-Steuerung",
+            "Automatisches Doppelschlag-Präventionssystem"
+          ],
+          "standards": [
+            "ISO 11173",
+            "ISO 3127",
+            "ASTM D 2444"
+          ],
+          "specs": [
+            {
+              "label": "Max. Fallhöhe",
+              "value": "2 m"
+            },
+            {
+              "label": "Max. Probendurchmesser",
+              "value": "110 / 400 / 710 mm"
+            },
+            {
+              "label": "Genauigkeit der Höhenverstellung",
+              "value": "±10 mm"
+            },
+            {
+              "label": "Fallgewichte",
+              "value": "6.3 kg"
+            },
+            {
+              "label": "Bedienung",
+              "value": "Touch-Display"
+            },
+            {
+              "label": "Geräteabmessungen (B×T×H)",
+              "value": "980 × 800 × 3000–3750 mm"
+            },
+            {
+              "label": "Spannung",
+              "value": "3 ph 380/400 VAC 230/400 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "test-tanks",
+          "name": "Prüfbecken für Rohrprüfungen",
+          "shortDescription": "Prüfbecken aus Edelstahl mit präziser Temperaturregelung für hydrostatische Innendruckprüfungen.",
+          "description": "Die Prüfbecken sind speziell für die Prüfung thermoplastischer Rohre und Formstücke konzipiert. Die hohe Zuverlässigkeit, die Beständigkeit der verwendeten Materialien und die konstanten Temperaturen im Prüfbecken in Bezug auf Volumen und Zeit bieten besonders zuverlässige Prüfbedingungen. Eine große Auswahl an Beckenabmessungen und Anschlussmöglichkeiten ermöglicht eine flexible Anpassung an verschiedene Betriebsbedingungen.",
+          "features": [
+            "Pneumatisch betätigter Deckel für einfache und sichere Bedienung",
+            "Konstante Temperaturen durch hocheffiziente Wasserzirkulation",
+            "Präzise Temperaturregelung im Innenbecken",
+            "Hochwertiger Edelstahl (AISI 304)",
+            "Doppelisolierung und isolierter Deckel für minimalen Energieverlust",
+            "Integrierte Überwachung und Steuerung der Prüftemperatur"
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
+          ],
+          "specs": [
+            {
+              "label": "Innenabmessungen (B×L×H)",
+              "value": "750–1500 × 1000–3000 × 900–2000 mm"
+            },
+            {
+              "label": "Heizleistung",
+              "value": "15–60 kW"
+            },
+            {
+              "label": "Wassertemperatur",
+              "value": "Umgebung +10 bis max. 95 °C"
+            },
+            {
+              "label": "Einstellschritte Temp.",
+              "value": "0.1 °C"
+            },
+            {
+              "label": "Regelgenauigkeit",
+              "value": "±0.5 °C"
+            },
+            {
+              "label": "Material Innenbecken",
+              "value": "AISI 304"
+            },
+            {
+              "label": "Spannung",
+              "value": "230/400 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "test-oven",
+          "name": "Prüfofen für Rohrprüfungen",
+          "shortDescription": "Hochzuverlässige Prüföfen mit effizienter Luftzirkulation und präziser Temperaturregelung bis 1100 °C.",
+          "description": "Die PTE-Prüföfen sind speziell für die Prüfung thermoplastischer Rohre und Formstücke konzipiert. Die hohe Zuverlässigkeit, die lange Lebensdauer der verwendeten Materialien und die konstanten Temperaturen im Prüfofen in Bezug auf Volumen und Zeit bieten besonders zuverlässige Prüfbedingungen. Eine effiziente Energienutzung bei niedrigen Service- und Wartungskosten garantiert einen effizienten Langzeitbetrieb.",
+          "features": [
+            "Schieberegal-System für einfache Bestückung außerhalb des Ofens",
+            "Türen mit Sicherheitsschaltern verriegelt",
+            "Prüfdruckentlastung vor Türfreigabe",
+            "Hocheffiziente Luftzirkulation mit präziser Temperaturregelung",
+            "Hochwertige Edelstahlkonstruktion (AISI 304)",
+            "Hochwertige Ofenisolierung für minimalen Energieverlust"
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
+          ],
+          "specs": [
+            {
+              "label": "Temperaturbereich",
+              "value": "5/150 °C | 5/250 °C | bis zu 1100 °C"
+            },
+            {
+              "label": "Regelgenauigkeit",
+              "value": "±0.2 °C (±1 °C bei 1100 °C)"
+            },
+            {
+              "label": "Material Innenkammer",
+              "value": "AISI 304"
+            },
+            {
+              "label": "Leistung",
+              "value": "1.5 / 3.5 / 3.0 kW"
+            },
+            {
+              "label": "Zulässige Umgebungstemp.",
+              "value": "+5 bis +40 °C"
+            },
+            {
+              "label": "Spannung",
+              "value": "220/380 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "ring-stiffness",
+          "name": "Ringsteifigkeitsprüfgerät",
+          "shortDescription": "PC-gesteuerte Prüfmaschine für Ringsteifigkeit und Flexibilität von thermoplastischen Rohren bis 1000 mm Durchmesser.",
+          "description": "Die Prüfmaschine dient zur Bestimmung der Ringsteifigkeit und Ringflexibilität von thermoplastischen Rohren. Große Druckplatten ermöglichen die Durchführung von Prüfungen im jeweiligen Durchmesserbereich und an Rohren mit Längen von bis zu einem Meter. Eine PC-basierte Bediensoftware ermöglicht eine klare Darstellung und trägt zur Benutzerfreundlichkeit bei.",
+          "features": [
+            "Automatische Abwicklung des Prüfszenarios",
+            "PC-basierte Steuerungssoftware mit klarer Visualisierung",
+            "Kontinuierliche Messung und Aufzeichnung der Rohrverformung",
+            "Kontinuierliche Messung und Aufzeichnung der Druckkraft",
+            "Integrierter Extensometer",
+            "Mehrere Betriebsarten für konstante Kompression oder konstante Geschwindigkeit"
+          ],
+          "standards": [
+            "ISO 9967",
+            "ISO 9969",
+            "ISO 13968",
+            "DIN 16961",
+            "ASTM D 2412"
+          ],
+          "specs": [
+            {
+              "label": "Max. Prüfkraft",
+              "value": "30 kN"
+            },
+            {
+              "label": "Max. Außendurchmesser",
+              "value": "1000 mm"
+            },
+            {
+              "label": "Verfahrweg",
+              "value": "930 mm"
+            },
+            {
+              "label": "Genauigkeit",
+              "value": "±1% des Messwerts (0.40–30 kN)"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "1900 × 1140 × 2030 mm"
+            },
+            {
+              "label": "Gewicht",
+              "value": "ca. 1.75 t"
+            },
+            {
+              "label": "Spannung",
+              "value": "3 ph 380/400 VAC 230/400 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "thermal-cycling",
+          "name": "Temperaturwechsel-Prüfeinheit für Rohrsysteme",
+          "shortDescription": "Automatisierter Temperaturwechsel mit programmierbaren Zyklen, unabhängiger Prüfung von Doppelsystemen und Schrittmotor-Vorspannung.",
+          "description": "Die Temperaturwechsel-Prüfeinheit ermöglicht die gleichzeitige, unabhängige Prüfung von zwei separaten Rohrsystemen. Sie verfügt über automatische Prüfverfahren mit programmierbaren Zyklenzahlen und Zykluszeiten, Temperaturen und mehr. Die automatische Berechnung und Aufbringung der Vorspannung über Schrittmotoren gewährleistet die Normkonformität.",
+          "features": [
+            "Hohe Temperaturkonstanz durch große Reservoirs",
+            "Statische Drücke bis 10 bar",
+            "Gleichzeitige Prüfung von zwei separaten Rohrsystemen",
+            "Programmierbare Zyklen, Zeiträume und Temperaturen",
+            "Automatische Vorspannungsberechnung über Schrittmotoren",
+            "Durchflussmessung und -regelung automatisiert"
+          ],
+          "standards": [
+            "ISO 19893",
+            "ISO 10508",
+            "DVGW W 534",
+            "DVGW W 542",
+            "DVGW W 543"
+          ],
+          "specs": [
+            {
+              "label": "Druckbereich",
+              "value": "3–10 bar"
+            },
+            {
+              "label": "Kapazität Prüfkreise",
+              "value": "Bis zu 63 mm"
+            },
+            {
+              "label": "Durchflussrate",
+              "value": "Max. 1.0 l/s"
+            },
+            {
+              "label": "Max. Probenvolumen",
+              "value": "12 l"
+            },
+            {
+              "label": "Heißtemperaturbereich",
+              "value": "50–95 °C"
+            },
+            {
+              "label": "Kalttemperaturbereich",
+              "value": "15–30 °C"
+            },
+            {
+              "label": "Anzahl der Zyklen",
+              "value": "Max. 99,999 pro Test"
+            },
+            {
+              "label": "Spannung",
+              "value": "230/400 V, 50 Hz; ca. 25 kW"
+            }
+          ]
+        },
+        {
+          "id": "mfi-mfr",
+          "name": "MFI / MFR Prüfgerät",
+          "shortDescription": "Bestimmt die Schmelze-Massefließrate (MFI) und Schmelze-Volumenfließrate (MFR) mit selbstoptimierender Temperaturregelung.",
+          "description": "Das MFI/MFR-Prüfgerät kombiniert die Bestimmung der Schmelze-Massefließrate (MFI) und der Schmelze-Volumenfließrate (MFR) von thermoplastischen Materialien in einem Prüfverfahren unter festgelegten Temperatur- und Lastbedingungen. Eine exzellente Temperaturgenauigkeit wird durch ein selbstoptimierendes Regelsystem erreicht.",
+          "features": [
+            "Dateneingabe über Touch-Display",
+            "Exzellente Temperaturgenauigkeit durch selbstoptimierende Regelung",
+            "Elektronisch gesteuerte Schneidvorrichtung",
+            "Minimaler Energiebedarf durch zeitgesteuerte Beheizung",
+            "Max. Temperaturkonstanz wird beibehalten",
+            "Lange Lebensdauer durch hochwertige, hitzebeständige Materialien"
+          ],
+          "standards": [
+            "ISO 1133",
+            "ASTM D 1238"
+          ],
+          "specs": [
+            {
+              "label": "Prüftemperatur",
+              "value": "50–300 °C (0.1 K Schritte)"
+            },
+            {
+              "label": "Regelgenauigkeit Temp.",
+              "value": "±0.1 K an der Düse"
+            },
+            {
+              "label": "Inklusive Prüfgewichte",
+              "value": "2.160, 3.800, 5.000 kg"
+            },
+            {
+              "label": "Optionale Prüfgewichte",
+              "value": "0.325, 1.200, 10.000, 11.600 kg"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "420 × 420 × 700 mm"
+            },
+            {
+              "label": "Gewicht",
+              "value": "40 kg (ohne Gewichtsscheiben)"
+            },
+            {
+              "label": "Spannung",
+              "value": "230 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "carbon-black",
+          "name": "Rußgehaltsprüfer",
+          "shortDescription": "Bestimmt den Rußgehalt von Polyolefin-Kunststoffen durch pyrolytische Zersetzung im Stickstoffstrom.",
+          "description": "Gesetzliche Normen schreiben die Überprüfung des Rußgehalts von Polyolefin-Kunststoffen vor. Die Prüfmethode basiert auf der pyrolytischen Zersetzung des Materials in einem Inertgasstrom (Stickstoff). Die verbleibende Menge wird unter Zwangsbelüftung bei gleicher Temperatur nochmals verbrannt und der Rußgehalt mittels Gewichtsdifferenz bestimmt.",
+          "features": [
+            "Einfache und sichere Bedienung",
+            "Kompletter Prüfaufbau kompakt montiert",
+            "In den Rohrofen integrierter Übertemperaturschutz",
+            "Präzise Temperaturregelung über digitalen Temperaturregler",
+            "Hochwertige Gerätekomponenten für lange Lebensdauer",
+            "Zuverlässige und wiederholbare Prüfergebnisse"
+          ],
+          "standards": [
+            "ISO 6964",
+            "ASTM D 1603"
+          ],
+          "specs": [
+            {
+              "label": "Ofentemperaturbereich",
+              "value": "0–1000 °C"
+            },
+            {
+              "label": "Genauigkeit (bis 200 °C)",
+              "value": "0.1 K"
+            },
+            {
+              "label": "Genauigkeit (über 200 °C)",
+              "value": "1 K"
+            },
+            {
+              "label": "Durchflussmessgerät",
+              "value": "5–95 Nl/h oder 1–13 Nl/h"
+            },
+            {
+              "label": "Leistungsbedarf",
+              "value": "1 kW"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "760 × 650 × 1020 mm"
+            },
+            {
+              "label": "Gewicht",
+              "value": "ca. 60 kg"
+            },
+            {
+              "label": "Spannung",
+              "value": "1 ph 230 V, 50/60 Hz"
+            }
+          ]
+        },
+        {
+          "id": "cnc-milling",
+          "name": "CNC-Fräsmaschine für Prüfstäbe",
+          "shortDescription": "Tisch-CNC-Fräsmaschine zur Herstellung von bis zu 5 Standardprüfstäben pro Durchgang mit vorkonfigurierten Programmen.",
+          "description": "Die Prüfstabfräsmaschine ermöglicht die Herstellung stabförmiger Kunststoffproben für Zug-, Druck-, Biege- und Schlagbiegeversuche nach verschiedensten Normen. Vorkonfigurierte Bearbeitungsprogramme für alle gängigen Stabformen und die Visualisierung über ein Touchscreen-Display machen die Bedienung sehr einfach.",
+          "features": [
+            "Vorkonfigurierte Bearbeitungsprogramme pro Norm",
+            "Schutztüren mit Sicherheitsverriegelung",
+            "Sauberer Arbeitsplatz mit Späneabsaugung",
+            "CNC-gesteuerte Positionierung aller Achsen",
+            "Kühlung der bearbeiteten Bereiche mit Druckluft",
+            "Bis zu 5 Prüfstäbe pro Fräsvorgang"
+          ],
+          "standards": [
+            "ISO 179/180",
+            "ISO 527",
+            "ISO 6259",
+            "ISO 16770",
+            "ASTM D 638",
+            "ASTM D 1822"
+          ],
+          "specs": [
+            {
+              "label": "Spannbereich (klein)",
+              "value": "Max. 30 mm dick, 220 mm lang"
+            },
+            {
+              "label": "Spannbereich (groß)",
+              "value": "Max. 90 mm dick, 250 mm lang"
+            },
+            {
+              "label": "Prüfstäbe pro Vorgang",
+              "value": "Max. 2/5"
+            },
+            {
+              "label": "Spindeldrehzahl",
+              "value": "3.000–18.000 U/min"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "900 × 900 × 1700 mm"
+            },
+            {
+              "label": "Gewicht",
+              "value": "450 kg"
+            },
+            {
+              "label": "Spannung",
+              "value": "3 ph 380/400 VAC 230 V, 50 Hz"
+            }
+          ]
+        },
+        {
+          "id": "end-closures",
+          "name": "Endverschlüsse für Rohrprüfungen",
+          "shortDescription": "Endverschlüsse aus Edelstahl für hydrostatische Innendruckprüfungen von PE-, PP- und PVC-Rohren bis DN 630.",
+          "description": "Die Innendruck-Zeitstandprüfung bestimmt die Festigkeit von thermoplastischen Rohren unter konstantem hydrostatischem Innendruck bei konstanter Umgebungstemperatur. Die Endverschlüsse zeichnen sich durch eine bewährte Konstruktion für schnelle Montage, einfache und zuverlässige Entlüftung direkt an der Probe und hochwertige Komponenten für eine lange Lebensdauer aus.",
+          "features": [
+            "Schnelle Montage durch bewährtes Endverschluss-Design",
+            "Einfache und zuverlässige Entlüftung direkt an der Probe",
+            "Geeignet für PE-, PP- und PVC-Rohre",
+            "Edelstahlkonstruktion (AISI 304)",
+            "Inklusive Ringmutter zur Aufhängung",
+            "Druckanschluss über Schnellverschlussstecker"
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
+          ],
+          "specs": [
+            {
+              "label": "Rohrdurchmesserbereich",
+              "value": "DN 20–40 / 50–90 / 110–315 / 350–630"
+            },
+            {
+              "label": "Max. Prüfdruck",
+              "value": "60 bar (40 bar für DN 350–630)"
+            },
+            {
+              "label": "Material",
+              "value": "Edelstahl AISI 304 / S30300"
+            },
+            {
+              "label": "Geeignete Rohre",
+              "value": "PE, PP, PVC"
+            },
+            {
+              "label": "Druckanschluss",
+              "value": "Schnellverschlussstecker"
+            }
+          ]
+        },
+        {
+          "id": "ball-valves-test",
+          "name": "Kugelhahn-Prüfeinheiten für Kunststoffrohre",
+          "shortDescription": "SPS-gesteuerte Kugelhahnprüfung mit Pneumatikzylinder, Touchscreen-Interface und bis zu 5 simultanen Stationen.",
+          "description": "Kugelhahn-Prüfeinheiten für Kunststoffrohre mit pneumatisch gesteuertem Kopfverschluss und SPS-Steuerung des Gesamtsystems. Prüfdruck und alle Prüfparameter können über das Touchscreen-Bedienfeld definiert, gesteuert und verfolgt werden. Verfügt über ein audiovisuelles Warn- und Anzeigesystem mit optionaler Datenerfassung und Berichterstellung.",
+          "features": [
+            "5 Stationen gleichzeitig aktiv (Ø20–63 mm)",
+            "2 Stationen gleichzeitig aktiv (Ø75–90 mm)",
+            "Pneumatisch betriebener Kopfverschluss",
+            "±0.2 bar Genauigkeit des Prüfdrucks (0.5–6 bar)",
+            "SPS-Steuerung des Gesamtsystems mit Touchscreen-UI",
+            "Optionale PoliREPORT- und PoliLOGGER-Systeme"
+          ],
+          "standards": [
+            "DIN EN ISO 15874",
+            "EN 1329"
+          ],
+          "specs": [
+            {
+              "label": "Arbeitsbereich",
+              "value": "20–63 mm / 20–40 mm"
+            },
+            {
+              "label": "Prüfdruck",
+              "value": "0.5–6.0 bar"
+            },
+            {
+              "label": "Prüfgenauigkeit",
+              "value": "±0.2 bar"
+            },
+            {
+              "label": "Steuerung",
+              "value": "SPS mit Touchscreen"
+            },
+            {
+              "label": "Abmessungen (B×T×H)",
+              "value": "1250 × 600 × 2000 mm"
+            },
+            {
+              "label": "Spannung",
+              "value": "220/380 V, 50/60 Hz"
+            }
+          ]
+        }
+      ],
+      "coreCapabilities": [
+        {
+          "title": "Präzisionsprüfung",
+          "description": "Mikroprozessorgesteuerte Systeme mit hochpräzisen Sensoren, die wiederholbare Ergebnisse nach internationalen Standards liefern."
+        },
+        {
+          "title": "Standardkonformität",
+          "description": "Geräte, die so konzipiert sind, dass sie die Normen ISO, ASTM, DIN und DVGW für die Prüfung von Kunststoffrohren und -formstücken weltweit erfüllen."
+        },
+        {
+          "title": "Individuelle Lösungen",
+          "description": "Maßgeschneiderte Konfigurationen von Prüfgeräten, die auf Ihre spezifischen Produktionsanforderungen und Prüfprotokolle abgestimmt sind."
+        },
+        {
+          "title": "After-Sales-Support",
+          "description": "Umfassende Service- und Wartungsprogramme mit Ferndiagnose, Ersatzteilen und technischem Support vor Ort."
+        }
+      ],
+      "highlights": [
+        {
+          "value": "25+",
+          "label": "Jahre Erfahrung"
+        },
+        {
+          "value": "50+",
+          "label": "Exportländer"
+        },
+        {
+          "value": "12",
+          "label": "Produktlinien"
+        },
+        {
+          "value": "ISO",
+          "label": "Normzertifiziert"
+        }
+      ],
+      "ui": {
+        "heroEyebrow": "Kunststoff-Prüfgeräte",
+        "heroTitle": "Prüftechnik für Kunststoffe",
+        "heroSubtitle": "Präzisionsprüflösungen für die Kunststoffrohr- & Formstückindustrie",
+        "introTitle": "Zuverlässige Prüfungen zur Qualitätssicherung",
+        "introDescription": "Polinar Test Equipment (PTE) fertigt ein umfassendes Sortiment an Prüfmaschinen für die Kunststoffrohr- und Formstückindustrie. Unsere Geräte werden nach internationalen Standards wie ISO, ASTM, DIN und DVGW entwickelt und gebaut und liefern präzise, wiederholbare Ergebnisse für Hersteller weltweit.",
+        "productRangeEyebrow": "Unser Produktsortiment",
+        "productRangeTitle": "Kategorien für Prüfgeräte",
+        "whyPolinarEyebrow": "Warum Polinar",
+        "whyPolinarTitle": "Kernkompetenzen",
+        "whyPolinarDescription": "Jedes Polinar-Prüfgerät wird mit Präzisionstechnik entwickelt und gebaut, um genaue, wiederholbare Ergebnisse zu liefern, die den höchsten internationalen Standards entsprechen.",
+        "ctaTitle": "Benötigen Sie eine individuelle Prüflösung?",
+        "ctaSubtitle": "Kontaktieren Sie unser Engineering-Team für maßgeschneiderte Konfigurationen.",
+        "contactUs": "Kontakt aufnehmen",
+        "breadcrumbCurrent": "Kunststoff-Prüfgeräte"
+      }
+    },
+    "static-labels": {
+      "company": {
+        "address": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, TÜRKEI",
+        "phones": [
+          "+90 212 549 88 20-21"
+        ],
+        "fax": "+90 212 549 88 19",
+        "email": "info@polinar.com.tr",
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.267!2d28.7817!3d41.0865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5a1dccbcccd%3A0x123456789!2sPolinar!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str",
+        "whatsappUrl": "https://wa.me/905336486134",
+        "socialLinks": [
+          {
+            "name": "Facebook",
+            "url": "https://www.facebook.com/polinar"
+          },
+          {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/polinar"
+          },
+          {
+            "name": "YouTube",
+            "url": "https://www.youtube.com/polinar"
+          },
+          {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/company/polinar"
+          }
+        ]
+      },
+      "seo": {
+        "defaultTitle": "Polinar — Kunststoffspritzgussformen",
+        "defaultDescription": "Führender Hersteller von Kunststoffspritzgussformen für Rohre & Formstücke seit 2000",
+        "titleSuffix": " | Polinar",
+        "siteName": "Polinar",
+        "contactType": "Kundenservice"
+      },
+      "breadcrumbs": {
+        "home": "Startseite",
+        "ourBusiness": "Unser Geschäftsbereich",
+        "breadcrumbAriaLabel": "Breadcrumb"
+      },
+      "aria": {
+        "close": "Schließen",
+        "openMenu": "Menü öffnen",
+        "closeMenu": "Menü schließen",
+        "previousSlide": "Vorheriger Slide",
+        "nextSlide": "Nächster Slide",
+        "heroSlider": "Hero Slider",
+        "previous": "Zurück",
+        "next": "Weiter",
+        "playVideo": "Video abspielen"
+      },
+      "about": {
+        "scrollDown": "Nach unten scrollen",
+        "sinceTemplate": "Seit {year}",
+        "videoEyebrow": "Bitte prüfen Sie unser",
+        "galleryImageAlt": "Galeriebild {index}",
+        "certificateAlt": "Zertifikat",
+        "factoryAlt": "Polinar Werk",
+        "productionAlt": "Polinar Produktion"
+      },
+      "product": {
+        "viewDetails": "Details anzeigen",
+        "more": "mehr",
+        "materials": "Materialien",
+        "technologies": "Technologien",
+        "standards": "Standards",
+        "keyFeatures": "Hauptmerkmale",
+        "technicalSpecs": "Technische Daten",
+        "downloadBrochure": "Broschüre herunterladen (PDF)",
+        "mouldAlt": "Form",
+        "productsAlt": "Produkte",
+        "overviewAlt": "Übersicht",
+        "specificationsAlt": "Spezifikationen",
+        "detailAlt": "Detail",
+        "digitalCatalog": "Digitaler Katalog",
+        "viewCatalog": "Online durchsuchen",
+        "viewOnline": "Online ansehen",
+        "catalogPage": "Seite",
+        "catalogZoomIn": "Vergrößern",
+        "catalogZoomOut": "Verkleinern",
+        "catalogResetZoom": "Zoom zurücksetzen",
+        "catalogPrint": "Drucken",
+        "catalogLoading": "Katalog wird geladen...",
+        "catalogPageOf": "von",
+        "downloadAll": "Alles als PDF herunterladen",
+        "downloadAllProgress": "Vorbereitung..."
+      }
+    }
   }
 }

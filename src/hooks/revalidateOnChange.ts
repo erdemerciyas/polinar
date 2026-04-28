@@ -1,8 +1,11 @@
 import type { CollectionAfterChangeHook, GlobalAfterChangeHook } from 'payload'
-import { revalidatePath } from 'next/cache'
 
-export const revalidateCollection: CollectionAfterChangeHook = ({ doc, collection }) => {
+export const revalidateCollection: CollectionAfterChangeHook = async ({ doc, collection }) => {
+  if (typeof window !== 'undefined') return doc // Sadece sunucu tarafında çalışmasını sağla
+
   try {
+    const { revalidatePath } = await import('next/cache')
+
     // Revalidate specific collection paths
     const slugMap: Record<string, string> = {
       'product-categories': '/[locale]/products',
@@ -29,8 +32,12 @@ export const revalidateCollection: CollectionAfterChangeHook = ({ doc, collectio
   return doc
 }
 
-export const revalidateGlobal: GlobalAfterChangeHook = ({ doc, global }) => {
+export const revalidateGlobal: GlobalAfterChangeHook = async ({ doc, global }) => {
+  if (typeof window !== 'undefined') return doc // Sadece sunucu tarafında çalışmasını sağla
+
   try {
+    const { revalidatePath, revalidateTag } = await import('next/cache')
+
     // Revalidate homepage for most globals
     revalidatePath('/[locale]', 'page')
 
@@ -38,6 +45,9 @@ export const revalidateGlobal: GlobalAfterChangeHook = ({ doc, global }) => {
     if (global.slug === 'navigation' || global.slug === 'footer' || global.slug === 'site-settings') {
       revalidatePath('/', 'layout')
     }
+
+    // unstable_cache ile önbelleğe aldığımız tag'leri tetiklemek için:
+    revalidateTag(`global_${global.slug}`)
   } catch (error) {
     console.error('Revalidation error:', error)
   }

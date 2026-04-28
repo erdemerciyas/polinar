@@ -58,17 +58,17 @@ export default async function NewsDetailPage({ params }: Props) {
   let newsSettings: any = null
   try {
     const payload = await getPayloadClient()
-    const [result, settings] = await Promise.all([
-      payload.find({
-        collection: 'news',
-        where: { slug: { equals: slug } },
-        locale: locale as any,
-        limit: 1,
-      }),
-      payload.findGlobal({ slug: 'news-page-settings', locale: locale as any }),
-    ])
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    newsSettings = dictionary['news-page-settings'] || null
+
+    const result = await payload.find({
+      collection: 'news',
+      where: { slug: { equals: slug } },
+      locale: locale as any,
+      limit: 1,
+    })
     article = result.docs[0]
-    newsSettings = settings
   } catch {}
 
   if (!article) return notFound()

@@ -1,0 +1,13 @@
+{
+  "_note": "Bu dosya admin panelinden 'Master JSON İndir' butonu ile oluşturulur. Şu an boş şablon olarak mevcuttur.",
+  "navigation": null,
+  "ui-labels": null,
+  "footer": null,
+  "site-settings": null,
+  "homepage-settings": null,
+  "about-page-settings": null,
+  "contact-page-settings": null,
+  "news-page-settings": null,
+  "our-business-page-settings": null,
+  "static-content": null
+}

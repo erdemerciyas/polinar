@@ -13,8 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   let newsSettings: any = null
   try {
-    const payload = await getPayloadClient()
-    newsSettings = await payload.findGlobal({ slug: 'news-page-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    newsSettings = dictionary['news-page-settings'] || null
   } catch {}
 
   const seo = newsSettings?.seo || {}
@@ -36,18 +37,18 @@ export default async function NewsPage({ params }: Props) {
   let newsSettings: any = null
   try {
     const payload = await getPayloadClient()
-    const [result, settings] = await Promise.all([
-      payload.find({
-        collection: 'news',
-        locale: locale as any,
-        where: { status: { equals: 'published' } },
-        sort: '-date',
-        limit: 50,
-      }),
-      payload.findGlobal({ slug: 'news-page-settings', locale: locale as any }),
-    ])
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    newsSettings = dictionary['news-page-settings'] || null
+    
+    const result = await payload.find({
+      collection: 'news',
+      locale: locale as any,
+      where: { status: { equals: 'published' } },
+      sort: '-date',
+      limit: 50,
+    })
     news = result.docs
-    newsSettings = settings
   } catch {}
 
   const hero = newsSettings?.hero || {}

@@ -34,15 +34,15 @@ const tr: PlasticTestEquipmentData = {
           value: '5.7″ veya 12.1″ dokunmatik ekran',
         },
         {
+          label: 'Boyutlar (G×D×Y)',
+          value: '900 × 900 × 1700 mm',
+        },
+        {
           label: 'Ağırlık (12 istasyon)',
           value: 'Yaklaşık 250 kg',
         },
         {
-          label: 'Weight (12 stations)',
-          value: 'Approx. 250 kg',
-        },
-        {
-          label: 'Voltage',
+          label: 'Voltaj',
           value: '230/400 V, 50/60 Hz',
         },
       ],
@@ -74,24 +74,24 @@ const tr: PlasticTestEquipmentData = {
           value: '600–1100 mm',
         },
         {
+          label: 'Kros kafa hızı',
+          value: '0.001–500 mm/dak',
+        },
+        {
           label: 'Hız doğruluğu',
           value: '±%0.1',
         },
         {
-          label: 'Voltaj',
-          value: '3 faz 380/400 VAC, 50/60 Hz',
-        },
-        {
-          label: 'Dimensions (W×D×H)',
+          label: 'Boyutlar (G×D×Y)',
           value: '590–1250 × 450–900 × 1575–2600 mm',
         },
         {
-          label: 'Weight',
+          label: 'Ağırlık',
           value: '156–2800 kg',
         },
         {
-          label: 'Voltage',
-          value: '3 ph 380/400 VAC, 50/60 Hz',
+          label: 'Voltaj',
+          value: '3 faz 380/400 VAC, 50/60 Hz',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050290/polinar/static/test-equipment/universal-tensile-01.jpg',
@@ -108,8 +108,8 @@ const tr: PlasticTestEquipmentData = {
         'Personel güvenliği için çift el kullanımı',
         'Sadece hücre kapalıyken test imkanı',
         'Step motor aracılığıyla hassas ağırlık konumlandırma',
+        'Son teknoloji PLC kontrolü',
         'Otomatik çift darbe önleme sistemi',
-        'Automatic double impact prevention system',
       ],
       standards: ['ISO 11173', 'ISO 3127', 'ASTM D 2444'],
       specs: [
@@ -130,16 +130,16 @@ const tr: PlasticTestEquipmentData = {
           value: '6.3 kg',
         },
         {
-          label: 'Operation',
-          value: 'Touch display',
+          label: 'Çalışma',
+          value: 'Dokunmatik ekran',
         },
         {
-          label: 'Tester dimensions (W×D×H)',
+          label: 'Cihaz boyutları (G×D×Y)',
           value: '980 × 800 × 3000–3750 mm',
         },
         {
-          label: 'Voltage',
-          value: '3 ph 380/400 VAC 230/400 V, 50/60 Hz',
+          label: 'Voltaj',
+          value: '3 faz 380/400 VAC 230/400 V, 50/60 Hz',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050268/polinar/static/test-equipment/falling-weight-impact-tester-01.jpg',
@@ -162,6 +162,10 @@ const tr: PlasticTestEquipmentData = {
       standards: ['ISO 1167', 'ASTM D 1598', 'ASTM D 1599'],
       specs: [
         {
+          label: 'İç boyutlar (G×U×Y)',
+          value: '750–1500 × 1000–3000 × 900–2000 mm',
+        },
+        {
           label: 'Isıtma gücü',
           value: '15–60 kW',
         },
@@ -178,15 +182,11 @@ const tr: PlasticTestEquipmentData = {
           value: '±0.5 °C',
         },
         {
-          label: 'Regulating accuracy',
-          value: '±0.5 °C',
-        },
-        {
-          label: 'Inner tank material',
+          label: 'İç tank malzemesi',
           value: 'AISI 304',
         },
         {
-          label: 'Voltage',
+          label: 'Voltaj',
           value: '230/400 V, 50/60 Hz',
         },
       ],
@@ -222,15 +222,15 @@ const tr: PlasticTestEquipmentData = {
           value: 'AISI 304',
         },
         {
-          label: 'Power',
+          label: 'Güç',
           value: '1.5 / 3.5 / 3.0 kW',
         },
         {
-          label: 'Permissible ambient temp.',
-          value: '+5 to +40 °C',
+          label: 'İzin verilen ortam sıcaklığı',
+          value: '+5 ile +40 °C',
         },
         {
-          label: 'Voltage',
+          label: 'Voltaj',
           value: '220/380 V, 50/60 Hz',
         },
       ],
@@ -270,16 +270,16 @@ const tr: PlasticTestEquipmentData = {
           value: 'Ölçümün ±%1\'i (0.40–30 kN)',
         },
         {
+          label: 'Boyutlar (G×D×Y)',
+          value: '1900 × 1140 × 2030 mm',
+        },
+        {
           label: 'Ağırlık',
           value: 'Yaklaşık 1.75 ton',
         },
         {
-          label: 'Weight',
-          value: 'Approx. 1.75 t',
-        },
-        {
-          label: 'Voltage',
-          value: '3 ph 380/400 VAC 230/400 V, 50/60 Hz',
+          label: 'Voltaj',
+          value: '3 faz 380/400 VAC 230/400 V, 50/60 Hz',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050278/polinar/static/test-equipment/ring-stiffness-tester-01.jpg',
@@ -310,6 +310,14 @@ const tr: PlasticTestEquipmentData = {
           value: '63 mm\'ye kadar',
         },
         {
+          label: 'Akış hızı',
+          value: 'Maks. 1.0 l/sn',
+        },
+        {
+          label: 'Maks. test numunesi hacmi',
+          value: '12 l',
+        },
+        {
           label: 'Sıcak sıcaklık aralığı',
           value: '50–95 °C',
         },
@@ -322,16 +330,8 @@ const tr: PlasticTestEquipmentData = {
           value: 'Test başına maks. 99.999',
         },
         {
-          label: 'Cold temperature range',
-          value: '15–30 °C',
-        },
-        {
-          label: 'Number of cycles',
-          value: 'Max. 99,999 per test',
-        },
-        {
-          label: 'Voltage',
-          value: '230/400 V, 50 Hz; approx. 25 kW',
+          label: 'Voltaj',
+          value: '230/400 V, 50 Hz; yaklaşık 25 kW',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050287/polinar/static/test-equipment/thermal-cycling-test-unit-01.jpg',
@@ -366,19 +366,19 @@ const tr: PlasticTestEquipmentData = {
           value: '2.160, 3.800, 5.000 kg dahil',
         },
         {
+          label: 'Opsiyonel yük ağırlıkları',
+          value: '0.325, 1.200, 10.000, 11.600 kg',
+        },
+        {
+          label: 'Boyutlar (G×D×Y)',
+          value: '420 × 420 × 700 mm',
+        },
+        {
           label: 'Ağırlık',
           value: '40 kg (ağırlık diskleri hariç)',
         },
         {
-          label: 'Dimensions (W×D×H)',
-          value: '420 × 420 × 700 mm',
-        },
-        {
-          label: 'Weight',
-          value: '40 kg (without weight discs)',
-        },
-        {
-          label: 'Voltage',
+          label: 'Voltaj',
           value: '230 V, 50/60 Hz',
         },
       ],
@@ -410,6 +410,10 @@ const tr: PlasticTestEquipmentData = {
           value: '0.1 K',
         },
         {
+          label: 'Doğruluk (200 °C üzeri)',
+          value: '1 K',
+        },
+        {
           label: 'Akış ölçme cihazı',
           value: '5–95 Nl/sa veya 1–13 Nl/sa',
         },
@@ -418,20 +422,16 @@ const tr: PlasticTestEquipmentData = {
           value: '1 kW',
         },
         {
-          label: 'Power requirement',
-          value: '1 kW',
-        },
-        {
-          label: 'Dimensions (W×D×H)',
+          label: 'Boyutlar (G×D×Y)',
           value: '760 × 650 × 1020 mm',
         },
         {
-          label: 'Weight',
-          value: 'Approx. 60 kg',
+          label: 'Ağırlık',
+          value: 'Yaklaşık 60 kg',
         },
         {
-          label: 'Voltage',
-          value: '1 ph 230 V, 50/60 Hz',
+          label: 'Voltaj',
+          value: '1 faz 230 V, 50/60 Hz',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050258/polinar/static/test-equipment/carbon-black-01.jpg',
@@ -456,13 +456,21 @@ const tr: PlasticTestEquipmentData = {
         'ISO 527',
         'ISO 6259',
         'ASTM D 638',
-        'ASTM D 638',
+        'ISO 16770',
         'ASTM D 1822',
       ],
       specs: [
         {
           label: 'Sıkıştırma aralığı (küçük)',
           value: 'Maks. 30 mm kalınlık, 220 mm uzunluk',
+        },
+        {
+          label: 'Sıkıştırma aralığı (büyük)',
+          value: 'Maks. 90 mm kalınlık, 250 mm uzunluk',
+        },
+        {
+          label: 'Proses başına test çubukları',
+          value: 'Maks. 2/5',
         },
         {
           label: 'İş mili hızı',
@@ -477,16 +485,8 @@ const tr: PlasticTestEquipmentData = {
           value: '450 kg',
         },
         {
-          label: 'Dimensions (W×D×H)',
-          value: '900 × 900 × 1700 mm',
-        },
-        {
-          label: 'Weight',
-          value: '450 kg',
-        },
-        {
-          label: 'Voltage',
-          value: '3 ph 380/400 VAC 230 V, 50 Hz',
+          label: 'Voltaj',
+          value: '3 faz 380/400 VAC 230 V, 50 Hz',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050262/polinar/static/test-equipment/cnc-milling-machine-01.jpg',
@@ -525,8 +525,8 @@ const tr: PlasticTestEquipmentData = {
           value: 'PE, PP, PVC',
         },
         {
-          label: 'Pressure connection',
-          value: 'Quick-release plug',
+          label: 'Basınç bağlantısı',
+          value: 'Hızlı açılır fiş',
         },
       ],
       image01: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1775050265/polinar/static/test-equipment/end-closures-01.jpg',
@@ -565,11 +565,11 @@ const tr: PlasticTestEquipmentData = {
           value: 'Dokunmatik ekranlı PLC',
         },
         {
-          label: 'Dimensions (W×D×H)',
+          label: 'Boyutlar (G×D×Y)',
           value: '1250 × 600 × 2000 mm',
         },
         {
-          label: 'Voltage',
+          label: 'Voltaj',
           value: '220/380 V, 50/60 Hz',
         },
       ],

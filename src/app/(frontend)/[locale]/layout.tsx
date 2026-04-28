@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { getActiveLanguages } from '@/lib/i18n'
-import { getPayloadClient } from '@/lib/payload'
 import { organizationJsonLd, JsonLd } from '@/lib/seo'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -30,14 +29,16 @@ export default async function LocaleLayout({ children, params }: Props) {
   let footerData: any = null
   let siteSettings: any = null
   try {
-    const payload = await getPayloadClient()
-    ;[navData, uiLabels, footerData, siteSettings] = await Promise.all([
-      payload.findGlobal({ slug: 'navigation', locale: locale as any }),
-      payload.findGlobal({ slug: 'ui-labels', locale: locale as any }),
-      payload.findGlobal({ slug: 'footer', locale: locale as any }),
-      payload.findGlobal({ slug: 'site-settings', locale: locale as any }),
-    ])
-  } catch {}
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    
+    navData = dictionary['navigation'] || null
+    uiLabels = dictionary['ui-labels'] || null
+    footerData = dictionary['footer'] || null
+    siteSettings = dictionary['site-settings'] || null
+  } catch (e) {
+    console.error('Failed to load dictionary:', e)
+  }
 
   return (
     <html lang={locale} dir={dir} className={fontClasses}>

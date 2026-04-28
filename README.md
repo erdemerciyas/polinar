@@ -15,7 +15,7 @@ Corporate website for **Polinar** — a plastic injection mould and pipe fitting
 | Media Storage | Cloudinary via `payloadcms-storage-cloudinary` |
 | Rich Text | Lexical Editor (`@payloadcms/richtext-lexical`) |
 | SEO | `@payloadcms/plugin-seo`, JSON-LD, dynamic sitemap |
-| AI Chatbot | Anthropic Claude SDK |
+| AI Chatbot | Google Vertex AI (Gemini) |
 | PDF Catalogs | pdf-lib |
 | Image Processing | Sharp |
 | Language | TypeScript 5 |
@@ -50,7 +50,8 @@ cp .env.example .env
 |----------|-------------|
 | `DATABASE_URL` | PostgreSQL connection string |
 | `PAYLOAD_SECRET` | Secret key for Payload auth/encryption |
-| `ANTHROPIC_API_KEY` | Anthropic API key (for chatbot) |
+| `GOOGLE_VERTEX_API_KEY` | Google Vertex AI API key (for chatbot) |
+| `GOOGLE_VERTEX_MODEL` | Gemini model name (default: `gemini-2.5-flash`) |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL (e.g. `https://www.polinar.com.tr`) |
 | `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
 | `CLOUDINARY_API_KEY` | Cloudinary API key |
@@ -118,7 +119,7 @@ tailwind.config.ts             # Tailwind CSS configuration
 
 ## Internationalization (i18n)
 
-Polinar supports **English (en)**, **Turkish (tr)**, **German (de)**, and **Arabic (ar)** — configured in `src/lib/locales.json`.
+Polinar supports **English (en)**, **Turkish (tr)**, **German (de)**, **Arabic (ar)**, and **Russian (ru)** — configured in `src/lib/locales.json`. Locales are dynamic: editing the `Languages` collection in the admin panel rewrites `locales.json` and Payload's locale config on the next server boot.
 
 Content is managed through two systems:
 
@@ -135,8 +136,13 @@ src/data/{page-slug}/
   types.ts    — TypeScript type definition
   en.ts       — English content (source of truth)
   tr.ts       — Turkish translation
+  de.ts       — German translation
+  ar.ts       — Arabic translation
+  ru.ts       — Russian translation
   index.ts    — Loader with EN fallback
 ```
+
+Static content is delivered through `src/lib/getDictionary.ts`, which loads `public/locales/{locale}.json` overlays and deep-merges them onto Payload globals at request time, preserving CMS-managed media references.
 
 Scaffold a new static page:
 
@@ -165,7 +171,7 @@ npm run i18n:create-page {slug}
 - **About Page** — Cloudinary-hosted gallery, video player, scroll-triggered counter animations with corner accents and glow effects
 - **Contact Page** — floating-label form, asymmetric layout, premium card styling, animated info cards
 - **Newsletter** — subscription management
-- **AI Chatbot** — Anthropic Claude-powered support widget
+- **AI Chatbot** — Google Vertex AI (Gemini)-powered support widget
 - **Cloudinary Media** — all media assets stored and served via Cloudinary CDN
 - **SEO** — per-page meta, Open Graph, JSON-LD structured data, auto-generated sitemap & robots.txt
 - **RTL Support** — automatic `dir="rtl"` for Arabic locale

@@ -80,17 +80,18 @@ export default async function OurBusinessPage({ params }: Props) {
 
   try {
     const payload = await getPayloadClient()
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
 
-    const [pageResult, navData, uiLabels] = await Promise.all([
-      payload.find({
-        collection: 'pages',
-        where: { slug: { equals: slug } },
-        locale: locale as any,
-        limit: 1,
-      }),
-      payload.findGlobal({ slug: 'navigation', locale: locale as any }),
-      payload.findGlobal({ slug: 'ui-labels', locale: locale as any }),
-    ])
+    const navData = dictionary['navigation'] || null
+    const uiLabels = dictionary['ui-labels'] || null
+
+    const pageResult = await payload.find({
+      collection: 'pages',
+      where: { slug: { equals: slug } },
+      locale: locale as any,
+      limit: 1,
+    })
 
     page = pageResult.docs[0]
     contentComingSoon = uiLabels?.contentComingSoon || ''

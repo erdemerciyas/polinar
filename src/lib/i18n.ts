@@ -68,7 +68,8 @@ export async function getActiveLanguages(): Promise<Language[]> {
       flagEmoji: doc.flagEmoji || undefined,
       sortOrder: doc.sortOrder ?? 0,
     }))
-  } catch {
+  } catch (e) {
+    console.error("GET ACTIVE LANGUAGES ERROR:", e)
     // Fallback for build time or errors
     return [
       { id: '1', code: 'en', label: 'English', nativeLabel: 'English', shortLabel: 'EN', isDefault: true, isActive: true, isRTL: false, sortOrder: 0 },

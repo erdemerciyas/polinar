@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { getPayloadClient } from '@/lib/payload'
 import { getStaticLabels } from '@/data/static-labels'
 import { generateSEO, getSiteDefaultDescription, breadcrumbJsonLd, JsonLd, SITE_URL } from '@/lib/seo'
 import { getOurBusinessHighlights } from '@/data/our-business'
@@ -16,11 +15,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let navData: any = null
   let ourBusinessSettings: any = null
   try {
-    const payload = await getPayloadClient()
-    ;[navData, ourBusinessSettings] = await Promise.all([
-      payload.findGlobal({ slug: 'navigation', locale: locale as any }),
-      payload.findGlobal({ slug: 'our-business-page-settings', locale: locale as any }),
-    ])
+    const { getDictionary } = await import('@/lib/getDictionary')
+    const dictionary = await getDictionary(locale)
+    navData = dictionary['navigation'] || null
+    ourBusinessSettings = dictionary['our-business-page-settings'] || null
   } catch {}
 
   const seo = ourBusinessSettings?.seo || {}
@@ -136,21 +134,21 @@ function CategoryIcon({ name, className }: { name: string; className?: string })
 
 export default async function OurBusinessLandingPage({ params }: Props) {
   const { locale } = await params
-  const labels = getStaticLabels(locale)
-  const highlights = getOurBusinessHighlights(locale)
-
   let navData: any = null
   let homepageData: any = null
   let uiLabels: any = null
+  let dictionary: any = {}
 
   try {
-    const payload = await getPayloadClient()
-    ;[navData, homepageData, uiLabels] = await Promise.all([
-      payload.findGlobal({ slug: 'navigation', locale: locale as any }),
-      payload.findGlobal({ slug: 'homepage-settings', locale: locale as any }),
-      payload.findGlobal({ slug: 'ui-labels', locale: locale as any }),
-    ])
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    navData = dictionary['navigation'] || null
+    homepageData = dictionary['homepage-settings'] || null
+    uiLabels = dictionary['ui-labels'] || null
   } catch {}
+
+  const labels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
+  const highlights = dictionary['static-content']?.['our-business'] || getOurBusinessHighlights(locale)
 
   const megaMenuItem = navData?.mainMenu?.find((item: any) => item.type === 'mega')
   const pageTitle = megaMenuItem?.label || (locale === 'tr' ? 'Faaliyetlerimiz' : 'Our Business')
@@ -287,7 +285,7 @@ export default async function OurBusinessLandingPage({ params }: Props) {
 
                     {cardHighlights.length > 0 && (
                       <div className="flex flex-col gap-1.5 mb-6">
-                        {cardHighlights.map((hl) => (
+                        {cardHighlights.map((hl: string) => (
                           <span
                             key={hl}
                             className={`inline-flex items-center gap-2 ${theme.accentText} font-body text-xs font-medium`}

@@ -1,5 +1,4 @@
 import path from 'path'
-import fs from 'fs'
 import { fileURLToPath } from 'url'
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
@@ -36,12 +35,12 @@ const localesConfig: { locales: { label: string; code: string }[]; defaultLocale
   localesJson.locales?.length > 0
     ? localesJson
     : {
-        locales: [
-          { label: 'English', code: 'en' },
-          { label: 'Türkçe', code: 'tr' },
-        ],
-        defaultLocale: 'en',
-      }
+      locales: [
+        { label: 'English', code: 'en' },
+        { label: 'Türkçe', code: 'tr' },
+      ],
+      defaultLocale: 'en',
+    }
 
 export default buildConfig({
   admin: {
@@ -114,6 +113,8 @@ export default buildConfig({
   },
 
   onInit: async (payload) => {
+    const fs = await import('fs')
+
     // Ensure default languages exist (idempotent — checks each individually)
     const defaults = [
       { code: 'en', label: 'English', nativeLabel: 'English', shortLabel: 'EN', isDefault: true, isActive: true, isRTL: false, sortOrder: 0 },
@@ -635,7 +636,7 @@ export default buildConfig({
         locale: 'tr',
         data: { learnMore: 'Detaylar', readMore: 'Devamını Oku', contentComingSoon: 'İçerik yakında eklenecektir.' },
       })
-      payload.logger.info('✓ UiLabels (common) seeded (en + tr)')
+      payload.logger.info('✓ UiLabels seeded (en + tr)')
     }
   },
 
@@ -656,27 +657,30 @@ export default buildConfig({
     }),
     ...(process.env.CLOUDINARY_CLOUD_NAME
       ? [
-          cloudinaryStorage({
-            collections: {
-              media: {
-                disablePayloadAccessControl: true,
-                generateFileURL: ({ filename }: { filename: string }) => {
-                  const ext = filename.split('.').pop() || 'jpg'
-                  const name = filename.replace(/\.[^.]+$/, '')
-                  const isPdf = ext === 'pdf'
-                  const type = isPdf ? 'raw' : 'image'
-                  return `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/${type}/upload/polinar/media/${name}.${ext}`
-                },
+        cloudinaryStorage({
+          collections: {
+            media: {
+              disablePayloadAccessControl: true,
+              generateFileURL: ({ filename, size }: { filename?: string; size?: { filename?: string } }) => {
+                const targetFilename = size?.filename || filename
+                if (!targetFilename) return null
+
+                const ext = targetFilename.split('.').pop() || 'jpg'
+                const name = targetFilename.replace(/\.[^.]+$/, '')
+                const isPdf = ext === 'pdf'
+                const type = isPdf ? 'raw' : 'image'
+                return `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/${type}/upload/polinar/media/${name}.${ext}`
               },
             },
-            cloudinaryConfig: {
-              cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-              api_key: process.env.CLOUDINARY_API_KEY!,
-              api_secret: process.env.CLOUDINARY_API_SECRET!,
-            },
-            folder: 'polinar/media',
-          }),
-        ]
+          },
+          cloudinaryConfig: {
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+            api_key: process.env.CLOUDINARY_API_KEY!,
+            api_secret: process.env.CLOUDINARY_API_SECRET!,
+          },
+          folder: 'polinar/media',
+        }),
+      ]
       : []),
   ],
 })

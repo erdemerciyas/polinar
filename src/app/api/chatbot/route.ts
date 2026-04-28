@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    if (!process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key-here') {
+    if (!process.env.GOOGLE_VERTEX_API_KEY || process.env.GOOGLE_VERTEX_API_KEY === 'your-google-vertex-api-key-here') {
       return new Response(JSON.stringify({ error: 'Chatbot not configured' }), {
         status: 503,
         headers: { 'Content-Type': 'application/json' },

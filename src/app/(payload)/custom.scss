@@ -1330,3 +1330,439 @@ textarea {
     opacity: 0.6;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   TASTE-SKILL FIX LAYER — Payload CMS actual class corrections
+   Applied over base custom.scss for structural consistency
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Pill / Rounded buttons (Payload uses .btn--style-pill) ── */
+.btn--style-pill {
+  border-radius: 100px !important;
+  padding: 5px 14px !important;
+  font-size: 12.5px !important;
+  font-weight: 550 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ── Primary action button ── */
+.btn--style-primary {
+  background: var(--polinar-accent) !important;
+  color: #0A1128 !important;
+  border-color: var(--polinar-accent) !important;
+  font-weight: 600 !important;
+
+  &:not(:disabled):hover {
+    background: var(--polinar-accent-hover) !important;
+    border-color: var(--polinar-accent-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(237,186,19,0.25), 0 2px 6px rgba(237,186,19,0.12) !important;
+  }
+
+  &:not(:disabled):active {
+    transform: scale(0.98) translateY(0) !important;
+  }
+}
+
+/* ── Secondary / ghost button ── */
+.btn--style-secondary {
+  border: 1px solid var(--polinar-border-strong) !important;
+  background: transparent !important;
+  color: var(--polinar-text-primary) !important;
+
+  &:not(:disabled):hover {
+    background: var(--polinar-surface-hover) !important;
+    border-color: var(--polinar-text-muted) !important;
+  }
+}
+
+/* ── Document header tabs ── */
+.doc-tab {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 9px 16px !important;
+  border-radius: $radius-sm $radius-sm 0 0 !important;
+  transition: all $transition-fast !important;
+  color: var(--polinar-text-muted) !important;
+  border-bottom: 2px solid transparent !important;
+
+  &.doc-tab--active,
+  &[aria-selected="true"] {
+    color: var(--polinar-accent) !important;
+    border-bottom-color: var(--polinar-accent) !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+  }
+
+  &:hover:not(.doc-tab--active) {
+    color: var(--polinar-text-primary) !important;
+    background: var(--polinar-surface-hover) !important;
+  }
+}
+
+/* ── Dashboard: fix card content alignment ── */
+.dashboard {
+  padding: 28px 0;
+
+  &__card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .dashboard__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    padding: 20px 22px !important;
+
+    &:hover {
+      transform: translateY(-2px) !important;
+    }
+  }
+
+  .dashboard__label {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    color: var(--polinar-text-primary) !important;
+    margin-bottom: 4px;
+  }
+
+  .dashboard__sub-label {
+    font-size: 11.5px !important;
+    color: var(--polinar-text-muted) !important;
+    line-height: 1.4;
+    margin-bottom: auto;
+  }
+
+  .dashboard__count {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: var(--polinar-accent) !important;
+    letter-spacing: -0.04em !important;
+    margin-top: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ── Sidebar: group labels and spacing ── */
+.nav-group {
+  &__label {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--polinar-text-muted) !important;
+    padding: 16px 18px 5px !important;
+    opacity: 0.7;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px 7px 12px !important;
+    border-radius: $radius-sm;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: var(--polinar-text-secondary) !important;
+    transition: all $transition-fast !important;
+
+    &:hover {
+      background: var(--polinar-surface-hover) !important;
+      color: var(--polinar-text-primary) !important;
+    }
+  }
+}
+
+/* ── Sidebar: Nav link active state ── */
+.nav__link {
+  font-size: 13.5px !important;
+  color: var(--polinar-text-secondary) !important;
+  padding: 7px 14px 7px 16px !important;
+  border-radius: $radius-sm !important;
+  margin: 1px 6px !important;
+  transition: all $transition-fast !important;
+
+  &.active,
+  &--active {
+    background: var(--polinar-accent-50) !important;
+    color: var(--polinar-accent) !important;
+    font-weight: 600 !important;
+  }
+
+  &:hover:not(.active):not(.--active) {
+    background: var(--polinar-surface-hover) !important;
+    color: var(--polinar-text-primary) !important;
+  }
+}
+
+/* ── Field labels: consistent weight and size ── */
+.field-label,
+label.field-label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--polinar-text-secondary) !important;
+  letter-spacing: 0.01em !important;
+  margin-bottom: 6px !important;
+  display: block;
+}
+
+/* ── Field description text ── */
+.field-description {
+  font-size: 11.5px !important;
+  color: var(--polinar-text-muted) !important;
+  line-height: 1.55 !important;
+  margin-top: 4px;
+}
+
+/* ── All text inputs: consistent height and padding ── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+textarea,
+select {
+  font-size: 13.5px !important;
+  padding: 9px 12px !important;
+  border-radius: $radius-sm !important;
+  line-height: 1.5 !important;
+  transition: border-color $transition-fast, box-shadow $transition-fast !important;
+
+  &:focus {
+    border-color: var(--polinar-accent) !important;
+    box-shadow: 0 0 0 2px rgba(237,186,19,0.15) !important;
+    outline: none !important;
+  }
+}
+
+textarea {
+  min-height: 100px;
+  padding: 10px 12px !important;
+  border-radius: $radius-md !important;
+  resize: vertical;
+}
+
+/* ── Search input ── */
+.search-filter__input {
+  border-radius: $radius-md !important;
+  padding: 9px 14px !important;
+  font-size: 13.5px !important;
+}
+
+/* ── Header app bar ── */
+.app-header {
+  border-bottom: 1px solid var(--polinar-border) !important;
+  height: 52px !important;
+
+  .step-nav {
+    font-size: 12.5px !important;
+    color: var(--polinar-text-muted) !important;
+
+    a {
+      color: var(--polinar-text-muted) !important;
+      transition: color $transition-fast !important;
+      &:hover { color: var(--polinar-accent) !important; }
+    }
+
+    span:last-child {
+      color: var(--polinar-text-primary) !important;
+      font-weight: 550;
+    }
+  }
+}
+
+/* ── Gutter layout (sidebar + content) ── */
+.gutter {
+  .gutter__sidebar {
+    border-right: 1px solid var(--polinar-border) !important;
+    padding-top: 20px !important;
+  }
+
+  .gutter__content {
+    padding: 28px 32px !important;
+  }
+}
+
+/* ── Collection list header ── */
+.collection-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px !important;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--polinar-border);
+
+  h1, h2 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--polinar-text-primary) !important;
+  }
+}
+
+/* ── Document editor header ── */
+.document-header {
+  border-bottom: 1px solid var(--polinar-border) !important;
+  padding: 14px 24px !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  h1, .document-header__title {
+    font-size: 16px !important;
+    font-weight: 650 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--polinar-text-primary) !important;
+  }
+}
+
+/* ── Rows inside array fields ── */
+.array-field__row {
+  padding: 14px 16px !important;
+}
+
+.array-field__row-header {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--polinar-text-primary) !important;
+}
+
+/* ── Block field add button ── */
+.blocks-field__add-button {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* ── Popup / dropdown menus ── */
+.popup__content {
+  border-radius: $radius-md !important;
+  border: 1px solid var(--polinar-border) !important;
+  box-shadow: var(--polinar-shadow-lg) !important;
+  overflow: hidden;
+  animation: fadeSlideIn 0.15s ease-out both;
+
+  button, a {
+    font-size: 13.5px !important;
+    padding: 9px 16px !important;
+    transition: background $transition-fast !important;
+    color: var(--polinar-text-primary) !important;
+
+    &:hover {
+      background: var(--polinar-accent-50) !important;
+    }
+  }
+}
+
+/* ── Status badges ── */
+.status-indicator,
+.pill {
+  border-radius: 100px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  padding: 3px 10px !important;
+  letter-spacing: 0.01em;
+}
+
+/* ── Toast notifications ── */
+.toast {
+  border-radius: $radius-md !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  border: 1px solid var(--polinar-border) !important;
+  box-shadow: var(--polinar-shadow-lg) !important;
+}
+
+/* ── Rich text toolbar ── */
+.rich-text-lexical {
+  border: 1px solid var(--polinar-border) !important;
+  border-radius: $radius-md !important;
+  overflow: hidden;
+
+  [class*="toolbar"] {
+    border-bottom: 1px solid var(--polinar-border) !important;
+    background: var(--polinar-surface-hover) !important;
+    padding: 6px 8px !important;
+
+    button {
+      border-radius: 5px !important;
+      padding: 5px 7px !important;
+      transition: all $transition-fast !important;
+
+      &:hover {
+        background: var(--polinar-surface) !important;
+      }
+
+      &[aria-pressed="true"],
+      &.active {
+        background: var(--polinar-accent-light) !important;
+        color: var(--polinar-accent) !important;
+      }
+    }
+  }
+
+  [class*="editor-container"],
+  [class*="ContentEditable"] {
+    min-height: 180px;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    font-family: var(--polinar-font-sans) !important;
+  }
+}
+
+/* ── Upload field drop zone ── */
+.file-field__upload,
+.upload-field {
+  border: 1.5px dashed var(--polinar-border-strong) !important;
+  border-radius: $radius-lg !important;
+  padding: 28px 20px !important;
+  text-align: center;
+  transition: all $transition-normal !important;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--polinar-accent) !important;
+    background: var(--polinar-accent-50) !important;
+  }
+
+  p {
+    font-size: 13px !important;
+    color: var(--polinar-text-muted) !important;
+  }
+}
+
+/* ── i18n Panel: clean up export section ── */
+.i18n-export-section {
+  background: var(--polinar-surface-hover);
+  border: 1px solid var(--polinar-border);
+  border-radius: $radius-lg;
+  padding: 28px;
+
+  h2, h3 {
+    font-size: 16px !important;
+    font-weight: 650 !important;
+    letter-spacing: -0.015em !important;
+    color: var(--polinar-text-primary) !important;
+    margin: 0 0 6px !important;
+  }
+
+  p {
+    font-size: 13px !important;
+    color: var(--polinar-text-muted) !important;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  ol, ul {
+    font-size: 12.5px !important;
+    color: var(--polinar-text-secondary) !important;
+    line-height: 1.8;
+  }
+}
+

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { getPayloadClient } from '@/lib/payload'
 import { getStaticLabels } from '@/data/static-labels'
 import { generateSEO, localBusinessJsonLd, JsonLd } from '@/lib/seo'
 import { ContactForm } from '@/components/ContactForm'
@@ -12,9 +11,11 @@ export const revalidate = 3600
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   let contactSettings: any = null
+  let dictionary: any = {}
   try {
-    const payload = await getPayloadClient()
-    contactSettings = await payload.findGlobal({ slug: 'contact-page-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    contactSettings = dictionary['contact-page-settings'] || null
   } catch {}
 
   const seo = contactSettings?.seo || {}
@@ -31,13 +32,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params
-  const staticLabels = getStaticLabels(locale)
-
   let contactSettings: any = null
+  let dictionary: any = {}
   try {
-    const payload = await getPayloadClient()
-    contactSettings = await payload.findGlobal({ slug: 'contact-page-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    contactSettings = dictionary['contact-page-settings'] || null
   } catch {}
+
+  const staticLabels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
 
   const hero = contactSettings?.hero || {}
   const form = contactSettings?.form || {}
@@ -113,7 +116,7 @@ export default async function ContactPage({ params }: Props) {
                     <div>
                       <h3 className="contact-info-title">{info.phoneLabel || ''}</h3>
                       <div className="space-y-1">
-                        {staticLabels.company.phones.map((phone) => (
+                        {staticLabels.company.phones.map((phone: string) => (
                           <a key={phone} href={`tel:${phone.replace(/\s/g, '')}`} className="contact-info-link block">
                             {phone}
                           </a>

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/lib/payload'
 import { getStaticLabels } from '@/data/static-labels'
 import Image from 'next/image'
 import { generateSEO, getSiteDefaultDescription, breadcrumbJsonLd, JsonLd, SITE_URL } from '@/lib/seo'
@@ -15,12 +14,15 @@ export const revalidate = 3600
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const labels = getStaticLabels(locale)
   let aboutSettings: any = null
+  let dictionary: any = {}
   try {
-    const payload = await getPayloadClient()
-    aboutSettings = await payload.findGlobal({ slug: 'about-page-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    aboutSettings = dictionary['about-page-settings'] || null
   } catch {}
+
+  const labels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
 
   const seo = aboutSettings?.seo || {}
   const defaultDesc = await getSiteDefaultDescription(locale)
@@ -41,13 +43,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
-  const labels = getStaticLabels(locale)
-
   let aboutSettings: any = null
+  let dictionary: any = {}
   try {
-    const payload = await getPayloadClient()
-    aboutSettings = await payload.findGlobal({ slug: 'about-page-settings', locale: locale as any })
+    const { getDictionary } = await import('@/lib/getDictionary')
+    dictionary = await getDictionary(locale)
+    aboutSettings = dictionary['about-page-settings'] || null
   } catch {}
+
+  const labels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
 
   const hero = aboutSettings?.hero || {}
   const story = aboutSettings?.story || {}
