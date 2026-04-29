@@ -83,7 +83,7 @@ const categoryTheme: Record<string, {
     hoverIconBg: 'group-hover:bg-pte-cyan',
     hoverBorder: 'hover:border-pte-cyan/20',
     linkText: 'text-pte-cyan',
-    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1776265682/polinar/static/testing-hero-v6.jpg',
+    fallbackImage: 'https://res.cloudinary.com/dtdogh9wg/image/upload/v1777446550/polinar/static/testing-hero-v7.png',
   },
 }
 

@@ -563,7 +563,7 @@ export default buildConfig({
         slug: 'footer',
         data: {
           labels: { addressLabel: 'Address', phoneFaxLabel: 'Phone / Fax', emailLabel: 'Email', newsletterLabel: 'Newsletter', subscribeButton: 'SUBSCRIBE', namePlaceholder: 'Name', emailPlaceholder: 'E-mail' },
-          copyrightText: footerData.copyrightText || 'Copyright © 2024 All Rights Reserved by Polinar',
+          copyrightText: footerData.copyrightText || 'Copyright © 2026 All Rights Reserved by Polinar',
         },
       })
       await payload.updateGlobal({
@@ -571,7 +571,7 @@ export default buildConfig({
         locale: 'tr',
         data: {
           labels: { addressLabel: 'Adres', phoneFaxLabel: 'Telefon / Faks', emailLabel: 'E-posta', newsletterLabel: 'Bülten', subscribeButton: 'ABONE OL', namePlaceholder: 'İsim', emailPlaceholder: 'E-posta' },
-          copyrightText: 'Telif Hakkı © 2024 Tüm Hakları Saklıdır — Polinar',
+          copyrightText: 'Telif Hakkı © 2026 Tüm Hakları Saklıdır — Polinar',
         },
       })
       payload.logger.info('✓ Footer labels seeded (en + tr)')

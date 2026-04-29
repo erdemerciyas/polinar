@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { getPayloadClient } from '@/lib/payload'
 import { generateSEO, newsArticleJsonLd, breadcrumbJsonLd, JsonLd, SITE_URL } from '@/lib/seo'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
+import { NewsImageLightbox } from '@/components/news/NewsImageLightbox'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -115,16 +115,11 @@ export default async function NewsDetailPage({ params }: Props) {
       <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
           {article.featuredImage?.url && (
-            <div className="relative mb-8 rounded-card overflow-hidden h-[400px]">
-              <Image
-                src={article.featuredImage.url}
-                alt={article.featuredImage.alt || article.title}
-                fill
-                sizes="(max-width: 900px) 100vw, 900px"
-                priority
-                className="object-cover"
-              />
-            </div>
+            <NewsImageLightbox
+              src={article.featuredImage.url}
+              alt={article.featuredImage.alt || article.title}
+              locale={locale}
+            />
           )}
 
           {article.excerpt && (
