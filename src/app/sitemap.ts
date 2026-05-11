@@ -18,15 +18,22 @@ function buildAlternates(path: string) {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = []
 
-  const staticPages = ['', '/about', '/news', '/contact', '/our-business']
-  for (const page of staticPages) {
+  const staticPageConfigs = [
+    { path: '', changeFrequency: 'daily' as const, priority: 1.0 },
+    { path: '/about', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/news', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.7 },
+    { path: '/our-business', changeFrequency: 'weekly' as const, priority: 0.9 },
+  ]
+
+  for (const { path, changeFrequency, priority } of staticPageConfigs) {
     for (const locale of locales) {
       entries.push({
-        url: `${SITE_URL}/${locale}${page}`,
+        url: `${SITE_URL}/${locale}${path}`,
         lastModified: new Date(),
-        changeFrequency: page === '' ? 'daily' : 'weekly',
-        priority: page === '' ? 1 : 0.8,
-        alternates: buildAlternates(page),
+        changeFrequency,
+        priority,
+        alternates: buildAlternates(path),
       })
     }
   }

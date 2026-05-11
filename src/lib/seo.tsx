@@ -24,6 +24,7 @@ const ogLocaleMap: Record<string, string> = {
   tr: 'tr_TR',
   de: 'de_DE',
   ar: 'ar_SA',
+  ru: 'ru_RU',
 }
 
 type SEOArgs = {
@@ -142,7 +143,7 @@ export function newsArticleJsonLd(article: {
   image?: string
   datePublished: string
   dateModified?: string
-  locale: string
+  author?: string
 }) {
   return {
     '@context': 'https://schema.org',
@@ -152,6 +153,10 @@ export function newsArticleJsonLd(article: {
     image: article.image || `${SITE_URL}/brand_assets/og-default.jpg`,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
+    author: {
+      '@type': 'Organization',
+      name: article.author || 'Polinar',
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Polinar',
@@ -160,9 +165,33 @@ export function newsArticleJsonLd(article: {
   }
 }
 
-export function localBusinessJsonLd(locale: string) {
+export function localBusinessJsonLd(
+  locale: string,
+  siteSettings?: {
+    contact?: { address?: string; phone?: string; email?: string; fax?: string }
+    socialMedia?: { youtube?: string; linkedin?: string; facebook?: string; instagram?: string; twitter?: string }
+    openingHours?: Array<{ dayOfWeek: string; opens: string; closes: string }>
+    priceRange?: string
+  }
+) {
   const labels = getStaticLabels(locale)
   const { company, seo } = labels
+
+  const address = siteSettings?.contact?.address
+  const phones = siteSettings?.contact?.phone ? [siteSettings.contact.phone] : company.phones
+  const emails = siteSettings?.contact?.email ? [siteSettings.contact.email] : [company.email]
+
+  const socials = siteSettings?.socialMedia
+    ? [
+        siteSettings.socialMedia.youtube,
+        siteSettings.socialMedia.linkedin,
+        siteSettings.socialMedia.facebook,
+        siteSettings.socialMedia.instagram,
+        siteSettings.socialMedia.twitter,
+      ].filter(Boolean)
+    : company.socialLinks.map((link) => link.url)
+
+  const addressParts = (address || 'İkitelli OSB Eskoop San. Sit. D Blok No: 34 Başakşehir, İstanbul, TURKEY').split('\n')
 
   return {
     '@context': 'https://schema.org',
@@ -170,14 +199,14 @@ export function localBusinessJsonLd(locale: string) {
     name: seo.siteName,
     url: SITE_URL,
     logo: `${SITE_URL}/brand_assets/logo.png`,
-    telephone: company.phones[0],
-    email: company.email,
+    telephone: phones[0],
+    email: emails[0],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'İkitelli OSB Eskoop San. Sit. D Blok No: 34',
-      addressLocality: 'Başakşehir',
-      addressRegion: 'İstanbul',
-      postalCode: '34306',
+      streetAddress: addressParts[0] || '',
+      addressLocality: addressParts[1] || 'Başakşehir',
+      addressRegion: addressParts[2] || 'İstanbul',
+      postalCode: addressParts[3] || '34306',
       addressCountry: 'TR',
     },
     geo: {
@@ -185,11 +214,58 @@ export function localBusinessJsonLd(locale: string) {
       latitude: 41.0865,
       longitude: 28.7817,
     },
-    sameAs: company.socialLinks.map((link) => link.url),
+    ...(siteSettings?.openingHours?.length
+      ? {
+          openingHoursSpecification: siteSettings.openingHours.map((h) => ({
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: h.dayOfWeek,
+            opens: h.opens,
+            closes: h.closes,
+          })),
+        }
+      : {}),
+    ...(siteSettings?.priceRange ? { priceRange: siteSettings.priceRange } : {}),
+    sameAs: socials,
   }
 }
 
-export function productJsonLd(locale: string, product: { name: string; description?: string; image?: string; slug: string }) {
+export function videoObjectJsonLd(locale: string) {
+  const labels = getStaticLabels(locale)
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Polinar Corporate Video',
+    description: 'Polinar manufacturing facility and capabilities overview.',
+    uploadDate: '2024-01-01',
+    embedUrl: 'https://www.youtube.com/embed/wFziyAssgqk',
+    thumbnailUrl: `${SITE_URL}/brand_assets/og-default.jpg`,
+    publisher: {
+      '@type': 'Organization',
+      name: labels.seo.siteName,
+    },
+  }
+}
+
+export function faqPageJsonLd(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+}
+
+export function productJsonLd(
+  locale: string,
+  product: { name: string; description?: string; image?: string; slug: string; price?: string; availability?: string }
+) {
   const labels = getStaticLabels(locale)
 
   return {
@@ -202,6 +278,16 @@ export function productJsonLd(locale: string, product: { name: string; descripti
       '@type': 'Organization',
       name: labels.seo.siteName,
     },
+    ...(product.price
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: product.price,
+            priceCurrency: 'USD',
+            availability: product.availability || 'https://schema.org/InStock',
+          },
+        }
+      : {}),
   }
 }
 

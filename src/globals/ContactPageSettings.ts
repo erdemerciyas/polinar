@@ -60,5 +60,20 @@ export const ContactPageSettings: GlobalConfig = {
         { name: 'emailLabel', type: 'text', localized: true },
       ],
     },
+    {
+      name: 'newsletter',
+      label: 'Newsletter Section',
+      type: 'group',
+      admin: { description: 'Newsletter subscription form labels shown in the footer' },
+      fields: [
+        { name: 'title', type: 'text', localized: true },
+        { name: 'description', type: 'text', localized: true },
+        { name: 'namePlaceholder', type: 'text', localized: true },
+        { name: 'emailPlaceholder', type: 'text', localized: true },
+        { name: 'submitButton', type: 'text', localized: true },
+        { name: 'successMessage', type: 'text', localized: true },
+        { name: 'errorMessage', type: 'text', localized: true },
+      ],
+    },
   ],
 }

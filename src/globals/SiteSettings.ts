@@ -55,6 +55,46 @@ export const SiteSettings: GlobalConfig = {
         },
         { name: 'address', type: 'textarea', localized: true },
         { name: 'googleMapsEmbed', label: 'Google Maps Embed URL', type: 'textarea', admin: { description: 'Paste the Google Maps iframe src URL' } },
+        {
+          name: 'openingHours',
+          label: 'Opening Hours',
+          type: 'array',
+          admin: { description: 'Used in LocalBusiness JSON-LD schema. Add one entry per day range.', initCollapsed: true },
+          fields: [
+            { name: 'dayOfWeek', type: 'select', required: true, options: [
+              { label: 'Monday', value: 'Monday' },
+              { label: 'Tuesday', value: 'Tuesday' },
+              { label: 'Wednesday', value: 'Wednesday' },
+              { label: 'Thursday', value: 'Thursday' },
+              { label: 'Friday', value: 'Friday' },
+              { label: 'Saturday', value: 'Saturday' },
+              { label: 'Sunday', value: 'Sunday' },
+            ]},
+            { name: 'opens', type: 'text', admin: { description: 'e.g. "09:00"' } },
+            { name: 'closes', type: 'text', admin: { description: 'e.g. "18:00"' } },
+          ],
+        },
+        {
+          name: 'priceRange',
+          label: 'Price Range',
+          type: 'select',
+          admin: { description: 'Displayed in LocalBusiness schema — e.g. "$" means budget, "$$$" means premium' },
+          options: [
+            { label: '$', value: '$' },
+            { label: '$$', value: '$$' },
+            { label: '$$$', value: '$$$' },
+            { label: '$$$$', value: '$$$$' },
+          ],
+        },
+        {
+          name: 'notificationEmail',
+          label: 'Form Notification Email',
+          type: 'email',
+          admin: {
+            description:
+              'Contact + newsletter submissions are emailed here. If empty, the Contact email above is used.',
+          },
+        },
       ],
     },
     // Social
@@ -112,6 +152,57 @@ export const SiteSettings: GlobalConfig = {
       fields: [
         { name: 'enabled', label: 'Show WhatsApp Bar', type: 'checkbox', defaultValue: true },
         { name: 'text', label: 'CTA Text', type: 'text', localized: true },
+      ],
+    },
+    // FAQ Section
+    {
+      name: 'faq',
+      label: 'FAQ — Frequently Asked Questions',
+      type: 'group',
+      admin: { description: 'Adds FAQPage JSON-LD schema for Google rich results. Leave empty to disable.' },
+      fields: [
+        {
+          name: 'items',
+          type: 'array',
+          labels: { singular: 'FAQ Item', plural: 'FAQ Items' },
+          admin: { initCollapsed: true },
+          fields: [
+            { name: 'question', type: 'text', required: true, localized: true, admin: { description: 'The question' } },
+            { name: 'answer', type: 'textarea', required: true, localized: true, admin: { description: 'The answer text' } },
+          ],
+        },
+      ],
+    },
+    // Google Integration
+    {
+      name: 'googleIntegration',
+      label: 'Google Integration',
+      type: 'group',
+      admin: { description: 'Google Search Console, IndexNow, and search engine settings' },
+      fields: [
+        {
+          name: 'gscVerificationToken',
+          label: 'Google Search Console Verification Token',
+          type: 'text',
+          admin: {
+            description: 'HTML meta tag content from Google Search Console. Found in GSC → Settings → Verification method → HTML meta tag.',
+          },
+        },
+        {
+          name: 'indexNow',
+          label: 'IndexNow Settings',
+          type: 'group',
+          fields: [
+            { name: 'apiKey', type: 'text', admin: { description: 'Get your key from https://www.indexnow.org — leave empty to disable IndexNow' } },
+            {
+              name: 'enabled',
+              label: 'Enable IndexNow',
+              type: 'checkbox',
+              defaultValue: true,
+              admin: { description: 'When enabled, page changes are submitted to Bing and Google via IndexNow protocol' },
+            },
+          ],
+        },
       ],
     },
   ],

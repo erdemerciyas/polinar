@@ -1114,6 +1114,31 @@ export interface SiteSetting {
      * Paste the Google Maps iframe src URL
      */
     googleMapsEmbed?: string | null;
+    /**
+     * Used in LocalBusiness JSON-LD schema. Add one entry per day range.
+     */
+    openingHours?:
+      | {
+          dayOfWeek: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
+          /**
+           * e.g. "09:00"
+           */
+          opens?: string | null;
+          /**
+           * e.g. "18:00"
+           */
+          closes?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Displayed in LocalBusiness schema — e.g. "$" means budget, "$$$" means premium
+     */
+    priceRange?: ('$' | '$$' | '$$$' | '$$$$') | null;
+    /**
+     * Contact + newsletter submissions are emailed here. If empty, the Contact email above is used.
+     */
+    notificationEmail?: string | null;
   };
   socialMedia?: {
     facebook?: string | null;
@@ -1162,6 +1187,43 @@ export interface SiteSetting {
   whatsappCTA?: {
     enabled?: boolean | null;
     text?: string | null;
+  };
+  /**
+   * Adds FAQPage JSON-LD schema for Google rich results. Leave empty to disable.
+   */
+  faq?: {
+    items?:
+      | {
+          /**
+           * The question
+           */
+          question: string;
+          /**
+           * The answer text
+           */
+          answer: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Google Search Console, IndexNow, and search engine settings
+   */
+  googleIntegration?: {
+    /**
+     * HTML meta tag content from Google Search Console. Found in GSC → Settings → Verification method → HTML meta tag.
+     */
+    gscVerificationToken?: string | null;
+    indexNow?: {
+      /**
+       * Get your key from https://www.indexnow.org — leave empty to disable IndexNow
+       */
+      apiKey?: string | null;
+      /**
+       * When enabled, page changes are submitted to Bing and Google via IndexNow protocol
+       */
+      enabled?: boolean | null;
+    };
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1579,6 +1641,28 @@ export interface AboutPageSetting {
      * Poster/thumbnail image shown before play
      */
     thumbnailImage?: (number | null) | Media;
+    /**
+     * Video publish date (YYYY-MM-DD) — used in VideoObject schema
+     */
+    uploadDate?: string | null;
+  };
+  /**
+   * Adds FAQPage JSON-LD schema for Google rich results. Leave empty to disable.
+   */
+  faq?: {
+    items?:
+      | {
+          /**
+           * The question — e.g. "What materials do you work with?"
+           */
+          question: string;
+          /**
+           * The answer text
+           */
+          answer: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   certificates?: {
     /**
@@ -1680,6 +1764,18 @@ export interface ContactPageSetting {
     addressText?: string | null;
     phoneLabel?: string | null;
     emailLabel?: string | null;
+  };
+  /**
+   * Newsletter subscription form labels shown in the footer
+   */
+  newsletter?: {
+    title?: string | null;
+    description?: string | null;
+    namePlaceholder?: string | null;
+    emailPlaceholder?: string | null;
+    submitButton?: string | null;
+    successMessage?: string | null;
+    errorMessage?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1810,6 +1906,16 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         whatsapp?: T;
         address?: T;
         googleMapsEmbed?: T;
+        openingHours?:
+          | T
+          | {
+              dayOfWeek?: T;
+              opens?: T;
+              closes?: T;
+              id?: T;
+            };
+        priceRange?: T;
+        notificationEmail?: T;
       };
   socialMedia?:
     | T
@@ -1842,6 +1948,28 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         enabled?: T;
         text?: T;
+      };
+  faq?:
+    | T
+    | {
+        items?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
+      };
+  googleIntegration?:
+    | T
+    | {
+        gscVerificationToken?: T;
+        indexNow?:
+          | T
+          | {
+              apiKey?: T;
+              enabled?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -2078,6 +2206,18 @@ export interface AboutPageSettingsSelect<T extends boolean = true> {
         description?: T;
         videoUrl?: T;
         thumbnailImage?: T;
+        uploadDate?: T;
+      };
+  faq?:
+    | T
+    | {
+        items?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
       };
   certificates?:
     | T
@@ -2146,6 +2286,17 @@ export interface ContactPageSettingsSelect<T extends boolean = true> {
         addressText?: T;
         phoneLabel?: T;
         emailLabel?: T;
+      };
+  newsletter?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        namePlaceholder?: T;
+        emailPlaceholder?: T;
+        submitButton?: T;
+        successMessage?: T;
+        errorMessage?: T;
       };
   updatedAt?: T;
   createdAt?: T;

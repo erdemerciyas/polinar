@@ -83,7 +83,6 @@ export default async function NewsDetailPage({ params }: Props) {
         image: article.featuredImage?.url,
         datePublished: article.date || article.createdAt,
         dateModified: article.updatedAt,
-        locale,
       })} />
       <JsonLd data={breadcrumbJsonLd([
         { name: labels.breadcrumb || 'News', url: `${SITE_URL}/${locale}/news` },

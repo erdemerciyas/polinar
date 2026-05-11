@@ -5,6 +5,9 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import { fontClasses } from '@/lib/fonts'
+import { inject } from '@vercel/analytics'
+
+inject()
 
 type Props = {
   children: React.ReactNode

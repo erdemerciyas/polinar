@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+
+if (!SITE_URL) {
+  throw new Error('NEXT_PUBLIC_SITE_URL is required')
+}
 
 export default function robots(): MetadataRoute.Robots {
   return {

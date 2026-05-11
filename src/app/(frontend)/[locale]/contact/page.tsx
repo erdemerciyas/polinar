@@ -41,6 +41,7 @@ export default async function ContactPage({ params }: Props) {
   } catch {}
 
   const staticLabels = dictionary['static-content']?.['static-labels'] || getStaticLabels(locale)
+  const siteSettings = dictionary['site-settings'] || undefined
 
   const hero = contactSettings?.hero || {}
   const form = contactSettings?.form || {}
@@ -49,7 +50,7 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={localBusinessJsonLd(locale)} />
+      <JsonLd data={localBusinessJsonLd(locale, siteSettings)} />
 
       {/* Hero — full-width dramatic banner */}
       <section className="contact-hero grain-overlay">

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getStaticLabels } from '@/data/static-labels'
 import Image from 'next/image'
-import { generateSEO, getSiteDefaultDescription, breadcrumbJsonLd, JsonLd, SITE_URL } from '@/lib/seo'
+import { generateSEO, getSiteDefaultDescription, breadcrumbJsonLd, JsonLd, SITE_URL, videoObjectJsonLd, faqPageJsonLd } from '@/lib/seo'
 import { CounterAnimation } from '@/components/about/CounterAnimation'
 import { VideoPlayer } from '@/components/about/VideoPlayer'
 import { GalleryLightbox } from '@/components/about/GalleryLightbox'
@@ -77,6 +77,10 @@ export default async function AboutPage({ params }: Props) {
         { name: labels.breadcrumbs.home, url: `${SITE_URL}/${locale}` },
         { name: hero.label || 'About', url: `${SITE_URL}/${locale}/about` },
       ])} />
+      {video?.videoUrl && <JsonLd data={videoObjectJsonLd(locale)} />}
+      {aboutSettings?.faq?.items?.length > 0 && (
+        <JsonLd data={faqPageJsonLd(aboutSettings.faq.items.map((f: any) => ({ question: f.question, answer: f.answer })))} />
+      )}
       {/* ===== 1. HERO ===== */}
       <section className="relative min-h-[420px] lg:min-h-[520px] flex items-center overflow-hidden pt-[72px]">
         {hero.backgroundImage?.url ? (

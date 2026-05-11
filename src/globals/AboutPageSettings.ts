@@ -111,6 +111,27 @@ export const AboutPageSettings: GlobalConfig = {
         { name: 'description', type: 'textarea', localized: true },
         { name: 'videoUrl', type: 'text', required: true, admin: { description: 'YouTube or Vimeo URL' } },
         { name: 'thumbnailImage', type: 'upload', relationTo: 'media', admin: { description: 'Poster/thumbnail image shown before play' } },
+        { name: 'uploadDate', type: 'text', admin: { description: 'Video publish date (YYYY-MM-DD) — used in VideoObject schema' } },
+      ],
+    },
+
+    // 5b. FAQ Section
+    {
+      name: 'faq',
+      label: 'FAQ — Frequently Asked Questions',
+      type: 'group',
+      admin: { description: 'Adds FAQPage JSON-LD schema for Google rich results. Leave empty to disable.' },
+      fields: [
+        {
+          name: 'items',
+          type: 'array',
+          labels: { singular: 'FAQ Item', plural: 'FAQ Items' },
+          admin: { initCollapsed: true },
+          fields: [
+            { name: 'question', type: 'text', required: true, localized: true, admin: { description: 'The question — e.g. "What materials do you work with?"' } },
+            { name: 'answer', type: 'textarea', required: true, localized: true, admin: { description: 'The answer text' } },
+          ],
+        },
       ],
     },
 
