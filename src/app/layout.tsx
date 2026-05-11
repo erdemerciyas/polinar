@@ -13,13 +13,15 @@ export const metadata: Metadata = {
   description: 'Plastic injection moulds for pipe & fittings',
 }
 
+const GSC_VERIFICATION_TOKEN_FALLBACK = 'MlaIcOdliTsE2R6Lr70WUpiPMfc0km8sxe6hSNDXVVQ'
+
 async function getGscToken(): Promise<string | null> {
   try {
     const payload = await getPayloadClient()
     const siteSettings = await payload.findGlobal({ slug: 'site-settings' })
-    return (siteSettings as any)?.googleIntegration?.gscVerificationToken || null
+    return (siteSettings as any)?.googleIntegration?.gscVerificationToken || GSC_VERIFICATION_TOKEN_FALLBACK
   } catch {
-    return null
+    return GSC_VERIFICATION_TOKEN_FALLBACK
   }
 }
 
