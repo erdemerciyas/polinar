@@ -11,6 +11,7 @@
 import {
   SUPPORTED_GLOBAL_SLUGS,
   getLocaleCodes,
+  readLocaleFile,
   writeLocaleFile,
   stripPayloadInternals,
   initPayload,
@@ -36,6 +37,11 @@ async function main() {
       } catch (err) {
         console.log(c.yellow(`  ⚠ Could not read "${slug}" for [${locale}]: ${err instanceof Error ? err.message : err}`))
       }
+    }
+
+    const existing = readLocaleFile(locale)
+    if (existing?.['static-content']) {
+      localeData['static-content'] = existing['static-content']
     }
 
     writeLocaleFile(locale, localeData)

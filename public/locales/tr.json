@@ -1,7 +1,7 @@
 {
   "about-page-settings": {
     "certificates": {
-      "description": "Polinar'ın önceliği tüm müşterilerinin çıkarlarını korumak ve kaliteli hizmet sunmaktır. Üretim sürecimizin tüm girdi ve çıktılarında, tüm yarı mamul ve mamul ürünlerin analizleri çok dikkatli bir şekilde yapılmaktadır.",
+      "description": "Polinar'ın birinci önceliği tüm müşterilerinin kârını korumak ve nitelikli hizmetler sunmaktır. Üretim sürecimizin tüm girdi ve çıktılarında, tüm yarı mamul ve bitmiş ürünlerin analizleri çok titizlikle yapılmaktadır.",
       "items": [
         {
           "description": "Kalite Yönetim Sistemi",
@@ -17,70 +17,74 @@
         },
         {
           "description": "Çevre ve Kalite Politikası",
-          "name": "Entegre Politika"
+          "name": "Интегрированная политика"
         },
         {
           "description": "Endüstriyel Tasarım Tescil Belgesi",
-          "name": "Tasarım Tescil Belgesi"
+          "name": "Регистрация дизайна"
         },
         {
           "description": "Polinar Marka Yenileme Belgesi",
-          "name": "Marka Yenileme Belgesi"
+          "name": "Продление бренда"
         },
         {
           "description": "PTE Marka Tescil Belgesi",
-          "name": "Marka Tescil Belgesi"
+          "name": "Регистрация бренда"
         }
       ],
       "title": "Sertifikalarımız"
     },
     "cta": {
       "buttonLink": "https://wa.me/902125498820",
-      "buttonText": "WhatsApp ile İletişim",
-      "description": "Ürünlerimiz ve hizmetlerimiz hakkında her türlü sorunuz için müşteri destek ekibimizle iletişime geçin.",
+      "buttonText": "WhatsApp ile İletişime Geçin",
+      "description": "Ürün ve hizmetlerimiz hakkında her türlü sorunuz için müşteri destek ekibimizle iletişime geçin.",
       "title": "Detaylı Bilgi mi Gerekiyor?"
     },
     "gallery": {
       "description": "Modern CNC ve EDM makineleri ile donatılmış son teknoloji üretim tesisimizden görüntüler.",
       "images": [
         {
-          "caption": "CNC İşleme Merkezi",
+          "caption": "Üretim tesisi görünüm 1",
           "size": "large"
         },
         {
-          "caption": "Enjeksiyon Kalıp Atölyesi",
+          "caption": "Üretim tesisi görünüm 2",
           "size": "normal"
         },
         {
-          "caption": "EDM Tel Kesim",
+          "caption": "Üretim tesisi görünüm 3",
           "size": "normal"
         },
         {
-          "caption": "Kalite Kontrol",
+          "caption": "Üretim tesisi görünüm 4",
+          "size": "normal"
+        },
+        {
+          "caption": "Üretim tesisi görünüm 5",
+          "size": "normal"
+        },
+        {
+          "caption": "CNC işleme atölyesi",
+          "size": "normal"
+        },
+        {
+          "caption": "Kalıp üretim atölyesi",
+          "size": "normal"
+        },
+        {
+          "caption": "Teknik çizimli CNC torna hassas işleme",
+          "size": "normal"
+        },
+        {
+          "caption": "Polinar teknisyenleri ile CNC işleme atölyesi",
           "size": "large"
-        },
-        {
-          "caption": "Fabrika İç Görünüm",
-          "size": "normal"
-        },
-        {
-          "caption": "Üretim Hattı",
-          "size": "normal"
-        },
-        {
-          "caption": "Kalıp Montaj",
-          "size": "normal"
-        },
-        {
-          "caption": "Depo",
-          "size": "normal"
         }
       ],
       "title": "Üretim Alanından Fotoğraflar"
     },
     "hero": {
       "label": "Hakkımızda",
-      "subtitle": "2000 yılından bu yana plastik enjeksiyon kalıpları alanında lider üretici",
+      "subtitle": "2000 yılından bu yana plastik enjeksiyon kalıplarının lider üreticisi",
       "title": "HAKKIMIZDA"
     },
     "statistics": {
@@ -93,7 +97,7 @@
         },
         {
           "icon": "🌍",
-          "label": "İhracat Ülkesi",
+          "label": "İhracat Yapılan Ülke",
           "number": 40,
           "suffix": "+"
         },
@@ -113,15 +117,15 @@
     },
     "story": {
       "ctaLink": "/contact",
-      "ctaText": "İletişim",
+      "ctaText": "Bize Ulaşın",
       "foundedYear": "2000",
-      "paragraph1": "POLINAR, en yüksek teknik düzeyde plastik boru ek parçaları üretimi için plastik enjeksiyon kalıpları üretimi ve bireysel müşteri siparişleri için proje geliştirme alanında dinamik ve öncü firmalardan biridir.",
-      "paragraph2": "POLINAR yenilikçiliği, yüksek teknolojiyi ve tutarlılığı teşvik eder. Şirket 2000 yılından bu yana bu alandaki deneyimini geliştirmekte ve enjeksiyon kalıpları tasarım ve üretiminde lider bir kuruluş olarak öne çıkmaya devam etmektedir.",
-      "paragraph3": "POLINAR'ın kalıp tasarım ve üretimindeki yoğun deneyimi her projede gelişmektedir. Süreçleri iyileştirmek ve yenilikçi çözümler geliştirmek için daha fazla çaba harcıyoruz. Böylece müşterilerimizin orta ve uzun vadede rekabet avantajını güçlendirebileceğiz.",
+      "paragraph1": "POLINAR, en yüksek teknik seviyede plastik boru bağlantı parçaları üretimi için plastik enjeksiyon kalıpları imalatı ve bireysel müşteri siparişleri için proje geliştirme alanında dinamik ve lider şirketlerden biridir.",
+      "paragraph2": "POLINAR yenilikçiliği, yüksek teknolojileri ve tutarlılığı teşvik eder. Şirket 2000 yılından bu yana bu alandaki deneyimini geliştirmekte ve enjeksiyon kalıplarının tasarım ve üretiminde lider bir kuruluş olarak öne çıkmaya devam etmektedir.",
+      "paragraph3": "POLINAR'ın kalıp tasarım ve üretimindeki yoğun deneyimi her projede gelişmektedir. Süreçlerin iyileştirilmesi ve yenilikçi çözümlerin geliştirilmesi için daha fazla çaba harcıyoruz. Böylece müşterilerimizin orta ve uzun vadede rekabet avantajını güçlendirebileceğiz.",
       "title": "Polinar Hakkında"
     },
     "video": {
-      "description": "Polinar ve üretim kapasitemiz hakkında daha fazla bilgi edinmek için kurumsal videomuzu izleyin.",
+      "description": "Polinar ve üretim kapasitemiz hakkında daha fazla bilgi edinmek için tanıtım videomuzu izleyin.",
       "title": "Tanıtım Videosu",
       "videoUrl": "https://www.youtube.com/watch?v=wFziyAssgqk"
     }
@@ -141,17 +145,17 @@
     },
     "info": {
       "addressLabel": "Adres",
-      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, Türkiye",
+      "addressText": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, TÜRKİYE",
       "emailLabel": "E-posta",
       "phoneLabel": "Telefon / Faks"
     },
     "messages": {
       "error": "Mesaj gönderilemedi. Lütfen tekrar deneyin.",
-      "success": "Mesaj başarıyla gönderildi!"
+      "success": "Mesajınız başarıyla gönderildi!"
     }
   },
   "footer": {
-    "copyrightText": "Telif Hakkı © 2026 Tüm Hakları Saklıdır — Polinar",
+    "copyrightText": "Telif Hakkı © 2024 Tüm Hakları Saklıdır - Polinar",
     "labels": {
       "addressLabel": "Adres",
       "emailLabel": "E-posta",
@@ -165,16 +169,16 @@
   },
   "homepage-settings": {
     "aboutPreviewLabels": {
-      "description": "POLINAR, plastik boru ve ekleme parçaları için plastik enjeksiyon kalıpları üretimi alanında dinamik ve öncü firmalardan biridir.",
+      "description": "POLINAR, plastik boru ve bağlantı parçaları için plastik enjeksiyon kalıpları imalatı alanında dinamik ve lider şirketlerden biridir.",
       "label": "Hakkımızda",
-      "title": "HAKKIMIZDA"
+      "title": "BİZ"
     },
     "businessSection": {
-      "sectionLabel": "Faaliyetlerimiz",
-      "sectionTitle": "Ne Yapıyoruz?"
+      "sectionLabel": "Faaliyet Alanımız",
+      "sectionTitle": "Ne Yapıyoruz"
     },
     "coreValues": {
-      "description": "POLINAR, plastik boru ve ek parçaları için plastik enjeksiyon kalıplarının üretimi alanında dinamik ve lider şirketlerden biridir.",
+      "description": "POLINAR, plastik boru ve bağlantı parçaları için plastik enjeksiyon kalıpları imalatı alanında dinamik ve lider şirketlerden biridir.",
       "title": "Kalite / Sağlam / Dayanıklı / Güvenilir"
     },
     "heroSlides": [
@@ -182,7 +186,7 @@
         "animateText": true,
         "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "2000 yılından bu yana Polinar, global boru ve ek parça endüstrisi için yüksek kaliteli plastik enjeksiyon kalıpları üretmektedir.",
+        "subtitle": "2000 yılından bu yana Polinar, küresel boru ve bağlantı parçaları endüstrisi için yüksek kaliteli plastik enjeksiyon kalıpları üretmektedir.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
@@ -193,33 +197,33 @@
         "animateText": true,
         "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "Polinar, plastik boru ve ek parça endüstrisi için özelleştirilmiş makineler tasarlar ve üretir.",
+        "subtitle": "Polinar, plastik boru ve bağlantı parçaları endüstrisi için özelleştirilmiş makineler tasarlayıp üretmektedir.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Hassas Makineler & Özel Çözümler",
+        "title": "Hassas Makineler ve Özel Çözümler",
         "titleSize": "large"
       },
       {
         "animateText": true,
         "ctaLabel": "",
         "overlayOpacity": 60,
-        "subtitle": "Polinar Test Ekipmanları (PTE), plastik boru ve ek parça endüstrisi için kapsamlı test makineleri üretmektedir.",
+        "subtitle": "Polynar Test Ekipmanları (PTE), plastik boru ve bağlantı parçaları endüstrisi için geniş yelpazede test makineleri sunmaktadır.",
         "textAlignment": "left",
         "textAnimation": "fadeUp",
         "textPosition": "center",
-        "title": "Kalite Güvencesi İçin Güvenilir Test",
+        "title": "Kalite Güvencesi İçin Güvenilir Testler",
         "titleSize": "large"
       }
     ],
     "newsSection": {
-      "empty": "Haberler yakında eklenecek",
+      "empty": "Haberler yakında gelecek",
       "label": "Son Haberler",
-      "title": "Fuar Gündemi"
+      "title": "Fuar Takvimi"
     },
     "sliderSettings": {
       "autoPlay": true,
-      "interval": 5000,
+      "interval": 9000,
       "pauseOnHover": true,
       "showArrows": true,
       "showDots": true,
@@ -243,9 +247,9 @@
         "label": "FAALİYETLERİMİZ",
         "megaMenuColumns": [
           {
-            "columnTitle": "",
+            "columnTitle": "{}",
             "columnType": "links",
-            "imageCaption": "",
+            "imageCaption": "{}",
             "links": [
               {
                 "description": "PPR-C, HDPE, PVC ve diğer boru sistemleri için yüksek kaliteli enjeksiyon kalıpları.",
@@ -256,7 +260,7 @@
               {
                 "description": "Modern CNC ve EDM makineleri ile hassas üretim kapasitesi.",
                 "icon": "machinery",
-                "label": "Makine Parkuru",
+                "label": "Makineler",
                 "url": "/our-business/machinery"
               },
               {
@@ -282,41 +286,49 @@
       }
     ],
     "megaMenuCTA": {
-      "button": "İletişim",
-      "description": "Projeleriniz için özel çözümler sunuyoruz. Bizimle iletişime geçin.",
-      "title": "Bize Ulaşın"
+      "button": "Bize Ulaşın",
+      "description": "Projeleriniz için özel çözümler sunuyoruz. Bugün bize ulaşın.",
+      "title": "İletişime Geçin"
     }
   },
   "news-page-settings": {
     "hero": {
-      "label": "Son Gelişmeler",
-      "title": "HABERLER & FUARLAR"
+      "label": "Son Güncellemeler",
+      "title": "HABERLER VE FUARLAR"
     },
     "labels": {
       "allNews": "Tüm Haberler",
       "breadcrumb": "Haberler",
-      "cmsPlaceholder": "Haber içeriği CMS üzerinden yönetilecektir.",
-      "empty": "Haberler yakında eklenecek"
+      "cmsPlaceholder": "Makale içeriği CMS üzerinden yönetilecektir.",
+      "empty": "Haberler yakında gelecek"
     }
   },
   "site-settings": {
     "chatbot": {
-      "enabled": true,
+      "enabled": false,
       "labels": {
         "closeLabel": "Kapat",
         "connectionError": "Bağlantı hatası. Lütfen tekrar deneyin.",
         "errorMessage": "Üzgünüz, bir hata oluştu.",
         "placeholder": "Mesajınızı yazın...",
         "title": "Polinar Destek",
-        "welcome": "Merhaba! Size nasıl yardımcı olabilirim?",
+        "welcome": "Merhaba! Bugün size nasıl yardımcı olabilirim?",
         "whatsappLabel": "WhatsApp'ta devam et"
       }
     },
     "contact": {
-      "email": "info@polinar.com.tr",
-      "fax": "+90 212 549 88 19",
-      "phone": "+90 212 549 88 20-21",
+      "address": "The Icon Tower 24\nWiedner Gürtel 13/3\n1100 Vienna - Austria",
+      "email": "office@polinar.at",
+      "fax": "",
+      "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.062740012779!2d16.374289277439566!3d48.186142647777444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da9d76eb621ad%3A0xc1ddee28670a84d6!2sTHE%20ICON%20VIENNA!5e0!3m2!1str!2str!4v1778828621341!5m2!1str!2str",
+      "phone": "+43 676 598 38 69",
       "whatsapp": "+90 533 648 61 34"
+    },
+    "defaultSeoDescription": "Polinar — 2000 yılından bu yana boru ve ek parçalar için plastik enjeksiyon kalıplarında lider üretici. Dünya genelinde 40'tan fazla ülkeye ihracat.",
+    "googleIntegration": {
+      "indexNow": {
+        "enabled": true
+      }
     },
     "siteName": "Polinar",
     "socialMedia": {
@@ -327,12 +339,12 @@
     },
     "whatsappCTA": {
       "enabled": true,
-      "text": "Detaylı bilgi için whatsapp üzerinden müşteri desteğimizle iletişime geçin"
+      "text": "Detaylı bilgi için müşteri desteğimizle WhatsApp üzerinden iletişime geçin"
     }
   },
   "ui-labels": {
-    "contentComingSoon": "İçerik yakında eklenecektir.",
-    "learnMore": "Detaylar",
+    "contentComingSoon": "İçerik yakında gelecek.",
+    "learnMore": "Daha Fazla Bilgi",
     "readMore": "Devamını Oku"
   }
 }

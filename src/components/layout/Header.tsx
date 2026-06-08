@@ -165,6 +165,20 @@ export function Header({ locale, languages, navData, commonLabels }: HeaderProps
             />
 
             <div className="flex items-center gap-3">
+              <Link
+                href={`/${locale}/our-business/plastic-testing-equipment`}
+                className="flex items-center opacity-90 hover:opacity-100 transition-opacity duration-200"
+                aria-label="PTE — Plastic Test Equipment"
+              >
+                <Image
+                  src="/brand_assets/pte-logo.png"
+                  alt="PTE"
+                  width={120}
+                  height={46}
+                  className={`w-auto transition-[height] duration-300 ${scrolled ? 'h-[32px]' : 'h-[38px]'}`}
+                />
+              </Link>
+
               <button
                 onClick={() => setSearchOpen(true)}
                 className={`hidden lg:flex items-center justify-center w-9 h-9 rounded-md transition-colors duration-200 ${

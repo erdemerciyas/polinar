@@ -44,6 +44,8 @@ const GALLERY_IMAGES: ImageDef[] = [
   { file: 'about-gallery-05.jpg', alt: 'Production facility view 5', altTr: 'Üretim tesisi görünüm 5' },
   { file: 'about-gallery-06.jpg', alt: 'CNC machining workshop', altTr: 'CNC işleme atölyesi' },
   { file: 'about-gallery-07.jpg', alt: 'Mould manufacturing workshop', altTr: 'Kalıp üretim atölyesi' },
+  { file: 'uretim_5.jpg', alt: 'CNC lathe precision machining with technical drawing', altTr: 'Teknik çizimli CNC torna hassas işleme' },
+  { file: 'uretim_6.jpg', alt: 'CNC machining workshop with Polinar technicians', altTr: 'Polinar teknisyenleri ile CNC işleme atölyesi' },
 ]
 
 const MAX_FILE_SIZE = 9 * 1024 * 1024 // 9MB — stay under Cloudinary's 10MB free-tier limit

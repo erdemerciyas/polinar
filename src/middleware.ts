@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
   if (firstSegment && (knownLocales.has(firstSegment) || looksLikeLocale(firstSegment))) {
     const response = NextResponse.next()
     response.cookies.set('NEXT_LOCALE', firstSegment, { path: '/', maxAge: 31536000 })
+    response.headers.set('x-polinar-locale', firstSegment)
     return response
   }
 

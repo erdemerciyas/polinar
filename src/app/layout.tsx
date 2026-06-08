@@ -1,5 +1,11 @@
 import type { Metadata } from 'next'
+import { inject } from '@vercel/analytics'
 import { getPayloadClient } from '@/lib/payload'
+import { getRequestLocale } from '@/lib/locale-from-request'
+import { fontClasses } from '@/lib/fonts'
+import './globals.css'
+
+inject()
 
 const SITE_NAME = 'Polinar'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.polinar.com.tr'
@@ -30,16 +36,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const gscToken = await getGscToken()
+  const [gscToken, { locale, dir }] = await Promise.all([getGscToken(), getRequestLocale()])
 
   return (
-    <html>
+    <html lang={locale} dir={dir} className={fontClasses} suppressHydrationWarning>
       <head>
         {gscToken && (
           <meta name="google-site-verification" content={gscToken} />
         )}
       </head>
-      {children}
+      <body className="font-body text-heading bg-white antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }

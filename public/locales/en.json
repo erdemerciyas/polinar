@@ -63,6 +63,14 @@
         },
         {
           "size": "normal"
+        },
+        {
+          "caption": "CNC lathe precision machining with technical drawing",
+          "size": "normal"
+        },
+        {
+          "caption": "CNC machining workshop with Polinar technicians",
+          "size": "large"
         }
       ],
       "title": "Photos from Production Area"
@@ -71,10 +79,6 @@
       "label": "About",
       "subtitle": "Leading manufacturer of plastic injection moulds since 2000",
       "title": "ABOUT US"
-    },
-    "seo": {
-      "description": "Discover Polinar's 25+ years of expertise in plastic injection mould manufacturing. ISO-certified quality, modern CNC facility, and global export to 40+ countries.",
-      "title": "About Polinar"
     },
     "statistics": {
       "cards": [
@@ -141,10 +145,6 @@
     "messages": {
       "error": "Failed to send message. Please try again.",
       "success": "Message sent successfully!"
-    },
-    "seo": {
-      "description": "Get in touch with Polinar for custom plastic injection mould solutions. Request a quote, visit our Istanbul facility, or reach us via WhatsApp.",
-      "title": "Contact Us"
     }
   },
   "footer": {
@@ -177,7 +177,7 @@
     "heroSlides": [
       {
         "animateText": true,
-        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
         "subtitle": "Since 2000, Polinar has been manufacturing high-quality plastic injection moulds for the global pipe and fittings industry.",
         "textAlignment": "left",
@@ -188,7 +188,7 @@
       },
       {
         "animateText": true,
-        "ctaLabel": "{\"en\":null,\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
         "subtitle": "Polinar designs and manufactures customized machinery for the plastic pipe and fittings industry.",
         "textAlignment": "left",
@@ -199,7 +199,7 @@
       },
       {
         "animateText": true,
-        "ctaLabel": "{\"tr\":null}",
+        "ctaLabel": "",
         "overlayOpacity": 60,
         "subtitle": "Polynar Test Equipment (PTE) mixed range of testing machines for the plastic pipe and fittings industry.",
         "textAlignment": "left",
@@ -214,13 +214,9 @@
       "label": "Latest News",
       "title": "Fair Agenda"
     },
-    "seo": {
-      "description": "Leading manufacturer of plastic injection moulds for pipe and fittings since 2000. High-quality PPR-C, HDPE, PVC moulds exported to 40+ countries.",
-      "title": "Polinar — Plastic Injection Moulds"
-    },
     "sliderSettings": {
       "autoPlay": true,
-      "interval": 5000,
+      "interval": 9000,
       "pauseOnHover": true,
       "showArrows": true,
       "showDots": true,
@@ -296,15 +292,11 @@
       "breadcrumb": "News",
       "cmsPlaceholder": "Article content will be managed via CMS.",
       "empty": "News coming soon"
-    },
-    "seo": {
-      "description": "Stay updated with Polinar's latest news, trade fair participations, product launches, and industry insights in plastic injection mould manufacturing.",
-      "title": "News & Exhibitions"
     }
   },
   "site-settings": {
     "chatbot": {
-      "enabled": true,
+      "enabled": false,
       "labels": {
         "closeLabel": "Close",
         "connectionError": "Connection error. Please try again.",
@@ -316,12 +308,19 @@
       }
     },
     "contact": {
-      "email": "info@polinar.com.tr",
-      "fax": "+90 212 549 88 19",
-      "phone": "+90 212 549 88 20-21",
+      "address": "The Icon Tower 24\nWiedner Gürtel 13/3\n1100 Vienna - Austria",
+      "email": "office@polinar.at",
+      "fax": "",
+      "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.062740012779!2d16.374289277439566!3d48.186142647777444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da9d76eb621ad%3A0xc1ddee28670a84d6!2sTHE%20ICON%20VIENNA!5e0!3m2!1str!2str!4v1778828621341!5m2!1str!2str",
+      "phone": "+43 676 598 38 69",
       "whatsapp": "+90 533 648 61 34"
     },
     "defaultSeoDescription": "Polinar — Leading manufacturer of plastic injection moulds for pipe and fittings since 2000. Exported to 40+ countries worldwide.",
+    "googleIntegration": {
+      "indexNow": {
+        "enabled": true
+      }
+    },
     "siteName": "Polinar",
     "socialMedia": {
       "facebook": "https://facebook.com/polinar",
@@ -334,18 +333,13 @@
       "text": "Need detailed information, contact our customer support via whatsapp"
     }
   },
-  "ui-labels": {
-    "contentComingSoon": "Content coming soon.",
-    "learnMore": "Learn More",
-    "readMore": "Read More"
-  },
   "static-content": {
     "injection-moulds": {
       "categories": [
         {
           "id": "pprc-sanitary",
-          "name": "PPR-C Sanitary Fittings Moulds",
           "materials": "PPR-C / PERT / PE (with Brass inserts)",
+          "name": "PPR-C Sanitary Fittings Moulds",
           "technologies": [
             "Durable mechanism",
             "Certified steels",
@@ -356,8 +350,8 @@
         },
         {
           "id": "hdpe-butt-welding",
-          "name": "HDPE Butt Welding Fitting Moulds",
           "materials": "HDPE100 / LDPE / MDPE",
+          "name": "HDPE Butt Welding Fitting Moulds",
           "technologies": [
             "Durable mechanism",
             "Certified steels",
@@ -369,8 +363,8 @@
         },
         {
           "id": "pp-irrigation",
-          "name": "PP Irrigation Systems Moulds",
           "materials": "PP / PE / POM / Filled Polymers",
+          "name": "PP Irrigation Systems Moulds",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -383,8 +377,8 @@
         },
         {
           "id": "pvc-sewage",
-          "name": "PVC Sewage Fittings Moulds",
           "materials": "PVC / PVC-U / C-PVC / Filled Polymers",
+          "name": "PVC Sewage Fittings Moulds",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -397,8 +391,8 @@
         },
         {
           "id": "pp-sewage",
-          "name": "PP Sewage Fittings Moulds",
           "materials": "PP-H / PP-B / PE / Filled Polymers",
+          "name": "PP Sewage Fittings Moulds",
           "technologies": [
             "Durable mechanism",
             "Certified steels",
@@ -411,8 +405,8 @@
         },
         {
           "id": "pvcu-glue",
-          "name": "PVC-U Glue System Fitting Moulds",
           "materials": "PVC / PVC-U / C-PVC / Filled Polymers",
+          "name": "PVC-U Glue System Fitting Moulds",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -425,8 +419,8 @@
         },
         {
           "id": "pe-corrugated",
-          "name": "PE Corrugated System Moulds",
           "materials": "PP / PE / Filled Polymers",
+          "name": "PE Corrugated System Moulds",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -439,8 +433,8 @@
         },
         {
           "id": "electric-conduit",
-          "name": "Electric Conduit Systems Moulds",
           "materials": "PVC / ABS / PP / PE / PA / POM / PPSU / TPE / PET",
+          "name": "Electric Conduit Systems Moulds",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -453,8 +447,8 @@
         },
         {
           "id": "engineering-plastics",
-          "name": "Engineering Plastics",
           "materials": "ABS / PP / PE / PA / POM / PPSU / TPE / PET / Filled Polymers",
+          "name": "Engineering Plastics",
           "technologies": [
             "Durable mechanism",
             "Stainless steel cores and pins",
@@ -468,64 +462,61 @@
       ],
       "commonTechnologies": [
         {
-          "title": "Durable Mechanism",
-          "description": "Built with premium steel grades for long-lasting performance and millions of production cycles."
+          "description": "Built with premium steel grades for long-lasting performance and millions of production cycles.",
+          "title": "Durable Mechanism"
         },
         {
-          "title": "Quick Cycle Time",
-          "description": "Optimized mould geometry and cooling channels for maximum production efficiency."
+          "description": "Optimized mould geometry and cooling channels for maximum production efficiency.",
+          "title": "Quick Cycle Time"
         },
         {
-          "title": "Effective Cooling System",
-          "description": "Advanced cooling channel design ensures uniform temperature distribution and part quality."
+          "description": "Advanced cooling channel design ensures uniform temperature distribution and part quality.",
+          "title": "Effective Cooling System"
         },
         {
-          "title": "POLINAR Hot Runner System",
-          "description": "Proprietary hot runner manifold system for zero-waste production and consistent part quality."
+          "description": "Proprietary hot runner manifold system for zero-waste production and consistent part quality.",
+          "title": "POLINAR Hot Runner System"
         }
       ],
       "highlights": [
         {
-          "value": "25+",
-          "label": "Years Experience"
+          "label": "Years Experience",
+          "value": "25+"
         },
         {
-          "value": "50+",
-          "label": "Countries Exported"
+          "label": "Countries Exported",
+          "value": "50+"
         },
         {
-          "value": "100%",
-          "label": "Custom Design"
+          "label": "Custom Design",
+          "value": "100%"
         },
         {
-          "value": "9",
-          "label": "Product Categories"
+          "label": "Product Categories",
+          "value": "9"
         }
       ],
       "ui": {
-        "heroTitle": "Injection Moulds",
-        "heroSubtitle": "Durable Moulds and Customized Products",
-        "introTitle": "High Quality Plastic Injection Moulds",
-        "introText": "Since 2000, Polinar has been manufacturing high-quality plastic injection moulds for the global pipe and fittings industry. Our moulds are designed for PPR-C, HDPE, PVC, PP and other pipe systems, delivering precision, durability and efficiency for manufacturers worldwide.",
-        "categoriesLabel": "Our Expertise",
-        "categoriesSectionTitle": "Mould Categories",
-        "whyLabel": "Why Polinar",
-        "whySectionTitle": "Core Technologies",
-        "whyText": "Every Polinar mould integrates our proprietary technologies developed over 25 years of experience in precision mould manufacturing.",
-        "ctaTitle": "Need a custom mould solution?",
-        "ctaText": "Contact our engineering team for tailored designs.",
-        "ctaButton": "Contact Us",
+        "breadcrumbCurrent": "Injection Moulds",
         "breadcrumbHome": "Home",
         "breadcrumbParentFallback": "Our Business",
-        "breadcrumbCurrent": "Injection Moulds"
+        "categoriesLabel": "Our Expertise",
+        "categoriesSectionTitle": "Mould Categories",
+        "ctaButton": "Contact Us",
+        "ctaText": "Contact our engineering team for tailored designs.",
+        "ctaTitle": "Need a custom mould solution?",
+        "heroSubtitle": "Durable Moulds and Customized Products",
+        "heroTitle": "Injection Moulds",
+        "introText": "Since 2000, Polinar has been manufacturing high-quality plastic injection moulds for the global pipe and fittings industry. Our moulds are designed for PPR-C, HDPE, PVC, PP and other pipe systems, delivering precision, durability and efficiency for manufacturers worldwide.",
+        "introTitle": "High Quality Plastic Injection Moulds",
+        "whyLabel": "Why Polinar",
+        "whySectionTitle": "Core Technologies",
+        "whyText": "Every Polinar mould integrates our proprietary technologies developed over 25 years of experience in precision mould manufacturing."
       }
     },
     "machinery": {
       "categories": [
         {
-          "id": "bending-machines",
-          "name": "Bending Machines for Plastic Pipes",
-          "shortDescription": "Pneumatic bending machine for cross-over special fittings via thermo-forming of PP-R pipe segments.",
           "description": "Pneumatic bending machine suitable for the construction of cross-over special fittings by means of thermo-forming segments of Polypropylene Random (PP-R) pipe. Equipped with a pneumatic cutter, heating unit for up to 8 pipe segments (Ø20–32 mm), and a station pressing bench with built-in cooling unit. Press bending is the simplest and most cost-effective method of bending cold pipe and tube.",
           "features": [
             "Pneumatic cutter with collection box",
@@ -534,17 +525,20 @@
             "Moulds for each diameter (Ø20–Ø32 mm)",
             "CE conformity certified"
           ],
+          "id": "bending-machines",
+          "name": "Bending Machines for Plastic Pipes",
+          "shortDescription": "Pneumatic bending machine for cross-over special fittings via thermo-forming of PP-R pipe segments.",
           "standards": [
             "DIN EN ISO 15874",
             "DIN 8077",
             "DIN 8078"
           ],
           "versions": {
-            "name": "Versions",
             "columns": [
               "T1201V1P Bending Machine",
               "T1101V2P Omega Machine"
             ],
+            "name": "Versions",
             "rows": [
               {
                 "label": "Working range",
@@ -619,9 +613,6 @@
           }
         },
         {
-          "id": "mini-extruder",
-          "name": "25D Twin-Screw Horizontal Extruder",
-          "shortDescription": "Lab-scale mini extruder with 4 autonomous heating zones and scalable geometry for R&D to production.",
           "description": "The unique setup of our horizontal 12 mm 25D extruder improves material flow and provides temperature management across 4 autonomous heating zones. Scalable geometric proportions allow for seamless transition from lab testing to industrial production.",
           "features": [
             "Durable material contact parts with minimal abrasion",
@@ -630,6 +621,9 @@
             "Integrated controls for feeders and advanced control panel",
             "Plug-and-play feeding and downstream equipment"
           ],
+          "id": "mini-extruder",
+          "name": "25D Twin-Screw Horizontal Extruder",
+          "shortDescription": "Lab-scale mini extruder with 4 autonomous heating zones and scalable geometry for R&D to production.",
           "specs": [
             {
               "label": "Screw diameter",
@@ -682,9 +676,6 @@
           ]
         },
         {
-          "id": "ball-valve-assembly",
-          "name": "Machine for Assembling Plastic Ball Valves",
-          "shortDescription": "Servo-controlled automated assembly with 16-position rotating table, Industry 4.0 ready.",
           "description": "Automated assembly machine with a rectangular base, servo-controlled rotating table electronically programmable via Touch Screen control panel, and a 16-position rotating disk. The centralized supervisor connects to management databases for data transfer, following Smart Factory and Industry 4.0 requirements. Components are manually loaded; unloading is automatic with good-part selection and waste discrimination.",
           "features": [
             "Servo-controlled rotating table with 16 divisions",
@@ -693,6 +684,8 @@
             "Mobile device production monitoring",
             "Industry 4.0 & Smart Factory compatible"
           ],
+          "id": "ball-valve-assembly",
+          "name": "Machine for Assembling Plastic Ball Valves",
           "positions": [
             "Loading the Sleeve Male Parts",
             "Controlling the position of the Sleeve Male Parts",
@@ -710,74 +703,75 @@
             "Unloading the Defective Products",
             "Station Control",
             "Empty"
-          ]
+          ],
+          "shortDescription": "Servo-controlled automated assembly with 16-position rotating table, Industry 4.0 ready."
         }
       ],
       "coreCapabilities": [
         {
-          "title": "Custom Engineering",
-          "description": "Every machine is tailored to your specific production requirements, from design to commissioning."
+          "description": "Every machine is tailored to your specific production requirements, from design to commissioning.",
+          "title": "Custom Engineering"
         },
         {
-          "title": "Industry 4.0 Ready",
-          "description": "Smart Factory integration with centralized supervisors, mobile monitoring and database connectivity."
+          "description": "Smart Factory integration with centralized supervisors, mobile monitoring and database connectivity.",
+          "title": "Industry 4.0 Ready"
         },
         {
-          "title": "CE Certified",
-          "description": "All machinery meets European Conformity standards for safety, health and environmental protection."
+          "description": "All machinery meets European Conformity standards for safety, health and environmental protection.",
+          "title": "CE Certified"
         },
         {
-          "title": "Smart Factory Integration",
-          "description": "Centralized supervisor systems with data transfer capabilities and remote diagnostic tools."
+          "description": "Centralized supervisor systems with data transfer capabilities and remote diagnostic tools.",
+          "title": "Smart Factory Integration"
         }
       ],
       "highlights": [
         {
-          "value": "25+",
-          "label": "Years Experience"
+          "label": "Years Experience",
+          "value": "25+"
         },
         {
-          "value": "50+",
-          "label": "Countries Exported"
+          "label": "Countries Exported",
+          "value": "50+"
         },
         {
-          "value": "4.0",
-          "label": "Industry Ready"
+          "label": "Industry Ready",
+          "value": "4.0"
         },
         {
-          "value": "3",
-          "label": "Product Lines"
+          "label": "Product Lines",
+          "value": "3"
         }
       ],
       "ui": {
-        "heroTitle": "Customized Products & Machinery",
-        "heroSubtitle": "Tailored Machines for Pipe & Fitting Production",
-        "introTitle": "Precision Machinery & Custom Solutions",
-        "introText": "Polinar designs and manufactures customized machinery for the plastic pipe and fittings industry. From bending machines and mini extruders to fully automated assembly lines, our solutions are engineered for precision, efficiency and seamless integration with Industry 4.0 smart factory environments.",
+        "breadcrumbCurrent": "Machinery",
+        "breadcrumbHome": "Home",
+        "breadcrumbParentFallback": "Our Business",
         "categoriesLabel": "Our Product Lines",
         "categoriesSectionTitle": "Machine Categories",
+        "ctaButton": "Contact Us",
+        "ctaText": "Contact our engineering team for tailored designs.",
+        "ctaTitle": "Need a custom machine solution?",
+        "heroSubtitle": "Tailored Machines for Pipe & Fitting Production",
+        "heroTitle": "Customized Products & Machinery",
+        "introText": "Polinar designs and manufactures customized machinery for the plastic pipe and fittings industry. From bending machines and mini extruders to fully automated assembly lines, our solutions are engineered for precision, efficiency and seamless integration with Industry 4.0 smart factory environments.",
+        "introTitle": "Precision Machinery & Custom Solutions",
         "whyLabel": "Why Polinar",
         "whySectionTitle": "Core Capabilities",
         "whyText": "Every Polinar machine is designed with precision engineering and smart technology, ensuring maximum efficiency and quality in your production line.",
-        "ctaTitle": "Need a custom machine solution?",
-        "ctaText": "Contact our engineering team for tailored designs.",
-        "ctaButton": "Contact Us",
-        "breadcrumbHome": "Home",
-        "breadcrumbParentFallback": "Our Business",
-        "breadcrumbCurrent": "Machinery",
         "workCycleTitle": "Work Cycle — 16 Positions"
       }
     },
     "our-business": {
-      "moulds": [
-        "PPR-C, HDPE, PVC, PP",
-        "Hot Runner Systems",
-        "Certified Steels"
-      ],
       "machinery": [
         "CNC & EDM Machines",
         "Custom Manufacturing",
         "Precision Engineering"
+      ],
+      "moulds": [
+        "PPR-C, HDPE, PVC, PP",
+        "Hot Runner Systems",
+        "Certified Steels"
       ],
       "testing": [
         "ISO / ASTM Standards",
@@ -788,9 +782,6 @@
     "plastic-test-equipment": {
       "categories": [
         {
-          "id": "hydrostatic-internal",
-          "name": "Hydrostatic Internal Pressure Tester",
-          "shortDescription": "Microprocessor-controlled creep test system with automatic failure and leakage detection for up to 28 stations.",
           "description": "The internal pressure creep test is a test procedure for determining the strength of thermoplastic pipes. The specimens are subjected to a constant hydrostatic internal pressure at a constant ambient temperature either for a specified period or until they fail. It combines exceptional reliability with simple operation without making any compromises with respect to precision and flexibility.",
           "features": [
             "Convenient operation via integrated touch display",
@@ -800,11 +791,9 @@
             "Extendable up to 28 stations",
             "Interface to BTLogger® Windows-based datalogger software"
           ],
-          "standards": [
-            "ISO 1167",
-            "ASTM D 1598",
-            "ASTM D 1599"
-          ],
+          "id": "hydrostatic-internal",
+          "name": "Hydrostatic Internal Pressure Tester",
+          "shortDescription": "Microprocessor-controlled creep test system with automatic failure and leakage detection for up to 28 stations.",
           "specs": [
             {
               "label": "Pressure range",
@@ -834,12 +823,14 @@
               "label": "Voltage",
               "value": "230/400 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
           ]
         },
         {
-          "id": "universal-tensile",
-          "name": "Universal Tensile Tester",
-          "shortDescription": "Performs tension, compression and bending tests with brushless servo motor and 800% overload protection.",
           "description": "The universal tensile tester is used for performing tension, compression and bending tests. The classic application is the tensile test, subjecting a sample to an increasing tensile load until it breaks. The force-deflection diagram generated provides information on the load-bearing capacity, elasticity and plastic deformation of the material sample.",
           "features": [
             "Clear visualisation via integrated touch display",
@@ -849,11 +840,9 @@
             "Automatic detection and calibration of load cells and extensometers",
             "800% overload protection"
           ],
-          "standards": [
-            "ISO 527",
-            "ISO 6259",
-            "ASTM D 638"
-          ],
+          "id": "universal-tensile",
+          "name": "Universal Tensile Tester",
+          "shortDescription": "Performs tension, compression and bending tests with brushless servo motor and 800% overload protection.",
           "specs": [
             {
               "label": "Test force",
@@ -883,12 +872,14 @@
               "label": "Voltage",
               "value": "3 ph 380/400 VAC, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 527",
+            "ISO 6259",
+            "ASTM D 638"
           ]
         },
         {
-          "id": "falling-weight-impact",
-          "name": "Falling Weight Impact Tester",
-          "shortDescription": "Determines external impact resistance of thermoplastic pipes using staircase or round-the-clock method.",
           "description": "The falling weight tester is used to determine the external impact resistance of thermoplastic pipes using the staircase or round-the-clock method. Equipped with a state-of-the-art PLC and automatic double impact prevention system for reliable and repeatable results.",
           "features": [
             "Convenient operation via integrated touch display",
@@ -898,11 +889,9 @@
             "State-of-the-art PLC control",
             "Automatic double impact prevention system"
           ],
-          "standards": [
-            "ISO 11173",
-            "ISO 3127",
-            "ASTM D 2444"
-          ],
+          "id": "falling-weight-impact",
+          "name": "Falling Weight Impact Tester",
+          "shortDescription": "Determines external impact resistance of thermoplastic pipes using staircase or round-the-clock method.",
           "specs": [
             {
               "label": "Max. drop height",
@@ -932,12 +921,14 @@
               "label": "Voltage",
               "value": "3 ph 380/400 VAC 230/400 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 11173",
+            "ISO 3127",
+            "ASTM D 2444"
           ]
         },
         {
-          "id": "test-tanks",
-          "name": "Test Tanks for Pipe Testing",
-          "shortDescription": "Stainless steel test tanks with precise temperature control for hydrostatic internal pressure testing.",
           "description": "The test tanks are specially designed for testing thermoplastic pipes and fittings. The high reliability, durability of the materials used and the constant temperatures in the test tank with respect to both volume and time provide particularly reliable test conditions. A wide range of tank dimensions and connection options enable flexible adaptation to various operating conditions.",
           "features": [
             "Air operated lid for simple and safe operation",
@@ -947,11 +938,9 @@
             "Double insulation and insulated lid for minimum energy loss",
             "Integrated monitoring and control of test temperature"
           ],
-          "standards": [
-            "ISO 1167",
-            "ASTM D 1598",
-            "ASTM D 1599"
-          ],
+          "id": "test-tanks",
+          "name": "Test Tanks for Pipe Testing",
+          "shortDescription": "Stainless steel test tanks with precise temperature control for hydrostatic internal pressure testing.",
           "specs": [
             {
               "label": "Internal dimensions (W×L×H)",
@@ -981,12 +970,14 @@
               "label": "Voltage",
               "value": "230/400 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
           ]
         },
         {
-          "id": "test-oven",
-          "name": "Test Oven for Pipe Testing",
-          "shortDescription": "High-reliability test ovens with efficient water circulation and precise temperature control up to 1100 °C.",
           "description": "The PTE test ovens are specially designed for testing thermoplastic pipes and fittings. The high reliability, long service life of the materials used and the constant temperatures in the test oven with respect to both volume and time provide particularly reliable test conditions. Efficient energy use with low servicing and maintenance costs guarantees efficient long-term operation.",
           "features": [
             "Sliding rack system for easy fitting outside the oven",
@@ -996,11 +987,9 @@
             "High-quality stainless steel construction (AISI 304)",
             "High-quality oven insulation for minimum energy loss"
           ],
-          "standards": [
-            "ISO 1167",
-            "ASTM D 1598",
-            "ASTM D 1599"
-          ],
+          "id": "test-oven",
+          "name": "Test Oven for Pipe Testing",
+          "shortDescription": "High-reliability test ovens with efficient water circulation and precise temperature control up to 1100 °C.",
           "specs": [
             {
               "label": "Temperature range",
@@ -1026,12 +1015,14 @@
               "label": "Voltage",
               "value": "220/380 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
           ]
         },
         {
-          "id": "ring-stiffness",
-          "name": "Ring Stiffness Tester",
-          "shortDescription": "PC-controlled testing machine for ring stiffness and flexibility of thermoplastic pipes up to 1000 mm diameter.",
           "description": "The testing machine is designed to determine the ring stiffness and ring flexibility of thermoplastic pipes. Large compression plates allow performing tests on the respective diameter range and on pipes with lengths of up to one meter. A PC-based operational software enables clear representation and contributes to usability.",
           "features": [
             "Automatic processing of test scenario",
@@ -1041,13 +1032,9 @@
             "Integrated extensometer",
             "Multiple operational modes for constant compression or constant speed"
           ],
-          "standards": [
-            "ISO 9967",
-            "ISO 9969",
-            "ISO 13968",
-            "DIN 16961",
-            "ASTM D 2412"
-          ],
+          "id": "ring-stiffness",
+          "name": "Ring Stiffness Tester",
+          "shortDescription": "PC-controlled testing machine for ring stiffness and flexibility of thermoplastic pipes up to 1000 mm diameter.",
           "specs": [
             {
               "label": "Max. test force",
@@ -1077,12 +1064,16 @@
               "label": "Voltage",
               "value": "3 ph 380/400 VAC 230/400 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 9967",
+            "ISO 9969",
+            "ISO 13968",
+            "DIN 16961",
+            "ASTM D 2412"
           ]
         },
         {
-          "id": "thermal-cycling",
-          "name": "Thermal Cycling Test Unit for Pipe Systems",
-          "shortDescription": "Automated thermal cycling with programmable cycles, independent dual pipe system testing and stepper motor prestress.",
           "description": "The thermal cycling test unit enables simultaneous testing of two separate pipe systems independently. It features automatic test procedures with programmable numbers of cycles and cycle periods, temperatures and more. Automatic calculation and application of prestress via stepper motors ensures compliance with standards.",
           "features": [
             "High constancy of temperature by large reservoirs",
@@ -1092,13 +1083,9 @@
             "Automatic prestress calculation via stepper motors",
             "Flow measurement and regulation automated"
           ],
-          "standards": [
-            "ISO 19893",
-            "ISO 10508",
-            "DVGW W 534",
-            "DVGW W 542",
-            "DVGW W 543"
-          ],
+          "id": "thermal-cycling",
+          "name": "Thermal Cycling Test Unit for Pipe Systems",
+          "shortDescription": "Automated thermal cycling with programmable cycles, independent dual pipe system testing and stepper motor prestress.",
           "specs": [
             {
               "label": "Pressure range",
@@ -1132,12 +1119,16 @@
               "label": "Voltage",
               "value": "230/400 V, 50 Hz; approx. 25 kW"
             }
+          ],
+          "standards": [
+            "ISO 19893",
+            "ISO 10508",
+            "DVGW W 534",
+            "DVGW W 542",
+            "DVGW W 543"
           ]
         },
         {
-          "id": "mfi-mfr",
-          "name": "MFI / MFR Test Device",
-          "shortDescription": "Determines melt flow rate (MFI) and melt volume rate (MFR) with self-optimising temperature control.",
           "description": "The MFI/MFR tester combines the determination of the melt flow rate (MFI) and melt volume rate (MFR) of thermoplastic materials into one test procedure under specified temperature and load conditions. Excellent temperature accuracy is achieved through a self-optimising control system.",
           "features": [
             "Data input via touch display",
@@ -1147,10 +1138,9 @@
             "Max. temperature constancy maintained",
             "Long service life from high-quality, heat-resistant materials"
           ],
-          "standards": [
-            "ISO 1133",
-            "ASTM D 1238"
-          ],
+          "id": "mfi-mfr",
+          "name": "MFI / MFR Test Device",
+          "shortDescription": "Determines melt flow rate (MFI) and melt volume rate (MFR) with self-optimising temperature control.",
           "specs": [
             {
               "label": "Test temperature",
@@ -1180,12 +1170,13 @@
               "label": "Voltage",
               "value": "230 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 1133",
+            "ASTM D 1238"
           ]
         },
         {
-          "id": "carbon-black",
-          "name": "Carbon Black Tester",
-          "shortDescription": "Determines carbon black content of polyolefin plastics via pyrolytic decomposition in nitrogen flow.",
           "description": "Statutory standards prescribe the verification of carbon black content of polyolefin plastics. The test method is based on pyrolytic decomposition of the material in an inert gas flow (nitrogen). The remaining quantity is burned once again under forced ventilation at the same temperature and the carbon black content determined by means of weight difference.",
           "features": [
             "Simple and safe operation",
@@ -1195,10 +1186,9 @@
             "High-quality unit components for long service life",
             "Reliable and repeatable test results"
           ],
-          "standards": [
-            "ISO 6964",
-            "ASTM D 1603"
-          ],
+          "id": "carbon-black",
+          "name": "Carbon Black Tester",
+          "shortDescription": "Determines carbon black content of polyolefin plastics via pyrolytic decomposition in nitrogen flow.",
           "specs": [
             {
               "label": "Furnace temperature range",
@@ -1232,12 +1222,13 @@
               "label": "Voltage",
               "value": "1 ph 230 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "ISO 6964",
+            "ASTM D 1603"
           ]
         },
         {
-          "id": "cnc-milling",
-          "name": "CNC Milling Machine for Test Bars",
-          "shortDescription": "Table-top CNC milling machine producing up to 5 standard test bars per process with pre-configured programs.",
           "description": "The test bar milling machine enables bar-shaped plastic samples to be produced for tension, pressure, bending and flexural impact tests in accordance with a wide range of standards. Pre-configured machining programs for all common bar shapes and visualisation via touch screen display make it very easy to operate.",
           "features": [
             "Pre-configured machining programs per standard",
@@ -1247,14 +1238,9 @@
             "Machined areas cooled with compressed air",
             "Up to 5 test bars produced per milling process"
           ],
-          "standards": [
-            "ISO 179/180",
-            "ISO 527",
-            "ISO 6259",
-            "ISO 16770",
-            "ASTM D 638",
-            "ASTM D 1822"
-          ],
+          "id": "cnc-milling",
+          "name": "CNC Milling Machine for Test Bars",
+          "shortDescription": "Table-top CNC milling machine producing up to 5 standard test bars per process with pre-configured programs.",
           "specs": [
             {
               "label": "Clamping range (small)",
@@ -1284,12 +1270,17 @@
               "label": "Voltage",
               "value": "3 ph 380/400 VAC 230 V, 50 Hz"
             }
+          ],
+          "standards": [
+            "ISO 179/180",
+            "ISO 527",
+            "ISO 6259",
+            "ISO 16770",
+            "ASTM D 638",
+            "ASTM D 1822"
           ]
         },
         {
-          "id": "end-closures",
-          "name": "End Closures for Pipe Testing",
-          "shortDescription": "Stainless steel end closures for hydrostatic internal pressure testing of PE, PP and PVC pipes up to DN 630.",
           "description": "The internal pressure creep test determines the strength of thermoplastic pipes under constant hydrostatic internal pressure at a constant ambient temperature. The end closures feature a proven design for quick assembly, simple and reliable venting directly at the sample, and high-quality components for long service life.",
           "features": [
             "Quick assembly with proven end closure design",
@@ -1299,11 +1290,9 @@
             "Ring nut for suspension included",
             "Quick-release plug pressure connection"
           ],
-          "standards": [
-            "ISO 1167",
-            "ASTM D 1598",
-            "ASTM D 1599"
-          ],
+          "id": "end-closures",
+          "name": "End Closures for Pipe Testing",
+          "shortDescription": "Stainless steel end closures for hydrostatic internal pressure testing of PE, PP and PVC pipes up to DN 630.",
           "specs": [
             {
               "label": "Pipe diameter range",
@@ -1325,12 +1314,14 @@
               "label": "Pressure connection",
               "value": "Quick-release plug"
             }
+          ],
+          "standards": [
+            "ISO 1167",
+            "ASTM D 1598",
+            "ASTM D 1599"
           ]
         },
         {
-          "id": "ball-valves-test",
-          "name": "Ball Valves Test Units for Plastic Pipes",
-          "shortDescription": "PLC-controlled ball valve testing with pneumatic piston, touchscreen interface and up to 5 simultaneous stations.",
           "description": "Ball valve test units for plastic pipes with pneumatic piston-driven head closing and whole system PLC control. Test pressure and all testing parameters can be defined, controlled and followed through the touchscreen user interface. Features audio-visual warning and indication system with optional data collecting and reporting.",
           "features": [
             "5 stations active at a time (Ø20–63 mm)",
@@ -1340,10 +1331,9 @@
             "Whole system PLC control with touchscreen UI",
             "Optional PoliREPORT and PoliLOGGER systems"
           ],
-          "standards": [
-            "DIN EN ISO 15874",
-            "EN 1329"
-          ],
+          "id": "ball-valves-test",
+          "name": "Ball Valves Test Units for Plastic Pipes",
+          "shortDescription": "PLC-controlled ball valve testing with pneumatic piston, touchscreen interface and up to 5 simultaneous stations.",
           "specs": [
             {
               "label": "Working range",
@@ -1369,72 +1359,100 @@
               "label": "Voltage",
               "value": "220/380 V, 50/60 Hz"
             }
+          ],
+          "standards": [
+            "DIN EN ISO 15874",
+            "EN 1329"
           ]
         }
       ],
       "coreCapabilities": [
         {
-          "title": "Precision Testing",
-          "description": "Microprocessor-controlled systems with high-accuracy sensors delivering repeatable results per international standards."
+          "description": "Microprocessor-controlled systems with high-accuracy sensors delivering repeatable results per international standards.",
+          "title": "Precision Testing"
         },
         {
-          "title": "Standards Compliance",
-          "description": "Equipment designed to meet ISO, ASTM, DIN and DVGW standards for plastic pipe and fitting testing worldwide."
+          "description": "Equipment designed to meet ISO, ASTM, DIN and DVGW standards for plastic pipe and fitting testing worldwide.",
+          "title": "Standards Compliance"
         },
         {
-          "title": "Custom Solutions",
-          "description": "Tailored test equipment configurations to match your specific production requirements and testing protocols."
+          "description": "Tailored test equipment configurations to match your specific production requirements and testing protocols.",
+          "title": "Custom Solutions"
         },
         {
-          "title": "After-Sales Support",
-          "description": "Comprehensive service and maintenance programs with remote diagnostics, spare parts and on-site technical support."
+          "description": "Comprehensive service and maintenance programs with remote diagnostics, spare parts and on-site technical support.",
+          "title": "After-Sales Support"
         }
       ],
       "highlights": [
         {
-          "value": "25+",
-          "label": "Years Experience"
+          "label": "Years Experience",
+          "value": "25+"
         },
         {
-          "value": "50+",
-          "label": "Countries Exported"
+          "label": "Countries Exported",
+          "value": "50+"
         },
         {
-          "value": "12",
-          "label": "Product Lines"
+          "label": "Product Lines",
+          "value": "12"
         },
         {
-          "value": "ISO",
-          "label": "Standards Certified"
+          "label": "Standards Certified",
+          "value": "ISO"
         }
       ],
       "ui": {
+        "breadcrumbCurrent": "Plastic Test Equipment",
+        "contactUs": "Contact Us",
+        "ctaSubtitle": "Contact our engineering team for tailored configurations.",
+        "ctaTitle": "Need a custom test equipment solution?",
         "heroEyebrow": "Plastic Test Equipment",
-        "heroTitle": "Plastic Test Equipment",
         "heroSubtitle": "Precision Testing Solutions for the Plastic Pipe & Fittings Industry",
-        "introTitle": "Reliable Testing for Quality Assurance",
+        "heroTitle": "Plastic Test Equipment",
         "introDescription": "Polinar Test Equipment (PTE) manufactures a comprehensive range of testing machines for the plastic pipe and fittings industry. Our equipment is designed and built to international standards including ISO, ASTM, DIN and DVGW, delivering precise, repeatable results for manufacturers worldwide.",
+        "introTitle": "Reliable Testing for Quality Assurance",
         "productRangeEyebrow": "Our Product Range",
         "productRangeTitle": "Test Equipment Categories",
-        "whyPolinarEyebrow": "Why Polinar",
-        "whyPolinarTitle": "Core Capabilities",
         "whyPolinarDescription": "Every piece of Polinar test equipment is designed with precision engineering and built to deliver accurate, repeatable results that meet the highest international standards.",
-        "ctaTitle": "Need a custom test equipment solution?",
-        "ctaSubtitle": "Contact our engineering team for tailored configurations.",
-        "contactUs": "Contact Us",
-        "breadcrumbCurrent": "Plastic Test Equipment"
+        "whyPolinarEyebrow": "Why Polinar",
+        "whyPolinarTitle": "Core Capabilities"
       }
     },
     "static-labels": {
+      "about": {
+        "certificateAlt": "Certificate",
+        "factoryAlt": "Polinar Factory",
+        "galleryImageAlt": "Gallery image {index}",
+        "productionAlt": "Polinar Production",
+        "scrollDown": "Scroll Down",
+        "sinceTemplate": "Since {year}",
+        "videoEyebrow": "Please Check Our"
+      },
+      "aria": {
+        "close": "Close",
+        "closeMenu": "Close menu",
+        "heroSlider": "Hero Slider",
+        "next": "Next",
+        "nextSlide": "Next slide",
+        "openMenu": "Open menu",
+        "playVideo": "Play video",
+        "previous": "Previous",
+        "previousSlide": "Previous slide"
+      },
+      "breadcrumbs": {
+        "breadcrumbAriaLabel": "Breadcrumb",
+        "home": "Home",
+        "ourBusiness": "Our Business"
+      },
       "company": {
         "address": "İkitelli OSB Eskoop San. Sit.\nD Blok No: 34\nBaşakşehir / İSTANBUL, TURKEY",
+        "email": "info@polinar.com.tr",
+        "fax": "+90 212 549 88 19",
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.267!2d28.7817!3d41.0865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5a1dccbcccd%3A0x123456789!2sPolinar!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str",
         "phones": [
           "+90 212 549 88 20-21"
         ],
-        "fax": "+90 212 549 88 19",
-        "email": "info@polinar.com.tr",
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.267!2d28.7817!3d41.0865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa5a1dccbcccd%3A0x123456789!2sPolinar!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str",
-        "whatsappUrl": "https://wa.me/905336486134",
         "socialLinks": [
           {
             "name": "Facebook",
@@ -1452,67 +1470,48 @@
             "name": "LinkedIn",
             "url": "https://www.linkedin.com/company/polinar"
           }
-        ]
-      },
-      "seo": {
-        "defaultTitle": "Polinar — Plastic Injection Moulds",
-        "defaultDescription": "Leading manufacturer of plastic injection moulds for pipe & fittings since 2000",
-        "titleSuffix": " | Polinar",
-        "siteName": "Polinar",
-        "contactType": "customer service"
-      },
-      "breadcrumbs": {
-        "home": "Home",
-        "ourBusiness": "Our Business",
-        "breadcrumbAriaLabel": "Breadcrumb"
-      },
-      "aria": {
-        "close": "Close",
-        "openMenu": "Open menu",
-        "closeMenu": "Close menu",
-        "previousSlide": "Previous slide",
-        "nextSlide": "Next slide",
-        "heroSlider": "Hero Slider",
-        "previous": "Previous",
-        "next": "Next",
-        "playVideo": "Play video"
-      },
-      "about": {
-        "scrollDown": "Scroll Down",
-        "sinceTemplate": "Since {year}",
-        "videoEyebrow": "Please Check Our",
-        "galleryImageAlt": "Gallery image {index}",
-        "certificateAlt": "Certificate",
-        "factoryAlt": "Polinar Factory",
-        "productionAlt": "Polinar Production"
+        ],
+        "whatsappUrl": "https://wa.me/905336486134"
       },
       "product": {
-        "viewDetails": "View Details",
-        "more": "more",
-        "materials": "Materials",
-        "technologies": "Technologies",
-        "standards": "Standards",
-        "keyFeatures": "Key Features",
-        "technicalSpecs": "Technical Specifications",
-        "downloadBrochure": "Download Brochure (PDF)",
-        "mouldAlt": "Mould",
-        "productsAlt": "Products",
-        "overviewAlt": "Overview",
-        "specificationsAlt": "Specifications",
-        "detailAlt": "Detail",
-        "digitalCatalog": "Digital Catalog",
-        "viewCatalog": "Browse Online",
-        "viewOnline": "View Online",
+        "catalogLoading": "Loading catalog...",
         "catalogPage": "Page",
+        "catalogPageOf": "of",
+        "catalogPrint": "Print",
+        "catalogResetZoom": "Reset Zoom",
         "catalogZoomIn": "Zoom In",
         "catalogZoomOut": "Zoom Out",
-        "catalogResetZoom": "Reset Zoom",
-        "catalogPrint": "Print",
-        "catalogLoading": "Loading catalog...",
-        "catalogPageOf": "of",
+        "detailAlt": "Detail",
+        "digitalCatalog": "Digital Catalog",
         "downloadAll": "Download All as PDF",
-        "downloadAllProgress": "Preparing..."
+        "downloadAllProgress": "Preparing...",
+        "downloadBrochure": "Download Brochure (PDF)",
+        "keyFeatures": "Key Features",
+        "materials": "Materials",
+        "more": "more",
+        "mouldAlt": "Mould",
+        "overviewAlt": "Overview",
+        "productsAlt": "Products",
+        "specificationsAlt": "Specifications",
+        "standards": "Standards",
+        "technicalSpecs": "Technical Specifications",
+        "technologies": "Technologies",
+        "viewCatalog": "Browse Online",
+        "viewDetails": "View Details",
+        "viewOnline": "View Online"
+      },
+      "seo": {
+        "contactType": "customer service",
+        "defaultDescription": "Leading manufacturer of plastic injection moulds for pipe & fittings since 2000",
+        "defaultTitle": "Polinar — Plastic Injection Moulds",
+        "siteName": "Polinar",
+        "titleSuffix": " | Polinar"
       }
     }
+  },
+  "ui-labels": {
+    "contentComingSoon": "Content coming soon.",
+    "learnMore": "Learn More",
+    "readMore": "Read More"
   }
 }

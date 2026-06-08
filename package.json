@@ -19,6 +19,8 @@
     "i18n:scaffold-static": "tsx scripts/scaffold-static-i18n.ts",
     "i18n:create-page": "tsx scripts/create-static-page.ts",
     "seed:about-images": "tsx scripts/seed-about-images.ts",
+    "seed:about-gallery-append": "tsx scripts/append-about-gallery-images.ts",
+    "generate:favicon": "tsx scripts/generate-favicon.ts",
     "db:export": "tsx scripts/export-db.ts"
   },
   "dependencies": {
