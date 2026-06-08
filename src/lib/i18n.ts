@@ -1,14 +1,15 @@
+import { DEFAULT_LANGUAGES, DEFAULT_LOCALE_CODES } from '@/lib/default-languages'
+
 // Static fallback values (used by middleware and as defaults)
-export const fallbackLocales = ['en', 'tr'] as const
+export const fallbackLocales = DEFAULT_LOCALE_CODES
 export type Locale = string
 export const defaultLocale = 'en'
 
 // Legacy exports for backward compatibility
 export const supportedLocales = fallbackLocales
-export const localeLabels: Record<string, string> = {
-  en: 'EN',
-  tr: 'TR',
-}
+export const localeLabels: Record<string, string> = Object.fromEntries(
+  DEFAULT_LANGUAGES.map((l) => [l.code, l.shortLabel]),
+)
 
 export function isValidLocale(locale: string): boolean {
   // Accept any 2-5 char lowercase alpha string as potentially valid
@@ -49,11 +50,11 @@ export async function getActiveLanguages(): Promise<Language[]> {
     })
 
     if (result.docs.length === 0) {
-      // Return fallback if no languages configured yet
-      return [
-        { id: '1', code: 'en', label: 'English', nativeLabel: 'English', shortLabel: 'EN', isDefault: true, isActive: true, isRTL: false, sortOrder: 0 },
-        { id: '2', code: 'tr', label: 'Türkçe', nativeLabel: 'Türkçe', shortLabel: 'TR', isDefault: false, isActive: true, isRTL: false, sortOrder: 1 },
-      ]
+      return DEFAULT_LANGUAGES.map((lang, i) => ({
+        id: String(i + 1),
+        ...lang,
+        flagEmoji: lang.flagEmoji,
+      }))
     }
 
     return result.docs.map((doc: any) => ({
@@ -70,11 +71,11 @@ export async function getActiveLanguages(): Promise<Language[]> {
     }))
   } catch (e) {
     console.error("GET ACTIVE LANGUAGES ERROR:", e)
-    // Fallback for build time or errors
-    return [
-      { id: '1', code: 'en', label: 'English', nativeLabel: 'English', shortLabel: 'EN', isDefault: true, isActive: true, isRTL: false, sortOrder: 0 },
-      { id: '2', code: 'tr', label: 'Türkçe', nativeLabel: 'Türkçe', shortLabel: 'TR', isDefault: false, isActive: true, isRTL: false, sortOrder: 1 },
-    ]
+    return DEFAULT_LANGUAGES.map((lang, i) => ({
+      id: String(i + 1),
+      ...lang,
+      flagEmoji: lang.flagEmoji,
+    }))
   }
 }
 

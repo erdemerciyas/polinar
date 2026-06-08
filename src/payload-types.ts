@@ -102,8 +102,8 @@ export interface Config {
     | ('false' | 'none' | 'null')
     | false
     | null
-    | ('ru' | 'en' | 'de' | 'ar' | 'tr')
-    | ('ru' | 'en' | 'de' | 'ar' | 'tr')[];
+    | ('en' | 'tr' | 'de' | 'ar' | 'ru')
+    | ('en' | 'tr' | 'de' | 'ar' | 'ru')[];
   globals: {
     'site-settings': SiteSetting;
     navigation: Navigation;
@@ -126,7 +126,7 @@ export interface Config {
     'our-business-page-settings': OurBusinessPageSettingsSelect<false> | OurBusinessPageSettingsSelect<true>;
     'ui-labels': UiLabelsSelect<false> | UiLabelsSelect<true>;
   };
-  locale: 'ru' | 'en' | 'de' | 'ar' | 'tr';
+  locale: 'en' | 'tr' | 'de' | 'ar' | 'ru';
   widgets: {
     collections: CollectionsWidget;
   };

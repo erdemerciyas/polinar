@@ -27,6 +27,7 @@ import { NewsPageSettings } from '@/globals/NewsPageSettings'
 import { OurBusinessPageSettings } from '@/globals/OurBusinessPageSettings'
 
 import localesJson from '@/lib/locales.json'
+import { DEFAULT_LANGUAGES } from '@/lib/default-languages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -116,13 +117,8 @@ export default buildConfig({
     const fs = await import('fs')
 
     // Ensure default languages exist (idempotent — checks each individually)
-    const defaults = [
-      { code: 'en', label: 'English', nativeLabel: 'English', shortLabel: 'EN', isDefault: true, isActive: true, isRTL: false, sortOrder: 0 },
-      { code: 'tr', label: 'Türkçe', nativeLabel: 'Türkçe', shortLabel: 'TR', isDefault: false, isActive: true, isRTL: false, sortOrder: 1 },
-    ]
-
     let created = false
-    for (const lang of defaults) {
+    for (const lang of DEFAULT_LANGUAGES) {
       const exists = await payload.find({
         collection: 'languages',
         where: { code: { equals: lang.code } },
@@ -145,13 +141,15 @@ export default buildConfig({
       })
       const defaultLang = allLangs.docs.find((d: any) => d.isDefault) || allLangs.docs[0]
       const localesData = {
-        locales: allLangs.docs.map((doc: any) => ({ label: doc.label, code: doc.code })),
+        locales: allLangs.docs
+          .filter((d: any) => d.isActive)
+          .map((doc: any) => ({ label: doc.label, code: doc.code })),
         defaultLocale: defaultLang?.code || 'en',
       }
       try {
         const locPath = path.resolve(dirname, 'src/lib/locales.json')
         fs.writeFileSync(locPath, JSON.stringify(localesData, null, 2) + '\n', 'utf-8')
-        payload.logger.info(`✓ locales.json synced: ${localesConfig.locales.map((l: any) => l.code).join(', ')}`)
+        payload.logger.info(`✓ locales.json synced: ${localesData.locales.map((l: any) => l.code).join(', ')}`)
       } catch {
         payload.logger.info('locales.json write skipped (read-only filesystem)')
       }
