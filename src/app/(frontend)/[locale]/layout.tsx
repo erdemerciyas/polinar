@@ -10,6 +10,13 @@ type Props = {
   params: Promise<{ locale: string }>
 }
 
+export async function generateStaticParams() {
+  const languages = await getActiveLanguages()
+  return languages.filter((language) => language.isActive).map((language) => ({
+    locale: language.code,
+  }))
+}
+
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
 

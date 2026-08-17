@@ -1,8 +1,9 @@
 import fs from 'fs/promises'
 import path from 'path'
+import { SHELL_TRANSLATIONS } from '@/lib/shell-translations'
 
-// Cache dictionary in memory for the lifetime of the server
-const dictionaryCache: Record<string, any> = {}
+// Cache dictionary in memory for the lifetime of the server process.
+const dictionaryCache: Record<string, Record<string, any>> = {}
 
 // Globals we need to fetch from Payload as fallback
 const GLOBAL_SLUGS = [
@@ -38,7 +39,7 @@ function isMediaLike(v: any): boolean {
   return ('filename' in v && 'mimeType' in v) || ('url' in v && 'filesize' in v)
 }
 
-function overlayTranslations(base: any, overlay: any): any {
+export function overlayTranslations(base: any, overlay: any): any {
   if (overlay === null || overlay === undefined) return base
   if (isMediaLike(base)) return base
   if (Array.isArray(overlay)) {
@@ -61,12 +62,22 @@ function overlayTranslations(base: any, overlay: any): any {
   return overlay
 }
 
+function applyShellTranslations(locale: string, result: Record<string, any>) {
+  const shell = SHELL_TRANSLATIONS[locale]
+  if (!shell) return
+
+  for (const [slug, overlay] of Object.entries(shell)) {
+    result[slug] = overlayTranslations(result[slug] || {}, overlay)
+  }
+}
+
 /**
  * Returns the merged dictionary for a locale.
  *
  * Strategy:
  *  - Fetch full data from Payload (this includes media URLs and full structure)
  *  - Overlay translation text from the locale's JSON file in public/locales
+ *  - Apply stable shell translations for shared UI (nav/homepage)
  *  - Static-content (src/data/*) is read from JSON as-is
  */
 export async function getDictionary(locale: string): Promise<Record<string, any>> {
@@ -74,11 +85,7 @@ export async function getDictionary(locale: string): Promise<Record<string, any>
     return dictionaryCache[locale]
   }
 
-  let jsonData = await loadJsonFile(locale)
-  if (!jsonData && locale !== 'en') {
-    jsonData = await loadJsonFile('en')
-  }
-  jsonData = jsonData || {}
+  const jsonData = (await loadJsonFile(locale)) || {}
 
   const result: Record<string, any> = {}
 
@@ -105,16 +112,19 @@ export async function getDictionary(locale: string): Promise<Record<string, any>
     result['static-content'] = jsonData['static-content']
   }
 
+  applyShellTranslations(locale, result)
+
   dictionaryCache[locale] = result
   return result
 }
 
-/** Clear the in-memory cache (useful after export) */
+/** Clear the in-memory cache (useful after CMS/JSON updates) */
 export function clearDictionaryCache(locale?: string) {
   if (locale) {
     delete dictionaryCache[locale]
   } else {
-    Object.keys(dictionaryCache).forEach((k) => delete dictionaryCache[k])
+    for (const key of Object.keys(dictionaryCache)) {
+      delete dictionaryCache[key]
+    }
   }
 }
-

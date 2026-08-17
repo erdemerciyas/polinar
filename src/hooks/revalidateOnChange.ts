@@ -1,6 +1,9 @@
 import type { CollectionAfterChangeHook, GlobalAfterChangeHook } from 'payload'
+import localesConfig from '@/lib/locales.json'
+import { clearDictionaryCache } from '@/lib/getDictionary'
 
 const INDEXNOW_API = '/api/indexnow'
+const LOCALE_CODES = localesConfig.locales.map((locale) => locale.code)
 
 async function notifyIndexNow(urls: string[]) {
   try {
@@ -14,6 +17,15 @@ async function notifyIndexNow(urls: string[]) {
   }
 }
 
+function revalidateLocalePaths(
+  revalidatePath: (path: string, type?: 'page' | 'layout') => void,
+  basePath: string,
+) {
+  for (const locale of LOCALE_CODES) {
+    revalidatePath(`/${locale}${basePath}`, 'page')
+  }
+}
+
 export const revalidateCollection: CollectionAfterChangeHook = async ({ doc, collection }) => {
   if (typeof window !== 'undefined') return doc
 
@@ -21,27 +33,26 @@ export const revalidateCollection: CollectionAfterChangeHook = async ({ doc, col
     const { revalidatePath } = await import('next/cache')
 
     const slugMap: Record<string, string> = {
-      'product-categories': '/[locale]/products',
-      services: '/[locale]/services',
-      news: '/[locale]/news',
-      pages: '/[locale]',
+      'product-categories': '/products',
+      services: '/services',
+      news: '/news',
+      pages: '',
     }
 
     const basePath = slugMap[collection.slug]
     const toRevalidate: string[] = []
 
-    if (basePath) {
-      revalidatePath(basePath, 'page')
-      toRevalidate.push(basePath)
+    if (basePath !== undefined) {
+      revalidateLocalePaths(revalidatePath, basePath)
+      toRevalidate.push(basePath || '/')
+
       if (doc?.slug) {
-        const detailPath = `${basePath}/${doc.slug}`
-        revalidatePath(detailPath, 'page')
-        toRevalidate.push(detailPath)
+        revalidateLocalePaths(revalidatePath, `${basePath}/${doc.slug}`)
+        toRevalidate.push(`${basePath}/${doc.slug}`)
       }
     }
 
-    revalidatePath('/[locale]', 'page')
-    toRevalidate.push('/[locale]')
+    clearDictionaryCache()
 
     if (toRevalidate.length > 0) {
       notifyIndexNow(toRevalidate)
@@ -54,20 +65,27 @@ export const revalidateCollection: CollectionAfterChangeHook = async ({ doc, col
 }
 
 export const revalidateGlobal: GlobalAfterChangeHook = async ({ doc, global }) => {
-  if (typeof window !== 'undefined') return doc // Sadece sunucu tarafında çalışmasını sağla
+  if (typeof window !== 'undefined') return doc
 
   try {
     const { revalidatePath, revalidateTag } = await import('next/cache')
 
-    // Revalidate homepage for most globals
-    revalidatePath('/[locale]', 'page')
+    clearDictionaryCache()
 
-    // Navigation changes affect all pages
-    if (global.slug === 'navigation' || global.slug === 'footer' || global.slug === 'site-settings') {
+    revalidateLocalePaths(revalidatePath, '')
+    revalidateLocalePaths(revalidatePath, '/about')
+    revalidateLocalePaths(revalidatePath, '/contact')
+    revalidateLocalePaths(revalidatePath, '/news')
+    revalidateLocalePaths(revalidatePath, '/our-business')
+
+    if (
+      global.slug === 'navigation' ||
+      global.slug === 'footer' ||
+      global.slug === 'site-settings'
+    ) {
       revalidatePath('/', 'layout')
     }
 
-    // unstable_cache ile önbelleğe aldığımız tag'leri tetiklemek için:
     revalidateTag(`global_${global.slug}`)
   } catch (error) {
     console.error('Revalidation error:', error)

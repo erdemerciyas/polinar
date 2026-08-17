@@ -29,9 +29,15 @@ export function LanguageSelector({ locale, languages, solid = true, goldBar = fa
   }, [])
 
   function navigate(targetLocale: string) {
+    if (targetLocale === locale) {
+      setOpen(false)
+      return
+    }
+
     const segments = pathname.split('/')
     segments[1] = targetLocale
     router.push(segments.join('/'))
+    router.refresh()
     setOpen(false)
   }
 

@@ -6,6 +6,7 @@ const SUPPORTED_GLOBAL_SLUGS = [
   'about-page-settings',
   'contact-page-settings',
   'news-page-settings',
+  'our-business-page-settings',
   'site-settings',
 ] as const
 

@@ -1,63 +1,66 @@
 import { NextRequest, NextResponse } from 'next/server'
-import localesConfig from '@/lib/locales.json'
+import { DEFAULT_LOCALE_CODE, isKnownLocale, KNOWN_LOCALE_CODES } from '@/lib/locale-config'
 
 const PUBLIC_PATHS = ['/admin', '/api', '/_next', '/media', '/brand_assets', '/favicon']
+const knownLocales = new Set(KNOWN_LOCALE_CODES)
 
-// Known locale codes from synced config
-const knownLocales = new Set(localesConfig.locales.map((l: { code: string }) => l.code))
-const defaultLocaleCode = localesConfig.defaultLocale || 'en'
+function withLocale(request: NextRequest, locale: string): NextResponse {
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-polinar-locale', locale)
 
-// Matches a valid locale segment (2-5 lowercase letters)
-function looksLikeLocale(segment: string): boolean {
-  return /^[a-z]{2,5}$/.test(segment)
+  const response = NextResponse.next({
+    request: { headers: requestHeaders },
+  })
+
+  response.cookies.set('NEXT_LOCALE', locale, {
+    path: '/',
+    maxAge: 31536000,
+    sameSite: 'lax',
+  })
+
+  return response
+}
+
+function detectPreferredLocale(request: NextRequest): string {
+  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value
+  if (isKnownLocale(cookieLocale)) {
+    return cookieLocale
+  }
+
+  const acceptLanguage = request.headers.get('Accept-Language') || ''
+  const browserLangs = acceptLanguage
+    .split(',')
+    .map((lang) => lang.split(';')[0].trim().split('-')[0])
+
+  for (const lang of browserLangs) {
+    if (knownLocales.has(lang)) {
+      return lang
+    }
+  }
+
+  return DEFAULT_LOCALE_CODE
 }
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Skip public paths
-  if (PUBLIC_PATHS.some(p => pathname.startsWith(p))) {
+  if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) {
     return NextResponse.next()
   }
 
-  // Skip static files
   if (pathname.includes('.')) {
     return NextResponse.next()
   }
 
-  // Check if pathname already has a known locale segment
   const firstSegment = pathname.split('/')[1]
-  if (firstSegment && (knownLocales.has(firstSegment) || looksLikeLocale(firstSegment))) {
-    const response = NextResponse.next()
-    response.cookies.set('NEXT_LOCALE', firstSegment, { path: '/', maxAge: 31536000 })
-    response.headers.set('x-polinar-locale', firstSegment)
-    return response
+
+  if (isKnownLocale(firstSegment)) {
+    return withLocale(request, firstSegment)
   }
 
-  // No locale in path — detect preferred and redirect
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value
-  const acceptLanguage = request.headers.get('Accept-Language') || ''
-
-  let preferred = defaultLocaleCode
-
-  if (cookieLocale && knownLocales.has(cookieLocale)) {
-    preferred = cookieLocale
-  } else {
-    // Parse Accept-Language header
-    const browserLangs = acceptLanguage
-      .split(',')
-      .map(lang => lang.split(';')[0].trim().split('-')[0])
-
-    for (const lang of browserLangs) {
-      if (knownLocales.has(lang)) {
-        preferred = lang
-        break
-      }
-    }
-  }
-
+  const preferred = detectPreferredLocale(request)
   const url = request.nextUrl.clone()
-  url.pathname = `/${preferred}${pathname}`
+  url.pathname = `/${preferred}${pathname === '/' ? '' : pathname}`
   return NextResponse.redirect(url)
 }
 
